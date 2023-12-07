@@ -20,4 +20,4 @@
 - Skins [ URL , name , price , status ( locked or not )] ✅
 - games if they are more games 
 
-• ML algorithm for detect on point of your finger and know where it is on the screen // زيزو و زيكو فولدرات
+• ML algorithm for detect on point of your finger and know where it is on the screen // زيزو و زيكو 
