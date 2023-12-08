@@ -16,29 +16,23 @@ const Login = () => {
             <div className="container">
             <div className="row">
             <div className="col-md-7 loginform">
-                <h1 className="future">The Future In Your Hands </h1>
-            <h5 >Welcome Back. Please Login To Your Account</h5>
-            {/* <Alert variant="danger">
-                Simple Alert
-            </Alert> */}
-            {/* <div className="img">
-                <img src={loginphoto} className="w-100" alt=""/> 
-            </div> */}
-
+                
             <Form >
+            <h2 >The Future In Your Hands </h2>
+            <p >Welcome Back. Please Login To Your Account</p>
                 <Form.Group className="input-box" >
                     <Form.Control type="email" placeholder="Username" />
-                    {/* <FaUser className='icon-user' /> */}
+                    {/* <FaUser className='icon' /> */}
+                    
                 </Form.Group>
 
                 <Form.Group className="input-box" >
                     <Form.Control type="password" placeholder="Password" />
-                    {/* <FaLock className='icon-pass' /> */}
+                    {/* <FaLock className='icon' /> */}
                 </Form.Group>
 
                 <div className="remember">
                     <label><input type="checkbox" /> Remember Me</label>
-                    {/* <Link to={"/"}>Forgot Password</Link> */}
                     <a href="/">Forgot Password</a>
                 </div>
 
@@ -52,10 +46,8 @@ const Login = () => {
                 
             </Form>
                 </div>
-                <div className="col-md-5 p-0">
-                    
+                <div className="col-md-5 p-0 imglogin">
                         <img src={loginphoto} className="w-100" alt="" />
-            
                 </div>
             </div>
             </div>
