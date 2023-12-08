@@ -4,6 +4,8 @@ import App from "./App";
 import Home from "./pages/Home/Home"
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Game from './pages/Game/Components/Game';
+import SelectSkin from './pages/Game/Components/SelectSkin';
 export const routes = createBrowserRouter([
     {
     path: "",
@@ -22,6 +24,15 @@ export const routes = createBrowserRouter([
             path: "/Register",
             element: <Register />,
         },
+        {
+            path: "/game",
+            element: <Game />,
+        },
+        {
+            path: "/selectskin",
+            element: <SelectSkin />,
+        },
+
     ],
     },
     {
