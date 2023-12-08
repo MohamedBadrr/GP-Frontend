@@ -9,9 +9,9 @@
 
 ### Gameplay space invading ( هتكمل على اللعبه الي عملناها
 - select chip skin and buy skin  // بدر
-- player name  // بدر
-- live score  // بدر
-- high score  // بدر
+- player name  // بدر✅
+- live score  // بدر✅
+- high score  // بدر✅
 - box for camera and ML // اعمل مكانها بس  //  بدر  
  ]
 
