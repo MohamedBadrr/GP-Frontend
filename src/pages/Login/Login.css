@@ -1,9 +1,10 @@
 
 
 
-
- .imglogin{
-width: 50%;
+.login{
+    background-image:url(../../img/background.png);
+    background-position: center center;
+    background-size: 100% 100%;
 }
 
 

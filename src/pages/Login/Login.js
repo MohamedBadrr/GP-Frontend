@@ -14,7 +14,8 @@ const Login = () => {
         
         <div className='login '>
             <div className="container">
-                <div className="col-md-6 loginform">
+            <div className="row">
+            <div className="col-md-7 loginform">
                 <h1 className="future">The Future In Your Hands </h1>
             <h5 >Welcome Back. Please Login To Your Account</h5>
             {/* <Alert variant="danger">
@@ -51,11 +52,12 @@ const Login = () => {
                 
             </Form>
                 </div>
-                <div className="col-md-6 p-0">
-                    <div className="imglogin">
-                        <img src={loginphoto}  alt="" />
-                    </div>
+                <div className="col-md-5 p-0">
+                    
+                        <img src={loginphoto} className="w-100" alt="" />
+            
                 </div>
+            </div>
             </div>
         </div>
     )
