@@ -4,6 +4,9 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from './pages/Register/Register';
+import User from './pages/User/User';
+import Game from './pages/Game/Components/Game';
+import SelectSkin from './pages/Game/Components/SelectSkin';
 export const routes = createBrowserRouter([
     {
     path: "",
