@@ -1,29 +1,34 @@
-import React, { startTransition } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import bootstrapNavbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-const Navbar = () => {
+export default function Header() {
   return (
     <>
-    Navbar
-       {/* <bootstrapNavbar bg="dark" variant="dark">
-        <Container>
-          <bootstrapNavbar.Brand href="#home">space ships</bootstrapNavbar.Brand>
-          
+      <Navbar collapseOnSelect expand="lg" className="bg-bg-transparent">
+      <Container>
+        <Navbar.Brand href="#home" className='me-auto'>LOGO</Navbar.Brand>
+        {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav"> */}
           <Nav className="me-auto">
-            <Link className='nav-link' to={'/'} >Home</Link>
-            <Link className='nav-link' to={'/Login'}>Login</Link>
-            <Link className='nav-link' to={'/register'}>Register</Link>
+            <Link className='nav-link' to={'/'}>Home</Link>
+            <Link className='nav-link' to={'/games'}>Games</Link>        
+            <Link className='nav-link' to={'/aboutUs'}>AboutUs</Link>        
+            <Link className='nav-link' to={'/more'}>More</Link>        
+
+          </Nav>
+          <Nav className="ms-auto">
+            <Nav.Link href="#features">Login</Nav.Link>
+            
+
           </Nav>
 
-          <Nav className = "ms-auto">
-            <Nav.Link href='#home' > Logout</Nav.Link>
-          </Nav>
-        </Container>
-      </bootstrapNavbar>*/}
-    </> 
+          
+      </Container>
+    </Navbar>
+    </>
   );
 }
-export default Navbar ;

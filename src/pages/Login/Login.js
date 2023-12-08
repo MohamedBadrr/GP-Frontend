@@ -7,8 +7,6 @@ import Alert from 'react-bootstrap/Alert';
 import { Link } from 'react-router-dom';
 import loginphoto from '../../img/pngwing.com (2).png'
 
-
-
 const Login = () => {
     return (
         
