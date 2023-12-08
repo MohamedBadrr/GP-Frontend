@@ -100,7 +100,7 @@
 
 .register-link p a {
     text-decoration: none;
-    font-weight: 600;
+    font-weight:bold;
 }
 
 .register-link p a:hover{
@@ -109,7 +109,7 @@
 
 .Registerform button{
     width: 40%;
-    margin-left: 35%;
+    margin-left: 112px;
     font-weight: bold;
 }
 

@@ -35,7 +35,7 @@ const Register = () => {
                             </Form.Group>
 
                             <Form.Group className="input-box" >
-                                <Form.Control type="password" placeholder="Re-Type Password" />
+                                <Form.Control type="password" placeholder="Confirm Password" />
                                 {/* <FaLock className='icon' /> */}
                             </Form.Group>
 
@@ -44,7 +44,7 @@ const Register = () => {
                             </Button>
 
                             <div className="register-link">
-                                <p>Already Have An Account? <a href="/login"> Login</a></p>
+                                <p>Already Have An Account? <a href="/login"> Login </a></p>
                             </div>
 
                         </Form>
