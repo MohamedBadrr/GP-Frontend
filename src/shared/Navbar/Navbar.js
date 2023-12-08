@@ -17,11 +17,13 @@ export default function Header() {
             <Link className='nav-link' to={'/'}>Home</Link>
             <Link className='nav-link' to={'/games'}>Games</Link>        
             <Link className='nav-link' to={'/aboutUs'}>AboutUs</Link>        
-            <Link className='nav-link' to={'/more'}>More</Link>        
+            <Link className='nav-link' to={'/more'}>More</Link>      
+            <Link className='nav-link' to={'/login'}>Login</Link>        
+  
 
           </Nav>
           <Nav className="ms-auto">
-            <Nav.Link href="#features">Login</Nav.Link>
+            <Nav.Link href="/">Logout</Nav.Link>
             
 
           </Nav>
