@@ -1,0 +1,15 @@
+
+.section{
+    background-image: url('../../components/1.jpg');
+    background-size: cover;
+
+}
+
+body {
+    margin: 0;
+    
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    
+    background-color: rgb(238, 238, 238)!important;
+}
