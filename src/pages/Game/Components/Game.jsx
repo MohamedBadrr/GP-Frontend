@@ -150,7 +150,7 @@ export function CarShow(props){
       </Html> */}
 
     
-      <Html position={[.55, 2.28 , 0]} onClick={console.log("done1")}>
+      <Html position={[.55, 2.28 , 0]} >
         <FaHelicopter onClick={updateSkin2}  style={{ color: 'blue', fontSize: '2em',cursor:'pointer' }}  />
       </Html>
       <Html position={[.1, 2.31 , 0]}>
@@ -203,11 +203,11 @@ export function CarShow(props){
       
       <FloatingGrid />
 
-        {/* <DepthOfField focusDistance={0.0035} focalLength={0.01} bokehScale={3} height={480} /> 
+         {/* <DepthOfField focusDistance={0.0035} focalLength={0.01} bokehScale={3} height={480} />  */}
       <EffectComposer>
         <Bloom
           blendFunction={BlendFunction.ADD}
-          intensity={0.5} // The bloom intensity.
+          intensity={0.3} // The bloom intensity.
           width={300} // render width
           height={300} // render height
           kernelSize={5} // blur kernel size
@@ -218,14 +218,14 @@ export function CarShow(props){
           blendFunction={BlendFunction.NORMAL} // blend mode
           // offset={[0.0005, 0.0012]} // color offset
         />
-      </EffectComposer> */}
+      </EffectComposer>
 
 
-    {/* <mesh>
+    <mesh>
       <planeGeometry args={[30 ,30]} />   
       <meshBasicMaterial color={"red"} />
       
-    </mesh> */}
+    </mesh>
 
     </>
   );
