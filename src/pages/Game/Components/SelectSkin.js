@@ -6,11 +6,8 @@ export default function SelectSkin() {
     const selectSkin2=(skin2)=>{
         console.log("done");
         return(
-            <>
-            <CarShow skin={skin2}/>
-            <Navigate to={"/game"}/>
-            
-            </>)
+            <Game skin={skin2}/>
+            )
         
     }
   return (
