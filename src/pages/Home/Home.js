@@ -5,11 +5,11 @@ import "./Home.css"
 export default function Home() {
   return (
     <>
-      {/* <div>
+      <div>
         <button className="btn btn-info">
           <Link to={"/selectskin"}>Select Skin</Link>
         </button>
-      </div> */}
+      </div>
       <div>
         <section class="hero-section overflow-hidden">
           <div class="container">

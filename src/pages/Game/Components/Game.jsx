@@ -160,7 +160,7 @@ export function CarShow(props){
         <LiaHelicopterSolid onClick={updateSkin1} style={{ color: 'blue', fontSize: '3em', cursor:'pointer' }}  />
       </Html>
 
-    <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} />
+    <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enablePan={false} enableZoom={false} enableRotate={false}/>
     <PerspectiveCamera makeDefault fov={60} position={[0, 2, -4]}  />
 
     <color args={[0,0,0]} attach="background" />
