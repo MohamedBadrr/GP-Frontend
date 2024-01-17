@@ -204,7 +204,7 @@ export function CarShow(props){
       <FloatingGrid />
 
          {/* <DepthOfField focusDistance={0.0035} focalLength={0.01} bokehScale={3} height={480} />  */}
-      <EffectComposer>
+      {/* <EffectComposer>
         <Bloom
           blendFunction={BlendFunction.ADD}
           intensity={0.3} // The bloom intensity.
@@ -218,7 +218,7 @@ export function CarShow(props){
           blendFunction={BlendFunction.NORMAL} // blend mode
           // offset={[0.0005, 0.0012]} // color offset
         />
-      </EffectComposer>
+      </EffectComposer> */}
 
 
     <mesh>
