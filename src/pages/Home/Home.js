@@ -10,22 +10,6 @@ export default function Home() {
           <Link to={"/selectskin"}>Select Skin</Link>
         </button>
       </div>
-      <div>
-        <section class="hero-section overflow-hidden">
-          <div class="container">
-            <h2>Game on!</h2>
-            <p>
-              Fusce erat dui, venenatis et erat in, vulputate dignissim lacus.
-              Donec vitae tempus dolor,
-              <br />
-              sit amet elementum lorem. Ut cursus tempor turpis.
-            </p>
-            <Link class="site-btn">
-              Read More <img src={icon1} alt="#" />
-            </Link>
-          </div>
-        </section>
-      </div>
     </>
   );
 }

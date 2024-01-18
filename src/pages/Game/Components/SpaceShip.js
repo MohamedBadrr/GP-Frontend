@@ -43,7 +43,6 @@ export function SpaceShip (props) {
     //       setMovement(Math.floor(Math.random() * 2));
     //       console.log(movement);
     //     };
-
     //     setInterval(editMovement, 9000);
     //    },[movement])
 
