@@ -204,8 +204,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-
         <section class="Latest_War">
           <div class="container">
             <div class="row justify-content-center">
