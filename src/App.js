@@ -6,7 +6,7 @@ import Footer from "./shared/Footer/Footer"
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
       <Footer />
     </>
