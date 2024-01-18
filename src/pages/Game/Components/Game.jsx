@@ -213,12 +213,12 @@ export function CarShow(props){
           kernelSize={5} // blur kernel size
           luminanceThreshold={0.15} // luminance threshold. Raise this value to mask out darker elements in the scene.
           luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
-        /> */}
+        /> 
         <ChromaticAberration
           // blendFunction={BlendFunction.NORMAL} // blend mode
           // offset={[0.0005, 0.0012]} // color offset
         />
-      </EffectComposer> */}
+      </EffectComposer> 
 
 
     <mesh>
