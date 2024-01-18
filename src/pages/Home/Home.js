@@ -5,10 +5,15 @@ import "./Home.css"
 export default function Home() {
   return (
     <>
-      <div>
+      {/* <div>
         <button className="btn btn-info">
           <Link to={"/selectskin"}>Select Skin</Link>
         </button>
+
+
+      
+        
+
       </div>
     </>
   );
