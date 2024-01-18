@@ -3,61 +3,58 @@ import React , { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import "./style.css";
 import { CubeCamera, Environment, OrbitControls, PerspectiveCamera, Plane, useTexture } from '@react-three/drei'
-import {
-  EffectComposer,
-  DepthOfField,
-  Bloom,
-  ChromaticAberration,
-} 
-from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+// import {
+//   EffectComposer,
+//   DepthOfField,
+//   Bloom,
+//   ChromaticAberration,
+// } 
+
+// from "@react-three/postprocessing";
+import { useSearchParams } from "react-router-dom"
+
+// import { BlendFunction } from "postprocessing";
 import { Ground } from './Ground';
 import { SpaceShip } from './SpaceShip';
 import { Rings } from './Rings';
-import { Boxes } from './Boxes';
+// import { Boxes } from './Boxes';
 import { FloatingGrid } from './FloatingGrid';
 import { Coins } from './Coins';
 import { Vector3 } from 'three';
 import { Text } from '@react-three/drei';
-import { Html} from '@react-three/drei';
+// import { Html} from '@react-three/drei';
 // import { FaPlane } from 'react-icons/fa';
-import { FaHelicopter } from "react-icons/fa";
-import { TbHelicopter } from "react-icons/tb";
-import { GiHelicopter } from "react-icons/gi";
-import { LiaHelicopterSolid } from "react-icons/lia";
+// import { FaHelicopter } from "react-icons/fa";
+// import { TbHelicopter } from "react-icons/tb";
+// import { GiHelicopter } from "react-icons/gi";
+// import { LiaHelicopterSolid } from "react-icons/lia";
 
 
 export function CarShow(props){
 
   const [planePosition, setPlanePosition ]= useState(new Vector3(0,1,0))
   const [score ,setScore] = useState(0)
-  const [heighscore ,setHeighscore] = useState(0)
-  const [skin , setSkin]=useState({
-    plane:props.skin,
-    positionPlane:new Vector3(0,1,0),
-    scalePlane:new Vector3(1,1,1),
-  });
-  
+  // const [heighscore ,setHeighscore] = useState(0)
   const planeImage = useTexture(process.env.PUBLIC_URL+"textures/plane3.png");
 
   // useLoader(TextureLoader,[
   //   process.env.PUBLIC_URL + "textures/terrain-roughness.jpg" ,
 
-  const updateSkin3=()=>{
-    setSkin({...skin ,plane:"models/plane5/skin5.glb"
-    ,positionPlane:new Vector3(0,.8,0),
-    scalePlane:new Vector3(.025,.025,.025)});
-  }
-  const updateSkin2=()=>{
-    setSkin({...skin , plane:"models/plane2/skin2.glb",
-    positionPlane:new Vector3(0,1,0),
-    scalePlane:new Vector3(.2,.2,.2),});
-  }
-  const updateSkin1=()=>{ 
-    setSkin({...skin ,plane:"models/plane1/ssss.glb",
-    positionPlane:new Vector3(0,1,0),
-    scalePlane:new Vector3(1,1,1),});
-  }
+  // const updateSkin3=()=>{
+  //   setSkin({...skin ,plane:"models/plane5/skin.glb"
+  //   ,positionPlane:new Vector3(0,.8,0),
+  //   scalePlane:new Vector3(.025,.025,.025)});
+  // }
+  // const updateSkin2=()=>{
+  //   setSkin({...skin , plane:"models/plane2/skin.glb",
+  //   positionPlane:new Vector3(0,1,0),
+  //   scalePlane:new Vector3(.2,.2,.2),});
+  // }
+  // const updateSkin1=()=>{ 
+  //   setSkin({...skin ,plane:"models/plane1/skin.glb",
+  //   positionPlane:new Vector3(0,1,0),
+  //   scalePlane:new Vector3(1,1,1),});
+  // }
   return (
     <>
     <Text
@@ -150,7 +147,7 @@ export function CarShow(props){
       </Html> */}
 
     
-      <Html position={[.55, 2.28 , 0]} >
+      {/* <Html position={[.55, 2.28 , 0]} >
         <FaHelicopter onClick={updateSkin2}  style={{ color: 'blue', fontSize: '2em',cursor:'pointer' }}  />
       </Html>
       <Html position={[.1, 2.31 , 0]}>
@@ -158,7 +155,7 @@ export function CarShow(props){
       </Html>
       <Html position={[-.4, 2.31 , 0]}>
         <LiaHelicopterSolid onClick={updateSkin1} style={{ color: 'blue', fontSize: '3em', cursor:'pointer' }}  />
-      </Html>
+      </Html> */}
 
     <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enablePan={false} enableZoom={false} enableRotate={false}/>
     <PerspectiveCamera makeDefault fov={60} position={[0, 2, -4]}  />
@@ -170,7 +167,7 @@ export function CarShow(props){
         (texture)=>(
           <>
           <Environment map={texture} />
-              <SpaceShip planePosition={planePosition} setPlanePosition={setPlanePosition} skin={skin}/>
+              <SpaceShip planePosition={planePosition} setPlanePosition={setPlanePosition} skin={props.skin}/>
               <Ground />
           </>
         )
@@ -231,12 +228,28 @@ export function CarShow(props){
   );
 }
 
-function Game() { 
-  const defaultSkin = "models/plane1/ssss.glb";
+function Game(props) { 
+  const [queryParameters] = useSearchParams()
+    const id = queryParameters.get("id")
+    const skins = [{
+      url:"models/plane1/skin.glb",
+      positionPlane:new Vector3(0,1,0),
+      scalePlane:new Vector3(1,1,1),
+    },
+    {
+      url:"models/plane2/skin.glb",
+      positionPlane:new Vector3(0,1,0),
+      scalePlane:new Vector3(.2,.2,.2),
+    },
+    {
+      url:"models/plane5/skin.glb",
+      positionPlane:new Vector3(0,1,0),
+      scalePlane:new Vector3(.025,.025,.025),
+    },]
   return (
     <Suspense fallback={null}>
       <Canvas shadows>
-        <CarShow skin={defaultSkin}/>
+        <CarShow skin={skins[id]}/>
       </Canvas>
     </Suspense>
   );

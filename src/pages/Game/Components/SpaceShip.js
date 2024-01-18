@@ -16,7 +16,7 @@ export function SpaceShip (props) {
         // process.env.PUBLIC_URL + "models/car/chevrolet_corvette_c7.glb"
         // process.env.PUBLIC_URL + "models/car/free_space_ship_wip.glb"
         // process.env.PUBLIC_URL + "models/car/multi_universe_space_ship_3d_model.glb"
-        process.env.PUBLIC_URL + props.skin.plane
+        process.env.PUBLIC_URL + props.skin.url
         // process.env.PUBLIC_URL + "models/coins/coin.glb"
     );
     useEffect(()=>{
@@ -43,6 +43,7 @@ export function SpaceShip (props) {
     //       setMovement(Math.floor(Math.random() * 2));
     //       console.log(movement);
     //     };
+
     //     setInterval(editMovement, 9000);
     //    },[movement])
 

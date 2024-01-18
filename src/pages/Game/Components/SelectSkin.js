@@ -1,59 +1,34 @@
-import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Game, { CarShow } from './Game';
+import React from "react";
+import { Link } from "react-router-dom";
+import Game from "./Game";
+import "./css/select-skin.css";
+import plane1 from "./../../../img/skin1.png";
+import plane2 from "./../../../img/skin2.png";
+import plane5 from "./../../../img/skin5.png";
 export default function SelectSkin() {
-    const skin2="models/plane5/skin5.glb";
-    const selectSkin2=(skin2)=>{
-        console.log("done");
-        return(
-            <Game skin={skin2}/>
-            )
-        
-    }
   return (
     <div>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
-      <h1>Select Your skin</h1>
-      <h4>Skin1</h4><button className='btn btn-info me-5' onClick={selectSkin2}>play with skin1</button>
-      <button className='btn btn-info'><Link to={"/game"}>Play normal</Link></button>
+      <section className="skin-section">
+        <h1>Select Your skin</h1>
+        <div className="skin-card">
+          <Link to={"/game?id=0"}>
+            <h4>Skin1</h4>
+            <img alt="plane1" src={plane1} />
+          </Link>
+        </div>
+        <div className="skin-card">
+          <Link to={"/game?id=1"}>
+            <h4>Skin2</h4>
+            <img alt="plane1" src={plane2} />
+          </Link>
+        </div>
+        <div className="skin-card">
+          <Link to={"/game?id=2"}>
+            <h4>Skin3</h4>
+            <img alt="plane1" src={plane5} />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
