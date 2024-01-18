@@ -160,7 +160,7 @@ export function CarShow(props){
         <LiaHelicopterSolid onClick={updateSkin1} style={{ color: 'blue', fontSize: '3em', cursor:'pointer' }}  />
       </Html>
 
-    <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} />
+    <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enablePan={false} enableZoom={false} enableRotate={false}/>
     <PerspectiveCamera makeDefault fov={60} position={[0, 2, -4]}  />
 
     <color args={[0,0,0]} attach="background" />
@@ -205,7 +205,7 @@ export function CarShow(props){
 
          {/* <DepthOfField focusDistance={0.0035} focalLength={0.01} bokehScale={3} height={480} />  */}
       <EffectComposer>
-        {/* <Bloom
+        <Bloom
           blendFunction={BlendFunction.ADD}
           intensity={0.3} // The bloom intensity.
           width={300} // render width
@@ -218,7 +218,7 @@ export function CarShow(props){
           // blendFunction={BlendFunction.NORMAL} // blend mode
           // offset={[0.0005, 0.0012]} // color offset
         />
-      </EffectComposer>
+      </EffectComposer> */}
 
 
     <mesh>
