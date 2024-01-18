@@ -9,6 +9,11 @@ export default function Home() {
         <button className="btn btn-info">
           <Link to={"/selectskin"}>Select Skin</Link>
         </button>
+
+
+      
+        
+
       </div>
     </>
   );
