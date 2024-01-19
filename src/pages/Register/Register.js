@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../Register/Register.css'
 import Alert from 'react-bootstrap/Alert';
+import { Link } from 'react-router-dom';
 import loginphoto from '../../img/pngwing.com (2).png'
 
 
@@ -14,39 +15,29 @@ const Register = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-7 Registerform">
-
                         <Form >
-                            <h2 >The Future In Your Hands </h2>
-                            <p >Welcome Back. Please Login To Your Account</p>
-
+                            <h2 className="edit">The Future In Your Hands </h2>
+                            <p className="mb-4">Welcome. Please Fill all Fileds to Registeration</p>
                             <Form.Group className="input-box" >
                                 <Form.Control type="text" placeholder="Full Name" />
-                                {/* <FaUser className='icon' /> */}
                             </Form.Group>
-
                             <Form.Group className="input-box" >
                                 <Form.Control type="email" placeholder="Email" />
-                                {/* <FaUser className='icon' /> */}
                             </Form.Group>
-
                             <Form.Group className="input-box" >
                                 <Form.Control type="password" placeholder="Password" />
                                 {/* <FaLock className='icon' /> */}
                             </Form.Group>
-
                             <Form.Group className="input-box" >
                                 <Form.Control type="password" placeholder="Confirm Password" />
                                 {/* <FaLock className='icon' /> */}
                             </Form.Group>
-
-                            <Button className="btn btn-blue " variant="primary" type="submit">
-                                Ceeate Account 
+                            <Button className="d-button border border-0 p-2 mt-3" variant="primary" type="submit">
+                                Register 
                             </Button>
-
                             <div className="register-link">
-                                <p>Already Have An Account? <a href="/login"> Login </a></p>
+                                <p>Already Have An Account ? <Link to="/login"> Login </Link></p>
                             </div>
-
                         </Form>
                     </div>
                     <div className="col-md-5 p-0 imglogin">

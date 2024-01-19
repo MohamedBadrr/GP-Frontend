@@ -13,35 +13,26 @@ const Login = () => {
         <div className='login '>
             <div className="container">
             <div className="row">
-            <div className="col-md-7 loginform">
-                
+            <div className="col-md-6 loginform">
             <Form >
-            <h2 >The Future In Your Hands </h2>
-            <p >Welcome Back. Please Login To Your Account</p>
+            <h2 className="mb-3 edit">The Future In Your Hands </h2>
+            <p className="mb-3">Welcome Back. Please Login To Your Account</p>
                 <Form.Group className="input-box" >
                     <Form.Control type="email" placeholder="Username" />
-                    {/* <FaUser className='icon' /> */}
-                    
                 </Form.Group>
-
                 <Form.Group className="input-box" >
                     <Form.Control type="password" placeholder="Password" />
-                    {/* <FaLock className='icon' /> */}
                 </Form.Group>
-
                 <div className="remember">
-                    <label><input type="checkbox" /> Remember Me</label>
+                    <label><input type="checkbox"/> Remember Me</label>
                     <a href="/">Forgot Password</a>
                 </div>
-
-                <Button className="btn btn-blue " variant="primary" type="submit">
+                <Button className="d-button border border-0" variant="primary" type="submit">
                     Login
                 </Button>
-
                 <div className="register-link">
-                    <p>Don't have an account? <a href="/register"> Register</a></p>
+                    <p>Don't have an account ? <Link to={"/register"}> Register</Link></p>
                 </div>
-                
             </Form>
                 </div>
                 <div className="col-md-5 p-0 imglogin">

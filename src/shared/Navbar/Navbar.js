@@ -13,35 +13,40 @@ export default function Header() {
       {pathname === "/login" || pathname === "/register"  ? (
         ""
       ) : (
-        <Navbar collapseOnSelect expand="lg" className="bg-bg-transparent">
-          <Container>
-            <Navbar.Brand href="#home" className="me-auto">
-              LOGO
-            </Navbar.Brand>
-            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav"> */}
-            <Nav className="me-auto">
-              <Link className="nav-link" to={"/"}>
-                Home
-              </Link>
-              <Link className="nav-link" to={"/games"}>
-                Games
-              </Link>
-              <Link className="nav-link" to={"/aboutUs"}>
-                AboutUs
-              </Link>
-              <Link className="nav-link" to={"/more"}>
-                More
-              </Link>
-              <Link className="nav-link" to={"/login"}>
-                Login
-              </Link>
-            </Nav>
-            <Nav className="ms-auto">
-              <Nav.Link href="/">Logout</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
+
+        <nav class="navbar navbar-expand-lg text-white text-center our-navBar">
+        <div class="container">
+          <a class="navbar-brand text-white " href="#"><span className='editBarnd'>END</span>GAME</a>
+          <button class="navbar-toggler text-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white "></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <Link class="nav-link active my-1 mx-2 text-white"  to="/home">Home</Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link  my-1 mx-2 text-white "  to="">Games</Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link  my-1 mx-2 text-white "  to="selectskin">About Us</Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link  my-1 mx-2 text-white "  href="#">Contact</Link>
+              </li>
+              
+            </ul>
+            <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link> </button>
+            <button class="d-button px-3 py-1 register-btn" ><Link to={"/register"}>Register</Link> </button>
+          </div>
+        </div>
+      </nav>
+      
+      
+      
+      
+      
+      
       )}
     </>
   );

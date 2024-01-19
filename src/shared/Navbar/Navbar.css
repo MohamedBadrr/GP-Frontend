@@ -1,12 +1,43 @@
-.navbar-nav {
-    display: flex;
-    flex-direction: row;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-    align-content: center;
-    justify-content: center;
-    margin-left: 5px;
+
+
+.our-navBar{
+    background-color:#0b0f18 !important ;
+    color: white !important;
+}
+.navbar-brand{
+    font-size: 25px ;
+    font-weight: bold;
+    margin-left: 50px;
+}
+.editBarnd
+{
+    color: #216399;
+}
+.login-btn{
+    border-radius: 5px !important;
+}
+.login-btn a ,.register-btn a{
+    text-decoration: none;
+    color: white;
+}
+.register-btn{
+    border-radius: 5px !important;
+}
+.nav-link{
+    font-size: 20px !important;
+    font-family: serif !important;
+    transition: all.6s !important;
     
 }
+.nav-link:hover {
+    color :#4890cc !important; 
+    text-decoration: underline;
+}
 
+@media screen and (min-width: 350px) {
+    .navbar-brand{
+        font-size: 25px ;
+        font-weight: bold;
+        margin-left: 25px !important;
+    }
+}
