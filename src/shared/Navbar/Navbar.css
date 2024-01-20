@@ -31,7 +31,7 @@
 }
 .nav-link:hover {
     color :#4890cc !important; 
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 @media screen and (min-width: 350px) {
