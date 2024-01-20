@@ -7,8 +7,6 @@ import GamesSection from '../GamesSection/GamesSection';
 export default function Home() {
   return (
     <>
-
-
       <div className='body-home'>
         <div className='home-section'>
             <div className='container-fluid'>
@@ -28,13 +26,9 @@ export default function Home() {
               </div>
             </div>
             </div>
-        </div>  
+        </div>
       </div>
-
       <GamesSection />
-
-
-
     </>
   );
 }
