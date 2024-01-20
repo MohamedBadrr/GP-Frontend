@@ -4,6 +4,7 @@ import "./Home.css";
 import homeBanner from "../../img/banner_img.png"
 import GamesSection from '../GamesSection/GamesSection';
 import About from '../../About/About';
+
 export default function Home() {
   return (
     <>
