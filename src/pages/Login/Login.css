@@ -94,6 +94,9 @@
         height: 100vh;
         display: block;
     }
+    .logintitle{
+            margin-left: 10px;
+    }
     .loginform form{
         width: 90%;
         margin: auto;

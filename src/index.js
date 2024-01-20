@@ -6,6 +6,7 @@ import { routes } from './Router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 // import "owl.carousel/dist/assets/owl.carousel.min.css";

@@ -20,7 +20,7 @@ export default function Home() {
                   sed do eiusmod tempor incididunt ut labore 
                   et dolore magna aliqua. Quis ipsum
                   </p>
-                  <button className='d-button px-5 py-2 mt-3 watch-button'>watch Games</button>
+                  <button className='d-button px-5 py-2 mt-3 watch-button'><a className='text-decoration-none text-white' href="#GAMES">watch Games</a></button>
               </div>
               <div className='col-md-6 home-banner '>
                 <img src={homeBanner} alt="banner" className='w-100' />

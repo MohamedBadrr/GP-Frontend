@@ -15,7 +15,7 @@ const Login = () => {
             <div className="row">
             <div className="col-md-6 loginform">
             <Form >
-            <h2 className="mb-3 edit">The Future In Your Hands </h2>
+            <h2 className="mb-3 edit logintitle">The Future In Your Hands </h2>
             <p className="mb-3">Welcome Back. Please Login To Your Account</p>
                 <Form.Group className="input-box" >
                     <Form.Control type="email" placeholder="Username" />
