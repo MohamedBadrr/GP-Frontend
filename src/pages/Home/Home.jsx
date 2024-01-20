@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import icon1 from './../../img/home/icon/double-arrow.png'
 import "./Home.css";
 import homeBanner from "../../img/banner_img.png"
+import GamesSection from '../GamesSection/GamesSection';
 export default function Home() {
   return (
     <>
@@ -29,7 +30,8 @@ export default function Home() {
             </div>
         </div>  
       </div>
-      
+
+      <GamesSection />
 
 
 
