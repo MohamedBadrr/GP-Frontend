@@ -10,7 +10,7 @@ export default function Header() {
   const { pathname} = location;
   return (
     <>
-      {pathname === "/login" || pathname === "/register"  ? (
+      {pathname === "/login" || pathname === "/register"? (
         ""
       ) : (
 
@@ -26,10 +26,12 @@ export default function Header() {
                 <Link class="nav-link active my-1 mx-2 text-white"  to="/home">Home</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link  my-1 mx-2 text-white "  to="">Games</Link>
+                {/* <Link class="nav-link  my-1 mx-2 text-white "  to="">Games</Link> */}
+                <a class="nav-link  my-1 mx-2 text-white "  href="#GAMES">Games</a>
               </li>
               <li class="nav-item">
-                <Link class="nav-link  my-1 mx-2 text-white "  to="selectskin">About Us</Link>
+                {/* <Link class="nav-link  my-1 mx-2 text-white "  to="selectskin">About Us</Link> */}
+                <a class="nav-link  my-1 mx-2 text-white "  href="#ABOUT">About Us</a>
               </li>
               <li class="nav-item">
                 <Link class="nav-link  my-1 mx-2 text-white "  href="#">Contact</Link>

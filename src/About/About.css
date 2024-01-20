@@ -1,0 +1,112 @@
+
+.about{
+    height: 100vh;
+    background-image: url(../img/body_bg.png);
+}
+.video2,.video1{
+    width: 40%;
+    height: 450px;
+    text-align: center;
+    margin: 20px;
+    margin-top: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: .5s all !important;
+}
+.videos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.video1{
+    background-image: url(../img/game1.png);
+    transition: .5s all !important;
+}
+.vedio1-skin{
+    width: 100%;
+    height: 450px;
+    background-color: rgba(0, 0, 0, .6);
+    position: absolute;
+    display: flex;
+    transition: .5s all !important;
+    display: none;
+}
+.vedio1-skin button{
+    transition: .9s all !important;
+    margin: 200px auto;
+    display: none;
+}
+.video1:hover{
+    transition: .5s all !important;
+    .vedio1-skin{
+        display:block;
+    }
+    .vedio1-skin button{
+        display: block;
+    }
+}
+.vedio1-skin button a{
+    text-decoration: none;
+    color: white;
+}
+.video2{
+    background-image: url(../img/game2.png);
+    background-position: center center;
+    background-size: 100% 100%;
+    transition: .5s all !important;
+}
+.vedio2-skin{
+    width: 100%;
+    height: 450px;
+    background-color: rgba(0, 0, 0, .6);
+    position: absolute;
+    display: flex;
+    transition: .5s all !important;
+    display: none;
+}
+.vedio2-skin button{
+    transition: .9s all !important;
+    margin: 200px auto;
+    display: none;
+}
+.video2:hover{
+    transition: .5s all !important;
+    .vedio2-skin{
+        display:block;
+    }
+    .vedio2-skin button{
+        display: block;
+    }
+}
+
+.title-tutorail{
+    font-weight: bold;
+    font-family: Geneva;
+    color: #619df1;
+}
+
+.vedio2-skin button a{
+    text-decoration: none;
+    color: white;
+}
+
+@media screen and (max-width: 570px) {
+    .about{
+        height: fit-content;
+    }
+    .video2,.video1{
+        width: 100% !important;
+        height: 450px;
+        margin: 20px;
+        margin-top: 40px;
+        display: block;
+    }
+    .video1{
+        margin-top: 20px;
+    }
+    .videos{
+        width: 90% !important;
+        display: inline-block !important;
+    }
+}

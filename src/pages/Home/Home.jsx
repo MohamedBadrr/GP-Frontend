@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import icon1 from './../../img/home/icon/double-arrow.png'
 import "./Home.css";
 import homeBanner from "../../img/banner_img.png"
 import GamesSection from '../GamesSection/GamesSection';
+import About from '../../About/About';
 export default function Home() {
   return (
     <>
+      <section id='HOME-SECTION'>
       <div className='body-home'>
         <div className='home-section'>
             <div className='container-fluid'>
@@ -28,7 +29,16 @@ export default function Home() {
             </div>
         </div>
       </div>
+      </section>
+
+      <section id='GAMES'>
       <GamesSection />
+      </section>
+
+      <section id='ABOUT'>
+        <About />
+      </section>
+      
     </>
   );
 }

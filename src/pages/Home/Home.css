@@ -17,13 +17,12 @@
     font-family:serif;
     font-weight: bold;
     font-size: 70px;
-    background: linear-gradient(90deg,#00ffff ,#4874b2);
+    background: linear-gradient(90deg,#00bfff ,#4874b2);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .home-text p{
-    
     font-size: 17px;
 }
 .home-banner img{
