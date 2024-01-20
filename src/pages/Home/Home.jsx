@@ -6,11 +6,7 @@ import homeBanner from "../../img/banner_img.png"
 export default function Home() {
   return (
     <>
-      {/* <div>
-        <button className="btn btn-info">
-          <Link to={"/selectskin"}>Select Skin</Link>
-        </button>
-      </div> */}
+
 
       <div className='body-home'>
         <div className='home-section'>
@@ -33,6 +29,7 @@ export default function Home() {
             </div>
         </div>  
       </div>
+      
 
 
 
