@@ -16,7 +16,7 @@ export default function Home() {
         <div className='home-section'>
             <div className='container-fluid'>
             <div className=' home-section row '>
-              <div className='col-md-4 offset-1 home-text '>
+              <div className='col-md-4 offset-1 home-text'>
                 <h1>
                 Best Games Of <br/> The Latest
                 </h1>
