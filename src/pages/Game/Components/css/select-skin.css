@@ -1,5 +1,5 @@
 body{
-    background-image: url(D:\Collage\GP\GP-Frontend\src\img\1.png);
+    background-image: url(../../../../img/1.png);
     background-size:100%;
     background-position: 0%;
 }
@@ -9,6 +9,7 @@ body{
     padding: 0 100px;
     margin: 100px 0;
     justify-content: center;
+
     
     
 }
