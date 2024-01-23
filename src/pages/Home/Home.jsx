@@ -18,7 +18,7 @@ export default function Home() {
                 Best Games Of <br/> The Latest
                 </h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing <br/>elit,
-                  sed do eiusmod tempor incididunt ut labore 
+                  sed do eiusmod tempor incididunt ut labore
                   et dolore magna aliqua. Quis ipsum
                   </p>
                   <button className='d-button px-5 py-2 mt-3 watch-button'><a className='text-decoration-none text-white' href="#GAMES">watch Games</a></button>
@@ -39,7 +39,7 @@ export default function Home() {
       <section id='ABOUT'>
         <About />
       </section>
-      
+
     </>
   );
 }
