@@ -1,6 +1,37 @@
-html, body, #root, canvas {
+canvas {
     width:  100%;
     height: 100%;
     margin: 0;
-    
+}
+.rocks-box {
+    background-color: rgba(104, 133, 158, 0.226);
+    position: absolute;
+    top: 100px;
+    right: 12px;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.rock-card {
+    width: 40% ;
+}
+.rock-card img {
+    width: 100%;
+}
+.rock-places {
+    background-color: rgba(104, 133, 158, 0.226);
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    top: 120px;
+    left: 480px;
+    display: flex;
+    justify-content: space-around;
+}
+.rock-places div{
+    background-color: rgba(224, 224, 224, 0.226);
+    width: 150px;
+
 }

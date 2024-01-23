@@ -22,6 +22,8 @@ import { FloatingGrid } from './FloatingGrid';
 import { Coins } from './Coins';
 import { Vector3 } from 'three';
 import { Text } from '@react-three/drei';
+import rock from "../../../img/pngwing.com.png"
+
 // import { Html} from '@react-three/drei';
 // import { FaPlane } from 'react-icons/fa';
 // import { FaHelicopter } from "react-icons/fa";
@@ -246,12 +248,47 @@ function Game(props) {
       positionPlane:new Vector3(0,1,0),
       scalePlane:new Vector3(.025,.025,.025),
     },]
+    const [selected , setSelected ] = useState(false)
+    const [rockId , setRockId ] = useState(1)
+    const handleSelect = ()=>{
+      setSelected(true)
+    }
+    
   return (
+    <>
     <Suspense fallback={null}>
       <Canvas shadows>
-        <CarShow skin={skins[id]}/>
+        <CarShow skin={skins[id]} rockId={rockId} />
       </Canvas>
     </Suspense>
+    {
+      (!selected) &&
+      <div className='rocks-box'>
+      <div className='rock-card' onClick={handleSelect}>
+        <img src={rock} alt='rock'/>
+      </div>
+      <div className='rock-card' onClick={handleSelect}>
+        <img src={rock} alt='rock'/>
+      </div>
+      <div className='rock-card' onClick={handleSelect}>
+        <img src={rock} alt='rock'/>
+      </div>
+      <div className='rock-card' onClick={handleSelect}>
+        <img src={rock} alt='rock'/>
+      </div>
+      <div className='rock-card' onClick={handleSelect}>
+        <img src={rock} alt='rock'/>
+      </div>
+    </div>
+    }
+    {
+      (selected) && <div className='rock-places'>
+        <div onClick={()=>{setRockId(1);setSelected(false);}}></div>
+        <div onClick={()=>{setRockId(2);setSelected(false);}}></div>
+        <div onClick={()=>{setRockId(3);setSelected(false);}}></div>
+      </div>
+    }
+    </>
   );
 }
 
