@@ -4,7 +4,7 @@ import "./Home.css";
 import homeBanner from "../../img/banner_img.png"
 import GamesSection from '../GamesSection/GamesSection';
 import About from '../../About/About';
-
+import img1 from "../../img/herobg.png"
 export default function Home() {
   return (
     <>

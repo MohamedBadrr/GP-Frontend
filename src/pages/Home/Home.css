@@ -8,7 +8,8 @@
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-evenly !important;
+    flex-wrap: wrap !important; 
 }
 .home-text{
     margin-top: 100px !important;

@@ -2,13 +2,8 @@
 import React , { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import "./style.css";
-import { CubeCamera, Environment, OrbitControls, PerspectiveCamera, Plane, useTexture } from '@react-three/drei'
-// import {
-//   EffectComposer,
-//   DepthOfField,
-//   Bloom,
-//   ChromaticAberration,
-// } 
+import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
+import  CanvasLoader from "./Loader"
 
 // from "@react-three/postprocessing";
 import { useSearchParams } from "react-router-dom"
@@ -17,7 +12,6 @@ import { useSearchParams } from "react-router-dom"
 import { Ground } from './Ground';
 import { SpaceShip } from './SpaceShip';
 import { Rings } from './Rings';
-// import { Boxes } from './Boxes';
 import { FloatingGrid } from './FloatingGrid';
 import { Coins } from './Coins';
 import { Vector3 } from 'three';
@@ -39,24 +33,6 @@ export function CarShow(props){
   // const [heighscore ,setHeighscore] = useState(0)
   const planeImage = useTexture(process.env.PUBLIC_URL+"textures/plane3.png");
 
-  // useLoader(TextureLoader,[
-  //   process.env.PUBLIC_URL + "textures/terrain-roughness.jpg" ,
-
-  // const updateSkin3=()=>{
-  //   setSkin({...skin ,plane:"models/plane5/skin.glb"
-  //   ,positionPlane:new Vector3(0,.8,0),
-  //   scalePlane:new Vector3(.025,.025,.025)});
-  // }
-  // const updateSkin2=()=>{
-  //   setSkin({...skin , plane:"models/plane2/skin.glb",
-  //   positionPlane:new Vector3(0,1,0),
-  //   scalePlane:new Vector3(.2,.2,.2),});
-  // }
-  // const updateSkin1=()=>{ 
-  //   setSkin({...skin ,plane:"models/plane1/skin.glb",
-  //   positionPlane:new Vector3(0,1,0),
-  //   scalePlane:new Vector3(1,1,1),});
-  // }
   return (
     <>
     <Text
@@ -72,7 +48,7 @@ export function CarShow(props){
         Your Score : {score}
       </Text>
       <Text
-        position={[3.80, 2.37, 0]}
+        position={[3.5, 2.37, 0]}
         fontSize={.15}
         font="bold 30px Arial"
         intensity={50}
@@ -84,7 +60,7 @@ export function CarShow(props){
         Player Name : 
       </Text>
       <Text
-        position={[3.25, 2.37, 0]}
+        position={[2.7, 2.37, 0]}
         fontSize={.15}
         font="bold 30px Arial"
         intensity={50}
@@ -92,10 +68,10 @@ export function CarShow(props){
         anchorX="center"
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
-      > 
+      > Ahmed
       </Text>
       <Text
-        position={[3.87, 2.17, 0]}
+        position={[3.6, 2.17, 0]}
         fontSize={.15}
         font="bold 30px Arial"
         intensity={50}
@@ -107,7 +83,7 @@ export function CarShow(props){
         Heigh Score :
       </Text>
       <Text
-        position={[3.30, 2.17, 0]}
+        position={[3, 2.17, 0]}
         fontSize={.15}
         font="bold 30px Arial"
         intensity={50}
@@ -118,15 +94,7 @@ export function CarShow(props){
       > 
         {score}
       </Text>
-
-      <Plane args={[.3, .3]} rotation={[0,Math.PI, 0]} position={[-5.2, 2.4, 1]} >
-        <meshBasicMaterial attach="material" map={planeImage} style={{
-            padding: '10px',
-            border: '2px solid white', // Border color
-            borderRadius: '50px', // Border radius
-            // boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', // Box shadow
-          }}  />
-      </Plane>
+      
       {/* <Html>
         <div
           style={{
@@ -149,15 +117,7 @@ export function CarShow(props){
       </Html> */}
 
     
-      {/* <Html position={[.55, 2.28 , 0]} >
-        <FaHelicopter onClick={updateSkin2}  style={{ color: 'blue', fontSize: '2em',cursor:'pointer' }}  />
-      </Html>
-      <Html position={[.1, 2.31 , 0]}>
-        <GiHelicopter onClick={updateSkin3} style={{ color: 'blue', fontSize: '3em', cursor:'pointer' }}  />
-      </Html>
-      <Html position={[-.4, 2.31 , 0]}>
-        <LiaHelicopterSolid onClick={updateSkin1} style={{ color: 'blue', fontSize: '3em', cursor:'pointer' }}  />
-      </Html> */}
+
 
     <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enablePan={false} enableZoom={false} enableRotate={false}/>
     <PerspectiveCamera makeDefault fov={60} position={[0, 2, -4]}  />
@@ -256,12 +216,13 @@ function Game(props) {
     
   return (
     <>
-    <Suspense fallback={null}>
       <Canvas shadows>
-        <CarShow skin={skins[id]} rockId={rockId} />
+        <Suspense fallback={<CanvasLoader />}>
+          <CarShow skin={skins[id]} rockId={rockId} />
+          <Preload all /> 
+        </Suspense>
       </Canvas>
-    </Suspense>
-    {
+    {/* {
       (!selected) &&
       <div className='rocks-box'>
       <div className='rock-card' onClick={handleSelect}>
@@ -287,7 +248,7 @@ function Game(props) {
         <div onClick={()=>{setRockId(2);setSelected(false);}}></div>
         <div onClick={()=>{setRockId(3);setSelected(false);}}></div>
       </div>
-    }
+    } */}
     </>
   );
 }

@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import '../Register/Register.css'
 import Alert from 'react-bootstrap/Alert';
 import { Link } from 'react-router-dom';
-import loginphoto from '../../img/pngwing.com (2).png'
+import loginphoto from '../../img/pngwing.png'
 
 
 const Register = () => {
