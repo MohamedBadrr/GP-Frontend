@@ -8,7 +8,7 @@
 - User info // عادل
 
 ### Gameplay space invading ( هتكمل على اللعبه الي عملناها
-- select chip skin and buy skin  // بدر
+- select chip skin and buy skin  // بدر ✅ الصراحة زيزو هو اللي عمل دي
 - player name  // بدر✅
 - live score  // بدر✅
 - high score  // بدر✅
