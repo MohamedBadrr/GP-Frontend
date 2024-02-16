@@ -6,16 +6,18 @@ canvas {
 .rocks-box {
     background-color: rgba(104, 133, 158, 0.226);
     position: absolute;
-    top: 100px;
+    top: 200px;
     right: 12px;
-    width: 400px;
-    height: 600px;
+    width: 200px;
+    height: 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 .rock-card {
     width: 40% ;
+    margin-top: 10px;
+    cursor: pointer;
 }
 .rock-card img {
     width: 100%;
@@ -34,4 +36,7 @@ canvas {
     background-color: rgba(224, 224, 224, 0.226);
     width: 150px;
 
+}
+.small-rock{
+    cursor: pointer;
 }

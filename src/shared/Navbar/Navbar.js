@@ -10,7 +10,7 @@ export default function Header() {
   const { pathname} = location;
   return (
     <>
-      {pathname === "/login" || pathname === "/register"? (
+      {pathname === "/login" || pathname === "/register" || pathname === "/game"? (
         ""
       ) : (
 
