@@ -8,7 +8,7 @@ canvas {
     position: absolute;
     top: 200px;
     right: 12px;
-    width: 200px;
+    width: 130px;
     height: 100px;
     display: flex;
     flex-wrap: wrap;
@@ -23,20 +23,24 @@ canvas {
     width: 100%;
 }
 .rock-places {
-    background-color: rgba(104, 133, 158, 0.226);
+    /* background-color: rgba(104, 133, 158, 0.226); */
     position: absolute;
     width: 500px;
-    height: 150px;
-    top: 120px;
+    height: 40px;
+    top: 20px;
     left: 480px;
     display: flex;
     justify-content: space-around;
+    
 }
 .rock-places div{
-    background-color: rgba(224, 224, 224, 0.226);
-    width: 150px;
+    /* background-color: rgba(224, 224, 224, 0.226); */
+    width: 50px;
 
 }
 .small-rock{
+    cursor: pointer;
+}
+.small-rock img{
     cursor: pointer;
 }

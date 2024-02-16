@@ -18,6 +18,7 @@ import { Vector3 } from 'three';
 import { Text } from '@react-three/drei';
 import rock from "../../../img/pngwing.com.png"
 import { Rock } from './Rock';
+// import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 
 // import { Html} from '@react-three/drei';
 // import { FaPlane } from 'react-icons/fa';
@@ -39,7 +40,7 @@ export function CarShow(props){
 
   return (
     <>
-    <Text
+    {/* <Text
         position={[.009, 2.35, 0]}
         fontSize={.2}
         font="bold 45px Arial"
@@ -50,9 +51,9 @@ export function CarShow(props){
         rotation={[Math.PI / 85,9.4, 0]}
       > 
         Your Score : {score}
-      </Text>
+      </Text> */}
       <Text
-        position={[3.5, 2.37, 0]}
+        position={[3.8, 2.37, 0]}
         fontSize={.15}
         font="bold 30px Arial"
         intensity={50}
@@ -61,20 +62,15 @@ export function CarShow(props){
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
       > 
-        Player Name : 
+        Lives : 
       </Text>
-      <Text
-        position={[2.7, 2.37, 0]}
-        fontSize={.15}
-        font="bold 30px Arial"
-        intensity={50}
-        color="red"
-        anchorX="center"
-        anchorY="middle"
-        rotation={[Math.PI / 85,9.4, 0]}
-      > Ahmed
-      </Text>
-      <Text
+      
+      {/* <HeartGeometry */}
+      <mesh position={[0, 0, 0]}>
+        {/* <HeartGeometry args={[0.5]} /> */}
+        <meshStandardMaterial color="red" />
+        </mesh>
+      {/* <Text
         position={[3.6, 2.17, 0]}
         fontSize={.15}
         font="bold 30px Arial"
@@ -85,8 +81,8 @@ export function CarShow(props){
         rotation={[Math.PI / 85,9.4, 0]}
       > 
         Heigh Score :
-      </Text>
-      <Text
+      </Text> */}
+      {/* <Text
         position={[3, 2.17, 0]}
         fontSize={.15}
         font="bold 30px Arial"
@@ -97,7 +93,7 @@ export function CarShow(props){
         rotation={[Math.PI / 85,9.4, 0]}
       > 
         {score}
-      </Text>
+      </Text> */}
       
       {/* <Html>
         <div
@@ -224,7 +220,7 @@ function Game(props) {
       setSelected(true)
     }
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
-    
+
     const [rock1Position , setRock1position] = useState(new Vector3(2,1,10))
     const [rock2Position , setRock2position] = useState(new Vector3(0,1,10))
     const [rock3Position , setRock3position] = useState(new Vector3(-2,1,10))
@@ -249,45 +245,44 @@ function Game(props) {
           <Preload all /> 
         </Suspense>
       </Canvas>
-     {
-      (!selected) &&
-      <div className='rocks-box'>
+     {/* { */}
+      
+      <div className='rocks-box' onClick={()=>{setSelected(!selected)}} >
       <div className='rock-card' onClick={handleSelect}>
-        <img src={rock} alt='rock'/>
+        <img src={rock} alt='rock' className='mt-3 w-100'/>
       </div>
     </div>
-    }
+    
     {
-      (selected) && <div className='rock-places'>
+      (selected) && <div className='rock-places' >
         <div className='text-center small-rock rock-1' onClick={()=>{
-          setrock1(!rock1);
-          // setrock2(rock2);
-          // setrock3(rock3);
-          setSelected(false);
-          {}
+          setrock1(true);
+          setrock2(false);
+          setrock3(false);
+          // setSelected(false);
           // pass rock position to rock component 
           }} >
-            <img src={rock} alt='rock' className='w-75 mt-4 ' />
+            <img src={rock} alt='rock' className='w-75  ' />
           </div>
         <div className='text-center small-rock' onClick={()=>{
           // setRockId(2);
-          setrock2(!rock2);
-          // setrock1(rock1);
-          // setrock3(rock3);
-          setSelected(false);
+          setrock2(true);
+          setrock1(false);
+          setrock3(false);
+          // setSelected(false);
           // pass rock position to rock component 
         }}>
-          <img src={rock} alt='rock' className='w-75 mt-4 ' />
+          <img src={rock} alt='rock' className='w-75 ' />
         </div>
         <div className='text-center small-rock' onClick={()=>{
           // setRockId(3);
-          setrock3(!rock3);
-          // setrock1(rock1);
-          // setrock2(rock2);
-          setSelected(false);
+          setrock3(true);
+          setrock1(false);
+          setrock2(false);
+          // setSelected(false);
           // pass rock position to rock component 
         }}>
-          <img src={rock} alt='rock' className='w-75 mt-4 ' />
+          <img src={rock} alt='rock' className='w-75  ' />
         </div>
       </div>
     }
