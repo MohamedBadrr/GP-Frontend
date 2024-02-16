@@ -29,6 +29,8 @@ import rock from "../../../img/pngwing.com.png"
 export function CarShow(props){
 
   const [planePosition, setPlanePosition ]= useState(new Vector3(0,1,0))
+  // rock position
+  // move / action 
   const [score ,setScore] = useState(0)
   // const [heighscore ,setHeighscore] = useState(0)
   const planeImage = useTexture(process.env.PUBLIC_URL+"textures/plane3.png");
@@ -136,7 +138,7 @@ export function CarShow(props){
       }
     </CubeCamera>
 
-    <Coins planePosition={planePosition} score={score} setScore={setScore}/>
+    <Coins planePosition={planePosition} score={score} setScore={setScore} />
     <spotLight 
         color={[1, 0.25, 0.7]}
         intensity={100}
@@ -183,7 +185,6 @@ export function CarShow(props){
     <mesh>
       <planeGeometry args={[30 ,30]} />   
       <meshBasicMaterial color={"red"} />
-      
     </mesh>
 
     </>
@@ -222,7 +223,7 @@ function Game(props) {
           <Preload all /> 
         </Suspense>
       </Canvas>
-    {/* {
+     {
       (!selected) &&
       <div className='rocks-box'>
       <div className='rock-card' onClick={handleSelect}>
@@ -244,11 +245,23 @@ function Game(props) {
     }
     {
       (selected) && <div className='rock-places'>
-        <div onClick={()=>{setRockId(1);setSelected(false);}}></div>
-        <div onClick={()=>{setRockId(2);setSelected(false);}}></div>
-        <div onClick={()=>{setRockId(3);setSelected(false);}}></div>
+        <div onClick={()=>{
+          setRockId(1);
+          setSelected(false);
+          // pass rock position to rock component 
+          }}></div>
+        <div onClick={()=>{
+          setRockId(2);
+          setSelected(false);
+          // pass rock position to rock component 
+        }}></div>
+        <div onClick={()=>{
+          setRockId(3);
+          setSelected(false);
+          // pass rock position to rock component 
+        }}></div>
       </div>
-    } */}
+    }
     </>
   );
 }

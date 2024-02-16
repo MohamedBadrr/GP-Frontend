@@ -1,3 +1,8 @@
+// replace this component with rock component
+
+// save rock position 
+
+
 import { useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, Vector3 } from "three";
