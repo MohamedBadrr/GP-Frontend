@@ -1,5 +1,5 @@
 
-import React , { Suspense, useState } from 'react';
+import React , { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import "./style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
@@ -18,7 +18,7 @@ import { Vector3 } from 'three';
 import { Text } from '@react-three/drei';
 import rock from "../../../img/pngwing.com.png"
 import { Rock } from './Rock';
-
+import axios from 'axios';
 // import { Html} from '@react-three/drei';
 // import { FaPlane } from 'react-icons/fa';
 // import { FaHelicopter } from "react-icons/fa";
@@ -231,7 +231,32 @@ function Game(props) {
     // rock position
     // move / action 
     const [score ,setScore] = useState(0)
+    const [back ,setBack] = useState({
+      plane_position:planePosition,
+      rock_position:rock1Position,
+      action: 's',
+      loading : false,
+      flag : true,
+      err:null,
+    });
+    const BackFun = ()=>{
+      setBack({...back , loading:true , err:[]});
+      axios.post("http://localhost:4000/training/traning-data",{
+        plane_position:back.plane_position,
+        rock_position:back.rock_position,
+        action: back.action,
+      }).then((resp) =>{
+        console.log(resp.data);
+        setBack({...back , loading:false , err:null ,flag : false} );
+      }).catch((err)=>{
+        setBack({...back , loading:false , err: err ,flag : false} )
+      });
+    }
     
+    useEffect(()=>{
+      BackFun()
+    },[back.plane_position])
+  
   return (
     <>
       <Canvas shadows>
