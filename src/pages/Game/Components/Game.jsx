@@ -30,15 +30,6 @@ import axios from 'axios';
 
 
 export function CarShow(props){
-
-  const [planePosition, setPlanePosition ]= useState(new Vector3(0,1,0))
-  // rock position
-  // move / action 
-  const [score ,setScore] = useState(0)
-  // const [heighscore ,setHeighscore] = useState(0)
-  const planeImage = useTexture(process.env.PUBLIC_URL+"textures/plane3.png");
-  
-
   return (
     <>
     {/* <Text
@@ -119,8 +110,8 @@ export function CarShow(props){
 
     
 
-
-    <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enablePan={false} enableZoom={false} enableRotate={false}/>
+    {/* enablePan={false} */}
+    <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enableZoom={false} enableRotate={false} />
     <PerspectiveCamera makeDefault fov={60} position={[0, 2, -4]}  />
 
     <color args={[0,0,0]} attach="background" />
@@ -130,7 +121,7 @@ export function CarShow(props){
         (texture)=>(
           <>
           <Environment map={texture} />
-              <SpaceShip planePosition={planePosition} setPlanePosition={setPlanePosition} skin={props.skin}/>
+              <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} setAction={props.setAction}/>
               <Ground />
           </>
         )
@@ -212,66 +203,59 @@ function Game(props) {
       scalePlane:new Vector3(.025,.025,.025),
     },]
     const [selected , setSelected ] = useState(false)
-    const [rock1, setrock1] = useState(false);
-    const [rock2, setrock2] = useState(false);
-    const [rock3, setrock3] = useState(false);
-    const [rockId , setRockId ] = useState(1)
-    const [positiRock1 , setPositirock1] = (new Vector3(2,1,10))
+
+    // const [rockId , setRockId ] = useState(1)
+
     const handleSelect = ()=>{
       setSelected(true)
     }
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
 
-    const [rock1Position , setRock1position] = useState(new Vector3(2,1,10))
-    const [rock2Position , setRock2position] = useState(new Vector3(0,1,10))
-    const [rock3Position , setRock3position] = useState(new Vector3(-2,1,10))
-    // rock position
+
+    // rock positions
+    const positions = [
+      new Vector3(2,1,10),
+      new Vector3(0,1,10),
+      new Vector3(-2,1,10)
+    ]
+    const [rockPosition , setRockPosition ] = useState(null)
     // move / action 
+    const [ action , setAction ] = useState({
+      pastPosition : null,
+      name : ""
+    })
+
     const [score ,setScore] = useState(0)
-    const [back ,setBack] = useState({
-      plane_position:planePosition,
-      rock_position:rock1Position,
-      action: 's',
-      loading : false,
-      flag : true,
-      err:null,
-    });
+    
     const BackFun = ()=>{
-      setBack({...back , loading:true , err:[]});
       axios.post("http://localhost:4000/training/traning-data",{
-        plane_position:back.plane_position,
-        rock_position:back.rock_position,
-        action: back.action,
+        plane_position: action.pastPosition ,
+        rock_position: rockPosition,
+        action: action.name ,
       }).then((resp) =>{
         console.log(resp.data);
-        setBack({...back , loading:false , err:null ,flag : false} );
       }).catch((err)=>{
-        setBack({...back , loading:false , err: err ,flag : false} )
+        console.log(err);
       });
     }
     
     useEffect(()=>{
       BackFun()
-    },[back.plane_position])
+    },[rockPosition , action.pastPosition , action ])
   
   return (
     <>
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
-          <CarShow skin={skins[id]} rockId={rockId} />
-          {(rock1)&&(
-            <Rock planePosition={planePosition} rockPosition={rock1Position} score={score} setScore={setScore} />
-    )}
-              {(rock2)&&(
-            <Rock planePosition={planePosition} rockPosition={rock2Position} score={score} setScore={setScore} />
-    )}
-              {(rock3)&&(
-            <Rock planePosition={planePosition} rockPosition={rock3Position} score={score} setScore={setScore} />
-    )}
+          <CarShow skin={skins[id]}  planePosition={planePosition} setPlanePosition={setPlanePosition} setAction={setAction} action = {action}/>
+          {
+            (rockPosition != null ) ? 
+            <Rock planePosition={planePosition} rockPosition={rockPosition} setRockPosition={setRockPosition} score={score} setScore={setScore} />
+            : ""
+          }
           <Preload all /> 
         </Suspense>
       </Canvas>
-     {/* { */}
       
       <div className='rocks-box' onClick={()=>{setSelected(!selected)}} >
       <div className='rock-card' onClick={handleSelect}>
@@ -281,33 +265,22 @@ function Game(props) {
     
     {
       (selected) && <div className='rock-places' >
-        <div className='text-center small-rock rock-1' onClick={()=>{
-          setrock1(true);
-          setrock2(false);
-          setrock3(false);
-          // setSelected(false);
-          // pass rock position to rock component 
-          }} >
-            <img src={rock} alt='rock' className='w-75  ' />
+          <div className='text-center small-rock rock-1' onClick={()=>{
+            setRockPosition( positions[0] )
+            setSelected(false);
+            }} >
+              <img src={rock} alt='rock' className='w-75  ' />
+            </div>
+          <div className='text-center small-rock' onClick={()=>{
+            setRockPosition(positions[1]);
+            setSelected(false);
+          }}>
+            <img src={rock} alt='rock' className='w-75 ' />
           </div>
-        <div className='text-center small-rock' onClick={()=>{
-          // setRockId(2);
-          setrock2(true);
-          setrock1(false);
-          setrock3(false);
-          // setSelected(false);
-          // pass rock position to rock component 
-        }}>
-          <img src={rock} alt='rock' className='w-75 ' />
-        </div>
-        <div className='text-center small-rock' onClick={()=>{
-          // setRockId(3);
-          setrock3(true);
-          setrock1(false);
-          setrock2(false);
-          // setSelected(false);
-          // pass rock position to rock component 
-        }}>
+          <div className='text-center small-rock' onClick={()=>{
+            setRockPosition( positions[2] )
+            setSelected(false);
+          }}>
           <img src={rock} alt='rock' className='w-75  ' />
         </div>
       </div>
