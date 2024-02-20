@@ -241,7 +241,7 @@ function Game(props) {
     
     useEffect(()=>{
       BackFun()
-    },[rockPosition , action.pastPosition , action ])
+    },[ action ])
   
   return (
     <>
