@@ -54,7 +54,7 @@ return (
                     <h4 className='my-3'><span className='edit'>Rock </span>Paper <span className='edit'>Siser</span> Game</h4>
                     
                         <img src={img2} style={{"height":"370px"}} alt="" />
-                        <div className='gameskin'><i class="fa-solid fa-circle-play fa-5x " ></i></div>
+                        <div className='gameskin'><Link to={"/RPS-Game"}><i class="fa-solid fa-circle-play fa-5x " ></i></Link></div>
                     </div>
                     <div class='item text-center'>
                     <h4 className='my-3'><span className='edit'>Plane</span> Game</h4>
