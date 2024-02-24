@@ -132,6 +132,7 @@ const RPSGame = () => {
         (computerChoice === "paper" && gesture === rock) ||
         (gesture === "paper" && computerChoice === scissor) ||
         (gesture === "rock" && computerChoice === paper) ||
+        (gesture === "scissors" && computerChoice === rock) ||
         (computerChoice === "scissors" && gesture === paper)
       ) {
         setWinner("Computer");
