@@ -221,27 +221,32 @@ function Game(props) {
     const [rockPosition , setRockPosition ] = useState(null)
     // move / action 
     const [ action , setAction ] = useState({
-      pastPosition : null,
+      pastPosition : new Vector3(0,1,0),
+      loading : true,
       name : ""
     })
 
     const [score ,setScore] = useState(0)
     
-    const BackFun = ()=>{
-      axios.post("http://localhost:4000/training/traning-data",{
+    const BackFun =  async ()=>{
+      await axios.post("http://localhost:4000/test/model",{
         plane_position: action.pastPosition ,
-        rock_position: rockPosition,
-        action: action.name ,
+        rock_position: rockPosition ,
       }).then((resp) =>{
-        console.log(resp.data);
+        setAction({...action, name :resp.data.action , loading : false})
       }).catch((err)=>{
+        setAction({...action, loading :false })
         console.log(err);
       });
     }
     
-    useEffect(()=>{
-      BackFun()
-    },[ action , rockPosition , action.pastPosition   ])
+    // useEffect(()=>{
+    //   if(rockPosition != null && action.pastPosition != null){
+    //     BackFun()
+    //     // console.log(rockPosition);
+    //   }
+    // },[ ])
+   
   
   return (
     <>
@@ -249,7 +254,7 @@ function Game(props) {
         <Suspense fallback={<CanvasLoader />}>
           <CarShow skin={skins[id]}  planePosition={planePosition} setPlanePosition={setPlanePosition} setAction={setAction} action = {action}/>
           {
-            (rockPosition != null ) ? 
+            (!action.loading ) ? 
             <Rock planePosition={planePosition} rockPosition={rockPosition} setRockPosition={setRockPosition} score={score} setScore={setScore} />
             : ""
           }
@@ -259,6 +264,7 @@ function Game(props) {
       
       <div className='rocks-box' onClick={()=>{setSelected(!selected)}} >
       <div className='rock-card' onClick={handleSelect}>
+        {action.name}
         <img src={rock} alt='rock' className='mt-3 w-100'/>
       </div>
     </div>
@@ -266,20 +272,26 @@ function Game(props) {
     {
       (selected) && <div className='rock-places' >
           <div className='text-center small-rock rock-1' onClick={()=>{
-            setRockPosition( positions[0] )
-            setSelected(false);
+
+              setRockPosition( positions[0] )
+              setSelected(false);
+              BackFun()
+            
             }} >
               <img src={rock} alt='rock' className='w-75  ' />
             </div>
           <div className='text-center small-rock' onClick={()=>{
-            setRockPosition(positions[1]);
-            setSelected(false);
+            
+              setRockPosition(positions[1]);
+              setSelected(false);
+              BackFun()
           }}>
             <img src={rock} alt='rock' className='w-75 ' />
           </div>
           <div className='text-center small-rock' onClick={()=>{
-            setRockPosition( positions[2] )
-            setSelected(false);
+              setRockPosition(positions[2]);
+              setSelected(false);
+              BackFun()
           }}>
           <img src={rock} alt='rock' className='w-75  ' />
         </div>

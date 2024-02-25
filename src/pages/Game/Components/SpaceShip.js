@@ -35,20 +35,20 @@ export function SpaceShip (props) {
             if (e.keyCode === 37 && props.planePosition.x === -2) {
               // position => right move => left
               setPastPosition([0, 1]);
-              props.setAction( {...props.action , name : "left" , pastPosition : new Vector3( -2, 1, 0 )})
+              props.setAction( {...props.action , pastPosition : new Vector3( -2, 1, 0 )})
               props.setPlanePosition(new Vector3(0, 1, 0));
             } else if (e.keyCode === 37 && props.planePosition.x === 0) {
               // position => medel move => left
-              props.setAction( {...props.action , name : "left" , pastPosition : new Vector3( 0, 1, 0 )})
+              props.setAction( {...props.action  , pastPosition : new Vector3( 0, 1, 0 )})
               props.setPlanePosition(new Vector3(2, 1, 0));
             } else if (e.keyCode === 39 && props.planePosition.x === 0) {
               // position => medel move => right
-              props.setAction( {...props.action , name : "right" , pastPosition : new Vector3( 0, 1, 0 )})
+              props.setAction( {...props.action , pastPosition : new Vector3( 0, 1, 0 )})
               props.setPlanePosition(new Vector3(-2, 1, 0));
             } else if (e.keyCode === 39 && props.planePosition.x === 2) {
               // position => left move => right
               setPastPosition([1, 0]);
-              props.setAction( {...props.action , name : "right" , pastPosition : new Vector3( 2, 1, 0 )})
+              props.setAction( {...props.action  , pastPosition : new Vector3( 2, 1, 0 )})
               props.setPlanePosition(new Vector3(0, 1, 0));
             } 
           }
