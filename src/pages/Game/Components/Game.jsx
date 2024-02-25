@@ -237,7 +237,7 @@ function Game(props) {
       }).then((resp) =>{
         setAction({...action, name :resp.data.action , loading : false , flag:true})
       }).catch((err)=>{
-        setAction({...action, loading :false })
+        setAction({...action, loading :false, flag:true })
         console.log(err);
       });
     }
