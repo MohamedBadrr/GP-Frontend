@@ -236,6 +236,7 @@ function Game(props) {
         rock_position: rockPosition ,
       }).then((resp) =>{
         setAction({...action, name :resp.data.action , loading : false , flag:true})
+        console.log("model loaded fuckin successfully");
       }).catch((err)=>{
         setAction({...action, loading :false, flag:true })
         console.log(err);
