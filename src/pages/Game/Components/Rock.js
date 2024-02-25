@@ -60,11 +60,13 @@ export function Rock(props) {
         if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x && position.y === props.planePosition.y  ) { // if the plane take the coin
             // resetPosition();
             time.current = 0
+            props.setAction({...props.action , flag : false})
             props.setRockPosition(null)
         }
         if (newZ < -5) {
             // resetPosition();
             time.current = 0
+            props.setAction({...props.action , flag : false})
             props.setRockPosition(null)
         }
         glb.scene.position.set( position.x, position.y , newZ )

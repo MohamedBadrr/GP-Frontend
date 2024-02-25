@@ -222,30 +222,33 @@ function Game(props) {
     // move / action 
     const [ action , setAction ] = useState({
       pastPosition : new Vector3(0,1,0),
-      loading : true,
+      loading : false,
+      flag : false,
       name : ""
     })
 
     const [score ,setScore] = useState(0)
     
     const BackFun =  async ()=>{
+      setAction({...action, loading :true })
       await axios.post("http://localhost:4000/test/model",{
         plane_position: action.pastPosition ,
         rock_position: rockPosition ,
       }).then((resp) =>{
-        setAction({...action, name :resp.data.action , loading : false})
+        setAction({...action, name :resp.data.action , loading : false , flag:true})
       }).catch((err)=>{
         setAction({...action, loading :false })
         console.log(err);
       });
     }
     
-    // useEffect(()=>{
-    //   if(rockPosition != null && action.pastPosition != null){
-    //     BackFun()
-    //     // console.log(rockPosition);
-    //   }
-    // },[ ])
+    useEffect(()=>{
+      if(rockPosition != null ){
+        BackFun()
+      }
+        
+        // console.log(rockPosition);
+    },[ rockPosition ])
    
   
   return (
@@ -254,8 +257,8 @@ function Game(props) {
         <Suspense fallback={<CanvasLoader />}>
           <CarShow skin={skins[id]}  planePosition={planePosition} setPlanePosition={setPlanePosition} setAction={setAction} action = {action}/>
           {
-            (!action.loading ) ? 
-            <Rock planePosition={planePosition} rockPosition={rockPosition} setRockPosition={setRockPosition} score={score} setScore={setScore} />
+            (action.flag != false ) ? 
+            <Rock planePosition={planePosition} rockPosition={rockPosition} setAction={setAction} action={action} setRockPosition={setRockPosition} score={score} setScore={setScore} />
             : ""
           }
           <Preload all /> 
@@ -275,7 +278,6 @@ function Game(props) {
 
               setRockPosition( positions[0] )
               setSelected(false);
-              BackFun()
             
             }} >
               <img src={rock} alt='rock' className='w-75  ' />
@@ -284,14 +286,12 @@ function Game(props) {
             
               setRockPosition(positions[1]);
               setSelected(false);
-              BackFun()
           }}>
             <img src={rock} alt='rock' className='w-75 ' />
           </div>
           <div className='text-center small-rock' onClick={()=>{
               setRockPosition(positions[2]);
               setSelected(false);
-              BackFun()
           }}>
           <img src={rock} alt='rock' className='w-75  ' />
         </div>
