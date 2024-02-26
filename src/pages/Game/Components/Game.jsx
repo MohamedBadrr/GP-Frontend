@@ -121,7 +121,7 @@ export function CarShow(props){
         (texture)=>(
           <>
           <Environment map={texture} />
-              <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} setAction={props.setAction}/>
+              <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} setAction={props.setAction} action={props.action}/>
               <Ground />
           </>
         )
@@ -221,7 +221,6 @@ function Game(props) {
     const [rockPosition , setRockPosition ] = useState(null)
     // move / action 
     const [ action , setAction ] = useState({
-      pastPosition : new Vector3(0,1,0),
       loading : false,
       flag : false,
       name : ""
@@ -232,10 +231,10 @@ function Game(props) {
     const BackFun =  async ()=>{
       setAction({...action, loading :true })
       await axios.post("http://localhost:4000/test/model",{
-        plane_position: action.pastPosition ,
+        plane_position: planePosition ,
         rock_position: rockPosition ,
       }).then((resp) =>{
-        setAction({...action, name :resp.data.action , loading : false , flag:true})
+        setAction({...action, name : resp.data.action , loading : false , flag:true})
         console.log(`model loaded fuckin successfully ${resp.data.action}`);
       }).catch((err)=>{
         setAction({...action, loading :false, flag:true })
@@ -247,8 +246,6 @@ function Game(props) {
       if(rockPosition != null ){
         BackFun()
       }
-        
-        // console.log(rockPosition);
     },[ rockPosition ])
    
   
