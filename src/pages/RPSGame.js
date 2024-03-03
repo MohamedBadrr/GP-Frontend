@@ -144,7 +144,9 @@ const RPSGame = () => {
 
   return (
     <div>
-      {!started &&  <p className="">Press any key to start the game</p>}
+      {!started &&  <p className="" style={{
+              color: 'black'
+            }}>Press any key to start the game</p>}
       {started && (
         <>
           <Webcam
@@ -153,9 +155,9 @@ const RPSGame = () => {
             style={{
               position: "absolute",
               marginLeft: "auto",
-              marginRight: "auto",
               left: 0,
               right: 0,
+              top : 100,
               textAlign: "center",
               zIndex: 9,
               width: 640,
@@ -169,7 +171,7 @@ const RPSGame = () => {
               marginLeft: "auto",
               marginRight: "auto",
               left: 0,
-              right: 0,
+              right: 20,
               textAlign: "center",
               zIndex: 9,
               width: 640,
@@ -177,10 +179,16 @@ const RPSGame = () => {
             }}
           />
           {gesture && (
-            <div>
-              <p>Your gesture: {gesture}</p>
-              {computerChoice && <p>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
-              {winner && <p>{winner} wins!</p>}
+            <div >
+              <p style={{
+              color: 'black'
+            }}>Your gesture: {gesture}</p>
+              {computerChoice && <p style={{
+              color: 'black'
+            }}>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
+              {winner && <p style={{
+              color: 'black'
+            }}>{winner} wins!</p>}
             </div>
           )}
         </>

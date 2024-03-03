@@ -13,7 +13,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // import "owl.carousel/jquery/dist/jquery.js";
 // import "owl.carousel/dist/owl.carousel.min.js";
 
-// >>>>>>> 2d360b98abe3b6146c00c489224c5fb9d871b1a3
+// >>>>>>  2d360b98abe3b6146c00c489224c5fb9d871b1a3
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
