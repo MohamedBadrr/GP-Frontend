@@ -24,7 +24,7 @@ export function FloatingGrid(){
                 <planeGeometry args={[35, 35]} />
                 <meshBasicMaterial
                     color={[1, 1, 1]}
-                    opacity={0.15}
+                    opacity={0.5}
                     map={diffuse}
                     alphaMap={diffuse}
                     transparent={true}

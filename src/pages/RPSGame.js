@@ -187,7 +187,7 @@ const RPSGame = () => {
               color: 'black'
             }}>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
               {winner && <p style={{
-              color: 'black'
+              color: 'black',
             }}>{winner} wins!</p>}
             </div>
           )}

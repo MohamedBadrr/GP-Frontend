@@ -27,7 +27,7 @@ export function Ground() {
 
 
     return (
-        <mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow >
+        <mesh rotation-x={- Math.PI * 0.5} castShadow receiveShadow >
             <planeGeometry args={[30 ,30]} />
             <MeshReflectorMaterial
                 envMapIntensity={0}
@@ -48,7 +48,7 @@ export function Ground() {
                 maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
                 depthToBlurRatioBias={0.25} // Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. It accepts values between 0 and 1, default is 0.25. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture
                 debug={0}
-                reflectorOffset={0.2} // Offsets the virtual camera that projects the reflection. Useful when the reflective surface is some distance from the object's origin (default = 0)
+                reflectorOffset={0.3} // Offsets the virtual camera that projects the reflection. Useful when the reflective surface is some distance from the object's origin (default = 0)
            />
         </mesh>
     )
