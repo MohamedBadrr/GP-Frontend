@@ -5,7 +5,7 @@ import "./style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
 import  CanvasLoader from "./Loader"
 import * as tf from "@tensorflow/tfjs";
-import * as handpose from "@tensorflow-models/handpose";
+import  * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { drawHand } from "./utilities";
 
@@ -227,12 +227,13 @@ function Game(props) {
     const [action , setAction ] = useState()
 
   const runHandpose = async () => {
-    const net = await handpose.load();
+    const modelUrl = "D:/GP/Real GP/GP-Frontend/src/handpose/manifest.json"
+    const net = await handpose.load(modelUrl);
     console.log("Handpose model loaded.");
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
-    }, 100);
+    }, 500);
   };
   
 
@@ -247,62 +248,22 @@ function Game(props) {
       const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
-      // console.log(videoHeight);
       // // Set video width
       webcamRef.current.video.width = 300;
       webcamRef.current.video.height = 300;
 
-    // Set canvas height and width
-      // canvasRef.current.width = videoWidth;
-      // canvasRef.current.height = videoHeight;
-
       // Make Detections
       const hand = await net.estimateHands(video);
-      if (hand[0]) {
-          // console.log(hand[0].landmarks[8][0]);
+      if (hand.length > 0) {
+          console.log(hand[0].landmarks[8][0]);
           setAction(hand[0].landmarks[8][0])
       }
-
-      // Draw mesh
-      // const ctx =  webcamRef.current.getContext("2d");
-      // drawHand(hand, ctx);
     }
   };
-  runHandpose();
-    // const [selected , setSelected ] = useState(false)
-
-    // const [rockId , setRockId ] = useState(1)
-
-    // const handleSelect = ()=>{
-    //   setSelected(true)
-    // }
-
-    // move / action 
-    // const [ action , setAction ] = useState({
-    //   loading : false,
-    //   flag : false,
-    //   name : ""
-    // })
-    
-    // const BackFun =  async ()=>{
-    //   setAction({...action, loading :true })
-    //   await axios.post("http://localhost:4000/test/model",{
-    //     plane_position: planePosition ,
-    //     rock_position: rockPosition ,
-    //   }).then((resp) =>{
-    //     setAction({...action, name : resp.data.action , loading : false , flag:true})
-    //     console.log(`model loaded  successfully ${resp.data.action}`);
-    //   }).catch((err)=>{
-    //     setAction({...action, loading :false, flag:true })
-    //     console.log(err);
-    //   });
-    
-    // useEffect(()=>{
-    //   if(rockPosition != null ){
-    //     BackFun()
-    //   }
-    // },[ rockPosition ])
-   
+  useEffect(() => {
+    runHandpose();
+  }, [])
+  
   
   return (
     <>
