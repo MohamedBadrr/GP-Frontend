@@ -7,21 +7,21 @@ import rock from "../images_Ai/rock.png";
 import paper from "../images_Ai/paper.png";
 import scissor from "../images_Ai/scissors.png";
 
-
 const RPSGame = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [gesture, setGesture] = useState(null);
   const [computerChoice, setComputerChoice] = useState(null);
-  const [started, setStarted] = useState(false); // State to track if the game has started
-  const [winner, setWinner] = useState(null); // State to track the winner
-  const [handDetected, setHandDetected] = useState(false); // State to track if hand is detected
-
+  const [started, setStarted] = useState(false);
+  const [winner, setWinner] = useState(null);
+  const [handDetected, setHandDetected] = useState(false);
+  const [playerPatterns, setPlayerPatterns] = useState([]);
+  const [aiPatterns, setAiPatterns] = useState([]);
+  const [qTable, setQTable] = useState({});
 
   useEffect(() => {
     const handleKeyPress = (event) => {
       setStarted(true);
-      // setEndGame(false) // Set started to true when any key is pressed
     };
 
     document.addEventListener("keydown", handleKeyPress);
@@ -37,7 +37,6 @@ const RPSGame = () => {
         const net = await handpose.load();
         console.log("Handpose model loaded.");
 
-        // Detection loop
         const intervalId = setInterval(() => {
           detect(net);
         }, 3000);
@@ -47,7 +46,7 @@ const RPSGame = () => {
 
       runHandpose();
     }
-  }, [started ]);
+  }, [started]);
 
   const detect = async (net) => {
     if (
@@ -55,28 +54,22 @@ const RPSGame = () => {
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
-      // Get video properties
       const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
 
-      // Set video dimensions
       webcamRef.current.video.width = videoWidth;
       webcamRef.current.video.height = videoHeight;
 
-      // Set canvas dimensions
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
-      // Make detections
       const hand = await net.estimateHands(video);
       console.log(hand);
 
-      // Check if hand is detected
       if (hand.length > 0) {
-        // Set hand detected to true
         setHandDetected(true);
-        
+
         const fingers = hand[0].landmarks;
         const thumbTip = fingers[4];
         const indexTip = fingers[8];
@@ -84,7 +77,6 @@ const RPSGame = () => {
         const ringTip = fingers[16];
         const pinkyTip = fingers[20];
 
-        // Check if thumb, index, and middle fingers are up
         if (
           thumbTip[1] < indexTip[1] &&
           thumbTip[1] < middleTip[1] &&
@@ -102,8 +94,12 @@ const RPSGame = () => {
         } else {
           setGesture("scissors");
         }
+
+        // Update player's pattern
+        setPlayerPatterns(prevPatterns => [...prevPatterns, gesture]);
+        // Update AI's pattern and make a choice
+        updateAIAndMakeChoice();
       } else {
-        // Set hand detected to false
         setHandDetected(false);
       }
     }
@@ -115,38 +111,101 @@ const RPSGame = () => {
     return choices[randomIndex];
   };
 
+  const updateAIAndMakeChoice = () => {
+    if (playerPatterns.length >= 2) {
+      const lastTwoPlayerPatterns = playerPatterns.slice(-2).join("");
+      const lastTwoAiPatterns = aiPatterns.slice(-2).join("");
+      const currentState = lastTwoPlayerPatterns + lastTwoAiPatterns;
+      
+      if (!qTable[currentState]) {
+        qTable[currentState] = {};
+        qTable[currentState]["rock"] = Math.random();
+        qTable[currentState]["paper"] = Math.random();
+        qTable[currentState]["scissors"] = Math.random();
+      }
+
+      let bestChoice = null;
+      let bestChoiceValue = -Infinity;
+      for (const choice in qTable[currentState]) {
+        if (qTable[currentState][choice] > bestChoiceValue) {
+          bestChoice = choice;
+          bestChoiceValue = qTable[currentState][choice];
+        }
+      }
+
+      setComputerChoice(bestChoice);
+      setAiPatterns(prevPatterns => [...prevPatterns, bestChoice]);
+    } else {
+      // Generate random choice if not enough data
+      const randomChoice = generateComputerChoice();
+      setComputerChoice(randomChoice);
+      setAiPatterns(prevPatterns => [...prevPatterns, randomChoice]);
+      
+    }
+    
+  };
+
   useEffect(() => {
     if (gesture && handDetected) {
       const computerChoice = generateComputerChoice();
       setComputerChoice(computerChoice);
 
-      // Determine the winner
       if (
         (gesture === "rock" && computerChoice === scissor) ||
         (gesture === "paper" && computerChoice === rock) ||
         (gesture === "scissors" && computerChoice === paper)
       ) {
         setWinner("Player");
+        updateQTable("win");
       } else if (
-        (computerChoice === "rock" && gesture === scissor) ||
-        (computerChoice === "paper" && gesture === rock) ||
         (gesture === "paper" && computerChoice === scissor) ||
         (gesture === "rock" && computerChoice === paper) ||
-        (gesture === "scissors" && computerChoice === rock) ||
-        (computerChoice === "scissors" && gesture === paper)
+        (gesture === "scissors" && computerChoice === rock)
       ) {
         setWinner("Computer");
+        updateQTable("loss");
       } else {
         setWinner("no one");
+        updateQTable("draw");
       }
     }
   }, [gesture, handDetected]);
 
+  const updateQTable = (result) => {
+    if (playerPatterns.length >= 2 && aiPatterns.length >= 2) {
+      const lastTwoPlayerPatterns = playerPatterns.slice(-2).join("");
+      const lastTwoAiPatterns = aiPatterns.slice(-2).join("");
+      const currentState = lastTwoPlayerPatterns + lastTwoAiPatterns;
+  
+      // Check if currentState exists in the qTable, if not, initialize it
+      if (!qTable[currentState]) {
+        qTable[currentState] = {};
+        qTable[currentState]["rock"] = Math.random();
+        qTable[currentState]["paper"] = Math.random();
+        qTable[currentState]["scissors"] = Math.random();
+      }
+  
+      let reward = 0;
+      if (result === "win") reward = 1;
+      else if (result === "loss") reward = -1;
+  
+      const alpha = 0.1; // Learning rate
+      const gamma = 0.9; // Discount factor
+  
+      // Calculate the updated Q-value
+      const maxNextStateQValue = Math.max(...Object.values(qTable[currentState]));
+      const updatedQValue = qTable[currentState][computerChoice] + alpha * (reward + gamma * maxNextStateQValue - qTable[currentState][computerChoice]);
+      qTable[currentState][computerChoice] = updatedQValue;
+  
+      setQTable({ ...qTable }); // Update the state of the Q-table
+      
+    }
+  };
+  
+
   return (
     <div>
-      {!started &&  <p className="" style={{
-              color: 'black'
-            }}>Press any key to start the game</p>}
+      {!started && <p className="" style={{ color: "black" }}>Press any key to start the game</p>}
       {started && (
         <>
           <Webcam
@@ -157,7 +216,7 @@ const RPSGame = () => {
               marginLeft: "auto",
               left: 0,
               right: 0,
-              top : 100,
+              top: 100,
               textAlign: "center",
               zIndex: 9,
               width: 640,
@@ -179,16 +238,10 @@ const RPSGame = () => {
             }}
           />
           {gesture && (
-            <div >
-              <p style={{
-              color: 'black'
-            }}>Your gesture: {gesture}</p>
-              {computerChoice && <p style={{
-              color: 'black'
-            }}>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
-              {winner && <p style={{
-              color: 'black',
-            }}>{winner} wins!</p>}
+            <div>
+              <p style={{ color: "black" }}>Your gesture: {gesture}</p>
+              {computerChoice && <p style={{ color: "black" }}>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
+              {winner && <p style={{ color: "black" }}>{winner} wins!</p>}
             </div>
           )}
         </>
