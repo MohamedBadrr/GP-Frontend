@@ -1,9 +1,13 @@
 
-import React , { Suspense, useEffect, useState } from 'react';
+import React , { Suspense, useEffect, useState , useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import "./style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
 import  CanvasLoader from "./Loader"
+import * as tf from "@tensorflow/tfjs";
+import * as handpose from "@tensorflow-models/handpose";
+import Webcam from "react-webcam";
+import { drawHand } from "./utilities";
 
 // from "@react-three/postprocessing";
 import { useSearchParams } from "react-router-dom"
@@ -27,6 +31,7 @@ import axios from 'axios';
 // import { TbHelicopter } from "react-icons/tb";
 // import { GiHelicopter } from "react-icons/gi";
 // import { LiaHelicopterSolid } from "react-icons/lia";
+
 
 
 export function CarShow(props){
@@ -121,12 +126,14 @@ export function CarShow(props){
         (texture)=>(
           <>
           <Environment map={texture} />
-              <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} setAction={props.setAction} action={props.action}/>
+              <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} action={props.action} />
               <Ground />
+              <Rock planePosition={props.planePosition}  score={props.score} setScore={props.setScore} />
           </>
         )
       }
     </CubeCamera>
+    
 
     {/* <Coins planePosition={planePosition} score={score} setScore={setScore} />
     <spotLight 
@@ -202,16 +209,9 @@ function Game(props) {
       positionPlane:new Vector3(0,1,0),
       scalePlane:new Vector3(.025,.025,.025),
     },]
-    const [selected , setSelected ] = useState(false)
-
-    // const [rockId , setRockId ] = useState(1)
-
-    const handleSelect = ()=>{
-      setSelected(true)
-    }
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
-
-
+    
+    
     // rock positions
     const positions = [
       new Vector3(2,1,10),
@@ -219,82 +219,119 @@ function Game(props) {
       new Vector3(-2,1,10)
     ]
     const [rockPosition , setRockPosition ] = useState(null)
-    // move / action 
-    const [ action , setAction ] = useState({
-      loading : false,
-      flag : false,
-      name : ""
-    })
-
+    
     const [score ,setScore] = useState(0)
-    
-    const BackFun =  async ()=>{
-      setAction({...action, loading :true })
-      await axios.post("http://localhost:4000/test/model",{
-        plane_position: planePosition ,
-        rock_position: rockPosition ,
-      }).then((resp) =>{
-        setAction({...action, name : resp.data.action , loading : false , flag:true})
-        console.log(`model loaded fuckin successfully ${resp.data.action}`);
-      }).catch((err)=>{
-        setAction({...action, loading :false, flag:true })
-        console.log(err);
-      });
-    }
-    
-    useEffect(()=>{
-      if(rockPosition != null ){
-        BackFun()
+
+    const webcamRef = useRef(null);
+    const canvasRef = useRef(null);
+    const [action , setAction ] = useState()
+
+  const runHandpose = async () => {
+    const net = await handpose.load();
+    console.log("Handpose model loaded.");
+    //  Loop and detect hands
+    setInterval(() => {
+      detect(net);
+    }, 100);
+  };
+  
+
+  const detect = async (net) => {
+    // Check data is available
+    if (
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null &&
+      webcamRef.current.video.readyState === 4
+    ) {
+      // Get Video Properties
+      const video = webcamRef.current.video;
+      const videoWidth = webcamRef.current.video.videoWidth;
+      const videoHeight = webcamRef.current.video.videoHeight;
+      // console.log(videoHeight);
+      // // Set video width
+      webcamRef.current.video.width = 300;
+      webcamRef.current.video.height = 300;
+
+    // Set canvas height and width
+      // canvasRef.current.width = videoWidth;
+      // canvasRef.current.height = videoHeight;
+
+      // Make Detections
+      const hand = await net.estimateHands(video);
+      if (hand[0]) {
+          // console.log(hand[0].landmarks[8][0]);
+          setAction(hand[0].landmarks[8][0])
       }
-    },[ rockPosition ])
+
+      // Draw mesh
+      // const ctx =  webcamRef.current.getContext("2d");
+      // drawHand(hand, ctx);
+    }
+  };
+  runHandpose();
+    // const [selected , setSelected ] = useState(false)
+
+    // const [rockId , setRockId ] = useState(1)
+
+    // const handleSelect = ()=>{
+    //   setSelected(true)
+    // }
+
+    // move / action 
+    // const [ action , setAction ] = useState({
+    //   loading : false,
+    //   flag : false,
+    //   name : ""
+    // })
+    
+    // const BackFun =  async ()=>{
+    //   setAction({...action, loading :true })
+    //   await axios.post("http://localhost:4000/test/model",{
+    //     plane_position: planePosition ,
+    //     rock_position: rockPosition ,
+    //   }).then((resp) =>{
+    //     setAction({...action, name : resp.data.action , loading : false , flag:true})
+    //     console.log(`model loaded  successfully ${resp.data.action}`);
+    //   }).catch((err)=>{
+    //     setAction({...action, loading :false, flag:true })
+    //     console.log(err);
+    //   });
+    
+    // useEffect(()=>{
+    //   if(rockPosition != null ){
+    //     BackFun()
+    //   }
+    // },[ rockPosition ])
    
   
   return (
     <>
+
+        
+
+        
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
-          <CarShow skin={skins[id]}  planePosition={planePosition} setPlanePosition={setPlanePosition} setAction={setAction} action = {action}/>
-          {
-            (action.flag != false ) ? 
-            <Rock planePosition={planePosition} rockPosition={rockPosition} setAction={setAction} action={action} setRockPosition={setRockPosition} score={score} setScore={setScore} />
-            : ""
-          }
+          <CarShow skin={skins[id]} score={score} action={action} planePosition={planePosition} setPlanePosition={setPlanePosition} />
+          
+          
           <Preload all /> 
         </Suspense>
       </Canvas>
-      
-      <div className='rocks-box' onClick={()=>{setSelected(!selected)}} >
-      <div className='rock-card' onClick={handleSelect}>
-        {action.name}
-        <img src={rock} alt='rock' className='mt-3 w-100'/>
-      </div>
-    </div>
-    
-    {
-      (selected) && <div className='rock-places' >
-          <div className='text-center small-rock rock-1' onClick={()=>{
-
-              setRockPosition( positions[0] )
-              setSelected(false);
+      <Webcam
+          ref={webcamRef}
+          mirrored={true}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            top : 0,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 9,
             
-            }} >
-              <img src={rock} alt='rock' className='w-75  ' />
-            </div>
-          <div className='text-center small-rock' onClick={()=>{
-            
-              setRockPosition(positions[1]);
-              setSelected(false);
-          }}>
-            <img src={rock} alt='rock' className='w-75 ' />
-          </div>
-          <div className='text-center small-rock' onClick={()=>{
-              setRockPosition(positions[2]);
-              setSelected(false);
-          }}>
-          <img src={rock} alt='rock' className='w-75  ' />
-        </div>
-      </div>
-    }
+          }}
+        />
     </>
   );
 }
