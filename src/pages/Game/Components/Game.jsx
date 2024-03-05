@@ -7,7 +7,6 @@ import  CanvasLoader from "./Loader"
 import  * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 
-
 // from "@react-three/postprocessing";
 import { useSearchParams } from "react-router-dom"
 
@@ -211,7 +210,8 @@ function Game(props) {
     const [action , setAction ] = useState()
 
   const runHandpose = async () => {
-    const modelUrl = "D:/GP/Real GP/GP-Frontend/src/handpose/manifest.json"
+    let d = "."
+    const modelUrl = "../../../handpose/manifest.json"
     const net = await handpose.load(modelUrl);
     console.log("Handpose model loaded.");
     setRound({round , start:true })
