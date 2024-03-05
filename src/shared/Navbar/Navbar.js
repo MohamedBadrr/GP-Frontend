@@ -4,10 +4,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
+import { removeAuthUser } from '../../helper/Storage';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Header() {
+  const navigate= useNavigate(); 
   const location = useLocation()
   const { pathname} = location;
+  const Logout =()=>{
+    removeAuthUser();
+    navigate("/login");
+  }
+  
   return (
     <>
       {pathname === "/login" || pathname === "/register" || pathname === "/game"? (
@@ -40,6 +49,7 @@ export default function Header() {
             </ul>
             <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link> </button>
             <button class="d-button px-3 py-1 register-btn" ><Link to={"/register"}>Register</Link> </button>
+            <button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button>
           </div>
         </div>
       </nav>
