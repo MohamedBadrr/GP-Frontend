@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { drawHand } from "../utilities";
 import rock from "../images_Ai/rock.png";
 import paper from "../images_Ai/paper.png";
 import scissor from "../images_Ai/scissors.png";
+import "./RPSGame.css"; // Import CSS file for animations
 
 const RPSGame = () => {
   const webcamRef = useRef(null);
@@ -18,18 +18,15 @@ const RPSGame = () => {
   const [playerPatterns, setPlayerPatterns] = useState([]);
   const [aiPatterns, setAiPatterns] = useState([]);
   const [qTable, setQTable] = useState({});
-
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      setStarted(true);
-    };
-
-    document.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
+  const [coins, setCoins] = useState(50);
+  const [championshipsRemaining, setChampionshipsRemaining] = useState({
+    1: { cost: 50, remaining: 5 },
+    2: { cost: 200, remaining: 5 },
+    3: { cost: 400, remaining: 5 }
+  });
+  const [currentChampionship, setCurrentChampionship] = useState(null);
+  const [gamesRemaining, setGamesRemaining] = useState(5);
+  const [animationInProgress, setAnimationInProgress] = useState(false); // Track animation state
 
   useEffect(() => {
     if (started) {
@@ -95,9 +92,7 @@ const RPSGame = () => {
           setGesture("scissors");
         }
 
-        // Update player's pattern
-        setPlayerPatterns(prevPatterns => [...prevPatterns, gesture]);
-        // Update AI's pattern and make a choice
+        setPlayerPatterns((prevPatterns) => [...prevPatterns, gesture]);
         updateAIAndMakeChoice();
       } else {
         setHandDetected(false);
@@ -116,7 +111,7 @@ const RPSGame = () => {
       const lastTwoPlayerPatterns = playerPatterns.slice(-2).join("");
       const lastTwoAiPatterns = aiPatterns.slice(-2).join("");
       const currentState = lastTwoPlayerPatterns + lastTwoAiPatterns;
-      
+
       if (!qTable[currentState]) {
         qTable[currentState] = {};
         qTable[currentState]["rock"] = Math.random();
@@ -134,15 +129,12 @@ const RPSGame = () => {
       }
 
       setComputerChoice(bestChoice);
-      setAiPatterns(prevPatterns => [...prevPatterns, bestChoice]);
+      setAiPatterns((prevPatterns) => [...prevPatterns, bestChoice]);
     } else {
-      // Generate random choice if not enough data
       const randomChoice = generateComputerChoice();
       setComputerChoice(randomChoice);
-      setAiPatterns(prevPatterns => [...prevPatterns, randomChoice]);
-      
+      setAiPatterns((prevPatterns) => [...prevPatterns, randomChoice]);
     }
-    
   };
 
   useEffect(() => {
@@ -168,6 +160,11 @@ const RPSGame = () => {
         setWinner("no one");
         updateQTable("draw");
       }
+
+      setGamesRemaining((prevGames) => prevGames - 1);
+      if (gamesRemaining === 0) {
+        endChampionship();
+      }
     }
   }, [gesture, handDetected]);
 
@@ -176,40 +173,98 @@ const RPSGame = () => {
       const lastTwoPlayerPatterns = playerPatterns.slice(-2).join("");
       const lastTwoAiPatterns = aiPatterns.slice(-2).join("");
       const currentState = lastTwoPlayerPatterns + lastTwoAiPatterns;
-  
-      // Check if currentState exists in the qTable, if not, initialize it
+
       if (!qTable[currentState]) {
         qTable[currentState] = {};
         qTable[currentState]["rock"] = Math.random();
         qTable[currentState]["paper"] = Math.random();
         qTable[currentState]["scissors"] = Math.random();
       }
-  
+
       let reward = 0;
       if (result === "win") reward = 1;
       else if (result === "loss") reward = -1;
-  
+
       const alpha = 0.1; // Learning rate
       const gamma = 0.9; // Discount factor
-  
-      // Calculate the updated Q-value
+
       const maxNextStateQValue = Math.max(...Object.values(qTable[currentState]));
       const updatedQValue = qTable[currentState][computerChoice] + alpha * (reward + gamma * maxNextStateQValue - qTable[currentState][computerChoice]);
       qTable[currentState][computerChoice] = updatedQValue;
-  
-      setQTable({ ...qTable }); // Update the state of the Q-table
-      
+
+      setQTable({ ...qTable });
     }
   };
-  
+
+  const startChampionship = (championship) => {
+    const championshipData = championshipsRemaining[championship];
+    if (coins >= championshipData.cost && championshipData.remaining > 0) {
+      setCurrentChampionship(championship);
+      setGamesRemaining(5);
+      setStarted(true);
+      setCoins((coins) => coins - championshipData.cost);
+    } else {
+      alert("Not enough coins or championships remaining!");
+    }
+  };
+
+  const endChampionship = () => {
+    const playerWins = playerPatterns.filter((pattern) => pattern === "win").length;
+    const aiWins = aiPatterns.filter((pattern) => pattern === "win").length;
+
+    if (playerWins > aiWins) {
+      setWinner("Player");
+      setCoins((coins) => coins + 50);
+      alert("player win");
+    } else if (aiWins > playerWins) {
+      setWinner("Computer");
+      alert("computer win");
+    } else {
+      setGamesRemaining(1);
+    }
+
+    setGamesRemaining(5);
+    setStarted(false);
+    setCurrentChampionship(null);
+  };
+
+  useEffect(() => {
+    if (gamesRemaining === 0) {
+      setAnimationInProgress(true); // Trigger animation
+    }
+  }, [gamesRemaining]);
+
+  const handleAnimationEnd = () => {
+    setAnimationInProgress(false); // Reset animation state after completion
+  };
 
   return (
     <div>
-      {!started && <p className="" style={{ color: "black" }}>Press any key to start the game</p>}
+      {!started && (
+        <div>
+          <p className="" style={{ color: "black" }}>
+            You have {coins} coins
+          </p>
+          <button onClick={() => startChampionship(1)} style={{ marginBottom: "10px" }}>
+            Start Championship 1 (Costs 50 coins)
+          </button>
+          <button onClick={() => startChampionship(2)} style={{ marginBottom: "10px" }}>
+            Start Championship 2 (Costs 200 coins)
+          </button>
+          <button onClick={() => startChampionship(3)} style={{ marginBottom: "10px" }}>
+            Start Championship 3 (Costs 400 coins)
+          </button>
+          <p className="" style={{ color: "black" }}>
+            Championships Remaining: {championshipsRemaining[1].remaining}
+          </p>
+        </div>
+      )}
       {started && (
         <>
           <Webcam
             ref={webcamRef}
+            className={animationInProgress ? "animate" : ""} // Apply animation class
+            onAnimationEnd={handleAnimationEnd} // Handle animation end event
             mirrored={true}
             style={{
               position: "absolute",
@@ -220,11 +275,13 @@ const RPSGame = () => {
               textAlign: "center",
               zIndex: 9,
               width: 640,
-              height: 480,
+              height: 480
             }}
           />
           <canvas
             ref={canvasRef}
+            className={animationInProgress ? "animate" : ""} // Apply animation class
+            onAnimationEnd={handleAnimationEnd} // Handle animation end event
             style={{
               position: "absolute",
               marginLeft: "auto",
@@ -234,13 +291,17 @@ const RPSGame = () => {
               textAlign: "center",
               zIndex: 9,
               width: 640,
-              height: 480,
+              height: 480
             }}
           />
           {gesture && (
             <div>
               <p style={{ color: "black" }}>Your gesture: {gesture}</p>
-              {computerChoice && <p style={{ color: "black" }}>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
+              {computerChoice && (
+                <p style={{ color: "black" }}>
+                  Computer choice: <img src={computerChoice} alt="Computer choice" />
+                </p>
+              )}
               {winner && <p style={{ color: "black" }}>{winner} wins!</p>}
             </div>
           )}
