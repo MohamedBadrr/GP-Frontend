@@ -7,7 +7,8 @@ import Register from './pages/Register/Register';
 import User from './pages/User/User';
 import Game from './pages/Game/Components/Game';
 import SelectSkin from './pages/Game/Components/SelectSkin';
-import RPSGame from './pages/RPSGame';
+import RPSGame from './pages/RPS-game/RPSGame';
+import Round from './pages/RPS-game/Round';
 export const routes = createBrowserRouter([
     {
     path: "",
@@ -43,6 +44,10 @@ export const routes = createBrowserRouter([
         {
             path: "/RPS-Game",
             element: <RPSGame />,
+        },
+        {
+            path : "/game-round",
+            element : <Round />
         },
 
     ],
