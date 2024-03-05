@@ -3,8 +3,8 @@ import React , { Suspense, useEffect, useState , useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import "./style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
-import  CanvasLoader from "./Loader"
-import  * as handpose from "@tensorflow-models/handpose";
+import CanvasLoader from "./Loader"
+import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 
 // from "@react-three/postprocessing";
@@ -268,6 +268,7 @@ function Game(props) {
           style={{
             position: "absolute",
             marginLeft: "auto",
+            visibility:'hidden',
             top : 0,
             left: 0,
             right: 0,
