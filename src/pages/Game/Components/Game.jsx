@@ -4,10 +4,8 @@ import { Canvas } from '@react-three/fiber';
 import "./style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
 import  CanvasLoader from "./Loader"
-import * as tf from "@tensorflow/tfjs";
-import * as handpose from "@tensorflow-models/handpose";
+import  * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-import { drawHand } from "./utilities";
 
 // from "@react-three/postprocessing";
 import { useSearchParams } from "react-router-dom"
@@ -62,9 +60,7 @@ export function CarShow(props){
         Lives : 
       </Text>
       
-      {/* <HeartGeometry */}
       <mesh position={[0, 0, 0]}>
-        {/* <HeartGeometry args={[0.5]} /> */}
         <meshStandardMaterial color="red" />
         </mesh>
       {/* <Text
@@ -128,14 +124,18 @@ export function CarShow(props){
           <Environment map={texture} />
               <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} action={props.action} />
               <Ground />
-              <Rock planePosition={props.planePosition}  score={props.score} setScore={props.setScore} />
+              
           </>
         )
       }
     </CubeCamera>
     
-
-    {/* <Coins planePosition={planePosition} score={score} setScore={setScore} />
+    { (props.round.start && !props.round.finish) &&
+      <>
+      <Rock planePosition={props.planePosition} />
+      <Coins planePosition={props.planePosition} />
+      </>
+    }
     <spotLight 
         color={[1, 0.25, 0.7]}
         intensity={100}
@@ -144,10 +144,7 @@ export function CarShow(props){
         position={[5, 5, 0]}
         castShadow
         shadow-bias={-0.0001}
-    /> */}
-
-
-
+    />
 
     <spotLight 
       color={[0.14, 0.5, 1]}
@@ -161,26 +158,7 @@ export function CarShow(props){
 
       <Rings />
       {/* <Boxes /> */}
-      
       <FloatingGrid />
-
-         {/* <DepthOfField focusDistance={0.0035} focalLength={0.01} bokehScale={3} height={480} />  */}
-      {/* <EffectComposer>
-        <Bloom
-          blendFunction={BlendFunction.ADD}
-          intensity={0.3} // The bloom intensity.
-          width={300} // render width
-          height={300} // render height
-          kernelSize={5} // blur kernel size
-          luminanceThreshold={0.15} // luminance threshold. Raise this value to mask out darker elements in the scene.
-          luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
-        /> 
-        <ChromaticAberration
-          // blendFunction={BlendFunction.NORMAL} // blend mode
-          // offset={[0.0005, 0.0012]} // color offset
-        />
-      </EffectComposer>  */}
-
 
     <mesh>
       <planeGeometry args={[30 ,30]} />   
@@ -217,9 +195,14 @@ function Game(props) {
       new Vector3(2,1,10),
       new Vector3(0,1,10),
       new Vector3(-2,1,10)
-    ]
-    const [rockPosition , setRockPosition ] = useState(null)
-    
+    ]    
+
+    const [round , setRound] = useState({
+      time : 1.5,
+      RequireCoins : 20,
+      start: false,
+      finish : false,
+    }) 
     const [score ,setScore] = useState(0)
 
     const webcamRef = useRef(null);
@@ -227,12 +210,15 @@ function Game(props) {
     const [action , setAction ] = useState()
 
   const runHandpose = async () => {
-    const net = await handpose.load();
+    let d = "."
+    const modelUrl = "../../../handpose/manifest.json"
+    const net = await handpose.load(modelUrl);
     console.log("Handpose model loaded.");
+    setRound({round , start:true })
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
-    }, 100);
+    }, 500);
   };
   
 
@@ -247,62 +233,22 @@ function Game(props) {
       const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
-      // console.log(videoHeight);
       // // Set video width
       webcamRef.current.video.width = 300;
       webcamRef.current.video.height = 300;
 
-    // Set canvas height and width
-      // canvasRef.current.width = videoWidth;
-      // canvasRef.current.height = videoHeight;
-
       // Make Detections
       const hand = await net.estimateHands(video);
-      if (hand[0]) {
+      if (hand.length > 0) {
           // console.log(hand[0].landmarks[8][0]);
           setAction(hand[0].landmarks[8][0])
       }
-
-      // Draw mesh
-      // const ctx =  webcamRef.current.getContext("2d");
-      // drawHand(hand, ctx);
     }
   };
-  runHandpose();
-    // const [selected , setSelected ] = useState(false)
-
-    // const [rockId , setRockId ] = useState(1)
-
-    // const handleSelect = ()=>{
-    //   setSelected(true)
-    // }
-
-    // move / action 
-    // const [ action , setAction ] = useState({
-    //   loading : false,
-    //   flag : false,
-    //   name : ""
-    // })
-    
-    // const BackFun =  async ()=>{
-    //   setAction({...action, loading :true })
-    //   await axios.post("http://localhost:4000/test/model",{
-    //     plane_position: planePosition ,
-    //     rock_position: rockPosition ,
-    //   }).then((resp) =>{
-    //     setAction({...action, name : resp.data.action , loading : false , flag:true})
-    //     console.log(`model loaded  successfully ${resp.data.action}`);
-    //   }).catch((err)=>{
-    //     setAction({...action, loading :false, flag:true })
-    //     console.log(err);
-    //   });
-    
-    // useEffect(()=>{
-    //   if(rockPosition != null ){
-    //     BackFun()
-    //   }
-    // },[ rockPosition ])
-   
+  useEffect(() => {
+    runHandpose();
+  }, [])
+  
   
   return (
     <>
@@ -312,9 +258,7 @@ function Game(props) {
         
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
-          <CarShow skin={skins[id]} score={score} action={action} planePosition={planePosition} setPlanePosition={setPlanePosition} />
-          
-          
+          <CarShow skin={skins[id]} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
           <Preload all /> 
         </Suspense>
       </Canvas>
