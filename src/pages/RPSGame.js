@@ -140,7 +140,6 @@ const RPSGame = () => {
       const randomChoice = generateComputerChoice();
       setComputerChoice(randomChoice);
       setAiPatterns(prevPatterns => [...prevPatterns, randomChoice]);
-      
     }
     
   };
