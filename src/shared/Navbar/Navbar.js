@@ -49,7 +49,7 @@ export default function Header() {
             </ul>
             <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link> </button>
             <button class="d-button px-3 py-1 register-btn" ><Link to={"/register"}>Register</Link> </button>
-            <button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button>
+            {false && (<button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button>)}
           </div>
         </div>
       </nav>
