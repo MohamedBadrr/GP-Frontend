@@ -18,7 +18,9 @@ const RPSGame = () => {
   const [playerPatterns, setPlayerPatterns] = useState([]);
   const [aiPatterns, setAiPatterns] = useState([]);
   const [qTable, setQTable] = useState({});
-  const [coins, setCoins] = useState(50);
+  const [coins, setCoins] = useState(500);
+  const [round, setround] = useState(0);
+  const [airound, setairound] = useState(0);
   const [championshipsRemaining, setChampionshipsRemaining] = useState({
     1: { cost: 50, remaining: 5 },
     2: { cost: 200, remaining: 5 },
@@ -27,17 +29,7 @@ const RPSGame = () => {
   const [currentChampionship, setCurrentChampionship] = useState(null);
   const [gamesRemaining, setGamesRemaining] = useState(5);
 
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      setStarted(true);
-    };
-
-    document.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
+ 
 
   useEffect(() => {
     if (started) {
@@ -162,18 +154,20 @@ const RPSGame = () => {
         (gesture === "scissors" && computerChoice === paper)
       ) {
         setWinner("Player");
-        updateQTable("win");
-        setCoins(coins + 50);
+        updateQTable("loss");
+        setround(round +1);
       } else if (
         (gesture === "paper" && computerChoice === scissor) ||
         (gesture === "rock" && computerChoice === paper) ||
         (gesture === "scissors" && computerChoice === rock)
       ) {
         setWinner("Computer");
-        updateQTable("loss");
+        setround(airound +1);
+        updateQTable("win");
       } else {
         setWinner("no one");
         updateQTable("draw");
+       
       }
 
       setGamesRemaining(prevGames => prevGames - 1);
@@ -228,31 +222,35 @@ const RPSGame = () => {
 
   const endChampionship = () => {
     // Calculate championship winner
-    const playerWins = playerPatterns.filter(pattern => pattern === "win").length;
-    const aiWins = aiPatterns.filter(pattern => pattern === "win").length;
+    // const playerWins = playerPatterns.filter(pattern => pattern === "win").length;
+    // const aiWins = aiPatterns.filter(pattern => pattern === "win").length;
 
-    if (playerWins > aiWins) {
+    if (round > airound) {
       setWinner("Player");
-      setCoins(coins + 50);
-    } else if (aiWins > playerWins) {
+      setCoins(coins +100);
+      alert("player win");
+  
+    } else if( airound > round)  {
       setWinner("Computer");
-    } else {
-      // If no one wins, add another detection
-      setGamesRemaining(1);
-    }
+      alert("computer win");
 
+    }else if(round = airound){
+      setGamesRemaining(gamesRemaining +1);
+    }
+    
     // Reset patterns and gamesRemaining
     setPlayerPatterns([]);
     setAiPatterns([]);
     setStarted(false);
     setCurrentChampionship(null);
   };
+  console.log(round)
 
   return (
     <div>
       {!started && (
         <div>
-          <p className="" style={{ color: "black" }}>Press any key to start the game</p>
+          
           <p className="" style={{ color: "black" }}>You have {coins} coins</p>
           <button onClick={() => startChampionship(1)} style={{marginBottom: '10px'}}>Start Championship 1 (Costs 50 coins)</button>
           <button onClick={() => startChampionship(2)} style={{marginBottom: '10px'}}>Start Championship 2 (Costs 200 coins)</button>
