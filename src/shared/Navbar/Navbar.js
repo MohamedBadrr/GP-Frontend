@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
-import { removeAuthUser } from '../../helper/Storage';
+import { getAuthUser, removeAuthUser } from '../../helper/Storage';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -12,6 +12,9 @@ export default function Header() {
   const navigate= useNavigate(); 
   const location = useLocation()
   const { pathname} = location;
+
+  const auth = getAuthUser();
+  
   const Logout =()=>{
     removeAuthUser();
     navigate("/login");
@@ -47,9 +50,17 @@ export default function Header() {
               </li>
               
             </ul>
-            <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link> </button>
-            <button class="d-button px-3 py-1 register-btn" ><Link to={"/register"}>Register</Link> </button>
-            {false && (<button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button>)}
+            {
+              !auth && (
+                <>
+                <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link> </button>
+                <button class="d-button px-3 py-1 register-btn" ><Link to={"/register"}>Register</Link> </button>
+                </>
+              )
+            }
+
+            {auth && <button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button> }
+          
           </div>
         </div>
       </nav>

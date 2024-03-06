@@ -13,8 +13,6 @@ const RPSGame = () => {
   const [coins, setCoins] = useState(500);
   const navigate = useNavigate();
 
-
-
   return (
     <div>
         <div>

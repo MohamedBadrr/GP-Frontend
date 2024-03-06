@@ -9,6 +9,7 @@ import Game from './pages/Game/Components/Game';
 import SelectSkin from './pages/Game/Components/SelectSkin';
 import RPSGame from './pages/RPS-game/RPSGame';
 import Round from './pages/RPS-game/Round';
+import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
     {
     path: "",
@@ -37,6 +38,20 @@ export const routes = createBrowserRouter([
             path: "/Register",
             element: <Register />,
         },
+        // Gust middleware
+        // {
+        //     element: <Guset />,
+        //     children: [
+        //         {
+        //             path: "/Login",
+        //             element: <Login />,
+        //         },
+        //         {
+        //             path: "/Register",
+        //             element: <Register />,
+        //         },
+        //     ]
+        // },
         {
             path: "/game",
             element: <Game />,
@@ -50,10 +65,9 @@ export const routes = createBrowserRouter([
             element: <RPSGame />,
         },
         {
-            path : "/game-round",
+            path : "/game-round/:id",
             element : <Round />
         },
-
     ],
     },
     {
