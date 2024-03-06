@@ -15,7 +15,7 @@ export function Coins(props) {
             let v = [0,0,0]
             let num = Math.floor(Math.random() * 3)
             v[num] = 1
-            if (v[0]===1) {
+            if (v[0]===1 ) {
                 return new Vector3(2,1,10)
             } else if (v[1]===1) {
                 return new Vector3(0,1,10)
@@ -53,20 +53,25 @@ export function Coins(props) {
 
 
     useFrame((state,delta)=>{
-        time.current += delta * 5 // 1.5 =>
-        let newZ = position.z - (time.current)
+        if (position.x === props.rockX) {
+            resetPosition()
+        }else{
+            time.current += delta * 5 // 1.5 =>
+            let newZ = position.z - (time.current)
 
-        if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x   ) { // if the plane take the coin
-            resetPosition();
-            time.current = 0
-            // props.setScore(props.score + 1)
+            if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x   ) { // if the plane take the coin
+                resetPosition();
+                time.current = 0
+                // props.setScore(props.score + 1)
+            }
+            
+            if (newZ < -5) {
+                resetPosition();
+                time.current = 0
+            }
+            glb.scene.position.set( position.x, position.y , newZ )
+            glb.scene.rotation.y += delta * 5;
         }
-        if (newZ < -5) {
-            resetPosition();
-            time.current = 0
-        }
-        glb.scene.position.set( position.x, position.y , newZ )
-         glb.scene.rotation.y += delta * 5;
 
     } , [position])
 

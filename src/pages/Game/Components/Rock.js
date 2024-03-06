@@ -10,12 +10,13 @@ import { useEffect, useRef, useState } from "react";
 
 
 export function Rock(props) {
+
     const time =useRef(0)
     const getInitialPosition = ()=>{
             let v = [0,0,0]
             let num = Math.floor(Math.random() * 3)
             v[num] = 1
-            if (v[0]===1) {
+            if (v[0]===1 ) {
                 return new Vector3(2,1,10)
             } else if (v[1]===1) {
                 return new Vector3(0,1,10)
@@ -24,7 +25,7 @@ export function Rock(props) {
             }
         }
 
-    const [position , setPosition ] = useState(getInitialPosition())
+        const [position , setPosition ] = useState(getInitialPosition())
         function resetPosition(){
             let v = [0,0,0]
             let num = Math.floor(Math.random() * 3)
@@ -42,6 +43,7 @@ export function Rock(props) {
         process.env.PUBLIC_URL + "models/rock/rock.glb"
     );
     useEffect(()=>{
+
         glb.scene.scale.set(0.0015, 0.0015, 0.0015);
         glb.scene.traverse((object) => {
             if (object instanceof Mesh ) {
@@ -68,6 +70,7 @@ export function Rock(props) {
 
         }
         glb.scene.position.set( position.x, position.y , newZ )
+        props.setRockX(position.x)
          glb.scene.rotation.y += delta * 5;
 
     } , [position])

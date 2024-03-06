@@ -33,6 +33,8 @@ import axios from 'axios';
 
 
 export function CarShow(props){
+  const [rockX ,setRockX] = useState()
+
   return (
     <>
     {/* <Text
@@ -132,8 +134,8 @@ export function CarShow(props){
     
     { (props.round.start && !props.round.finish) &&
       <>
-      <Rock planePosition={props.planePosition} />
-      <Coins planePosition={props.planePosition} />
+      <Rock setRockX={setRockX} planePosition={props.planePosition} />
+      <Coins rockX={rock} planePosition={props.planePosition} />
       </>
     }
     <spotLight 
@@ -188,7 +190,6 @@ function Game(props) {
       scalePlane:new Vector3(.025,.025,.025),
     },]
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
-    
     
     // rock positions
     const positions = [
