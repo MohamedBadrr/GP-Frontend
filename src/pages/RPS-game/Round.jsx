@@ -93,6 +93,10 @@ const Round = () => {
             } else {
               setGesture("scissors");
             }
+            
+            
+            const computerChoice = generateComputerChoice();
+            setComputerChoice(computerChoice);
     
             // Update player's pattern
             setPlayerPatterns(prevPatterns => [...prevPatterns, gesture]);
