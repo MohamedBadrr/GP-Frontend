@@ -95,8 +95,7 @@ const Round = () => {
             }
             
             
-            const computerChoice = generateComputerChoice();
-            setComputerChoice(computerChoice);
+            
     
             // Update player's pattern
             setPlayerPatterns(prevPatterns => [...prevPatterns, gesture]);
@@ -140,9 +139,8 @@ const Round = () => {
           setAiPatterns(prevPatterns => [...prevPatterns, bestChoice]);
         } else {
           // Generate random choice if not enough data
-          const randomChoice = generateComputerChoice();
-          setComputerChoice(randomChoice);
-          setAiPatterns(prevPatterns => [...prevPatterns, randomChoice]);
+          
+          setAiPatterns(prevPatterns => [...prevPatterns]);
         }
       };
     
@@ -172,6 +170,7 @@ const Round = () => {
             updateQTable("draw");
            
           }
+          
     
           setGamesRemaining(prevGames => prevGames - 1);
           if (gamesRemaining === 0) {
@@ -278,4 +277,4 @@ const Round = () => {
   )
 }
 
-export default Round
+export default Round;
