@@ -1,16 +1,12 @@
 import React ,{useState} from "react";
-import { FaUser, FaLock } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../Register/Register.css'
-import Alert from 'react-bootstrap/Alert';
 import { Link } from 'react-router-dom';
 import loginphoto from '../../img/pngwing.png'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
-
+import { setAuthUser } from "../../helper/Storage";
 const Register = () => {
 
     const navigate= useNavigate(); 
@@ -26,22 +22,21 @@ const Register = () => {
       const RegisterFun = (event)=>{
         event.preventDefault();
         setRegister({...register , loading:true , err:""});
-        // axios.post("http://localhost:4000/auth/login",{
-        // fullName:register.fullName,
-        // email:register.email,
-        // password:register.password,
-        // confirmPassword:register.confirmPassword
-        // }).then((resp) =>{
-        //     // setAuthUser(resp.data); 
-        //     // const auth = getAuthUser();
-        //     setRegister({...register , loading:false , err:""});
-        //    // navigate("/login");
-        //    // navigate("/home");
-        // }).catch((err)=>{
-            // console.log(err);
-        //     setRegister({...register , loading:false , err:"there were an error "})
-        //     setRegister({...register , loading:false , err:errors.response.data.errors[0].msg})
-        // });
+        axios.post("http://localhost:4000/auth/register",{
+        name:register.fullName,
+        email:register.email,
+        password:register.password,
+        }).then((resp) =>{
+            setAuthUser(resp.data); 
+            // const auth = getAuthUser();
+            setRegister({...register , loading:false , err:""});
+           // navigate("/login");
+           navigate("/home");
+        }).catch((errors)=>{
+            console.log(errors);
+            // setRegister({...register , loading:false , err:"there were an error "})
+            setRegister({...register , loading:false , err:errors.response.data.errors[0].msg})
+        });
         if(register.password !== register.confirmPassword){
             setRegister({...register,err:"Passwords Don't Match , Try again"})
         }
