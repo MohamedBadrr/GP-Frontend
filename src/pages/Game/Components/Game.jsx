@@ -34,7 +34,6 @@ import axios from 'axios';
 
 export function CarShow(props){
   const [rockX ,setRockX] = useState()
-
   return (
     <>
     {/* <Text
@@ -135,7 +134,7 @@ export function CarShow(props){
     { (props.round.start && !props.round.finish) &&
       <>
       <Rock setRockX={setRockX} planePosition={props.planePosition} />
-      <Coins rockX={rock} planePosition={props.planePosition} />
+      <Coins rockX={rockX} planePosition={props.planePosition} />
       </>
     }
     <spotLight 
