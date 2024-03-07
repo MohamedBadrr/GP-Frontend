@@ -37,7 +37,7 @@ const data =[{
 }]
   return (
     <div className="all" >
-      <p className="yourcoins" style={{ color: "white" }}>You have {coins} coins</p>
+      <p className="yourcoins1" style={{ color: "white" }}>You have {coins} coins</p>
       <p className="yourcoins" style={{ color: "white" }}>choose who you can play with him </p>
         <div className="cards-container">
           

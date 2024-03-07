@@ -1,13 +1,24 @@
+.yourcoins1{
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+  font-size: 2rem; /* Adjust the font size as needed */
+  font-family:Impact;
+  padding-top: 60px;
+  padding-bottom: auto;
+}
+
+
 .yourcoins{
     display: flex;
   justify-content: center; /* Horizontally centers the content */
   align-items: center; /* Vertically centers the content */
   font-size: 2rem; /* Adjust the font size as needed */
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
+  padding-bottom: 5px;
 
 
 }
 .all{
-    background-color:black;
+  background-color: black;
 }
