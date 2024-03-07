@@ -21,6 +21,7 @@ import { Text } from '@react-three/drei';
 import rock from "../../../img/pngwing.com.png"
 import { Rock } from './Rock';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 
 // import { Html} from '@react-three/drei';
@@ -33,6 +34,10 @@ import axios from 'axios';
 
 
 export function CarShow(props){
+  const navigate= useNavigate(); 
+  const [score ,setScore] = useState(0)
+  const [lives ,setLives] = useState(3)
+
   const [rockX ,setRockX] = useState()
   const auth = getAuthUser();
     const [ skin , setSkin ] = useState({
@@ -41,6 +46,13 @@ export function CarShow(props){
       data : null ,
       errors: null,
     })
+    useEffect(() => {
+      // Check if lives are 0 and set the game over scenario
+      if ( lives === 0) {
+        navigate("/selectskin");
+        console.log("Game Over!");
+      }
+    }, [lives]);
     useEffect(() => {
       setSkin({...skin , loading:true , err:[]});
         axios.get(`http://localhost:4000/skins/spacificSkins/${props.skinId}`,
@@ -60,7 +72,7 @@ export function CarShow(props){
     console.log(skin);
   return (
     <>
-    {/* <Text
+    <Text
         position={[.009, 2.35, 0]}
         fontSize={.2}
         font="bold 45px Arial"
@@ -71,7 +83,7 @@ export function CarShow(props){
         rotation={[Math.PI / 85,9.4, 0]}
       > 
         Your Score : {score}
-      </Text> */}
+      </Text>
       <Text
         position={[3.8, 2.37, 0]}
         fontSize={.15}
@@ -82,7 +94,7 @@ export function CarShow(props){
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
       > 
-        Lives : 
+        Lives : {lives}
       </Text>
       
       <mesh position={[0, 0, 0]}>
@@ -159,10 +171,11 @@ export function CarShow(props){
     
     { (props.round.start && !props.round.finish) &&
       <>
-      <Rock setRockX={setRockX} planePosition={props.planePosition} />
-      <Coins rockX={rockX} planePosition={props.planePosition} />
+      <Rock setRockX={setRockX} planePosition={props.planePosition} setLives={setLives} lives={lives} />
+      <Coins rockX={rockX} planePosition={props.planePosition}  setScore={setScore} score={score}/>
       </>
     }
+    
     <spotLight 
         color={[1, 0.25, 0.7]}
         intensity={100}
@@ -229,7 +242,6 @@ function Game(props) {
       start: false,
       finish : false,
     }) 
-    const [score ,setScore] = useState(0)
 
     const webcamRef = useRef(null);
     const [action , setAction ] = useState()
@@ -244,6 +256,7 @@ function Game(props) {
       detect(net);
     }, 500);
   };
+  
   
 
   const detect = async (net) => {

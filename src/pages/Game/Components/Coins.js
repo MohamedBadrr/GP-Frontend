@@ -61,7 +61,7 @@ export function Coins(props) {
             if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x   ) { // if the plane take the coin
                 resetPosition();
                 time.current = 0
-                // props.setScore(props.score + 1)
+                props.setScore(props.score + 1)
             }
             
             if (newZ < -5) {
