@@ -8,8 +8,9 @@ import axios from 'axios';
 export default function SelectSkin() {
   const [showBuyAlert, setShowBuyAlert] = useState({});
   const auth = getAuthUser();
-  const token = auth.token;
-  
+  const headers = {
+    token : auth.token,
+    }
     const [ skins , setSkins ] = useState({
       loading : false ,
       data : [],
@@ -24,9 +25,7 @@ export default function SelectSkin() {
       setSkins({...skins , loading:true , err:[]});
         axios.get("http://localhost:4000/skins/unlocked",
         {
-          headers:{
-          token : auth.token,
-          }
+          headers: headers
         }).then((resp) =>{
           setSkins({...skins, data : resp.data , loading:false , errors:""})
 
@@ -40,9 +39,7 @@ export default function SelectSkin() {
       setLockedSkins({...Lockedskins , loading:true , err:[]});
         axios.get("http://localhost:4000/skins/locked",
         {
-          headers:{
-          token : auth.token,
-          }
+          headers:headers
         }).then((resp) =>{
           setLockedSkins({...Lockedskins, data : resp.data , loading:false , errors:""})
 
@@ -62,28 +59,25 @@ export default function SelectSkin() {
       data : [],
       errors: null,
     })
-
-    const buySkin=(id) =>{
+    
+    const buySkin = (id) =>{
     setOneSkin({...oneSkin,loading:true})
-    axios.post(`http://localhost:4000/skins/buy/${id}`,
-    {
-        headers:{
-        token : token,
-        }
-    }
-    ).then((resp)=>{
-        // setOneSkin({...oneSkin,loading:false});
-        console.log(resp);
-        // getAuthUser();
-    }).catch((err)=>{
+     axios.
+     post("http://localhost:4000/skins/buy/"+id,{
+      userId : auth.id
+     },
+      {
+        headers:headers
+      }).then((resp)=>{
+          // setOneSkin({...oneSkin,loading:false});
+          console.log(resp);
+      }).catch((err)=>{
         console.log(err);
-        setOneSkin({...oneSkin,loading:false,errors:err.response.data.errors})
-    })
-      // console.log(auth.token);
-      // console.log(id);
-      
-
+          setOneSkin({...oneSkin,loading:false,errors:err.response.data.errors})
+      })
+        // console.log(id);
     }
+    
   return (
     <>
       <section className="skins-container ">
@@ -98,7 +92,7 @@ export default function SelectSkin() {
                   <img alt="plane1" src={item.imageUrl} />
                   <h4>{item.name}</h4>
                 </Link>
-                <button className="d-button mt-3 px-5 py-1 play-now" ><Link to={`/game?id=${item.id}`}>PLay</Link></button>
+                <button className="d-button mt-3 px-5 py-1 play-now" ><Link to={`/game?id=${item.id}`}>Play</Link></button>
               </div>
             )
           })
@@ -119,7 +113,7 @@ export default function SelectSkin() {
               <img alt="plane1" src={item.imageUrl} />
               <h4 className="locked-title">{item.name}</h4>
               <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-              <button className="d-button mb-3 mt-2 px-4 py-1" onClick={()=>buySkin(item.id)}>Buy Now</button>
+              <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{buySkin(item.id)}}>Buy Now</button>
               <i
                 className="fa-solid fa-lock lock-icon-skin"
                 onClick={()=>handleLockClick(item.id)} // Pass item.id for specific item
