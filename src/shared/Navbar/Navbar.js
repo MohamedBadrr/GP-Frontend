@@ -14,6 +14,8 @@ export default function Header() {
   const { pathname} = location;
 
   const auth = getAuthUser();
+
+
   
   const Logout =()=>{
     removeAuthUser();
@@ -25,29 +27,48 @@ export default function Header() {
       {pathname === "/login" || pathname === "/register" || pathname === "/game"? (
         ""
       ) : (
-
         <nav class="navbar navbar-expand-lg text-white text-center our-navBar">
         <div class="container">
-          <a class="navbar-brand text-white " href="#"><span className='editBarnd'>END</span>GAME</a>
+          <Link class="navbar-brand text-white " to="/"><span className='editBarnd'>END</span>GAME</Link>
           <button class="navbar-toggler text-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon text-white "></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+              {
+              (auth && (pathname === "/" || pathname === "/home" )) && (
+                <>
+                <li class="nav-item">
                 <Link class="nav-link active my-1 mx-2 text-white"  to="/home">Home</Link>
               </li>
               <li class="nav-item">
-                {/* <Link class="nav-link  my-1 mx-2 text-white "  to="">Games</Link> */}
                 <a class="nav-link  my-1 mx-2 text-white "  href="#GAMES">Games</a>
               </li>
               <li class="nav-item">
-                {/* <Link class="nav-link  my-1 mx-2 text-white "  to="selectskin">About Us</Link> */}
                 <a class="nav-link  my-1 mx-2 text-white "  href="#ABOUT">About Us</a>
               </li>
               <li class="nav-item">
                 <Link class="nav-link  my-1 mx-2 text-white "  href="#">Contact</Link>
               </li>
+                </>
+              )
+            }
+            {
+              // (auth && (pathname !=="/" || pathname !=="/home")) && (
+              (auth && (pathname !=="/" )) && (
+                <>
+                <div className='conis-xp'>
+                <li class="conis">
+                    <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{auth.coins}</span></h4>
+                </li>
+                <li class="xp">
+                    <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{auth.xp}</span></h4>
+                </li>
+                </div>
+                </>
+              )
+            }
+
               
             </ul>
             {

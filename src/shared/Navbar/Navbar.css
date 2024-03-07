@@ -1,4 +1,9 @@
-
+.navbar{
+    position: fixed !important;
+    width: 100%;
+    z-index: 99999;
+    border-bottom: 1px solid #4874b2;
+}
 
 .our-navBar{
     background-color:#0b0f18 !important ;
@@ -33,7 +38,17 @@
     color :#4890cc !important; 
     text-decoration: none;
 }
-
+.conis-xp{
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+}
+.conis{
+    margin-right: 175px;
+}
+.xp{
+    margin-left: 175px;
+}
 @media screen and (min-width: 350px) {
     .navbar-brand{
         font-size: 25px ;

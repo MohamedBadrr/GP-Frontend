@@ -8,7 +8,6 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { setAuthUser } from "../../helper/Storage";
 
-
 const Login = () => {
     const navigate= useNavigate(); 
     const [login ,setLogin] = useState({
@@ -29,7 +28,7 @@ const Login = () => {
             setAuthUser(resp.data); 
             // const auth = getAuthUser();
             setLogin({...login , loading:false , err:""});
-            navigate("/home");
+            navigate("/");
         }).catch((errors)=>{
             console.log(errors);
             // setLogin({...login , loading:false , err:"Email or Password is not correct ..!"})
