@@ -33,6 +33,9 @@ import axios from 'axios';
 
 
 export function CarShow(props){
+  const [score ,setScore] = useState(0)
+  const [lives ,setLives] = useState(3)
+
   const [rockX ,setRockX] = useState()
   const auth = getAuthUser();
     const [ skin , setSkin ] = useState({
@@ -60,7 +63,7 @@ export function CarShow(props){
     console.log(skin);
   return (
     <>
-    {/* <Text
+    <Text
         position={[.009, 2.35, 0]}
         fontSize={.2}
         font="bold 45px Arial"
@@ -71,7 +74,7 @@ export function CarShow(props){
         rotation={[Math.PI / 85,9.4, 0]}
       > 
         Your Score : {score}
-      </Text> */}
+      </Text>
       <Text
         position={[3.8, 2.37, 0]}
         fontSize={.15}
@@ -82,7 +85,7 @@ export function CarShow(props){
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
       > 
-        Lives : 
+        Lives : {lives}
       </Text>
       
       <mesh position={[0, 0, 0]}>
@@ -159,8 +162,8 @@ export function CarShow(props){
     
     { (props.round.start && !props.round.finish) &&
       <>
-      <Rock setRockX={setRockX} planePosition={props.planePosition} />
-      <Coins rockX={rockX} planePosition={props.planePosition} />
+      <Rock setRockX={setRockX} planePosition={props.planePosition} setLives={setLives} lives={lives} />
+      <Coins rockX={rockX} planePosition={props.planePosition}  setScore={setScore} score={score}/>
       </>
     }
     <spotLight 
@@ -229,7 +232,6 @@ function Game(props) {
       start: false,
       finish : false,
     }) 
-    const [score ,setScore] = useState(0)
 
     const webcamRef = useRef(null);
     const [action , setAction ] = useState()
@@ -244,6 +246,7 @@ function Game(props) {
       detect(net);
     }, 500);
   };
+  
   
 
   const detect = async (net) => {
