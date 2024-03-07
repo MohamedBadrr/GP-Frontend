@@ -144,7 +144,7 @@ const Round = () => {
           setAiPatterns(prevPatterns => [...prevPatterns]);
         }
       };
-    
+   
       useEffect(() => {
         if (gesture && handDetected) {
           const computerChoice = generateComputerChoice();

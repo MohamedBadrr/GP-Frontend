@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { Link , useNavigate } from "react-router-dom";
 import zikoo from '../img/zikoo.jpg';
+import "../pages/RPS-game/Round.css";
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -18,11 +19,11 @@ const Championship = (props) => {
      */}
    
     <Card style={{ width: '18rem' }}>
-<Card.Img variant="top" src={props.photo} />
+<Card.Img variant="top" sizes="" src={props.photo} />
 <Card.Body>
-  <Card.Title>{props.name}</Card.Title>
+  <Card.Title>{props.name} Costs {props.cost}</Card.Title>
   
-  <Button variant="primary"onClick={()=>{navigate('/game-round/50')}}>Start Championship 1(Costs {props.cost})</Button>
+  <Button className="championbutton" variant="primary"onClick={()=>{navigate('/game-round/50')}}>Start Championship</Button>
 </Card.Body>
 </Card>
 

@@ -1,0 +1,17 @@
+.yourcoins{
+    display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+  font-size: 2rem; /* Adjust the font size as needed */
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+
+
+}
+.all{
+    background-color:black;
+}
+.championbutton{
+     /* Adjust padding as needed */
+  
+}

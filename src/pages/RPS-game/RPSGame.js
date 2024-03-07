@@ -14,6 +14,7 @@ import Round from "./Round";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Championship from "../../components/Championship";
+import "./Round.css";
 const RPSGame = () => {
   const [coins, setCoins] = useState(100);
   const navigate = useNavigate();
@@ -35,10 +36,11 @@ const data =[{
   gameremaining: 7 ,
 }]
   return (
-    <div >
-      <p className="yourcoins" style={{ color: "black" }}>You have {coins} coins</p>
+    <div className="all" >
+      <p className="yourcoins" style={{ color: "white" }}>You have {coins} coins</p>
+      <p className="yourcoins" style={{ color: "white" }}>choose who you can play with him </p>
         <div className="cards-container">
-          <Championship />
+          
           {
             data.map((item)=>(<Championship name={item.name}  photo={item.photo} cost={item.cost} gameremaining={item.gameremaining}/>))
           }
