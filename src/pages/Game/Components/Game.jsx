@@ -6,7 +6,7 @@ import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, use
 import CanvasLoader from "./Loader"
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-
+import { getAuthUser } from '../../../helper/Storage';
 // from "@react-three/postprocessing";
 import { useSearchParams } from "react-router-dom"
 
@@ -34,6 +34,30 @@ import axios from 'axios';
 
 export function CarShow(props){
   const [rockX ,setRockX] = useState()
+  const auth = getAuthUser();
+    const [ skin , setSkin ] = useState({
+      loading : false ,
+      finish : false,
+      data : null ,
+      errors: null,
+    })
+    useEffect(() => {
+      setSkin({...skin , loading:true , err:[]});
+        axios.get(`http://localhost:4000/skins/spacificSkins/${props.skinId}`,
+        {
+          headers:{
+          token : auth.token,
+          }
+        }).then((resp) =>{
+          setSkin({...skin, data : resp.data , loading:false , errors:"" , finish : true})
+
+        }).catch((errors)=>{
+            setSkin({...skin , loading:false , errors:errors.response.data.errors[0].msg , finish : true})
+        });
+    
+
+    }, [props.skinId])
+    console.log(skin);
   return (
     <>
     {/* <Text
@@ -123,7 +147,9 @@ export function CarShow(props){
         (texture)=>(
           <>
           <Environment map={texture} />
-              <SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin} action={props.action} />
+              {
+                (skin.finish) && (<SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={skin.data} action={props.action} />)
+              }
               <Ground />
               
           </>
@@ -173,21 +199,21 @@ export function CarShow(props){
 function Game(props) { 
   const [queryParameters] = useSearchParams();
     const id = queryParameters.get("id")
-    const skins = [{
-      url:"models/plane1/skin.glb",
-      positionPlane:new Vector3(0,1,0),
-      scalePlane:new Vector3(1,1,1),
-    },
-    {
-      url:"models/plane2/skin.glb",
-      positionPlane:new Vector3(0,1,0),
-      scalePlane:new Vector3(.2,.2,.2),
-    },
-    {
-      url:"models/plane5/skin.glb",
-      positionPlane:new Vector3(0,1,0),
-      scalePlane:new Vector3(.025,.025,.025),
-    },]
+    // const skins = [{
+    //   url:"models/plane1/skin.glb",
+    //   positionPlane:new Vector3(0,1,0),
+    //   scalePlane:new Vector3(1,1,1),
+    // },
+    // {
+    //   url:"models/plane2/skin.glb",
+    //   positionPlane:new Vector3(0,1,0),
+    //   scalePlane:new Vector3(.2,.2,.2),
+    // },
+    // {
+    //   url:"models/plane5/skin.glb",
+    //   positionPlane:new Vector3(0,1,0),
+    //   scalePlane:new Vector3(.025,.025,.025),
+    // },]
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
     
     // rock positions
@@ -206,11 +232,9 @@ function Game(props) {
     const [score ,setScore] = useState(0)
 
     const webcamRef = useRef(null);
-    const canvasRef = useRef(null);
     const [action , setAction ] = useState()
 
   const runHandpose = async () => {
-    let d = "."
     const modelUrl = "../../../handpose/manifest.json"
     const net = await handpose.load(modelUrl);
     console.log("Handpose model loaded.");
@@ -258,7 +282,7 @@ function Game(props) {
         
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
-          <CarShow skin={skins[id]} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
+          <CarShow skinId={id} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
           <Preload all /> 
         </Suspense>
       </Canvas>
