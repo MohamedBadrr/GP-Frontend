@@ -21,6 +21,7 @@ import { Text } from '@react-three/drei';
 import rock from "../../../img/pngwing.com.png"
 import { Rock } from './Rock';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 
 // import { Html} from '@react-three/drei';
@@ -33,6 +34,7 @@ import axios from 'axios';
 
 
 export function CarShow(props){
+  const navigate= useNavigate(); 
   const [score ,setScore] = useState(0)
   const [lives ,setLives] = useState(3)
 
@@ -44,6 +46,13 @@ export function CarShow(props){
       data : null ,
       errors: null,
     })
+    useEffect(() => {
+      // Check if lives are 0 and set the game over scenario
+      if ( lives === 0) {
+        navigate("/selectskin");
+        console.log("Game Over!");
+      }
+    }, [lives]);
     useEffect(() => {
       setSkin({...skin , loading:true , err:[]});
         axios.get(`http://localhost:4000/skins/spacificSkins/${props.skinId}`,
@@ -166,6 +175,7 @@ export function CarShow(props){
       <Coins rockX={rockX} planePosition={props.planePosition}  setScore={setScore} score={score}/>
       </>
     }
+    
     <spotLight 
         color={[1, 0.25, 0.7]}
         intensity={100}
