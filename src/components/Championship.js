@@ -18,7 +18,7 @@ const Championship = (props) => {
     <button onClick={()=>{navigate('/game-round/300')}} style={{marginBottom: '10px'}}>Start Championship 3 (Costs 400 coins)</button>
      */}
    
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', margin:'10px' }}>
 <Card.Img variant="top" sizes="" src={props.photo} />
 <Card.Body>
   <Card.Title>{props.name} Costs {props.cost}</Card.Title>
@@ -27,7 +27,7 @@ const Championship = (props) => {
 </Card.Body>
 </Card>
 
-<p className="" style={{ color: "black" }}>Championships Remaining: {props.gameremaining}</p>
+
   </div></div>
   )
 }
