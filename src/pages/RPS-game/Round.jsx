@@ -7,14 +7,15 @@ import {useNavigate} from "react-router-dom"
 import rock from "../../images_Ai/rock.png";
 import paper from "../../images_Ai/paper.png";
 import scissor from "../../images_Ai/scissors.png";
+import Championship from "../../components/Championship";
+import RPSGame from './RPSGame';
+
+
+
+
 
 const Round = () => {
-    const [championshipsRemaining, setChampionshipsRemaining] = useState({
-        1: { cost: 50, remaining: 5 },
-        2: { cost: 200, remaining: 5 },
-        3: { cost: 400, remaining: 5 }
-      });
-    
+  
       const [coins, setCoins] = useState(500);
       const [qTable, setQTable] = useState({});
     const webcamRef = useRef(null);
@@ -29,7 +30,7 @@ const Round = () => {
     const [round, setround] = useState(0);
     const [airound, setairound] = useState(0);
     const [currentChampionship, setCurrentChampionship] = useState(null);
-    const [gamesRemaining, setGamesRemaining] = useState(5);
+    const [gamesRemaining, setGamesRemaining] = useState();
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -163,7 +164,7 @@ const Round = () => {
             (gesture === "scissors" && computerChoice === rock)
           ) {
             setWinner("Computer");
-            setround(airound +1);
+            setairound(airound +1);
             updateQTable("win");
           } else {
             setWinner("no one");
@@ -234,7 +235,7 @@ const Round = () => {
         setStarted(false);
         setCurrentChampionship(null);
       };
-      console.log(round)
+      
   return (
     <>
     <Webcam
