@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/select-skin.css" ;
-import { getAuthUser } from '../../../helper/Storage';
+import { getAuthUser , updateAuthUser } from '../../../helper/Storage';
 import axios from 'axios';
 
 export default function SelectSkin() {
@@ -27,6 +27,7 @@ export default function SelectSkin() {
           }
         }).then((resp) =>{
           setSkins({...skins, data : resp.data , loading:false , errors:""})
+          updateAuthUser(auth.token)
 
         }).catch((errors)=>{
             console.log(errors);
@@ -45,6 +46,8 @@ export default function SelectSkin() {
           }
         }).then((resp) =>{
           setLockedSkins({...Lockedskins, data : resp.data , loading:false , errors:""})
+          updateAuthUser(auth.token)
+
 
         }).catch((errors)=>{
             console.log(errors);
@@ -78,6 +81,7 @@ export default function SelectSkin() {
             }).then((resp)=>{
                 // setOneSkin({...oneSkin,loading:false});
                 console.log(resp);
+                updateAuthUser(auth.token)
             }).catch((err)=>{
               console.log(err);
                 setOneSkin({...oneSkin,loading:false,errors:err.response.data.errors})
@@ -121,7 +125,7 @@ export default function SelectSkin() {
               <img alt="plane1" src={item.imageUrl} />
               <h4 className="locked-title">{item.name}</h4>
               <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-              <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{buySkin(item.id)}}>Buy Now</button>
+              <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{buySkin(item.id)}}><a href="/selectskin">Buy Now</a></button>
               <i
                 className="fa-solid fa-lock lock-icon-skin"
                 onClick={()=>handleLockClick(item.id)} // Pass item.id for specific item
