@@ -54,7 +54,8 @@ export function CarShow(props){
       }
     }, [lives]);
     useEffect(() => {
-      setSkin({...skin , loading:true , err:[]});
+      if (auth.id) {
+        setSkin({...skin , loading:true , err:[]});
         axios.get(`http://localhost:4000/skins/spacificSkins/${props.skinId}`,
         {
           headers:{
@@ -66,6 +67,7 @@ export function CarShow(props){
         }).catch((errors)=>{
             setSkin({...skin , loading:false , errors:errors.response.data.errors[0].msg , finish : true})
         });
+      }
     
 
     }, [props.skinId])

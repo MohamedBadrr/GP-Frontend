@@ -4,13 +4,9 @@ import "./css/select-skin.css" ;
 import { getAuthUser } from '../../../helper/Storage';
 import axios from 'axios';
 
-
 export default function SelectSkin() {
   const [showBuyAlert, setShowBuyAlert] = useState({});
   const auth = getAuthUser();
-  const headers = {
-    token : auth.token,
-    }
     const [ skins , setSkins ] = useState({
       loading : false ,
       data : [],
@@ -22,10 +18,13 @@ export default function SelectSkin() {
       errors: null,
     })
     useEffect(() => {
-      setSkins({...skins , loading:true , err:[]});
+      if (auth.id) {
+        setSkins({...skins , loading:true , err:[]});
         axios.get("http://localhost:4000/skins/unlocked",
         {
-          headers: headers
+          headers:{
+            token : auth.token
+          }
         }).then((resp) =>{
           setSkins({...skins, data : resp.data , loading:false , errors:""})
 
@@ -33,13 +32,17 @@ export default function SelectSkin() {
             console.log(errors);
             setSkins({...skins , loading:false , errors:errors.response.data.errors[0].msg})
         });
+      }
     }, [])
 
     useEffect(() => {
-      setLockedSkins({...Lockedskins , loading:true , err:[]});
+      if (auth.id) {
+        setLockedSkins({...Lockedskins , loading:true , err:[]});
         axios.get("http://localhost:4000/skins/locked",
         {
-          headers:headers
+          headers:{
+            token : auth.token
+          }
         }).then((resp) =>{
           setLockedSkins({...Lockedskins, data : resp.data , loading:false , errors:""})
 
@@ -47,6 +50,7 @@ export default function SelectSkin() {
             console.log(errors);
             setLockedSkins({...Lockedskins , loading:false , errors:errors.response.data.errors[0].msg})
         });
+      }
     }, [])
 
     const handleLockClick = (itemId) => {
@@ -61,20 +65,24 @@ export default function SelectSkin() {
     })
     
     const buySkin = (id) =>{
-    setOneSkin({...oneSkin,loading:true})
-     axios.
-     post("http://localhost:4000/skins/buy/"+id,{
-      userId : auth.id
-     },
-      {
-        headers:headers
-      }).then((resp)=>{
-          // setOneSkin({...oneSkin,loading:false});
-          console.log(resp);
-      }).catch((err)=>{
-        console.log(err);
-          setOneSkin({...oneSkin,loading:false,errors:err.response.data.errors})
-      })
+    if (auth.id) {
+      setOneSkin({...oneSkin,loading:true})
+        axios.
+          post("http://localhost:4000/skins/buy/"+id,{
+            userId : auth.id
+          },
+            {
+              headers:{
+                token : auth.token
+              }
+            }).then((resp)=>{
+                // setOneSkin({...oneSkin,loading:false});
+                console.log(resp);
+            }).catch((err)=>{
+              console.log(err);
+                setOneSkin({...oneSkin,loading:false,errors:err.response.data.errors})
+            })
+    }
         // console.log(id);
     }
     

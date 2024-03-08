@@ -9,7 +9,7 @@ import Game from './pages/Game/Components/Game';
 import SelectSkin from './pages/Game/Components/SelectSkin';
 import RPSGame from './pages/RPS-game/RPSGame';
 import Round from './pages/RPS-game/Round';
-import Guset from './middleware/Gust';
+// import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
     {
     path: "",

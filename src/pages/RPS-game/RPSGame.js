@@ -20,9 +20,6 @@ import { getAuthUser } from "../../helper/Storage";
 
 const RPSGame = () => {
   const auth = getAuthUser();
-  const headers = {
-    token : auth.token,
-    }
   const [coins, setCoins] = useState(100);
   const navigate = useNavigate();
   const [ champdata , setChampdata ] = useState({
@@ -31,10 +28,13 @@ const RPSGame = () => {
     err : []
   })
   useEffect(() => {
-    setChampdata({...champdata , loading:true , err:[]});
+    if (auth.id) {
+      setChampdata({...champdata , loading:true , err:[]});
       axios.get("http://localhost:4000/RPS-game/allChamps",
       {
-        headers: headers
+        headers:{
+          token : auth.token
+        }
       }).then((resp) =>{
         setChampdata({...champdata, data : resp.data , loading:false , err:""})
   
@@ -42,6 +42,7 @@ const RPSGame = () => {
           console.log(errors);
           setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
       });
+    }
   }, [])
   return (
     <div className="all" >

@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <>
     {
-      pathname === "/login" || pathname === "/register" || pathname === "/game" || pathname === "/RPS-Game"? (
+      pathname === "/login" || pathname === "/register" || pathname === "/game" || pathname === "/game-round/*"? (
         ""
       ) : (
         <footer
