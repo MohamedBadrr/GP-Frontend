@@ -50,7 +50,7 @@ const RPSGame = () => {
         <div className="cards-container">
           
           {
-            champdata.data.map((item)=>(<Championship name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
+            champdata.data.map((item)=>(<Championship id={item.id} name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
           }
         </div>
     </div>

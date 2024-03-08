@@ -8,7 +8,6 @@ import "../pages/RPS-game/Round.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 const Championship = (props) => {
-   
   const navigate = useNavigate();
   return (
     <div><div>
@@ -23,7 +22,7 @@ const Championship = (props) => {
 <Card.Body>
   <Card.Title>{props.name} Costs {props.cost}</Card.Title>
   
-  <Button className="championbutton" variant="primary"onClick={()=>{navigate('/game-round/50')}}>Start Championship</Button>
+  <Button className="championbutton" variant="primary"onClick={()=>{navigate('/game-round/'+props.id)}}>Start Championship</Button>
 </Card.Body>
 </Card>
 

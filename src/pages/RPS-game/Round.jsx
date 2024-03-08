@@ -3,12 +3,14 @@ import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { drawHand } from "../../utilities";
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useParams, useSearchParams} from "react-router-dom"
 import rock from "../../images_Ai/rock.png";
 import paper from "../../images_Ai/paper.png";
 import scissor from "../../images_Ai/scissors.png";
 import Championship from "../../components/Championship";
 import RPSGame from './RPSGame';
+import axios from 'axios';
+import { getAuthUser } from '../../helper/Storage';
 
 
 
@@ -16,8 +18,8 @@ import RPSGame from './RPSGame';
 
 const Round = () => {
   
-      const [coins, setCoins] = useState(500);
-      const [qTable, setQTable] = useState({});
+    const [coins, setCoins] = useState(500);
+    const [qTable, setQTable] = useState({});
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     const [gesture, setGesture] = useState(null);
@@ -32,7 +34,14 @@ const Round = () => {
     const [currentChampionship, setCurrentChampionship] = useState(null);
     const [gamesRemaining, setGamesRemaining] = useState();
     const navigate = useNavigate();
-  
+    // const [queryParameters] = useSearchParams();
+    const {id} = useParams();
+    const auth = getAuthUser();
+    const [ champdata , setChampdata ] = useState({
+      loading : false,
+      data : {},
+      err : []
+    })
     useEffect(() => {
           const runHandpose = async () => {
             const net = await handpose.load();
@@ -47,6 +56,24 @@ const Round = () => {
     
           runHandpose();
       }, []);
+
+      useEffect(() => {
+        if (auth) {
+          setChampdata({...champdata , loading:true , err:[]});
+          axios.get("http://localhost:4000/RPS-game/spacificChamp/"+id,
+          {
+            headers:{
+              token : auth.token
+            }
+          }).then((resp) =>{
+            setChampdata({...champdata, data : resp.data , loading:false , err:""})
+            console.log(champdata.data);
+          }).catch((errors)=>{
+              console.log(errors);
+              setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
+          });
+        }
+      }, [])
     
       const detect = async (net) => {
         if (
@@ -65,7 +92,6 @@ const Round = () => {
           canvasRef.current.height = videoHeight;
     
           const hand = await net.estimateHands(video);
-          console.log(hand);
     
           if (hand.length > 0) {
             setHandDetected(true);
@@ -211,7 +237,7 @@ const Round = () => {
         }
       };
     
-    
+      
       const endChampionship = () => {
 
         if (round > airound) {
@@ -235,7 +261,15 @@ const Round = () => {
         setStarted(false);
         setCurrentChampionship(null);
       };
-      
+      const startChampionship = () => {
+        const championshipCost = champdata.data.price ; // Example cost
+        if (coins >= championshipCost) {
+            setCoins(coins - championshipCost);
+            setGamesRemaining( champdata.data.game_remaining ); // Example number of games
+        } else {
+            alert("Not enough coins to enter the championship.");
+        }
+    };
   return (
     <>
     <Webcam
