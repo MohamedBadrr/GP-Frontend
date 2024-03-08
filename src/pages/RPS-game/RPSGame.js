@@ -15,34 +15,41 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Championship from "../../components/Championship";
 import "./Round.css";
+import axios from 'axios';
+import { getAuthUser } from "../../helper/Storage";
+
 const RPSGame = () => {
+  const auth = getAuthUser();
+  const headers = {
+    token : auth.token,
+    }
   const [coins, setCoins] = useState(100);
   const navigate = useNavigate();
-const data =[{
-  name: "zikoo"  ,
-  photo: zikoo ,
-  cost: 50 ,
-  gameremaining: 3 ,
-
-},{
-  name: "zizo"  ,
-  photo: zizo ,
-  cost: 200 ,
-  gameremaining: 5 ,
-},{
-  name: "badr"  ,
-  photo: badr ,
-  cost: 400 ,
-  gameremaining: 7 ,
-}]
+  const [ champdata , setChampdata ] = useState({
+    loading : false,
+    data : [],
+    err : []
+  })
+  useEffect(() => {
+    setChampdata({...champdata , loading:true , err:[]});
+      axios.get("http://localhost:4000/RPS-game/allChamps",
+      {
+        headers: headers
+      }).then((resp) =>{
+        setChampdata({...champdata, data : resp.data , loading:false , err:""})
+  
+      }).catch((errors)=>{
+          console.log(errors);
+          setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
+      });
+  }, [])
   return (
     <div className="all" >
-      <p className="yourcoins1" style={{ color: "white" }}>You have {coins} coins</p>
-      <p className="yourcoins" style={{ color: "white" }}>choose who you can play with him </p>
+      <p className="yourcoins1" style={{ color: "white" }}>choose who you can play with him</p>
         <div className="cards-container">
           
           {
-            data.map((item)=>(<Championship name={item.name}  photo={item.photo} cost={item.cost} gameremaining={item.gameremaining}/>))
+            champdata.data.map((item)=>(<Championship name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
           }
         </div>
     </div>

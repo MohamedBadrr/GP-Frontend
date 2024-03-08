@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { getAuthUser, removeAuthUser } from '../../helper/Storage';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 export default function Header() {
@@ -14,8 +15,28 @@ export default function Header() {
   const { pathname} = location;
 
   const auth = getAuthUser();
-
-
+  const headers = {
+    token : auth.token,
+    }
+  const [user, setUser] = useState({
+    loading : false,
+    data : [] ,
+    err : []
+  });
+  useEffect(() => {
+    setUser({...user , loading:true , err:[]});
+      axios.get("http://localhost:4000/user/info",
+      {
+        headers: headers
+      }).then((resp) =>{
+        console.log(resp.data);
+        setUser({...user, data : resp.data , loading:false , err:""})
+  
+      }).catch((errors)=>{
+          console.log(errors);
+          setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
+      });
+  }, [])
   
   const Logout =()=>{
     removeAuthUser();
@@ -59,10 +80,10 @@ export default function Header() {
                 <>
                 <div className='conis-xp'>
                 <li class="conis">
-                    <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{auth.coins}</span></h4>
+                    <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{user.data.coins}</span></h4>
                 </li>
                 <li class="xp">
-                    <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{auth.xp}</span></h4>
+                    <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{user.data.xp}</span></h4>
                 </li>
                 </div>
                 </>
