@@ -54,7 +54,7 @@ export function CarShow(props){
       }
     }, [lives]);
     useEffect(() => {
-      if (auth.id) {
+      if (auth) {
         setSkin({...skin , loading:true , err:[]});
         axios.get(`http://localhost:4000/skins/spacificSkins/${props.skinId}`,
         {

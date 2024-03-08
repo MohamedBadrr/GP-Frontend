@@ -18,7 +18,7 @@ export default function SelectSkin() {
       errors: null,
     })
     useEffect(() => {
-      if (auth.id) {
+      if (auth) {
         setSkins({...skins , loading:true , err:[]});
         axios.get("http://localhost:4000/skins/unlocked",
         {
@@ -36,7 +36,7 @@ export default function SelectSkin() {
     }, [])
 
     useEffect(() => {
-      if (auth.id) {
+      if (auth) {
         setLockedSkins({...Lockedskins , loading:true , err:[]});
         axios.get("http://localhost:4000/skins/locked",
         {
@@ -65,7 +65,7 @@ export default function SelectSkin() {
     })
     
     const buySkin = (id) =>{
-    if (auth.id) {
+    if (auth) {
       setOneSkin({...oneSkin,loading:true})
         axios.
           post("http://localhost:4000/skins/buy/"+id,{

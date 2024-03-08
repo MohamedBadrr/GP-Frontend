@@ -20,12 +20,8 @@ export default function Header() {
     data : [] ,
     err : []
   });
-  const [headers ,setheaders] = useState()
-  if (auth.id) {
-  }
   useEffect(() => {
-    if (auth.id) {
-      setheaders({headers : auth.token})
+    if (auth) {
       setUser({...user , loading:true , err:[]});
       axios.get("http://localhost:4000/user/info",
       {
@@ -41,7 +37,6 @@ export default function Header() {
           setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
       });
     }
-    console.log(auth.id);
   }, [])
   
   const Logout =()=>{

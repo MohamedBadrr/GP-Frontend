@@ -28,7 +28,7 @@ const RPSGame = () => {
     err : []
   })
   useEffect(() => {
-    if (auth.id) {
+    if (auth) {
       setChampdata({...champdata , loading:true , err:[]});
       axios.get("http://localhost:4000/RPS-game/allChamps",
       {
