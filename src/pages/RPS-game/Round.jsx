@@ -55,7 +55,7 @@ const Round = () => {
             setLoading("Handpose model loaded.")
             const intervalId = setInterval(() => {
               detect(net);
-            }, 3000);
+            }, 5000);
     
             return () => clearInterval(intervalId);
           };
@@ -198,9 +198,9 @@ const Round = () => {
       useEffect(() => {
         setGamesRemaining(champdata.data.game_remaining );
         console.log(gamesRemaining);
-        if (gesture && handDetected) {
+        if (gesture ) {
           const computerChoice = generateComputerChoice();
-          setComputerChoice(computerChoice);
+          
          
 
     
@@ -211,6 +211,7 @@ const Round = () => {
           ) {
             setWinner("Player");
             setGamesRemaining(gamesRemaining -1);
+            setComputerChoice(computerChoice);
             updateQTable("loss");
             setround(round +1);
           } else if (
@@ -220,11 +221,13 @@ const Round = () => {
           ) {
             setWinner("Computer");
             setGamesRemaining(gamesRemaining -1);
+            setComputerChoice(computerChoice);
             setairound(airound +1);
             updateQTable("win");
           } else {
             setWinner("no one");
             setGamesRemaining(gamesRemaining -1);
+            setComputerChoice(computerChoice);
             updateQTable("draw");
            
            
@@ -344,7 +347,7 @@ const Round = () => {
             height: 350,
         }}
         />
-        {gesture && (
+        {gesture && handDetected && (
         <div>
             {computerChoice && <p style={{ color: "black" }}> <img src={computerChoice} alt="Computer choice" className='computer-player'></img></p>}
         </div>
