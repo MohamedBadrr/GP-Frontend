@@ -1,4 +1,4 @@
-
+import axios from "axios";
 
 export const setAuthUser = (data) =>{
 	// save object to localstorage 
@@ -11,7 +11,21 @@ export const getAuthUser = (data) =>{
     }
 };
 
-
+export const updateAuthUser = (token) =>{
+    let user ;
+    axios.get("http://localhost:4000/user/info",
+      {
+        headers:{
+          token : token
+        }
+      }).then((resp) =>{
+          user = resp.data
+          localStorage.setItem("user", JSON.stringify(user));
+      }).catch((errors)=>{
+          console.log(errors);
+      });
+      
+}
 export const removeAuthUser = () =>{
     if(localStorage.getItem("user")) localStorage.removeItem("user");
 };
