@@ -235,7 +235,7 @@ const Round = () => {
             endChampionship();
           }
         }
-      }, [gesture, handDetected , champdata,user]);
+      }, [gesture, handDetected , champdata]);
     
       const updateQTable = (result) => {
         if (playerPatterns.length >= 2 && aiPatterns.length >= 2) {
@@ -282,13 +282,11 @@ const Round = () => {
           alert("computer win");
           navigate('/RPS-Game');
     
+        }else {
+          alert("try agian");
         }
       
         // Reset patterns and gamesRemaining
-        setPlayerPatterns([]);
-        setAiPatterns([]);
-        setStarted(false);
-        setCurrentChampionship(null);
       };
       // const startChampionship = () => {
         
