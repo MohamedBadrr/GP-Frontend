@@ -22,3 +22,25 @@
 .all{
   background-color: black;
 }
+.Loading-Page{
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playing{
+  height: 110vh;
+  padding-top: 80px;
+}
+.players{
+  display: flex;
+  justify-content: space-around;
+}
+.player-name{
+  margin-left: 100px;
+}
+.computer-player{
+  margin-left: 60px;
+  height: 450px;
+}

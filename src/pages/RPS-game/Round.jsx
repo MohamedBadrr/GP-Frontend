@@ -32,6 +32,7 @@ const Round = () => {
     const [airound, setairound] = useState(0);
     const [currentChampionship, setCurrentChampionship] = useState(null);
     const [gamesRemaining, setGamesRemaining] = useState();
+    const [loadingPage, setLoading] = useState("");
     const navigate = useNavigate();
     // const [queryParameters] = useSearchParams();
     const {id} = useParams();
@@ -51,7 +52,7 @@ const Round = () => {
           const runHandpose = async () => {
             const net = await handpose.load();
             console.log("Handpose model loaded.");
-    
+            setLoading("Handpose model loaded.")
             const intervalId = setInterval(() => {
               detect(net);
             }, 3000);
@@ -299,7 +300,18 @@ const Round = () => {
     // };
     
   return (
-    <>
+    loadingPage?
+    <div className='playing container'>
+     <div className='players'>
+     <div>
+     <h1 className='text-dark'>Computer</h1>
+    
+     </div>
+     <div>
+     <h1 className='text-dark  player-name'>{auth.name}</h1>
+        {gesture && (<h3 className='text-dark'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
+     </div>
+     </div>
     <Webcam
         ref={webcamRef}
         mirrored={true}
@@ -307,12 +319,15 @@ const Round = () => {
             position: "absolute",
             marginLeft: "auto",
             left: 0,
-            right: 0,
-            top: 100,
+            right: 80,
+            top: 150,
             textAlign: "center",
             zIndex: 9,
-            width: 640,
-            height: 480,
+            width: 500,
+            height: 400,
+            borderRadius:"100px",
+            marginTop:"60px",
+            marginRight:"60px"
         }}
         />
         <canvas
@@ -325,18 +340,21 @@ const Round = () => {
             right: 20,
             textAlign: "center",
             zIndex: 9,
-            width: 640,
-            height: 480,
+            width: 540,
+            height: 350,
         }}
         />
         {gesture && (
         <div>
-            <p style={{ color: "black" }}>Your gesture: {gesture}</p>
-            {computerChoice && <p style={{ color: "black" }}>Computer choice: <img src={computerChoice} alt="Computer choice"></img></p>}
-            {winner && <p style={{ color: "black" }}>{winner} wins!</p>}
+            {computerChoice && <p style={{ color: "black" }}> <img src={computerChoice} alt="Computer choice" className='computer-player'></img></p>}
         </div>
         )}
-    </>
+                {gesture && (<>{winner && <h1 className='text-center' style={{ color: "black" }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
+    </div>
+    :
+    <div className='Loading-Page'>
+        <i class="fa-solid fa-spinner fa-5x text-dark mt-5 fa-spin">
+    </i></div>
   )
 }
 
