@@ -18,7 +18,6 @@ import { getAuthUser } from '../../helper/Storage';
 
 const Round = () => {
   
-    const [coins, setCoins] = useState(500);
     const [qTable, setQTable] = useState({});
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
@@ -37,6 +36,12 @@ const Round = () => {
     // const [queryParameters] = useSearchParams();
     const {id} = useParams();
     const auth = getAuthUser();
+    
+    const [user, setUser] = useState({
+      loading : false,
+      data : [] ,
+      err : []
+    });
     const [ champdata , setChampdata ] = useState({
       loading : false,
       data : {},
@@ -57,6 +62,24 @@ const Round = () => {
           runHandpose();
       }, []);
 
+      useEffect(() => {
+        if (auth) {
+          setUser({...user , loading:true , err:[]});
+          axios.get("http://localhost:4000/user/info",
+          {
+            headers:{
+              token : auth.token
+            }
+          }).then((resp) =>{
+            console.log(resp.data);
+            setUser({...user, data : resp.data , loading:false , err:""})
+      
+          }).catch((errors)=>{
+              console.log(errors);
+              setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
+          });
+        }
+      }, [])
       useEffect(() => {
         if (auth) {
           setChampdata({...champdata , loading:true , err:[]});
@@ -172,9 +195,13 @@ const Round = () => {
       };
    
       useEffect(() => {
+        setGamesRemaining(champdata.data.game_remaining );
+        console.log(gamesRemaining);
         if (gesture && handDetected) {
           const computerChoice = generateComputerChoice();
           setComputerChoice(computerChoice);
+         
+
     
           if (
             (gesture === "rock" && computerChoice === scissor) ||
@@ -182,6 +209,7 @@ const Round = () => {
             (gesture === "scissors" && computerChoice === paper)
           ) {
             setWinner("Player");
+            setGamesRemaining(gamesRemaining -1);
             updateQTable("loss");
             setround(round +1);
           } else if (
@@ -190,21 +218,24 @@ const Round = () => {
             (gesture === "scissors" && computerChoice === rock)
           ) {
             setWinner("Computer");
+            setGamesRemaining(gamesRemaining -1);
             setairound(airound +1);
             updateQTable("win");
           } else {
             setWinner("no one");
+            setGamesRemaining(gamesRemaining -1);
             updateQTable("draw");
            
+           
           }
+          console.log(gamesRemaining);
+          console.log(champdata.data.game_remaining);
           
-    
-          setGamesRemaining(prevGames => prevGames - 1);
           if (gamesRemaining === 0) {
             endChampionship();
           }
         }
-      }, [gesture, handDetected]);
+      }, [gesture, handDetected , champdata,user]);
     
       const updateQTable = (result) => {
         if (playerPatterns.length >= 2 && aiPatterns.length >= 2) {
@@ -242,34 +273,33 @@ const Round = () => {
 
         if (round > airound) {
           setWinner("Player");
-          setCoins(coins +100);
+          setUser(user.data.coins + 100);
           alert("player win");
           navigate('/RPS-Game')
       
-        } else if( airound > round)  {
+        } else if ( airound > round)  {
           setWinner("Computer");
           alert("computer win");
           navigate('/RPS-Game');
     
-        }else if(round = airound){
-          setGamesRemaining(gamesRemaining +1);
         }
-        
+      
         // Reset patterns and gamesRemaining
         setPlayerPatterns([]);
         setAiPatterns([]);
         setStarted(false);
         setCurrentChampionship(null);
       };
-      const startChampionship = () => {
-        const championshipCost = champdata.data.price ; // Example cost
-        if (coins >= championshipCost) {
-            setCoins(coins - championshipCost);
-            setGamesRemaining( champdata.data.game_remaining ); // Example number of games
-        } else {
-            alert("Not enough coins to enter the championship.");
-        }
-    };
+      // const startChampionship = () => {
+        
+      //   if (user.data.coins >= champdata.data.price) {
+            
+      //       setGamesRemaining( gamesRemaining === champdata.data.game_remaining ); 
+      //   } else {
+      //       alert("Not enough coins to enter the championship.");
+      //   }
+    // };
+    
   return (
     <>
     <Webcam

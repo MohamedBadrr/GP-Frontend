@@ -20,7 +20,7 @@ import { getAuthUser } from "../../helper/Storage";
 
 const RPSGame = () => {
   const auth = getAuthUser();
-  const [coins, setCoins] = useState(100);
+  
   const navigate = useNavigate();
   const [ champdata , setChampdata ] = useState({
     loading : false,
