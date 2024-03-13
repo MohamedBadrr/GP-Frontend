@@ -22,6 +22,7 @@ import rock from "../../../img/pngwing.com.png"
 import { Rock } from './Rock';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import LoadingPage from '../../LoadingPage/LoadingPage';
 // import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 
 // import { Html} from '@react-three/drei';
@@ -221,7 +222,7 @@ export function CarShow(props){
   );
 }
 
-function Game(props) { 
+function Game() { 
   const [queryParameters] = useSearchParams();
     const id = queryParameters.get("id")
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
@@ -290,7 +291,8 @@ function Game(props) {
 
   
   return (
-    <>
+    round.start?
+      <>
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
           <CarShow skinId={id} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
@@ -312,7 +314,7 @@ function Game(props) {
             
           }}
         />
-    </>
+    </>:<LoadingPage />
   );
 }
 
