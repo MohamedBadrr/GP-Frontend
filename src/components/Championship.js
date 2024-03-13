@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 
 import { Link , useNavigate } from "react-router-dom";
@@ -8,29 +7,42 @@ import "../pages/RPS-game/Round.css";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getAuthUser } from "../helper/Storage";
+import axios from 'axios';
 const auth = getAuthUser()
 const Championship = (props) => {
   const navigate = useNavigate();
   return (
-    <div><div>
-    {/* 
-    <button onClick={()=>{navigate('/game-round/50')}} style={{marginBottom: '10px'}}>Start Championship 1 (Costs 50 coins)</button>
-    <button onClick={()=>{navigate('/game-round/100')}} style={{marginBottom: '10px'}}>Start Championship 2 (Costs 200 coins)</button>
-    <button onClick={()=>{navigate('/game-round/300')}} style={{marginBottom: '10px'}}>Start Championship 3 (Costs 400 coins)</button>
-     */}
-    <Card style={{ width: '18rem', margin:'10px' }}>
-<Card.Img variant="top" sizes="" src={props.photo} />
-<Card.Body>
-  <Card.Title>{props.name} Costs {props.cost}</Card.Title>
-  {
-    ( props.cost <= auth.coins ) &&   <Button className="championbutton" variant="primary"onClick={()=>{navigate('/game-round/'+props.id)}}>Start Championship</Button>
-  }
-</Card.Body>
-</Card>
+   
+    
+    <div className="mt-5">
+       <hr />
+       
+          <div className=" container cards-container locked-skins-contanier">
+          
+          {  (
+            <div className="lockedskin" >
+              {
+                
+              }
+              {/* <Link to={`/game?id=${item.id}`}> */}
+              <img alt="plane1" src={props.photo} />
+              <h4 className="locked-title">{props.name}</h4>
+             
+              {
+              (props.cost <= auth.coins)&&
+              <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{navigate('/game-round/'+props.id)}}>Play Now</button>
+}
+              
+            </div>
+          )}
+          </div>
+          </div>
 
 
-  </div></div>
+  
   )
 }
 
-export default Championship
+export default Championship;
+
+

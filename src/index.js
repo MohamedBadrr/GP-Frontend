@@ -20,5 +20,3 @@ root.render(
     <RouterProvider router={routes} />
   </React.StrictMode>
 );
-
-

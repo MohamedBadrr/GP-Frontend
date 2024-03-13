@@ -19,9 +19,7 @@
 
 
 }
-.all{
-  background-color: black;
-}
+
 .Loading-Page{
   height: 100vh;
   text-align: center;
@@ -43,4 +41,78 @@
 .computer-player{
   margin-left: 60px;
   height: 450px;
+}
+.skins-container{
+  /* background-image: url(../../../../img/herobg.png) ; */
+  /* background: rgb(2,0,36); */
+  background: linear-gradient(90deg, #0b0f18 26%, rgb(11, 68, 94) 54%, #0b0f18 79%);
+  background-position: center center ;
+  background-size: 100% 100%;
+  padding-top:0px ;
+  height: fit-content;
+}
+.title-skins{
+  text-align: center;
+  padding-top: 20px;
+  color: #ffffff;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 60px;
+  font-weight: 500;
+  letter-spacing: .6rem;
+}
+.cards-container{
+  
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.cardSkin{
+  width: 285px;
+  height: 350px;
+  background-color: transparent !important;
+  text-align: center;
+  border: 1px transparent(180, 179, 179) solid !important;
+  margin-left: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px white;
+}
+.cardSkin img{
+  width: 100%;
+  transition: 1.0s;
+}
+.cardSkin img:hover{
+  transform: rotate(360deg) scale(1.9);
+}
+.cardSkin h4{
+text-decoration: none;
+font-size: 40px !important;
+color: rgb(177, 197, 239);
+}
+.cardSkin a{
+  text-decoration: none;
+}
+
+
+
+
+
+
+.alert-buy{
+  z-index: 999;
+}
+
+.locked-price{
+  font-size: 25px;
+  color: #5783c0;
+}
+.play-now a {
+  color: white;
+}
+.main-title-skins{
+  color: #5783c0;
+}
+.locked-skins-contanier{
+ padding-bottom: 50px;
+ padding-top: 0px;
 }

@@ -17,6 +17,8 @@ import Championship from "../../components/Championship";
 import "./Round.css";
 import axios from 'axios';
 import { getAuthUser } from "../../helper/Storage";
+import { StrictMode } from "react";
+import Plxx from "../../components/Plxx";
 
 const RPSGame = () => {
   const auth = getAuthUser();
@@ -51,9 +53,13 @@ const RPSGame = () => {
           
           {
             champdata.data.map((item)=>(<Championship id={item.id} name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
+            
           }
+          {<Plxx/>}
         </div>
+        
     </div>
+    
   );
 };
 
