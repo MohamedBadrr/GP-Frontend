@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
-import {  useLocation } from 'react-router-dom';
+import {  Link, useLocation } from 'react-router-dom';
+
 
 export default function Footer() {
   const location = useLocation()
@@ -47,71 +48,55 @@ export default function Footer() {
 
     <section >
       <div class="container text-center text-md-start mt-5" >
-        <div class="row mt-3" >
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 m">
-            <h6 class="text-uppercase fw-bold">LOGO</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style={{width:' 60px', backgroundColor: '#7c4dff', height: "2px"}}
-                />
+        <div class="row mt-3 pt-2 pb-0" >
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
+
+          <div className='titlefooter'>
+          <h2 className='special-color ms-3'>
+            END
+          </h2>
+            <h2 className=''>
+              GAME
+            </h2>
+          </div>
+
+
+
+
+
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-2 middle-text" >
             <p>
-              Explition of the site
+              <Link href="#!" class="  planelink">Plane Game</Link>
+            </p>
+            <p>
+            <Link href="#!" class="ms-3">Rock Paper Seccior</Link>
             </p>
           </div>
 
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <h6 class="text-uppercase fw-bold">Products</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style={{width:' 60px', backgroundColor: '#7c4dff', height: "2px"}}
-                />
-            <p>
-              <a href="#!" class="text-white">Game1</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Game2</a>
-            </p>
-          </div>
 
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <h6 class="text-uppercase fw-bold">Useful links</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
-                />
-            <p>
-              <a href="#!" class="text-white">Your Profile</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">About Us</a>
-            </p>
-            <p>
-              <a href="#!" class="text-white">Help</a>
-            </p>
+          <div class="col-md-3 col-lg-2 text-center col-xl-2 mx-auto mt-3 last-text">
+                <p>
+                  <a href="#!" class="profileLink">Your Profile</a>
+                </p>
+                  <p>
+                    <a href="#!" class="">About Us</a>
+                  </p>
           </div>
-
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <h6 class="text-uppercase fw-bold">Contact</h6>
-            <hr
-                class="mb-4 mt-0 d-inline-block mx-auto"
-                style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
-                />
-            <p><i class="fas fa-home mr-3"></i> TeamGamed Link</p>
-            <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
-            <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-          </div>
+          
         </div>
       </div>
-    </section>
-
-    <div
-        class="text-center p-3"
+      <div
+        className="text-center p-3 ps-5 fw-bold"
         style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}
         >
-      © 2023 Copyright: TeamGamed
-      
+      © 2023 Copyright : <span className='special-color'>TeamGamed</span>
     </div>
+    </section>
+
+
+
   </footer>
       )
     }
