@@ -14,7 +14,6 @@ export function SpaceShip (props) {
     const modelUrl = props.skin.modelUrl
     const scale = props.skin.scale
     const positionPlane = props.skin.positionPlane
-    console.log(props.skin);
     const Speed = 0.2
     const gltf = useLoader(
         GLTFLoader,

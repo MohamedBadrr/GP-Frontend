@@ -46,13 +46,24 @@ export function CarShow(props){
       data : null ,
       errors: null,
     })
+    
     useEffect(() => {
       // Check if lives are 0 and set the game over scenario
       if ( lives === 0) {
         navigate("/selectskin");
         console.log("Game Over!");
       }
+      
     }, [lives]);
+    
+    if (props.round.start) {
+      setTimeout(() => {
+        props.setRound({...props.round , time : props.round.time - 1 })
+      }, 1000);
+    }
+    if (props.round.time === 0 && props.round.start ){
+      navigate("/selectskin");
+    }
     useEffect(() => {
       if (auth) {
         setSkin({...skin , loading:true , err:[]});
@@ -63,15 +74,14 @@ export function CarShow(props){
           }
         }).then((resp) =>{
           setSkin({...skin, data : resp.data , loading:false , errors:"" , finish : true})
-
         }).catch((errors)=>{
-            setSkin({...skin , loading:false , errors:errors.response.data.errors[0].msg , finish : true})
+          setSkin({...skin , loading:false , errors:errors.response.data.errors[0].msg , finish : true})
         });
       }
-    
-
     }, [props.skinId])
-    console.log(skin);
+
+    
+    
   return (
     <>
     <Text
@@ -102,7 +112,7 @@ export function CarShow(props){
       <mesh position={[0, 0, 0]}>
         <meshStandardMaterial color="red" />
         </mesh>
-      {/* <Text
+      <Text
         position={[3.6, 2.17, 0]}
         fontSize={.15}
         font="bold 30px Arial"
@@ -112,8 +122,8 @@ export function CarShow(props){
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
       > 
-        Heigh Score :
-      </Text> */}
+        Heigh Score : {props.round.time}
+      </Text>
       {/* <Text
         position={[3, 2.17, 0]}
         fontSize={.15}
@@ -214,21 +224,6 @@ export function CarShow(props){
 function Game(props) { 
   const [queryParameters] = useSearchParams();
     const id = queryParameters.get("id")
-    // const skins = [{
-    //   url:"models/plane1/skin.glb",
-    //   positionPlane:new Vector3(0,1,0),
-    //   scalePlane:new Vector3(1,1,1),
-    // },
-    // {
-    //   url:"models/plane2/skin.glb",
-    //   positionPlane:new Vector3(0,1,0),
-    //   scalePlane:new Vector3(.2,.2,.2),
-    // },
-    // {
-    //   url:"models/plane5/skin.glb",
-    //   positionPlane:new Vector3(0,1,0),
-    //   scalePlane:new Vector3(.025,.025,.025),
-    // },]
     const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
     
     // rock positions
@@ -239,7 +234,7 @@ function Game(props) {
     ]    
 
     const [round , setRound] = useState({
-      time : 1.5,
+      time : 45,
       RequireCoins : 20,
       start: false,
       finish : false,
@@ -252,8 +247,8 @@ function Game(props) {
     const modelUrl = "../../../handpose/manifest.json"
     const net = await handpose.load(modelUrl);
     console.log("Handpose model loaded.");
-    setRound({round , start:true })
-    //  Loop and detect hands
+    setRound({...round , start:true })
+    //  Loop and detect hands 
     setInterval(() => {
       detect(net);
     }, 500);
@@ -288,13 +283,14 @@ function Game(props) {
     runHandpose();
   }, [])
   
+  const [startGame , setStartGame] = useState({
+    flag : false,
+    time : 30000,
+  }); 
+
   
   return (
     <>
-
-        
-
-        
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
           <CarShow skinId={id} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
