@@ -11,6 +11,7 @@ import Championship from "../../components/Championship";
 import RPSGame from './RPSGame';
 import axios from 'axios';
 import { getAuthUser } from '../../helper/Storage';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 
 
@@ -355,9 +356,7 @@ const Round = () => {
                 {gesture && (<>{winner && <h1 className='text-center' style={{ color: "black" }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
     </div>
     :
-    <div className='Loading-Page'>
-        <i class="fa-solid fa-spinner fa-5x text-dark mt-5 fa-spin">
-    </i></div>
+    <LoadingPage />
   )
 }
 

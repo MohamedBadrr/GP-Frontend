@@ -99,7 +99,7 @@ export default function SelectSkin() {
           {
           skins.data.map((item)=>{
             return (
-              <div className="cardSkin">
+              <div className="cardSkin" key={item.id}>
                 <Link to={`/game?id=${item.id}`}>
                   <img alt="plane1" src={item.imageUrl} />
                   <h4>{item.name}</h4>

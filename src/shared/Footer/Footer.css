@@ -6,3 +6,49 @@
     text-align: left!important;
     margin-top: -49px!important;
 }
+.titlefooter h2{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+}
+.middle-text{
+    margin-right: 20px !important;
+}
+.middle-text a{
+    text-decoration: none;
+    color:#517fbe ;
+    font-size: 19px;
+    font-weight: bold;
+    transition: .5s all;
+    margin-left: -25px !important;
+}
+.middle-text a:hover{
+    color:white !important ;
+}
+.last-text a{
+    text-decoration: none;
+    color:#ffffff ;
+    font-size: 18px;
+    font-weight: bold;
+    transition: .5s all;
+}
+.last-text a:hover{
+    color: #517fbe !important ;
+ 
+}
+.planelink{
+    color: white !important;
+    text-align: center !important;
+    padding-left: 33px !important;
+}
+.middle-text .planelink:hover{
+    color: #517fbe !important ;
+    border: none;
+    
+}
+.profileLink{
+    color: #517fbe !important ;
+}
+.last-text .profileLink:hover{
+    color: white !important ;
+}

@@ -29,11 +29,9 @@ export default function Header() {
           token : auth.token
         }
       }).then((resp) =>{
-        console.log(resp.data);
         setUser({...user, data : resp.data , loading:false , err:""})
   
       }).catch((errors)=>{
-          console.log(errors);
           setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
       });
     }
