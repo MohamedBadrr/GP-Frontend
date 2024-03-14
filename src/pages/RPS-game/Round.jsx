@@ -92,7 +92,7 @@ const Round = () => {
             }
           }).then((resp) =>{
             setChampdata({...champdata, data : resp.data , loading:false , err:""})
-            console.log(champdata.data);
+            setGamesRemaining( resp.data.game_remaining );
           }).catch((errors)=>{
               console.log(errors);
               setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
@@ -145,10 +145,6 @@ const Round = () => {
             } else {
               setGesture("scissors");
             }
-            
-            
-            
-    
             // Update player's pattern
             setPlayerPatterns(prevPatterns => [...prevPatterns, gesture]);
             // Update AI's pattern and make a choice
@@ -197,14 +193,9 @@ const Round = () => {
       };
    
       useEffect(() => {
-        setGamesRemaining(champdata.data.game_remaining );
         console.log(gamesRemaining);
         if (gesture ) {
           const computerChoice = generateComputerChoice();
-          
-         
-
-    
           if (
             (gesture === "rock" && computerChoice === scissor) ||
             (gesture === "paper" && computerChoice === rock) ||
