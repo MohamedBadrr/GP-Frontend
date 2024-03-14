@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import logo from "../../img/LOGOO.png"
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { getAuthUser, removeAuthUser } from '../../helper/Storage';
@@ -49,7 +50,9 @@ export default function Header() {
       ) : (
         <nav class="navbar navbar-expand-lg text-white text-center our-navBar">
         <div class="container">
-          <Link class="navbar-brand text-white " to="/"><span className='editBarnd'>END</span>GAME</Link>
+          <Link class="navbar-brand text-white " to="/home"> <img src={logo} className='logoHeader' /> </Link>
+          {/* <Link class="navbar-brand text-white " to="/home"><span className='editBarnd'>END</span>GAME</Link> */}
+          <Link class="navbar-brand text-white " to="/home"></Link>
           <button class="navbar-toggler text-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon text-white "></span>
           </button>
@@ -68,14 +71,14 @@ export default function Header() {
                 <a class="nav-link  my-1 mx-2 text-white "  href="#ABOUT">About Us</a>
               </li>
               <li class="nav-item">
-                <Link class="nav-link  my-1 mx-2 text-white "  href="#">Contact</Link>
+                <a class="nav-link  my-1 mx-2 text-white "  href="#ABOUT">Contact</a>
               </li>
                 </>
               )
             }
             {
               // (auth && (pathname !=="/" || pathname !=="/home")) && (
-              (auth && (pathname !=="/" )) && (
+              (auth && (pathname !=="/home" )) && (
                 <>
                 <div className='conis-xp'>
                 <li class="conis">
