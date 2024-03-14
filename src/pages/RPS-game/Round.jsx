@@ -280,6 +280,7 @@ const Round = () => {
     
         }else {
           alert("try agian");
+          navigate('/RPS-Game');
         }
       
         // Reset patterns and gamesRemaining
