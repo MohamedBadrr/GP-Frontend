@@ -4,7 +4,7 @@
     background: linear-gradient(90deg, #0b0f18 26%, rgb(11, 68, 94) 54%, #0b0f18 79%);
     background-position: center center ;
     background-size: 100% 100%;
-    padding-top:50px ;
+    padding-top:80px ;
     height: fit-content;
 }
 .title-skins{
@@ -99,8 +99,9 @@
 }
 .main-title-skins{
     color: #5783c0;
+    padding-top: 70px !important;
 }
 .locked-skins-contanier{
-   padding-bottom: 50px;
-   padding-top: 0px;
+    padding-bottom: 50px;
+    padding-top: 0px;
 }
