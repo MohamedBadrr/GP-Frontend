@@ -28,7 +28,7 @@ const Login = () => {
             setAuthUser(resp.data); 
             // const auth = getAuthUser();
             setLogin({...login , loading:false , err:""});
-            navigate("/");
+            navigate("/home");
         }).catch((errors)=>{
             console.log(errors);
             // setLogin({...login , loading:false , err:"Email or Password is not correct ..!"})

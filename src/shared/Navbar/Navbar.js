@@ -57,7 +57,7 @@ export default function Header() {
             <span class="navbar-toggler-icon text-white "></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav m-auto mb-2 mb-lg-0 ">
               {
               (auth && (pathname === "/" || pathname === "/home" )) && (
                 <>
@@ -91,19 +91,18 @@ export default function Header() {
                 </>
               )
             }
-
               
             </ul>
             {
               !auth && (
                 <>
-                <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link> </button>
+                <button class="d-button px-3 py-1 me-3 login-btn" > <Link to={"/login"}>Login</Link></button>
                 <button class="d-button px-3 py-1 register-btn" ><Link to={"/register"}>Register</Link> </button>
                 </>
               )
             }
 
-            {auth && <button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button> }
+            { auth && <button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button> }
           
           </div>
         </div>
