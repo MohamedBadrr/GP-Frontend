@@ -31,12 +31,13 @@ export default function Header() {
         }
       }).then((resp) =>{
         setUser({...user, data : resp.data , loading:false , err:""})
-  
       }).catch((errors)=>{
           setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
       });
     }
   }, [])
+
+  
   
   const Logout =()=>{
     removeAuthUser();
