@@ -111,9 +111,9 @@ export default function SelectSkin() {
         }
           </div>
           
-       <div className="mt-5">
-       <hr />
-       <h1 className="title-skins">Locked Skins</h1>
+          <div className="mt-5">
+          <hr />
+          <h1 className="title-skins">Locked Skins</h1>
           <div className=" container cards-container locked-skins-contanier">
           
           {Lockedskins.data.map((item) => (

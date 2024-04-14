@@ -30,8 +30,8 @@ const Register = () => {
             setAuthUser(resp.data); 
             // const auth = getAuthUser();
             setRegister({...register , loading:false , err:""});
-           // navigate("/login");
-           navigate("/home");
+            // navigate("/login");
+            navigate("/home");
         }).catch((errors)=>{
             console.log(errors);
             // setRegister({...register , loading:false , err:"there were an error "})
@@ -50,7 +50,7 @@ const Register = () => {
                             <h2 className="edit">The Future In Your Hands </h2>
                             <p className="mb-4">Welcome. Please Fill all Fileds to Registeration</p>
                             {register.err&&(
-                <div class="alert alert-danger text-center p-2" role="alert">{register.err}</div>
+                            <div class="alert alert-danger text-center p-2" role="alert">{register.err}</div>
                                 )}
                             <Form.Group className="input-box" >
                                 <Form.Control required type="text" placeholder="Full Name" value={register.fullName} onChange={(e)=>setRegister({...register, fullName: e.target.value})}/>

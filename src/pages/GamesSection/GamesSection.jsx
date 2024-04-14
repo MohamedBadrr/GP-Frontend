@@ -48,19 +48,19 @@ return (
                         <h4 className='my-3'><span className='edit'>Plane</span> Game</h4>
                         
                         <img src={img1} style={{"height":"370px"}} alt="" />
-                        <div className='gameskin'><Link to={"/selectskin"}><i class="fa-solid fa-circle-play fa-5x"></i></Link></div>
+                        <div className='gameskin'><a href={"/selectskin"}><i class="fa-solid fa-circle-play fa-5x"></i></a></div>
                     </div>
                     <div class='item text-center'>
                     <h4 className='my-3'><span className='edit'>Rock </span>Paper <span className='edit'>Siser</span> Game</h4>
                     
                         <img src={img2} style={{"height":"370px"}} alt="" />
-                        <div className='gameskin'><Link to={"/RPS-Game"}><i class="fa-solid fa-circle-play fa-5x " ></i></Link></div>
+                        <div className='gameskin'><a href={"/RPS-Game"}><i class="fa-solid fa-circle-play fa-5x " ></i></a></div>
                     </div>
                     <div class='item text-center'>
                     <h4 className='my-3'><span className='edit'>Plane</span> Game</h4>
                     
                     <img src={img1} style={{"height":"370px"}} alt=""/>
-                    <div className='gameskin'><Link to={"/selectskin"}><i class="fa-solid fa-circle-play fa-5x"></i></Link></div>
+                    <div className='gameskin'><a href={"/selectskin"}><i class="fa-solid fa-circle-play fa-5x"></i></a></div>
                     </div>
                     <div class='item text-center'>
                     <h4 className='my-3'><span className='edit'>Rock </span>Paper <span className='edit'>Siser</span> Game</h4>
