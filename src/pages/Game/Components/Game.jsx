@@ -56,6 +56,24 @@ export function CarShow(props){
       }
       
     }, [lives]);
+    const updateCoinsAndXp = (coins,xp,win) =>{
+      if (auth) {
+        axios.put("http://localhost:4000/game/update-coins" ,{
+          coins : (win)?(user.data.coins + coins *2) : (user.data.coins - coins) ,
+          xp: user.data.xp + xp
+        },
+        {
+          headers:{
+            token : auth.token
+          }
+        }).then((resp) =>{
+          console.log(resp.data);
+        }).catch((errors)=>{
+            console.log(errors);
+            setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
+        });
+      }
+    }
     
     if (props.round.start) {
       setTimeout(() => {
@@ -63,6 +81,7 @@ export function CarShow(props){
       }, 1000);
     }
     if (props.round.time === 0 && props.round.start ){
+      updateCoinsAndXp()
       navigate("/selectskin");
     }
     useEffect(() => {

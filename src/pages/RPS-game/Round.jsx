@@ -284,24 +284,22 @@ const Round = () => {
     
       
       const endChampionship = () => {
-
         if (round > airound) {
           setWinner("Player");
           alert("player win");
           updateCoinsAndXp(champdata.data.price , 20, true);
           navigate('/RPS-Game');
           window.location.reload();
-
         } else if ( airound > round) {
           setWinner("Computer");
           alert("computer win");
           updateCoinsAndXp(champdata.data.price , 10, false);
           navigate('/RPS-Game');
           window.location.reload();
-
         }else {
           alert("try agian");
           navigate('/RPS-Game');
+          window.location.reload();
         }
       
         // Reset patterns and gamesRemaining
