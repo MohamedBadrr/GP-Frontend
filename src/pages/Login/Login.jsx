@@ -16,7 +16,6 @@ const Login = () => {
         loading : false,
         errors:null,
         });
-
         const LoginFun = (event)=>{
         event.preventDefault();
         console.log(login);
@@ -54,8 +53,8 @@ const Login = () => {
                     <Form.Control required type="password" placeholder="Password"  value={login.password} onChange={(e)=>setLogin({...login, password: e.target.value})}/>
                 </Form.Group>
                 <div className="remember">
-                    <label><input type="checkbox"/> Remember Me</label>
-                    <a href="/">Forgot Password</a>
+                    <label className="text-white"><input type="checkbox"/> Remember Me</label>
+                    <a href="/">Forgot Password ?</a>
                 </div>
                 <Button className="d-button border border-0" variant="primary" type="submit" disabled={login.email === "" || login.password === ""}>
                     Login
