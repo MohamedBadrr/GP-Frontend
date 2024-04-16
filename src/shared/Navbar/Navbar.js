@@ -112,7 +112,7 @@ export default function Header() {
                 {
                   (userToggle) && (
                     <ul className='user-list'>
-                      <li><Link to={'/user'}>User Settings</Link></li>
+                      <li><Link to={'/user'} onClick={()=>{setUserToggle(!userToggle)}} >User Settings</Link></li>
                       <li><button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button></li>
                     </ul>
                   )
