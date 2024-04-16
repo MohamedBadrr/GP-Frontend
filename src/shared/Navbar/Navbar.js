@@ -6,15 +6,15 @@ import logo from "../../img/LOGOO.png"
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { getAuthUser, removeAuthUser } from '../../helper/Storage';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 
 
 export default function Header() {
   const navigate= useNavigate(); 
-  const location = useLocation()
+  const location = useLocation();
   const { pathname} = location;
-
+  const [ userToggle , setUserToggle ] = useState(false);
   const auth = getAuthUser();
   const [user, setUser] = useState({
     loading : false,
@@ -103,7 +103,22 @@ export default function Header() {
               )
             }
 
-            { auth && <button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button> }
+            { auth && (<>
+              <div>
+                <button className='user-toggle' onClick={()=>(setUserToggle(!userToggle))}>
+                  <img src={user.data.photo} className='user-img'/>
+                  <span className='user-name'>{user.data.name}</span>
+                  </button>
+                {
+                  (userToggle) && (
+                    <ul className='user-list'>
+                      <li><Link to={'/user'}>User Settings</Link></li>
+                      <li><button class="d-button px-3 py-1 register-btn" onClick={Logout}>Logout</button></li>
+                    </ul>
+                  )
+                }
+              </div>
+            </>) }
           
           </div>
         </div>

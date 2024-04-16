@@ -1,86 +1,142 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './User.css';
+import axios from 'axios';
+import { getAuthUser, setAuthUser } from '../../helper/Storage';
+import show from '../../img/show.png'
+import hide from '../../img/hide.png'
 
 export default function User() {
+  const auth = getAuthUser();
+  const [user , setUser ] = useState({
+    loading : false,
+    data : [] ,
+    err : []
+  })
+  
+  useEffect(() => {
+    if (auth) {
+      setUser({...user , loading:true , err:[]});
+      axios.get("http://localhost:4000/user/info",
+      {
+        headers:{
+          token : auth.token
+        }
+      }).then((resp) =>{
+        setUser({...user, data : resp.data , loading:false , err:""})
+      }).catch((errors)=>{
+          setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
+      });
+    }
+  }, [])
+ const [updatedUser , setUpdatedUser ] = useState({
+    name : user.data.name,
+    email : user.data.email,
+    password : user.data.password,
+    photo : user.data.photo,
+    loading : false,
+    err : null,
+    reload: false,
+    success: null,
+  })
+  const image = useRef(null)
+  const userUpdate = (event)=>{
+    event.preventDefault();
+    setUpdatedUser({...updatedUser , loading:true , err:[]});
+    const formData = new FormData();
+    formData.append("name", updatedUser.name);
+    formData.append("email", updatedUser.email);
+    formData.append("password", updatedUser.password);
+    if (image.current.files && image.current.files[0]) {
+        formData.append("photo", image.current.files[0]);
+    }
+    axios
+        .put("http://localhost:4000/user/update", formData,{
+            headers: {
+                token: auth.token,
+                "Content-Type": "multipart/form-data",
+            },
+        })
+        .then((resp) => {
+          setUpdatedUser({
+                ...updatedUser,
+                loading: false,
+                err:null,
+                success: resp.data.msg,
+                reload: updatedUser.reload + 1,
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          setUpdatedUser({
+                ...updatedUser,
+                loading: false,
+                success: null,
+                err: err.response.data.errors[0].msg,
+            });
+        });
+  }
+  
   return (
     <>
- <section className='section'>
-  <div class="container py-5">
-    
-
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-              class="rounded-circle img-fluid" style={{width: "150px"}} />
-            <h5 class="my-3">mohamed adel</h5>
-            <p class="text-muted mb-1">Full Stack Developer</p>
-            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-            <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-info">Achecivement</button>
-              <button type="button" class="btn btn-outline-primary ms-1">LeaderBoards</button>
-            </div>
+      <div class="container-xl px-4 mt-10 user-section">
+          <div class="row">
+              <div class="col-xl-4">
+                  {/* <!-- Profile picture card--> */}
+                  <div class="card mb-4 mb-xl-0">
+                      <div class="card-header">Profile Picture</div>
+                      <div class="card-body text-center">
+                          {/* <!-- Profile picture image--> */}
+                          <img class="img-account-profile rounded-circle mb-2" src={user.data.photo} alt=""/>
+                          {/* <!-- Profile picture help block--> */}
+                          <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                          {/* <!-- Profile picture upload button--> */}
+                          <input type='file' className='btn btn-primary b' ref={image}></input>
+                          
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-8">
+                  {/* <!-- Account details card--> */}
+                  <div class="card mb-4">
+                      <div class="card-header">Account Details</div>
+                      {updatedUser.err&&(
+                            <div class="alert alert-danger text-center p-2" role="alert">{updatedUser.err}</div>
+                        )}
+                        {
+                          updatedUser.success && (
+                            <div class="alert alert-success text-center p-2" role="alert">{updatedUser.success}</div>
+                          )
+                        }
+                      <div class="card-body">
+                          <form onSubmit={userUpdate}>
+                              {/* <!-- Form Group (username)--> */}
+                              <div class="mb-3">
+                                  <label class="small mb-1" for="inputUsername">Username (how your name will appear on the site)</label>
+                                  <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value={updatedUser.name} onChange={(e)=>setUpdatedUser({...updatedUser, name: e.target.value})}/>
+                              </div>
+                              
+                              {/* <!-- Form Group (email address)--> */}
+                              <div class="mb-3">
+                                  <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                  <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value={updatedUser.email} onChange={(e)=>setUpdatedUser({...updatedUser, email: e.target.value})}/>
+                              </div>
+                              {/* <!-- Form Row--> */}
+                              <div class="row gx-3 mb-3">
+                                  {/* <!-- Form Group (password)--> */}
+                                  <div class="col-md-6">
+                                      <label class="small mb-1" for="inputPhone">Password</label>
+                                      <input class="form-control" id="inputPhone" type="password" placeholder="Enter your Password" value={updatedUser.password} onChange={(e)=>setUpdatedUser({...updatedUser, oldPassword: e.target.value})}/>
+                                  </div>
+                                  
+                              </div>
+                              {/* <!-- Save changes button--> */}
+                              <button class="btn btn-primary" type="submit" >Save changes</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-        
       </div>
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">mohamed adel</p>
-              </div>
-            </div>
-            <hr/>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
-              </div>
-            </div>
-            <hr/>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
-              </div>
-            </div>
-            <hr/>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Mobile</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(098) 765-4321</p>
-              </div>
-            </div>
-            <hr/>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-         
-        </div>
-      </div>
-    </div>
-  
-</section>
     </>
   );
 }

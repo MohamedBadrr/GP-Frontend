@@ -49,6 +49,35 @@
 .xp{
     margin-left: 175px;
 }
+.user-toggle {
+    background-color: transparent;
+    border: none;
+}
+.user-name {
+    margin-left: 10px;
+    text-transform: capitalize;
+}
+.user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.user-list {
+    position: absolute;
+    width: 120px;
+    background-color: #0b0f18;
+    padding: 10px;
+    border-radius: 12px;
+    height: 100px;
+}
+.user-list li {
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+.user-list a {
+    text-decoration: none;
+    font-weight: 600;
+}
 @media screen and (min-width: 350px) {
     .navbar-brand{
         font-size: 25px ;

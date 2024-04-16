@@ -78,7 +78,7 @@ export default function Footer() {
 
           <div class="col-md-3 col-lg-2 text-center col-xl-2 mx-auto mt-3 last-text">
                 <p>
-                  <a href="#!" class="profileLink">Your Profile</a>
+                  <Link to={'/user'} class="profileLink">Your Profile</Link>
                 </p>
                   <p>
                     <a href="#!" class="">About Us</a>
