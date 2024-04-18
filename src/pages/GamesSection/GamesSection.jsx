@@ -40,7 +40,7 @@ return (
                     <h1><span className='edit'>L</span>et<span className='edit'>'s</span></h1>
                     <h1><span className='edit'>P</span>la<span className='edit'>y </span>
                 <span className='edit'>N</span>o<span className='edit'>w</span></h1>
-                    <button className='d-button'><Link className='text-decoration-none text-white'  to={"/selectskin"}>Start Now</Link></button>
+                    <button className='d-button'><Link className='text-decoration-none text-white'  to={"/mainamenu"}>Start Now</Link></button>
                 </div>
                 <div className='col-md-7'>
                 <OwlCarousel className='owl-theme' {...options}>
@@ -48,7 +48,7 @@ return (
                         <h4 className='my-3'><span className='edit'>Plane</span> Game</h4>
                         
                         <img src={img1} style={{"height":"370px"}} alt="" />
-                        <div className='gameskin'><a href={"/selectskin"}><i class="fa-solid fa-circle-play fa-5x"></i></a></div>
+                        <div className='gameskin'><a href={"/mainamenu"}><i class="fa-solid fa-circle-play fa-5x"></i></a></div>
                     </div>
                     <div class='item text-center'>
                     <h4 className='my-3'><span className='edit'>Rock </span>Paper <span className='edit'>Siser</span> Game</h4>
@@ -60,7 +60,7 @@ return (
                     <h4 className='my-3'><span className='edit'>Plane</span> Game</h4>
                     
                     <img src={img1} style={{"height":"370px"}} alt=""/>
-                    <div className='gameskin'><a href={"/selectskin"}><i class="fa-solid fa-circle-play fa-5x"></i></a></div>
+                    <div className='gameskin'><a href={"/mainamenu"}><i class="fa-solid fa-circle-play fa-5x"></i></a></div>
                     </div>
                     <div class='item text-center'>
                     <h4 className='my-3'><span className='edit'>Rock </span>Paper <span className='edit'>Siser</span> Game</h4>
