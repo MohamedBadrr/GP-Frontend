@@ -5,17 +5,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10+Charted&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.MainMenu{
-    overflow-x: hidden;
-}
+/* .MainMenu{
+    background-image: url(../../img/background5.jpg);
+    background-size: 100% 100%;
+    background-position: center center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+} */
 
 .video-background {
     position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    height: 99vh;
+    overflow: hidden !;
     z-index: -9999;
 }
 
