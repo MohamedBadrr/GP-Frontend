@@ -10,6 +10,7 @@ import SelectSkin from './pages/Game/Components/SelectSkin';
 import RPSGame from './pages/RPS-game/RPSGame';
 import Round from './pages/RPS-game/Round';
 import Mainmenu from './pages/MainMenu/Mainmenu';
+import BuySkin from './pages/Game/Components/BuySkin';
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ export const routes = createBrowserRouter([
         {
             path: "/selectskin",
             element: <SelectSkin />,
+        },
+        {
+            path: "/buyskin",
+            element: <BuySkin />,
         },
         {
             path: "/RPS-Game",

@@ -1,4 +1,4 @@
-.skins-container{
+.selectskins-container{
     /* background-image: url(../../../../img/herobg.png) ; */
     /* background: rgb(2,0,36); */
     background: linear-gradient(90deg, #0b0f18 26%, rgb(11, 68, 94) 54%, #0b0f18 79%);
@@ -47,61 +47,4 @@
 }
 .cardSkin a{
     text-decoration: none;
-}
-.lockedskin{
-    width: 280px;
-    height: fit-content;
-    background-color: transparent !important;
-    text-align: center;
-    border: 1px transparent(180, 179, 179) solid !important;
-    margin-left: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 5px white;  
-    position: relative;
-}
-.lockedskin img{
-    width: 100%;
-
-}
-.lockedskin h4{
-    text-decoration: none;
-    font-size: 40px !important;
-    color: rgb(177, 197, 239);
-}
-.lockedskin a{
-    text-decoration: none;
-}   
-.lock-icon-skin{
-    position: absolute;
-    top: 10%;
-    right: 22%;
-    font-size: 180px;
-    color: rgba(255, 255, 255, 0.5);
-    z-index: 999;
-    cursor: pointer;
-}
-.lockedskin img{
-    margin-top: 40px;
-    z-index:-1 ;
-}
-.alert-buy{
-    z-index: 999;
-}
-.locked-title{
-    margin-top: -15px;
-}
-.locked-price{
-    font-size: 25px;
-    color: #5783c0;
-}
-.play-now a {
-    color: white;
-}
-.main-title-skins{
-    color: #5783c0;
-    padding-top: 70px !important;
-}
-.locked-skins-contanier{
-    padding-bottom: 50px;
-    padding-top: 0px;
 }

@@ -20,7 +20,7 @@ const Mainmenu = () => {
                 <div className="main col-md-6">
                 <h1>the posibilities<br/> beyond your imagination</h1>
                     <Link className='text-decoration-none text-white' to={"/selectskin"}><button className='c-button'>Select skin</button></Link>
-                    <Link className='text-decoration-none text-white' to={"/selectskin"}><button className='c-button'>buy skin</button></Link>
+                    <Link className='text-decoration-none text-white' to={"/buyskin"}><button className='c-button'>buy skin</button></Link>
                     <Link className='text-decoration-none text-white' to={"/home"}><button className='c-button'>quit</button></Link>
                 </div>
             </div>
