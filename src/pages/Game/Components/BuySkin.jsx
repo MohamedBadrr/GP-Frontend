@@ -107,7 +107,7 @@ const BuySkin = () => {
                                 <img alt="plane1" src={item.imageUrl} />
                                 <h4 className="locked-title">{item.name}</h4>
                                 <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-                                <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
+                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
                                 <i
                                     className="fa-solid fa-lock lock-icon-skin"
                                     onClick={() => handleLockClick(item.id)} // Pass item.id for specific item

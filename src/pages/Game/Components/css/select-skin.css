@@ -48,3 +48,7 @@
 .cardSkin a{
     text-decoration: none;
 }
+
+.play-now a {
+    color: white;
+}
