@@ -29,10 +29,10 @@ export default function User() {
     }
   }, [])
  const [updatedUser , setUpdatedUser ] = useState({
-    name : user.data.name,
-    email : user.data.email,
-    password : user.data.password,
-    photo : user.data.photo,
+    name : "",
+    email : '',
+    password : '',
+    photo : '',
     loading : false,
     err : null,
     reload: false,
@@ -43,9 +43,19 @@ export default function User() {
     event.preventDefault();
     setUpdatedUser({...updatedUser , loading:true , err:[]});
     const formData = new FormData();
-    formData.append("name", updatedUser.name);
-    formData.append("email", updatedUser.email);
-    formData.append("password", updatedUser.password);
+    if (updatedUser.name !== "") {
+      formData.append("name", updatedUser.name);
+    }else{
+      formData.append("name", user.data.name);
+    }
+    if (updatedUser.email !== "") {
+      formData.append("email", updatedUser.email);
+    }else{
+      formData.append("email", user.data.email);
+    }
+    if (updatedUser.password !== "") {
+      formData.append("password", updatedUser.password);
+    }
     if (image.current.files && image.current.files[0]) {
         formData.append("photo", image.current.files[0]);
     }
@@ -75,7 +85,6 @@ export default function User() {
             });
         });
   }
-  
   return (
     <>
       <div class="container-xl px-4 mt-10 user-section">
@@ -112,20 +121,20 @@ export default function User() {
                               {/* <!-- Form Group (username)--> */}
                               <div class="mb-3">
                                   <label class="small mb-1" for="inputUsername">Username (how your name will appear on the site)</label>
-                                  <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value={updatedUser.name} onChange={(e)=>setUpdatedUser({...updatedUser, name: e.target.value})}/>
+                                <input class="form-control" id="inputUsername" type="text" placeholder={`${user.data.name}`}  value={updatedUser.name} onChange={(e)=>setUpdatedUser({...updatedUser, name: e.target.value})}/>
                               </div>
                               
                               {/* <!-- Form Group (email address)--> */}
                               <div class="mb-3">
                                   <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                  <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value={updatedUser.email} onChange={(e)=>setUpdatedUser({...updatedUser, email: e.target.value})}/>
+                                  <input class="form-control" id="inputEmailAddress" type="email" placeholder={`${user.data.email}`} value={updatedUser.email} onChange={(e)=>setUpdatedUser({...updatedUser, email: e.target.value})}/>
                               </div>
                               {/* <!-- Form Row--> */}
                               <div class="row gx-3 mb-3">
                                   {/* <!-- Form Group (password)--> */}
                                   <div class="col-md-6">
                                       <label class="small mb-1" for="inputPhone">Password</label>
-                                      <input class="form-control" id="inputPhone" type="password" placeholder="Enter your Password" value={updatedUser.password} onChange={(e)=>setUpdatedUser({...updatedUser, oldPassword: e.target.value})}/>
+                                      <input class="form-control" id="inputPhone" type="password" placeholder="Enter your Password" value={updatedUser.password} required onChange={(e)=>setUpdatedUser({...updatedUser, password : e.target.value})}/>
                                   </div>
                                   
                               </div>
