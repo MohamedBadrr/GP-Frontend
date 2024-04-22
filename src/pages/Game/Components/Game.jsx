@@ -23,6 +23,7 @@ import { Rock } from './Rock';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoadingPage from '../../LoadingPage/LoadingPage';
+import GameOver from '../../GameOver/GameOver';
 // import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 
 // import { Html} from '@react-three/drei';
@@ -50,10 +51,13 @@ export function CarShow(props){
     
     useEffect(() => {
       // Check if lives are 0 and set the game over scenario
-      if ( lives === 0) {
-        navigate("/selectskin");
-        console.log("Game Over!");
-      }
+      // if ( lives === 0) {
+      //   // navigate("/selectskin");
+      //   // console.log("Game Over!");
+      //   return(<GameOver/>)
+      // }
+
+      {lives === 0 && <GameOver />}
       
     }, [lives]);
     const updateCoinsAndXp = (coins,xp,win) =>{
@@ -82,7 +86,8 @@ export function CarShow(props){
     }
     if (props.round.time === 0 && props.round.start ){
       updateCoinsAndXp()
-      navigate("/selectskin");
+      // navigate("/selectskin");
+      {lives === 0 && <GameOver />}
     }
     useEffect(() => {
       if (auth) {
