@@ -120,20 +120,20 @@ export default function User() {
                           <form onSubmit={userUpdate}>
                               {/* <!-- Form Group (username)--> */}
                               <div class="mb-3">
-                                  <label class="small mb-1" for="inputUsername">Username (how your name will appear on the site)</label>
+                                  <label class="small mb-1" >Username (how your name will appear on the site)</label>
                                 <input class="form-control" id="inputUsername" type="text" placeholder={`${user.data.name}`}  value={updatedUser.name} onChange={(e)=>setUpdatedUser({...updatedUser, name: e.target.value})}/>
                               </div>
                               
                               {/* <!-- Form Group (email address)--> */}
                               <div class="mb-3">
-                                  <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                  <label class="small mb-1" >Email address</label>
                                   <input class="form-control" id="inputEmailAddress" type="email" placeholder={`${user.data.email}`} value={updatedUser.email} onChange={(e)=>setUpdatedUser({...updatedUser, email: e.target.value})}/>
                               </div>
                               {/* <!-- Form Row--> */}
                               <div class="row gx-3 mb-3">
                                   {/* <!-- Form Group (password)--> */}
                                   <div class="col-md-6">
-                                      <label class="small mb-1" for="inputPhone">Password</label>
+                                      <label class="small mb-1" >Password</label>
                                       <input class="form-control" id="inputPhone" type="password" placeholder="Enter your Password" value={updatedUser.password} required onChange={(e)=>setUpdatedUser({...updatedUser, password : e.target.value})}/>
                                   </div>
                                   

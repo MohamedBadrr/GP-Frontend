@@ -36,7 +36,7 @@ import GameOver from '../../GameOver/GameOver';
 
 
 export function CarShow(props){
-  const navigate= useNavigate(); 
+  const navigate = useNavigate(); 
   const [score ,setScore] = useState(0)
   const [lives ,setLives] = useState(3)
 
@@ -63,8 +63,8 @@ export function CarShow(props){
     const updateCoinsAndXp = (coins,xp,win) =>{
       if (auth) {
         axios.put("http://localhost:4000/game/update-coins" ,{
-          coins : (win)?(user.data.coins + coins *2) : (user.data.coins - coins) ,
-          xp: user.data.xp + xp
+          coins : (win)?(auth.coins + coins *2) : (auth.coins - coins) ,
+          xp: auth.xp + xp
         },
         {
           headers:{
@@ -74,7 +74,6 @@ export function CarShow(props){
           console.log(resp.data);
         }).catch((errors)=>{
             console.log(errors);
-            setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
         });
       }
     }
