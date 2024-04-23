@@ -18,11 +18,11 @@ const Mainmenu = () => {
                     <img src={astu} />
                 </div>
                 <div className="main col-md-6">
-                <h1>the posibilities<br/> beyond your imagination</h1>
+                <h1 className='mt-5'>the posibilities<br/> beyond your imagination</h1>
                     {/* <Link className='text-decoration-none text-white' to={"/selectskin"}><button className='c-button'>Select skin</button></Link>
                     <Link className='text-decoration-none text-white' to={"/buyskin"}><button className='c-button'>buy skin</button></Link>
                     <Link className='text-decoration-none text-white' to={"/home"}><button className='c-button'>quit</button></Link> */}
-                    <Link className='list-skin' to={"/selectskin"}>
+                    <Link className='list-skin mt-5' to={"/selectskin"}>
                     <span></span>
                     <span></span>
                     <span></span>
