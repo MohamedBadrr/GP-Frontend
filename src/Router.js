@@ -12,6 +12,7 @@ import Round from './pages/RPS-game/Round';
 import Mainmenu from './pages/MainMenu/Mainmenu';
 import BuySkin from './pages/Game/Components/BuySkin';
 import GameOver from './pages/GameOver/GameOver';
+import Winner from './pages/winner/Winner';
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ export const routes = createBrowserRouter([
         {
             path : "/gameover",
             element : <GameOver />
+        },
+        {
+            path : "/winner",
+            element : <Winner />
         },
     ],
     },

@@ -2,11 +2,32 @@ import React, { useEffect, useState } from 'react';
 import "./GameOver.css"
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useTypewriter , Cursor, Typewriter } from 'react-simple-typewriter';
+import soundFile from "../../assets/sounds/gameoversound.mp4"
 
 
 const GameOver = () => {
+
+  const [audio] = useState(new Audio(soundFile));
+  useEffect(() => {
+    const playAudio = () => {
+      audio.play();
+      audio.removeEventListener('play', playAudio);
+    };
+    audio.addEventListener('play', playAudio);
+  }, []);
+
+  const audioStyle = {
+    position: 'absolute',
+    left: '-9999px',
+    top: '-9999px',
+  };
+
+
+
+
+
   const navigate = useNavigate();
-  const [counter, setCounter] = useState(5);
+  const [counter, setCounter] = useState(5000);
 
   useEffect(()=>{
    const timerId = setInterval(()=>{
@@ -27,6 +48,9 @@ const GameOver = () => {
        <div className="container-game-over">
             <div className='gameover-titles'>
                 <h2 className='numbers'>{counter}</h2>
+                <audio style={audioStyle} autoPlay loop >
+                  <source src={soundFile} type="audio/mpeg" />
+                </audio>
                 <span>
                 <h2><Typewriter
                       words={['GAME OVER']}

@@ -12,14 +12,17 @@
     src: url(../../assets/fonts/winner2.otf);
     
 }
+.winner{
+    height: 100vh;
+    background-color: black;
+}
 .container-winner-game{
     width: 950px;
     height: 500px;
     background-color: rgba(0, 0, 0, 1.5);
-    border: .5px white solid;
     border-radius: 10px;
     position: fixed; 
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
