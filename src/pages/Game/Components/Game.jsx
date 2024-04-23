@@ -38,7 +38,7 @@ import GameOver from '../../GameOver/GameOver';
 export function CarShow(props){
   const navigate = useNavigate(); 
   const [score ,setScore] = useState(0)
-  const [lives ,setLives] = useState(3)
+  const [lives ,setLives] = useState(1000)
 
   const [rockX ,setRockX] = useState()
   const auth = getAuthUser();
@@ -50,15 +50,9 @@ export function CarShow(props){
     })
     
     useEffect(() => {
-      // Check if lives are 0 and set the game over scenario
-      // if ( lives === 0) {
-      //   // navigate("/selectskin");
-      //   // console.log("Game Over!");
-      //   return(<GameOver/>)
-      // }
-
-      {lives === 0 && <GameOver />}
-      
+      if ( lives === 0) {
+        navigate("/gameover");
+      }
     }, [lives]);
     const updateCoinsAndXp = (coins,xp,win) =>{
       if (auth) {
@@ -85,8 +79,8 @@ export function CarShow(props){
     }
     if (props.round.time === 0 && props.round.start ){
       updateCoinsAndXp()
-      // navigate("/selectskin");
-      {lives === 0 && <GameOver />}
+      navigate("/gameover");
+      
     }
     useEffect(() => {
       if (auth) {

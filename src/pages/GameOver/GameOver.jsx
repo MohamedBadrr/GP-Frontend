@@ -15,7 +15,7 @@ const GameOver = () => {
     }
     else{
       clearInterval(timerId);
-      navigate("/user");
+      navigate("/selectskin");
     }
    },1000)
   },[counter])
@@ -23,7 +23,8 @@ const GameOver = () => {
  
   return (
     <>
-        <div className="container-game-over">
+       <div className='game-over'>
+       <div className="container-game-over">
             <div className='gameover-titles'>
                 <h2 className='numbers'>{counter}</h2>
                 <span>
@@ -38,9 +39,10 @@ const GameOver = () => {
                       delaySpeed={150000}
                     /></h2>
                 </span>
-                <Link to={"/user"}><h3>play again?</h3></Link>
+                <Link to={"/selectskin"}><h3>play again?</h3></Link>
             </div>
-        </div>
+        </div> 
+       </div>
     </>
   );
 }

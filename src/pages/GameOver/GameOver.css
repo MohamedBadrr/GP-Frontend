@@ -7,13 +7,18 @@
     src: url(../../assets/fonts/Esportiva-8M0OM.ttf);
     
 }
+.game-over{
+    height: 99.5vh;
+    background-color: black;
+    overflow: hidden !important;
+    
+}
 .container-game-over{
     width: 950px;
     height: 450px;
     background-color: rgba(0, 0, 0, 1.5);
-    border: .5px white solid;
     border-radius: 10px;
-    position: fixed;  /* Use fixed positioning for centering */
+    position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
