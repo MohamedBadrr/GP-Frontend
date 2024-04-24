@@ -53,7 +53,7 @@ const Round = () => {
     useEffect(() => {
           const runHandpose = async () => {
             const net = await handpose.load();
-            console.log("Handpose model loaded.");
+            
             setLoading("Handpose model loaded.")
             const intervalId = setInterval(() => {
               detect(net);
@@ -212,7 +212,7 @@ const Round = () => {
       };
    
       useEffect(() => {
-        console.log(gamesRemaining);
+        
         if (gesture ) {
           const computerChoice = generateComputerChoice();
           if (
@@ -243,7 +243,7 @@ const Round = () => {
            
            
           }
-          console.log(gamesRemaining);
+          // console.log(gamesRemaining);
           console.log(champdata.data.game_remaining);
           
           if (gamesRemaining === 0) {
@@ -293,10 +293,10 @@ const Round = () => {
           window.location.reload();
         } else if ( airound > round) {
           setWinner("Computer");
-          alert("computer win");
           updateCoinsAndXp(champdata.data.price , 10, false);
-          navigate('/RPS-Game');
+          // navigate('/RPS-Game');
           window.location.reload();
+          navigate('/gameover');
         }else {
           alert("try agian");
           navigate('/RPS-Game');

@@ -463,3 +463,10 @@ html {
     padding: 15px 20px;
     text-transform: uppercase;
   }
+
+  .lockChampion{
+    z-index: 9999;
+  }
+.all{
+  overflow-x: hidden;
+}

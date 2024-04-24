@@ -22,7 +22,6 @@ import Plxx from "../../components/Plxx";
 
 const RPSGame = () => {
   const auth = getAuthUser();
-  
   const navigate = useNavigate();
   const [ champdata , setChampdata ] = useState({
     loading : false,
@@ -52,7 +51,7 @@ const RPSGame = () => {
         <div className="cards-container">
           
           {
-            champdata.data.map((item)=>(<Championship id={item.id} name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
+            champdata.data.map((item)=>(<Championship id={item.id} userConis={auth.coins} name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
             
           }
           
