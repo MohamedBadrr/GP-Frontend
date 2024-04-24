@@ -12,11 +12,6 @@ export default function SelectSkin() {
       data : [],
       errors: null,
     })
-    // const [ Lockedskins , setLockedSkins ] = useState({
-    //   loading : false ,
-    //   data : [],
-    //   errors: null,
-    // })
     useEffect(() => {
       if (auth) {
         setSkins({...skins , loading:true , err:[]});
@@ -28,116 +23,77 @@ export default function SelectSkin() {
         }).then((resp) =>{
           setSkins({...skins, data : resp.data , loading:false , errors:""})
           updateAuthUser(auth.token)
-
         }).catch((errors)=>{
             console.log(errors);
             setSkins({...skins , loading:false , errors:errors.response.data.errors[0].msg})
         });
       }
     }, [])
-
-    // useEffect(() => {
-    //   if (auth) {
-    //     setLockedSkins({...Lockedskins , loading:true , err:[]});
-    //     axios.get("http://localhost:4000/skins/locked",
-    //     {
-    //       headers:{
-    //         token : auth.token
-    //       }
-    //     }).then((resp) =>{
-    //       setLockedSkins({...Lockedskins, data : resp.data , loading:false , errors:""})
-    //       updateAuthUser(auth.token)
-
-
-    //     }).catch((errors)=>{
-    //         console.log(errors);
-    //         setLockedSkins({...Lockedskins , loading:false , errors:errors.response.data.errors[0].msg})
-    //     });
-    //   }
-    // }, [])
-
-    const handleLockClick = (itemId) => {
-      setShowBuyAlert({ ...showBuyAlert, [itemId]: true }); // Set alert for specific item ID
-      // Optionally, reset showBuyAlert after a brief delay
-      setTimeout(() => setShowBuyAlert({ ...showBuyAlert, [itemId]: false }), 2000); // Adjust timeout as needed
-    };
-    const[oneSkin , setOneSkin]=useState({
-      loading : false ,
-      data : [],
-      errors: null,
-    })
-    
-    const buySkin = (id) =>{
-    if (auth) {
-      setOneSkin({...oneSkin,loading:true})
-        axios.
-          post("http://localhost:4000/skins/buy/"+id,{
-            userId : auth.id
-          },
-            {
-              headers:{
-                token : auth.token
-              }
-            }).then((resp)=>{
-                // setOneSkin({...oneSkin,loading:false});
-                console.log(resp);
-                updateAuthUser(auth.token)
-            }).catch((err)=>{
-              console.log(err);
-                setOneSkin({...oneSkin,loading:false,errors:err.response.data.errors})
-            })
-    }
-        // console.log(id);
-    }
-    
+    // const[oneSkin , setOneSkin]=useState({
+    //   loading : false ,
+    //   data : [],
+    //   errors: null,
+    // });
   return (
     <>
+
       <section className="selectskins-container ">
-        <h1 className="title-skins main-title-skins">SKINS</h1> <hr />
-        <h1 className="title-skins">Your Skins</h1>
+        <h1 className="title-skins main-title-skins">YOUR SKINS</h1>
         <div className="container cards-container pb-4">
           {
+
+
           skins.data.map((item)=>{
             return (
-              <div className="cardSkin" key={item.id}>
-                <Link to={`/game?id=${item.id}`}>
-                  <img alt="plane1" src={item.imageUrl} />
-                  <h4>{item.name}</h4>
-                </Link>
-                <button className="d-button mt-3 px-5 py-1 play-now" ><Link to={`/game?id=${item.id}`}>Play</Link></button>
-              </div>
-            )
+
+
+              // <div className="cardSkin" key={item.id}>
+              //   <Link to={`/game?id=${item.id}`}>
+              //     <img alt="plane1"  />
+              //     <h4>{item.name}</h4>
+              //   </Link>
+              //   <button className="d-button mt-3 px-5 py-1 play-now" ><Link to={`/game?id=${item.id}`}>Play</Link></button>
+              // </div>
+
+
+            <div className='the-card-conatier'>
+            <div className='imgbox'>
+                <img src={item.imageUrl} alt="" className='plane-card-img test' />
+            {/* <span></span> */}
+            </div>
+            <div className="line"></div>
+            <div className="title ">{item.name}</div>
+            <div className='buysection'>
+            <button className="d-button mt-1 px-5 py-1 play-now" ><Link className="text-decoration-none" to={`/game?id=${item.id}`}>Play</Link></button>
+                
+                
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+            
+          
+          
+          
+          )
           })
+
+
+
+
+
         }
           </div>
-          
-          {/* <div className="mt-5">
-          <hr />
-          <h1 className="title-skins">Locked Skins</h1>
-          <div className=" container cards-container locked-skins-contanier">
-          
-          {Lockedskins.data.map((item) => (
-            <div className="lockedskin" key={item.id}>
-              {showBuyAlert[item.id] && ( // Check for alert based on item ID
-                <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
-              )}
-              <img alt="plane1" src={item.imageUrl} />
-              <h4 className="locked-title">{item.name}</h4>
-              <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-              <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{buySkin(item.id)}}><a href="/selectskin">Buy Now</a></button>
-              <i
-                className="fa-solid fa-lock lock-icon-skin"
-                onClick={()=>handleLockClick(item.id)} // Pass item.id for specific item
-              ></i>
-            </div>
-          ))}
-          </div>
-       </div>    */}
+
       </section>
-     
     </>
-   
-
-
   );
 }

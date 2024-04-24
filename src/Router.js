@@ -13,6 +13,7 @@ import Mainmenu from './pages/MainMenu/Mainmenu';
 import BuySkin from './pages/Game/Components/BuySkin';
 import GameOver from './pages/GameOver/GameOver';
 import Winner from './pages/winner/Winner';
+import Card from './pages/Home/Card';
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ export const routes = createBrowserRouter([
         {
             path : "/game-round/:id",
             element : <Round />
+        },
+        {
+            path : "/card",
+            element : <Card />
         },
         {
             path : "/mainamenu",
