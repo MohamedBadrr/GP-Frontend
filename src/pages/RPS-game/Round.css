@@ -1,5 +1,14 @@
-.container{
-
+.all{
+  background-image: url(./Human\ aware\ AI\ hero.png);
+  
+  
+  height: 110vh;
+  
+  background-size: 100% 100%;
+  
+}
+.playingarea{
+  background-image: url(./Human\ aware\ AI\ hero.png);
 }
 .camera{
   position: absolute;
@@ -17,19 +26,35 @@
  
 border-style: outset;
 }
+.canvas{
+  position: absolute;
+  
+}
 
 
 .yourcoins1{
   display: flex;
   justify-content: center; /* Horizontally centers the content */
   align-items: center; /* Vertically centers the content */
-  font-size: 2rem; /* Adjust the font size as needed */
-  font-family:Impact;
-  padding-top: 60px;
+  font-size: 500%; /* Adjust the font size as needed */
+  font-family:'Jersey 10 Charted', 'sans-serif';
+  padding-top: 90px;
   padding-bottom: auto;
 }
-
-
+.computer{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+  padding-right:200px;
+}
+.playername{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+}
+.yourgesture{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+}
+.winnertext{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+  padding: 1px 500px;
+}
 .yourcoins{
     display: flex;
   justify-content: center; /* Horizontally centers the content */
@@ -89,6 +114,7 @@ border-style: outset;
   justify-content: center;
   padding-left: 100px;
   padding-right: 100px;
+  margin-top: auto;
 }
 .cardSkin{
   width: 285px;
@@ -212,8 +238,8 @@ html {
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    
-    
+    font-variant-caps: small-caps;
+
   }
   
   .flip-box:hover .flip-box-front {
@@ -238,6 +264,7 @@ html {
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-variant-caps: small-caps;
   }
   
   .flip-box:hover .flip-box-back {

@@ -48,14 +48,14 @@ const RPSGame = () => {
   }, [])
   return (
     <div className="all" >
-      <p className="yourcoins1" style={{ color: "white" }}>choose who you can play with him</p>
+      <p className="yourcoins1" style={{ color: "white" }}>play with AI !!!!!</p>
         <div className="cards-container">
           
           {
             champdata.data.map((item)=>(<Championship id={item.id} name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))
             
           }
-          {<Plxx/>}
+          
         </div>
         
     </div>

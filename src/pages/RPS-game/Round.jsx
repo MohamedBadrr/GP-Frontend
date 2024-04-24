@@ -318,16 +318,19 @@ const Round = () => {
   return (
   
     loadingPage?
-    
+     <div className='all'>
+      
     <div className='playing container'>
+      
+       
      <div className='players'>
      <div>
-     <h1 className='text-dark'>Computer</h1>
+     <h1 className='computer'>Computer</h1>
     
      </div>
      <div>
-     <h1 className='text-dark  player-name'>{auth.name}</h1>
-        {gesture && (<h3 className='text-dark'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
+     <h1 className='playername'>{auth.name}</h1>
+        {gesture && (<h3 className='yourgesture'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
      </div>
      </div>
      
@@ -339,26 +342,22 @@ const Round = () => {
         />
         <canvas
         ref={canvasRef}
-        style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 20,
-            textAlign: "center",
-            zIndex: 9,
-            width: 540,
-            height: 350,
-        }}
+        className='canvas'
+        
+          
+       
         />
+        
         {gesture && handDetected && (
         <div>
-            {computerChoice && <p style={{ color: "black" }}> <img src={computerChoice} alt="Computer choice" className='computer-player'></img></p>}
+            {computerChoice && <p style={{ color: "white" ,fontFamily:"Jersey 10 Charted, sans-serif" }}> <img src={computerChoice} alt="Computer choice" className='computer-player'></img></p>}
         </div>
         )}
-                {gesture && (<>{winner && <h1 className='text-center' style={{ color: "black" }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
+                {gesture && (<>{winner && <h1 className='winnertext' style={{ color: "white"  }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
                 
     </div>
+    </div>
+   
     :
     <LoadingPage />
     

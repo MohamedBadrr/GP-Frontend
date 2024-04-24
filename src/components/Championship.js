@@ -44,20 +44,22 @@ const Championship = (props) => {
 <div class="flip-box">
   <div class="flip-box-front text-center" style={{ }}>
     <div class="inner color-white">
-      <h3 class="flip-box-header" style={{ }}>{props.name}</h3>
+      
       
       
     </div>
   </div>
-  <div class="flip-box-back text-center" style={{ backgroundImage: `url(${props.photo})` }}>
+  <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{navigate('/game-round/'+props.id)}}>
+  <div class="flip-box-back text-center" style={{ }}>
     <div class="inner color-white">
       <h3 class="flip-box-header">{props.name}</h3>
 
-      <button className="d-button mb-3 mt-2 px-4 py-1" onClick={(e)=>{navigate('/game-round/'+props.id)}}>Play Now</button>
+      
 
     </div>
-  </div>
+  </div></button>
 </div>
+
 </div>
 
 </div>
