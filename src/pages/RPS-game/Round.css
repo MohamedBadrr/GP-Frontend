@@ -1,3 +1,24 @@
+.container{
+
+}
+.camera{
+  position: absolute;
+  margin-left: auto;
+  left: 0PX;
+  right: 90PX;
+  top: 150PX;
+  text-Align: center;
+ 
+  width: 500PX;
+  height: 400PX;
+  border-Radius:100px;
+  margin-Top:60px;
+  margin-Right:60px;
+ 
+border-style: outset;
+}
+
+
 .yourcoins1{
   display: flex;
   justify-content: center; /* Horizontally centers the content */
@@ -173,6 +194,7 @@ html {
   .flip-box-back {
     background-size: cover;
     background-position: center;
+    background-color: rgba(101, 110, 194, 0.301);
     border-radius: 8px;
     min-height: 475px;
     -ms-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
@@ -189,6 +211,9 @@ html {
     -webkit-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+    
   }
   
   .flip-box:hover .flip-box-front {
@@ -199,6 +224,7 @@ html {
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
   }
+
   
   .flip-box-back {
     position: absolute;
@@ -211,6 +237,7 @@ html {
     -webkit-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
   
   .flip-box:hover .flip-box-back {

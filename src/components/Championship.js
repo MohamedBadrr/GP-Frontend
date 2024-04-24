@@ -42,9 +42,9 @@ const Championship = (props) => {
 
 <div class="box-item">
 <div class="flip-box">
-  <div class="flip-box-front text-center" style={{ backgroundImage: `url(${props.photo})` }}>
+  <div class="flip-box-front text-center" style={{ }}>
     <div class="inner color-white">
-      <h3 class="flip-box-header">{props.name}</h3>
+      <h3 class="flip-box-header" style={{ }}>{props.name}</h3>
       
       
     </div>

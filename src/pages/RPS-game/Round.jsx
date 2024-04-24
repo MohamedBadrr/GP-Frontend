@@ -12,6 +12,7 @@ import RPSGame from './RPSGame';
 import axios from 'axios';
 import { getAuthUser, updateAuthUser } from '../../helper/Storage';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import Plxx from "../../components/Plxx";
 
 
 
@@ -315,7 +316,9 @@ const Round = () => {
     // };
     
   return (
+  
     loadingPage?
+    
     <div className='playing container'>
      <div className='players'>
      <div>
@@ -327,23 +330,12 @@ const Round = () => {
         {gesture && (<h3 className='text-dark'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
      </div>
      </div>
+     
     <Webcam
         ref={webcamRef}
         mirrored={true}
-        style={{
-            position: "absolute",
-            marginLeft: "auto",
-            left: 0,
-            right: 80,
-            top: 150,
-            textAlign: "center",
-            zIndex: 9,
-            width: 500,
-            height: 400,
-            borderRadius:"100px",
-            marginTop:"60px",
-            marginRight:"60px"
-        }}
+        className='camera'
+  
         />
         <canvas
         ref={canvasRef}
@@ -365,9 +357,13 @@ const Round = () => {
         </div>
         )}
                 {gesture && (<>{winner && <h1 className='text-center' style={{ color: "black" }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
+                
     </div>
     :
     <LoadingPage />
+    
+    
+    
   )
 }
 
