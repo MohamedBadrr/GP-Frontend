@@ -85,34 +85,25 @@ const BuySkin = () => {
                     <div className=" container cards-container locked-skins-contanier">
                         {Lockedskins.data.map((item) => (
                             <div className="lockedskin" key={item.id}>
-                                
-                                {showBuyAlert[item.id] &&  (
-                                    <div className="alert alert-danger p-1 mx-2 my-2">{alertMsg}</div>
+                                {showBuyAlert[item.id] && ( // Check for alert based on item ID
+                                    <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
                                 )}
-
-                                {showFailedBuyAlert[item.id] &&  (
-                                    <div className="alert alert-danger p-1 mx-2 my-2">{alertBuyMsg}</div>
-                                )}
-
-
+                                {/* <Link to={`/game?id=${item.id}`}> */}
                                 <img alt="plane1" src={item.imageUrl} />
                                 <h4 className="locked-title">{item.name}</h4>
                                 <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => {buySkin(item.id)}}>Buy Now</button>
+                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
                                 <i
                                     className="fa-solid fa-lock lock-icon-skin"
                                     onClick={() => handleLockClick(item.id)} 
                                 ></i>
                             </div>
+                        </div>
                         ))}
                     </div>
                 </div>
             </section>
-
         </>
-
-
-
     );
 }
 
