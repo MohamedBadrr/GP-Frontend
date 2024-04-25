@@ -29,33 +29,15 @@ export default function SelectSkin() {
         });
       }
     }, [])
-    // const[oneSkin , setOneSkin]=useState({
-    //   loading : false ,
-    //   data : [],
-    //   errors: null,
-    // });
   return (
     <>
 
       <section className="selectskins-container ">
-        <h1 className="title-skins main-title-skins">YOUR SKINS</h1>
+        <h1 className="title-skins main-title-skins">YOUR Planes</h1>
         <div className="container cards-container pb-4">
           {
-
-
           skins.data.map((item)=>{
             return (
-
-
-              // <div className="cardSkin" key={item.id}>
-              //   <Link to={`/game?id=${item.id}`}>
-              //     <img alt="plane1"  />
-              //     <h4>{item.name}</h4>
-              //   </Link>
-              //   <button className="d-button mt-3 px-5 py-1 play-now" ><Link to={`/game?id=${item.id}`}>Play</Link></button>
-              // </div>
-
-
             <div className='the-card-conatier'>
             <div className='imgbox'>
                 <img src={item.imageUrl} alt="" className='plane-card-img test' />
@@ -64,9 +46,9 @@ export default function SelectSkin() {
             <div className="line"></div>
             <div className="title ">{item.name}</div>
             <div className='buysection'>
-            <button className="d-button mt-1 px-5 py-1 play-now" ><Link className="text-decoration-none" to={`/game?id=${item.id}`}>Play</Link></button>
-                
-                
+            <button className="d-button mt-1 px-5 py-1 play-now" >
+              <Link className="text-decoration-none" to={`/game?id=${item.id}`}>
+                Play</Link></button>
             </div>
         </div>
 
