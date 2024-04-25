@@ -21,7 +21,7 @@
     transition: .3s;
     overflow: hidden;
     height: 450px;
-    box-shadow: 0px 5px 8px 5px rgba(255, 255, 255, 0.5); 
+    box-shadow:  1px -2px 40px 10px rgb(52 120 215); 
     transition: 1s all;
     
 }
@@ -72,37 +72,28 @@
     margin-top: 50px;
     font-style: italic;
     text-transform: uppercase;
-  }
-  
-  /* Buy section styles */
+}
   .buysection {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px; /* Adjust margin for spacing */
+    margin-top: 20px; 
     transition: .3s all;
-  }
-  
-  /* Price text styles */
+}
   .buysection h2 {
     color: white;
     font-size: 1.8em;
     transition: .3s;
-  }
-  
-  /* Superscript text styles */
-  .buysection sup {
+}
+.buysection sup {
     font-size: 0.8em;
     font-weight: 500;
-  }
-  
-  /* Additional text styles (optional) */
-  .buysection span {
+}
+
+.buysection span {
     font-size: 0.8em;
     font-weight: 700;
-  }
-  
-  /* Button styles */
-  .buysection button {
+}
+.buysection button {
     padding: 5px 40px;
     border-radius: 5px;
     border: none;
@@ -111,15 +102,37 @@
     background-color: #0e3976;
     color: white;
     transition: .3s all;
-  }
+}
 
 
-  .line{
+.line{
     margin-bottom: -25px;
     margin-top: 36px;
     margin-left: -40px !important;
     width: 140%;
     background-color: #3478d7;
     height: 1px;
+}
 
+.the-card-conatier:before{
+    content: '';
+    position: absolute;
+    top: -2;
+    right: -2px;
+    left: -2px;
+    bottom: -2px;
+    background:white ;
+    z-index: -1;
+}
+
+.the-card-conatier::after{
+    content: '';
+    position: absolute;
+    top: -2 !important;
+    right: -2px;
+    left: -2px;
+    bottom: -2px;
+    background:white ;
+    z-index: -2;
+    filter: blur(40px) !important;
 }
