@@ -12,6 +12,7 @@ import RPSGame from './RPSGame';
 import axios from 'axios';
 import { getAuthUser, updateAuthUser } from '../../helper/Storage';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import Plxx from "../../components/Plxx";
 
 
 
@@ -52,7 +53,7 @@ const Round = () => {
     useEffect(() => {
           const runHandpose = async () => {
             const net = await handpose.load();
-            console.log("Handpose model loaded.");
+            
             setLoading("Handpose model loaded.")
             const intervalId = setInterval(() => {
               detect(net);
@@ -211,7 +212,7 @@ const Round = () => {
       };
    
       useEffect(() => {
-        console.log(gamesRemaining);
+        
         if (gesture ) {
           const computerChoice = generateComputerChoice();
           if (
@@ -242,7 +243,7 @@ const Round = () => {
            
            
           }
-          console.log(gamesRemaining);
+          // console.log(gamesRemaining);
           console.log(champdata.data.game_remaining);
           
           if (gamesRemaining === 0) {
@@ -292,10 +293,10 @@ const Round = () => {
           window.location.reload();
         } else if ( airound > round) {
           setWinner("Computer");
-          alert("computer win");
           updateCoinsAndXp(champdata.data.price , 10, false);
-          navigate('/RPS-Game');
+          // navigate('/RPS-Game');
           window.location.reload();
+          navigate('/gameover');
         }else {
           alert("try agian");
           navigate('/RPS-Game');
@@ -315,59 +316,53 @@ const Round = () => {
     // };
     
   return (
+  
     loadingPage?
+     <div className='all'>
+      
     <div className='playing container'>
+      
+       
      <div className='players'>
      <div>
-     <h1 className='text-dark'>Computer</h1>
+     <h1 className='computer'>Computer</h1>
     
      </div>
      <div>
-     <h1 className='text-dark  player-name'>{auth.name}</h1>
-        {gesture && (<h3 className='text-dark'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
+     <h1 className='playername'>{auth.name}</h1>
+        {gesture && (<h3 className='yourgesture'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
      </div>
      </div>
+     
     <Webcam
         ref={webcamRef}
         mirrored={true}
-        style={{
-            position: "absolute",
-            marginLeft: "auto",
-            left: 0,
-            right: 80,
-            top: 150,
-            textAlign: "center",
-            zIndex: 9,
-            width: 500,
-            height: 400,
-            borderRadius:"100px",
-            marginTop:"60px",
-            marginRight:"60px"
-        }}
+        className='camera'
+  
         />
         <canvas
         ref={canvasRef}
-        style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 20,
-            textAlign: "center",
-            zIndex: 9,
-            width: 540,
-            height: 350,
-        }}
+        className='canvas'
+        
+          
+       
         />
+        
         {gesture && handDetected && (
         <div>
-            {computerChoice && <p style={{ color: "black" }}> <img src={computerChoice} alt="Computer choice" className='computer-player'></img></p>}
+            {computerChoice && <p style={{ color: "white" ,fontFamily:"Jersey 10 Charted, sans-serif" }}> <img src={computerChoice} alt="Computer choice" className='computer-player'></img></p>}
         </div>
         )}
-                {gesture && (<>{winner && <h1 className='text-center' style={{ color: "black" }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
+                {gesture && (<>{winner && <h1 className='winnertext' style={{ color: "white"  }}> <span className='text-info'>{winner}</span> wins ...!</h1>}</>)}
+                
     </div>
+    </div>
+   
     :
     <LoadingPage />
+    
+    
+    
   )
 }
 

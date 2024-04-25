@@ -1,15 +1,18 @@
+@font-face {
+    font-family: playagain;
+    src: url(../../../../assets/fonts/Esportiva-8M0OM.ttf);
+}
 .selectskins-container{
-    /* background-image: url(../../../../img/herobg.png) ; */
-    /* background: rgb(2,0,36); */
-    background: linear-gradient(90deg, #0b0f18 26%, rgb(11, 68, 94) 54%, #0b0f18 79%);
+    background-image: url(../../../../assets/images/b1.jpg) ;
     background-position: center center ;
     background-size: 100% 100%;
     padding-top:80px ;
-    height: fit-content;
+    height: 100vh;
+
 }
 .title-skins{
     text-align: center;
-    padding-top: 20px;
+    padding-top: 0px;
     color: #ffffff;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 60px;
@@ -52,3 +55,4 @@
 .play-now a {
     color: white;
 }
+

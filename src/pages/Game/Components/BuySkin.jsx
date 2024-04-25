@@ -99,29 +99,45 @@ const BuySkin = () => {
                     <div className=" container cards-container locked-skins-contanier">
 
                         {Lockedskins.data.map((item) => (
-                            <div className="lockedskin" key={item.id}>
-                                {showBuyAlert[item.id] && ( // Check for alert based on item ID
+                            // <div className="lockedskin" key={item.id}>
+                                // {showBuyAlert[item.id] && ( // Check for alert based on item ID
+                                //     <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
+                                // )}
+                            //     {/* <Link to={`/game?id=${item.id}`}> */}
+                            //     <img alt="plane1" src={item.imageUrl} />
+                            //     <h4 className="locked-title">{item.name}</h4>
+                                // <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
+                                // <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
+                                // <i
+                                //     className="fa-solid fa-lock lock-icon-skin"
+                                //     onClick={() => handleLockClick(item.id)} // Pass item.id for specific item
+                                // ></i>
+                            // </div>
+
+                            <div className='the-lock-card-conatier'>
+                                      {showBuyAlert[item.id] && ( // Check for alert based on item ID
                                     <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
                                 )}
-                                {/* <Link to={`/game?id=${item.id}`}> */}
-                                <img alt="plane1" src={item.imageUrl} />
-                                <h4 className="locked-title">{item.name}</h4>
-                                <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
-                                <i
+                            <div className='imgbox-lock'>
+                                <img src={item.imageUrl} alt="" className='plane-lock-card-img ' />
+                            {/* <span></span> */}
+                            </div>
+                            <div className="line"></div>
+                            <div className="title ">{item.name}</div>
+                            <div className='buysection-lock'>
+                            <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
+                            <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
+                            <i
                                     className="fa-solid fa-lock lock-icon-skin"
                                     onClick={() => handleLockClick(item.id)} // Pass item.id for specific item
                                 ></i>
                             </div>
+                        </div>
                         ))}
                     </div>
                 </div>
             </section>
-
         </>
-
-
-
     );
 }
 

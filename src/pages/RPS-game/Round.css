@@ -1,14 +1,60 @@
+.all{
+  background-image: url(./Human\ aware\ AI\ hero.png);
+  
+  
+  height: 110vh;
+  
+  background-size: 100% 100%;
+  
+}
+.playingarea{
+  background-image: url(./Human\ aware\ AI\ hero.png);
+}
+.camera{
+  position: absolute;
+  margin-left: auto;
+  left: 0PX;
+  right: 90PX;
+  top: 150PX;
+  text-Align: center;
+ 
+  width: 500PX;
+  height: 400PX;
+  border-Radius:100px;
+  margin-Top:60px;
+  margin-Right:60px;
+ 
+border-style: outset;
+}
+.canvas{
+  position: absolute;
+  
+}
+
+
 .yourcoins1{
   display: flex;
   justify-content: center; /* Horizontally centers the content */
   align-items: center; /* Vertically centers the content */
-  font-size: 2rem; /* Adjust the font size as needed */
-  font-family:Impact;
-  padding-top: 60px;
+  font-size: 500%; /* Adjust the font size as needed */
+  font-family:'Jersey 10 Charted', 'sans-serif';
+  padding-top: 90px;
   padding-bottom: auto;
 }
-
-
+.computer{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+  padding-right:200px;
+}
+.playername{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+}
+.yourgesture{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+}
+.winnertext{
+  font-family:'Jersey 10 Charted', 'sans-serif';
+  padding: 1px 500px;
+}
 .yourcoins{
     display: flex;
   justify-content: center; /* Horizontally centers the content */
@@ -68,6 +114,7 @@
   justify-content: center;
   padding-left: 100px;
   padding-right: 100px;
+  margin-top: auto;
 }
 .cardSkin{
   width: 285px;
@@ -173,6 +220,7 @@ html {
   .flip-box-back {
     background-size: cover;
     background-position: center;
+    background-color: rgba(101, 110, 194, 0.301);
     border-radius: 8px;
     min-height: 475px;
     -ms-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
@@ -189,6 +237,9 @@ html {
     -webkit-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-variant-caps: small-caps;
+
   }
   
   .flip-box:hover .flip-box-front {
@@ -199,6 +250,7 @@ html {
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
   }
+
   
   .flip-box-back {
     position: absolute;
@@ -211,6 +263,8 @@ html {
     -webkit-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-variant-caps: small-caps;
   }
   
   .flip-box:hover .flip-box-back {
@@ -409,3 +463,10 @@ html {
     padding: 15px 20px;
     text-transform: uppercase;
   }
+
+  .lockChampion{
+    z-index: 9999;
+  }
+.all{
+  overflow-x: hidden;
+}
