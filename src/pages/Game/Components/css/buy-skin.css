@@ -1,9 +1,14 @@
+@font-face {
+    font-family: playagain;
+    src: url(../../../../assets/fonts/Esportiva-8M0OM.ttf);
+}
+
 .buyskins-container{
-    background: linear-gradient(90deg, #0b0f18 26%, rgb(11, 68, 94) 54%, #0b0f18 79%);
+    background-image: url(../../../../assets/images/b1.jpg) ;
     background-position: center center ;
     background-size: 100% 100%;
     padding-top:80px ;
-    height: fit-content;
+    min-height: 100vh;
 }
 .lockedskin{
     width: 280px;
@@ -18,7 +23,6 @@
 }
 .lockedskin img{
     width: 100%;
-
 }
 .lockedskin h4{
     text-decoration: none;
@@ -58,7 +62,7 @@
     color: #3478d7;
     font-family: playagain;
     padding-top: 0px !important;
-    margin: 20px 0px 30px 0px;
+    margin: 28px 0px 40px 0px;
     font-size: 60px;
     text-transform:uppercase;
 }

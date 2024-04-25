@@ -34,7 +34,7 @@ export default function SelectSkin() {
 
       <section className="selectskins-container ">
         <h1 className="title-skins main-title-skins">YOUR Planes</h1>
-        <div className="container cards-container pb-4">
+        <div className="container cards-container pb-4 mb-4">
           {
           skins.data.map((item)=>{
             return (

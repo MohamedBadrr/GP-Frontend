@@ -2,29 +2,34 @@
     font-family: playagain;
     src: url(../../../../assets/fonts/Esportiva-8M0OM.ttf);
 }
+
 .selectskins-container{
     background-image: url(../../../../assets/images/b1.jpg) ;
     background-position: center center ;
     background-size: 100% 100%;
     padding-top:80px ;
-    height: 100vh;
+    min-height: 100vh;
 
 }
-.title-skins{
+.title-skins-locked{
     text-align: center;
     padding-top: 0px;
-    color: #ffffff;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:playagain ;
     font-size: 60px;
     font-weight: 500;
-    letter-spacing: .6rem;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin-top: 20px;
+    color: #b1c5ef;
 }
 .cards-container{
     margin-top: 50px;
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+    margin-top: 50px !important;
+    margin-bottom: 150px !important;
 }
 .cardSkin{
     width: 285px;

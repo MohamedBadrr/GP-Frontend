@@ -27,21 +27,21 @@ const Mainmenu = () => {
                     <span></span>
                     <span></span>
                     <span></span>
-                    Select skin
+                    Select Plane
                     </Link>
                     <Link className='list-skin' to={"/buyskin"}>
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    buy skin
+                    Buy New Planes
                     </Link>
                     <Link className='list-skin' to={"/home"}>
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    quit
+                    Quit The Game
                     </Link>
                 </div>
             </div>
