@@ -6,9 +6,9 @@ import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, use
 import CanvasLoader from "./Loader"
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-import { getAuthUser } from '../../../helper/Storage';
+import { getAuthUser, updateAuthUser } from '../../../helper/Storage';
 // from "@react-three/postprocessing";
-import { useSearchParams } from "react-router-dom"
+import { Await, useSearchParams } from "react-router-dom"
 
 // import { BlendFunction } from "postprocessing";
 import { Ground } from './Ground';
@@ -35,20 +35,13 @@ import GameOver from '../../GameOver/GameOver';
 
 
 
+
 export function CarShow(props){
   const navigate = useNavigate(); 
   const [score ,setScore] = useState(0)
   const [lives ,setLives] = useState(1000)
-
   const [rockX ,setRockX] = useState()
   const auth = getAuthUser();
-    const [ skin , setSkin ] = useState({
-      loading : false ,
-      finish : false,
-      data : null ,
-      errors: null,
-    })
-    
     useEffect(() => {
       if ( lives === 0) {
         navigate("/gameover");
@@ -57,8 +50,9 @@ export function CarShow(props){
     const updateCoinsAndXp = (coins,xp,win) =>{
       if (auth) {
         axios.put("http://localhost:4000/game/update-coins" ,{
-          coins : (win)?(auth.coins + coins *2) : (auth.coins - coins) ,
-          xp: auth.xp + xp
+          coins : (win)?(auth.coins + coins * 2 ) : (auth.coins - coins) ,
+          xp: auth.xp + xp,
+          status : (win) ? ('win') : ('lose')
         },
         {
           headers:{
@@ -71,32 +65,37 @@ export function CarShow(props){
         });
       }
     }
-    
-    if (props.round.start) {
-      setTimeout(() => {
-        props.setRound({...props.round , time : props.round.time - 1 })
-      }, 1000);
-    }
-    if (props.round.time === 0 && props.round.start ){
-      updateCoinsAndXp()
-      navigate("/gameover");
-      
-    }
-    useEffect(() => {
+    useEffect(()=>{
       if (auth) {
-        setSkin({...skin , loading:true , err:[]});
-        axios.get(`http://localhost:4000/skins/spacificSkins/${props.skinId}`,
+        axios.get(`http://localhost:4000/game/rounds`,
         {
           headers:{
           token : auth.token,
           }
         }).then((resp) =>{
-          setSkin({...skin, data : resp.data , loading:false , errors:"" , finish : true})
+          props.setRound({...props.round , time:resp.data.time , RequireCoins : resp.data.requiredCoins})
         }).catch((errors)=>{
-          setSkin({...skin , loading:false , errors:errors.response.data.errors[0].msg , finish : true})
-        });
+          console.log(errors);
+          });
       }
-    }, [props.skinId])
+    },[1])
+   useEffect(()=>{
+    if (props.round.start) {
+      setTimeout(() => {
+        props.setRound({...props.round , time : props.round.time - 1 })
+      }, 1000);
+    }
+   },[props.round.time])
+    if (props.round.time === 0 && props.round.start && score >= props.round.RequireCoins  ){
+      updateCoinsAndXp( score, 20, true )
+      updateAuthUser()
+      navigate("/winner");
+
+    }else if (props.round.time === 0 && props.round.start){
+      updateCoinsAndXp( score, 10, false )
+      updateAuthUser()
+      navigate("/gameover");
+    }
 
     
     
@@ -112,10 +111,10 @@ export function CarShow(props){
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
       > 
-        Your Score : {score}
+        Your Score : {score} / {props.round.RequireCoins}
       </Text>
       <Text
-        position={[3.8, 2.37, 0]}
+        position={[3.6, 2.37, 0]}
         fontSize={.15}
         font="bold 30px Arial"
         intensity={50}
@@ -140,7 +139,7 @@ export function CarShow(props){
         anchorY="middle"
         rotation={[Math.PI / 85,9.4, 0]}
       > 
-        Heigh Score : {props.round.time}
+        Time left : {props.round.time}
       </Text>
       {/* <Text
         position={[3, 2.17, 0]}
@@ -190,7 +189,7 @@ export function CarShow(props){
           <>
           <Environment map={texture} />
               {
-                (skin.finish) && (<SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={skin.data} action={props.action} />)
+                (props.skin.finish) && (<SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin.data} action={props.action} />)
               }
               <Ground />
               
@@ -240,32 +239,46 @@ export function CarShow(props){
 }
 
 function Game() { 
+  const auth = getAuthUser()
   const [queryParameters] = useSearchParams();
-    const id = queryParameters.get("id")
-    const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
-    
-    // rock positions
-    const positions = [
-      new Vector3(2,1,10),
-      new Vector3(0,1,10),
-      new Vector3(-2,1,10)
-    ]    
+  const [ skin , setSkin ] = useState({
+    loading : false ,
+    finish : false,
+    data : null ,
+    errors: null,
+  })
+  const id = queryParameters.get("id")
+  const [planePosition , setPlanePosition ]= useState(new Vector3(0,1,0))
+  const [round , setRound] = useState({
+    time : null ,
+    RequireCoins : null ,
+    start: false,
+    finish : false,
+  }) 
 
-    const [round , setRound] = useState({
-      time : 45,
-      RequireCoins : 20,
-      start: false,
-      finish : false,
-    }) 
-
-    const webcamRef = useRef(null);
-    const [action , setAction ] = useState()
+  useEffect(() => {
+    if (auth) {
+      setSkin({...skin , loading:true , err:[]});
+      axios.get(`http://localhost:4000/skins/spacificSkins/${id}`,
+      {
+        headers:{
+        token : auth.token,
+        }
+      }).then((resp) =>{
+        setSkin({...skin, data : resp.data , loading:false , errors:"" , finish : true})
+      }).catch((errors)=>{
+        setSkin({...skin , loading:false , errors:errors.response.data.errors[0].msg , finish : true})
+      });
+    } 
+  }, [id])
+  const webcamRef = useRef(null);
+  const [action , setAction ] = useState()
 
   const runHandpose = async () => {
     const modelUrl = "../../../handpose/manifest.json"
     const net = await handpose.load(modelUrl);
     console.log("Handpose model loaded.");
-    setRound({...round , start:true })
+    setRound({ ...round , start:true })
     //  Loop and detect hands 
     setInterval(() => {
       detect(net);
@@ -297,10 +310,12 @@ function Game() {
       }
     }
   };
-  useEffect(() => {
-    runHandpose();
+  useEffect(  () => {
+     runHandpose();
+    
+
   }, [])
-  
+  console.log(round);
   const [startGame , setStartGame] = useState({
     flag : false,
     time : 30000,
@@ -308,11 +323,11 @@ function Game() {
 
   
   return (
-    round.start?
+    ( round.start && skin.finish )?
       <>
       <Canvas shadows>
         <Suspense fallback={<CanvasLoader />}>
-          <CarShow skinId={id} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
+          <CarShow skin={skin} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
           <Preload all /> 
         </Suspense>
       </Canvas>

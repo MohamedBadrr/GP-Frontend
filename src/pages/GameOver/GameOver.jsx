@@ -63,7 +63,7 @@ const GameOver = () => {
                       delaySpeed={150000}
                     /></h2>
                 </span>
-                <Link to={"/selectskin"}><h3>play again?</h3></Link>
+                <a to={"/selectskin"}><h3>play again?</h3></a>
             </div>
         </div> 
        </div>

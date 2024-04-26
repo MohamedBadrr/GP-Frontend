@@ -47,8 +47,8 @@ const Winner = () => {
                   <i class="fa-solid fa-trophy mx-4"></i>
                 </h2>
                 <img src={imgWinner} alt="" className='asd'/>
-                <Link to={"/user"}><h3>play again?</h3></Link>
-                <Link to={"/home"}><h3>back to main menu?</h3></Link>
+                <a to={"/selectskin"}><h3>play again?</h3></a>
+                <a to={"/home"}><h3>back to main menu?</h3></a>
             </div>
         </div>
         </div>

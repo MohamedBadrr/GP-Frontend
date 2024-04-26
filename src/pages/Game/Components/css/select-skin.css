@@ -29,7 +29,6 @@
     flex-wrap: wrap !important;
     justify-content: space-around !important;
     margin-top: 50px !important;
-    margin-bottom: 150px !important;
 }
 .cardSkin{
     width: 285px;
@@ -41,6 +40,7 @@
     border-radius: 20px;
     box-shadow: 0px 0px 5px white;
 }
+
 .cardSkin img{
     width: 100%;
     transition: 1.0s;

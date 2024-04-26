@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./css/buy-skin.css";
 import { getAuthUser, updateAuthUser } from '../../../helper/Storage';
 import axios from 'axios';
-import Plxx from "../../../components/Plxx";
 
 const BuySkin = () => {
     const navigate  = useNavigate();
@@ -69,6 +68,7 @@ const BuySkin = () => {
                     }).then((resp) => {
                         updateAuthUser(auth.token);
                         navigate("/selectskin");
+                        updateAuthUser()
                         window.location.reload();
                     }).catch((err) => {
                         setAlertMsg(err.response.data.errors[0].msg);
@@ -88,17 +88,19 @@ const BuySkin = () => {
                                 {showBuyAlert[item.id] && ( // Check for alert based on item ID
                                     <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
                                 )}
+                                {showFailedBuyAlert[item.id] && ( // Check for alert based on item ID
+                                    <div className="alert alert-danger p-1 mx-2 my-2">{alertBuyMsg}</div>
+                                )}
                                 {/* <Link to={`/game?id=${item.id}`}> */}
                                 <img alt="plane1" src={item.imageUrl} />
                                 <h4 className="locked-title">{item.name}</h4>
                                 <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}><a href="/selectskin">Buy Now</a></button>
+                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}>Buy Now</button>
                                 <i
                                     className="fa-solid fa-lock lock-icon-skin"
                                     onClick={() => handleLockClick(item.id)} 
                                 ></i>
                             </div>
-                        </div>
                         ))}
                     </div>
                 </div>

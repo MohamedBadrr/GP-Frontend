@@ -40,7 +40,7 @@ export default function SelectSkin() {
             return (
             <div className='the-card-conatier'>
             <div className='imgbox'>
-                <img src={item.imageUrl} alt="" className='plane-card-img test' />
+                <img src={item.imageUrl} alt="" className='plane-card-img ' />
             {/* <span></span> */}
             </div>
             <div className="line"></div>

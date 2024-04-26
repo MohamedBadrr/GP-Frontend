@@ -110,7 +110,7 @@ border-style: outset;
   
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap !important;
   justify-content: center;
   padding-left: 100px;
   padding-right: 100px;

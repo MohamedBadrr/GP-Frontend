@@ -16,26 +16,8 @@ export default function Header() {
   const { pathname} = location;
   const [ userToggle , setUserToggle ] = useState(false);
   const auth = getAuthUser();
-  const [user, setUser] = useState({
-    loading : false,
-    data : [] ,
-    err : []
-  });
-  useEffect(() => {
-    if (auth) {
-      setUser({...user , loading:true , err:[]});
-      axios.get("http://localhost:4000/user/info",
-      {
-        headers:{
-          token : auth.token
-        }
-      }).then((resp) =>{
-        setUser({...user, data : resp.data , loading:false , err:""})
-      }).catch((errors)=>{
-          setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
-      });
-    }
-  }, [])
+  
+  
 
   
   
@@ -83,10 +65,10 @@ export default function Header() {
                 <>
                 <div className='conis-xp'>
                 <li class="conis">
-                    <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{user.data.coins}</span></h4>
+                    <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{auth.coins}</span></h4>
                 </li>
                 <li class="xp">
-                    <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{user.data.xp}</span></h4>
+                    <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{auth.xp}</span></h4>
                 </li>
                 </div>
                 </>
@@ -106,8 +88,8 @@ export default function Header() {
             { auth && (<>
               <div>
                 <button className='user-toggle' onClick={()=>(setUserToggle(!userToggle))}>
-                  <img src={user.data.photo} className='user-img'/>
-                  <span className='user-name'>{user.data.name}</span>
+                  <img src={auth.photo} className='user-img'/>
+                  <span className='user-name'>{auth.name  }</span>
                   </button>
                 {
                   (userToggle) && (
