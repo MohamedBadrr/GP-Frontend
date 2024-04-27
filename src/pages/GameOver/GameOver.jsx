@@ -26,7 +26,7 @@ const GameOver = () => {
 
 
   const navigate = useNavigate();
-  const [counter, setCounter] = useState(5000);
+  const [counter, setCounter] = useState(5);
 
   useEffect(()=>{
    const timerId = setInterval(()=>{

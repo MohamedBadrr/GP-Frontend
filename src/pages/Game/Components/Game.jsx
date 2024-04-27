@@ -39,7 +39,7 @@ import LoadingPage from '../../LoadingPage/LoadingPage';
 export function CarShow(props){
   const navigate = useNavigate(); 
   const [score ,setScore] = useState(0)
-  const [lives ,setLives] = useState(1000)
+  const [lives ,setLives] = useState(3)
   const [rockX ,setRockX] = useState()
   const [coinX ,setCoinX] = useState()
   const auth = getAuthUser();
