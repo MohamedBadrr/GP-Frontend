@@ -1,8 +1,8 @@
 import React from 'react'
 import "./Mainmenu.css"
 import { Link } from 'react-router-dom'
-import plane from "../../img/pngwing.png"
-import astu from  "../../img/Asturant.png"
+import plane from "../../assets/images/pngwing.png"
+import astu from  "../../assets/images/Asturant.png"
 import video from "../../assets/video/bgvid.mp4"
 
 const Mainmenu = () => {

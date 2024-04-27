@@ -5,15 +5,16 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from './pages/Register/Register';
 import User from './pages/User/User';
-import Game from './pages/Game/Components/Game';
-import SelectSkin from './pages/Game/Components/SelectSkin';
+import Game from './pages/Game/Components/game-round/Game';
+import SelectSkin from './pages/Game/Components/select-skin/SelectSkin';
 import RPSGame from './pages/RPS-game/RPSGame';
 import Round from './pages/RPS-game/Round';
 import Mainmenu from './pages/MainMenu/Mainmenu';
-import BuySkin from './pages/Game/Components/BuySkin';
+import BuySkin from './pages/Game/Components/buy-skin/BuySkin';
 import GameOver from './pages/GameOver/GameOver';
 import Winner from './pages/winner/Winner';
 import Card from './pages/Home/Card';
+import About from './pages/About/About';
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ export const routes = createBrowserRouter([
         {
             path: "/selectskin",
             element: <SelectSkin />,
+        },
+        {
+            path: "/about",
+            element: <About />,
         },
         {
             path: "/buyskin",

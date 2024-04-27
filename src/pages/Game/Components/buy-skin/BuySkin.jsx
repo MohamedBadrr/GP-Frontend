@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./css/buy-skin.css";
-import { getAuthUser, updateAuthUser } from '../../../helper/Storage';
+import "./buy-skin.css";
+import { getAuthUser, updateAuthUser } from '../../../../helper/Storage';
 import axios from 'axios';
 
 const BuySkin = () => {

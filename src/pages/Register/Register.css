@@ -2,7 +2,7 @@
 
 
 .Register{
-    background-image:url(../../img/bgRegister.jpg);
+    background-image:url(../../assets/images/bgRegister.jpg);
     background-position: center center;
     background-size: 100% 100%;
     height: 100vh;
@@ -75,7 +75,7 @@
     display: none; 
     }
     .Register{
-        background-image:url(../../img/bg.png);
+        background-image:url(../../assets/images/bg.png);
         background-position: center center;
         background-size: 100% 100%;
         height: 100vh;

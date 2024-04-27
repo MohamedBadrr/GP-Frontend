@@ -3,8 +3,8 @@ import "./GamesSection.css";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
-import img1 from "../../img/game1.png" 
-import img2 from "../../img/game2.png"
+import img1 from "../../assets/images/game1.png" 
+import img2 from "../../assets/images/game2.png"
 import { Link } from 'react-router-dom';
 
 const GamesSection = () => {

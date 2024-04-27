@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../Register/Register.css'
 import { Link } from 'react-router-dom';
-import loginphoto from '../../img/pngwing.png'
+import loginphoto from '../../assets/images/pngwing.png'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { setAuthUser } from "../../helper/Storage";

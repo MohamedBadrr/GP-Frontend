@@ -1,7 +1,7 @@
 
 .about{
     height: 100vh;
-    background-image: url(../img/body_bg.png);
+    background-image: url(../../assets/images/body_bg.png);
 }
 .video2,.video1{
     width: 40%;
@@ -20,7 +20,7 @@
 
 }
 .video1{
-    background-image: url(../img/game1.png);
+    background-image: url(../../assets/images/game1.png);
     transition: .5s all !important;
 }
 .vedio1-skin{
@@ -51,7 +51,7 @@
     color: white;
 }
 .video2{
-    background-image: url(../img/game2.png);
+    background-image: url(../../assets/images/game2.png);
     background-position: center center;
     background-size: 100% 100%;
     transition: .5s all !important;

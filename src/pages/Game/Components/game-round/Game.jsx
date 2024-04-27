@@ -1,12 +1,12 @@
 
 import React , { Suspense, useEffect, useState , useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import "./style.css";
+import "../../css/style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera } from '@react-three/drei'
 import CanvasLoader from "./Loader"
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-import { getAuthUser, updateAuthUser } from '../../../helper/Storage';
+import { getAuthUser, updateAuthUser } from '../../../../helper/Storage';
 // from "@react-three/postprocessing";
 import { useSearchParams } from "react-router-dom"
 
@@ -22,7 +22,7 @@ import { Text } from '@react-three/drei';
 import { Rock } from './Rock';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import LoadingPage from '../../LoadingPage/LoadingPage';
+import LoadingPage from '../../../LoadingPage/LoadingPage';
 // import GameOver from '../../GameOver/GameOver';
 // import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 

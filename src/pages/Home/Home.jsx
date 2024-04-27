@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Home.css";
-import homeBanner from "../../img/banner_img.png"
+import homeBanner from "../../assets/images/banner_img.png"
 import GamesSection from '../GamesSection/GamesSection';
-import About from '../../About/About';
-import img1 from "../../img/herobg.png"
-import Plxx from '../../components/Plxx';
+import About from '../About/About';
 export default function Home() {
   return (
     <>

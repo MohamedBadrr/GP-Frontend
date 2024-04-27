@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Mesh } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Vector3 } from 'three';
-import { getAuthUser } from "../../../helper/Storage";
+import { getAuthUser } from "../../../../helper/Storage";
 import axios from "axios";
 
 export function SpaceShip (props) {

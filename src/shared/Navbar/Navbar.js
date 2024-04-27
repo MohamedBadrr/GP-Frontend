@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from "../../img/LOGOO.png"
+import logo from "../../assets/images/LOGOO.png"
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { getAuthUser, removeAuthUser } from '../../helper/Storage';

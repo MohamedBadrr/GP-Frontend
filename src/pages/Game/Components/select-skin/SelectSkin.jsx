@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./css/select-skin.css" ;
-import { getAuthUser , updateAuthUser } from '../../../helper/Storage';
+import "./select-skin.css" ;
+import { getAuthUser , updateAuthUser } from '../../../../helper/Storage';
 import axios from 'axios';
-import Plxx from "../../../components/Plxx";
+// import Plxx from "../../../components/Plxx";
 export default function SelectSkin() {
   const [showBuyAlert, setShowBuyAlert] = useState({});
   const auth = getAuthUser();

@@ -2,7 +2,7 @@
     color: white;
 }
 .body-home{
-    background-image:url(../../img/body_bg.png);
+    background-image:url(../../assets/images/body_bg.png);
     background-position: center center;
     height: 100vh;
     display: flex !important;
@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 570px) {
     .body-home{
-        background-image:url(../../img/body_bg.png);
+        background-image:url(../../assets/images/body_bg.png);
         background-position: center center;
         height: fit-content;
         display: block !important;

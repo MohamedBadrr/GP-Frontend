@@ -7,12 +7,11 @@ import {useNavigate, useParams, useSearchParams} from "react-router-dom"
 import rock from "../../images_Ai/rock.png";
 import paper from "../../images_Ai/paper.png";
 import scissor from "../../images_Ai/scissors.png";
-import Championship from "../../components/Championship";
+import Championship from "./Championship";
 import RPSGame from './RPSGame';
 import axios from 'axios';
 import { getAuthUser, updateAuthUser } from '../../helper/Storage';
 import LoadingPage from '../LoadingPage/LoadingPage';
-import Plxx from "../../components/Plxx";
 
 
 

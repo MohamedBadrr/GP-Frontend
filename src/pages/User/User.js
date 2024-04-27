@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import './User.css';
 import axios from 'axios';
 import { getAuthUser, setAuthUser } from '../../helper/Storage';
-import show from '../../img/show.png'
-import hide from '../../img/hide.png'
 
 export default function User() {
   const auth = getAuthUser();

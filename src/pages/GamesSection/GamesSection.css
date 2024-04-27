@@ -1,7 +1,7 @@
 
 
 .games{
-    background-image: url(../../img/body_bg.png);
+    background-image: url(../../assets/images/body_bg.png);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@
 @media screen and (max-width: 570px) {
 
     .games{
-        background-image: url(../../img/body_bg.png);
+        background-image: url(../../assets/images/body_bg.png);
         height: 102vh;
         display: block;
     }
