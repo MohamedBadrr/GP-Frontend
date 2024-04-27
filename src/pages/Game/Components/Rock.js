@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 
 export function Rock(props) {
-
+    const speed = props.speed
     const time =useRef(0)
     const getInitialPosition = ()=>{
             let v = [0,0,0]
@@ -56,23 +56,28 @@ export function Rock(props) {
 
 
     useFrame((state,delta)=>{
-        time.current += delta * 5 // 1.5 =>
-        let newZ = position.z - (time.current)
-
-        if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x && position.y === props.planePosition.y  ) { // if the plane take the coin
+        if (position.x === props.coinX) {
             resetPosition();
             time.current = 0
-            props.setLives(props.lives - 1)
+        } else {
+            time.current += speed // 1.5 =>
+            let newZ = position.z - (time.current)
 
-        }
-        if (newZ < -5) {
-            resetPosition();
-            time.current = 0
+            if (newZ < 0 && newZ > -0.2 && position.x === props.planePosition.x && position.y === props.planePosition.y  ) { // if the plane take the coin
+                resetPosition();
+                time.current = 0
+                props.setLives(props.lives - 1)
 
+            }
+            if (newZ < -5) {
+                resetPosition();
+                time.current = 0
+
+            }
+            glb.scene.position.set( position.x, position.y , newZ )
+            props.setRockX(position.x)
+            glb.scene.rotation.y += delta * 5;
         }
-        glb.scene.position.set( position.x, position.y , newZ )
-        props.setRockX(position.x)
-         glb.scene.rotation.y += delta * 5;
 
     } , [position])
 

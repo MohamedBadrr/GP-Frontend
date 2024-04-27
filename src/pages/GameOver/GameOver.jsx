@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import "./GameOver.css"
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useTypewriter , Cursor, Typewriter } from 'react-simple-typewriter';
+import { Link, useNavigate } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 import soundFile from "../../assets/sounds/gameoversound.mp4"
 
 
 const GameOver = () => {
-
   const [audio] = useState(new Audio(soundFile));
   useEffect(() => {
     const playAudio = () => {
@@ -14,7 +13,7 @@ const GameOver = () => {
       audio.removeEventListener('play', playAudio);
     };
     audio.addEventListener('play', playAudio);
-  }, []);
+  }, [audio]);
 
   const audioStyle = {
     position: 'absolute',
@@ -63,7 +62,7 @@ const GameOver = () => {
                       delaySpeed={150000}
                     /></h2>
                 </span>
-                <a to={"/selectskin"}><h3>play again?</h3></a>
+                <Link to={"/selectskin"}><h3>play again?</h3></Link>
             </div>
         </div> 
        </div>

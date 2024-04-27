@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 import logo from "../../img/LOGOO.png"
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
@@ -16,11 +13,26 @@ export default function Header() {
   const { pathname} = location;
   const [ userToggle , setUserToggle ] = useState(false);
   const auth = getAuthUser();
-  
-  
-
-  
-  
+  const [user, setUser] = useState({
+    loading : false,
+    data : [] ,
+    err : []
+  });
+  useEffect(() => {
+    if (auth) {
+      setUser({...user , loading:true , err:[]});
+      axios.get("http://localhost:4000/user/info",
+      {
+        headers:{
+          token : auth.token
+        }
+      }).then((resp) =>{
+        setUser({...user, data : resp.data , loading:false , err:""})
+      }).catch((errors)=>{
+          setUser({...user , loading:false , err:errors.response.data.errors[0].msg})
+      });
+    }
+  }, [])
   const Logout =()=>{
     removeAuthUser();
     navigate("/login");
@@ -33,7 +45,7 @@ export default function Header() {
       ) : (
         <nav class="navbar navbar-expand-lg text-white text-center our-navBar">
         <div class="container">
-          <Link class="navbar-brand text-white " to="/home"> <img src={logo} className='logoHeader' /> </Link>
+          <Link class="navbar-brand text-white " to="/home"> <img src={logo} alt='logo' className='logoHeader' /> </Link>
           {/* <Link class="navbar-brand text-white " to="/home"><span className='editBarnd'>END</span>GAME</Link> */}
           <Link class="navbar-brand text-white " to="/home"></Link>
           <button class="navbar-toggler text-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,16 +77,15 @@ export default function Header() {
                 <>
                 <div className='conis-xp'>
                 <li class="conis">
-                    <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{auth.coins}</span></h4>
+                <h4 class=" mt-2 mx-2 text-white">  Coins : <span className='special-color'>{user.data.coins}</span></h4>
                 </li>
                 <li class="xp">
-                    <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{auth.xp}</span></h4>
+                <h4 class=" mt-2 mx-2 text-white">  XP : <span className='special-color'>{user.data.xp}</span></h4>
                 </li>
                 </div>
                 </>
               )
             }
-              
             </ul>
             {
               !auth && (
@@ -84,12 +95,11 @@ export default function Header() {
                 </>
               )
             }
-
             { auth && (<>
               <div>
                 <button className='user-toggle' onClick={()=>(setUserToggle(!userToggle))}>
-                  <img src={auth.photo} className='user-img'/>
-                  <span className='user-name'>{auth.name  }</span>
+                  <img alt={`${user.data.name}`} src={user.data.photo} className='user-img'/>
+                  <span className='user-name'>{user.data.name}</span>
                   </button>
                 {
                   (userToggle) && (
@@ -105,12 +115,6 @@ export default function Header() {
           </div>
         </div>
       </nav>
-      
-      
-      
-      
-      
-      
       )}
     </>
   );

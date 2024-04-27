@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 
 export function Coins(props) {
+    const speed = props.speed
     const time =useRef(0)
     const getInitialPosition = ()=>{
             let v = [0,0,0]
@@ -53,24 +54,22 @@ export function Coins(props) {
 
 
     useFrame((state,delta)=>{
-        if (position.x === props.rockX) {
-            resetPosition()
-        }else{
-            time.current += delta * 5 // 1.5 =>
-            let newZ = position.z - (time.current)
-            if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x   ) { // if the plane take the coin
-                resetPosition();
-                time.current = 0
-                props.setScore(props.score + 1)
-            }
-            
-            if (newZ < -5) {
-                resetPosition();
-                time.current = 0
-            }
-            glb.scene.position.set( position.x, position.y , newZ )
-            glb.scene.rotation.y += delta * 5;
+        
+        time.current += speed   // 1.5 =>
+        let newZ = position.z - (time.current)
+        if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x   ) { // if the plane take the coin
+            resetPosition();
+            time.current = 0
+            props.setScore(props.score + 1)
         }
+        // resit position whene go back the scene 
+        if (newZ < -5) {
+            resetPosition();
+            time.current = 0
+        }
+        glb.scene.position.set( position.x, position.y , newZ )
+        props.setCoinX(position.x)
+        glb.scene.rotation.y += delta * 5;
 
     } , [position])
 

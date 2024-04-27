@@ -2,13 +2,13 @@
 import React , { Suspense, useEffect, useState , useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import "./style.css";
-import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera, useTexture } from '@react-three/drei'
+import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera } from '@react-three/drei'
 import CanvasLoader from "./Loader"
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { getAuthUser, updateAuthUser } from '../../../helper/Storage';
 // from "@react-three/postprocessing";
-import { Await, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 
 // import { BlendFunction } from "postprocessing";
 import { Ground } from './Ground';
@@ -18,12 +18,12 @@ import { FloatingGrid } from './FloatingGrid';
 import { Coins } from './Coins';
 import { Vector3 } from 'three';
 import { Text } from '@react-three/drei';
-import rock from "../../../img/pngwing.com.png"
+
 import { Rock } from './Rock';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoadingPage from '../../LoadingPage/LoadingPage';
-import GameOver from '../../GameOver/GameOver';
+// import GameOver from '../../GameOver/GameOver';
 // import { HeartGeometry } from 'three/examples/jsm/geometries/HeartGeometry';
 
 // import { Html} from '@react-three/drei';
@@ -41,6 +41,7 @@ export function CarShow(props){
   const [score ,setScore] = useState(0)
   const [lives ,setLives] = useState(1000)
   const [rockX ,setRockX] = useState()
+  const [coinX ,setCoinX] = useState()
   const auth = getAuthUser();
     useEffect(() => {
       if ( lives === 0) {
@@ -50,7 +51,7 @@ export function CarShow(props){
     const updateCoinsAndXp = (coins,xp,win) =>{
       if (auth) {
         axios.put("http://localhost:4000/game/update-coins" ,{
-          coins : (win)?(auth.coins + coins * 2 ) : (auth.coins - coins) ,
+          coins : (win)?(auth.coins + coins * 2 ) : (auth.coins + coins) ,
           xp: auth.xp + xp,
           status : (win) ? ('win') : ('lose')
         },
@@ -73,7 +74,7 @@ export function CarShow(props){
           token : auth.token,
           }
         }).then((resp) =>{
-          props.setRound({...props.round , time:resp.data.time , RequireCoins : resp.data.requiredCoins})
+          props.setRound({...props.round , time:resp.data.time , RequireCoins : resp.data.requiredCoins , speed : resp.data.speed })
         }).catch((errors)=>{
           console.log(errors);
           });
@@ -90,11 +91,13 @@ export function CarShow(props){
       updateCoinsAndXp( score, 20, true )
       updateAuthUser()
       navigate("/winner");
+      window.location.reload();
 
     }else if (props.round.time === 0 && props.round.start){
       updateCoinsAndXp( score, 10, false )
       updateAuthUser()
       navigate("/gameover");
+      window.location.reload();
     }
 
     
@@ -200,8 +203,8 @@ export function CarShow(props){
     
     { (props.round.start && !props.round.finish) &&
       <>
-      <Rock setRockX={setRockX} planePosition={props.planePosition} setLives={setLives} lives={lives} />
-      <Coins rockX={rockX} planePosition={props.planePosition}  setScore={setScore} score={score}/>
+      <Rock setRockX={setRockX} coinX={coinX}  planePosition={props.planePosition} setLives={setLives} lives={lives} speed={props.round.speed} />
+      <Coins rockX={rockX} coinX={coinX} setCoinX={setCoinX}  planePosition={props.planePosition}  setScore={setScore} score={score} speed={props.round.speed}/>
       </>
     }
     
@@ -252,6 +255,7 @@ function Game() {
   const [round , setRound] = useState({
     time : null ,
     RequireCoins : null ,
+    speed : null ,
     start: false,
     finish : false,
   }) 
@@ -296,12 +300,9 @@ function Game() {
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
       // // Set video width
       webcamRef.current.video.width = 300;
       webcamRef.current.video.height = 300;
-
       // Make Detections
       const hand = await net.estimateHands(video);
       if (hand.length > 0) {
@@ -312,14 +313,7 @@ function Game() {
   };
   useEffect(  () => {
      runHandpose();
-    
-
   }, [])
-  console.log(round);
-  const [startGame , setStartGame] = useState({
-    flag : false,
-    time : 30000,
-  }); 
 
   
   return (

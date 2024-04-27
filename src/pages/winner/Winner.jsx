@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Winner.css"
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useTypewriter , Cursor, Typewriter } from 'react-simple-typewriter';
+import { Link } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 import imgWinner from "../../assets/images/winner.png"
 import soundFile from "../../assets/sounds/win.mp4"
 
@@ -13,7 +13,7 @@ const Winner = () => {
       audio.removeEventListener('play', playAudio);
     };
     audio.addEventListener('play', playAudio);
-  }, []);
+  }, [audio]);
 
   const audioStyle = {
     position: 'absolute',
@@ -27,7 +27,7 @@ const Winner = () => {
         <div className='winner'>
         <div className="container-winner-game">
             <div className='winner-titles'>
-                <h2 className='winnernumbers'></h2>
+                {/* <h2 className='winnernumbers'></h2> */}
                 <h2>
                 <audio style={audioStyle} autoPlay loop >
                   <source src={soundFile} type="audio/mpeg" />
@@ -47,8 +47,8 @@ const Winner = () => {
                   <i class="fa-solid fa-trophy mx-4"></i>
                 </h2>
                 <img src={imgWinner} alt="" className='asd'/>
-                <a to={"/selectskin"}><h3>play again?</h3></a>
-                <a to={"/home"}><h3>back to main menu?</h3></a>
+                <Link to={"/selectskin"}><h3>play again?</h3></Link>
+                <Link to={"/home"}><h3>back to main menu?</h3></Link>
             </div>
         </div>
         </div>
