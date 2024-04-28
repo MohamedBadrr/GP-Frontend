@@ -1,5 +1,4 @@
 /** @format */
-
 import React from "react";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import App from "./App";
@@ -15,7 +14,7 @@ import Mainmenu from "./pages/MainMenu/Mainmenu";
 import BuySkin from "./pages/Game/Components/buy-skin/BuySkin";
 import GameOver from "./pages/GameOver/GameOver";
 import Winner from "./pages/winner/Winner";
-import About from "./pages/Tutorials/Tutorials";
+import Tutorials from "./pages/Tutorials/Tutorials";
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
@@ -35,7 +34,6 @@ export const routes = createBrowserRouter([
         path: "/user",
         element: <User />,
       },
-
       {
         path: "/Login",
         element: <Login />,
@@ -67,8 +65,8 @@ export const routes = createBrowserRouter([
         element: <SelectSkin />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/tutorial",
+        element: <Tutorials />,
       },
       {
         path: "/buyskin",
