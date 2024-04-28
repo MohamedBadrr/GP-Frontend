@@ -1,52 +1,41 @@
-.navbar{
+/** @format */
+
+.navbar {
     position: fixed !important;
     width: 100%;
     z-index: 99999;
     border-bottom: 1px solid #4874b2;
 }
-
-.our-navBar{
-    background-color:#0b0f18 !important ;
+.base-navBar {
+    background-color: #0b0f18 !important ;
     color: white !important;
 }
-.navbar-brand{
-    font-size: 25px ;
+.navbar-brand {
+    font-size: 25px;
     font-weight: bold;
     margin-left: 50px;
 }
-.editBarnd
-{
+.editBarnd {
     color: #216399;
 }
-.login-btn{
-    border-radius: 5px !important;
-}
-.login-btn a ,.register-btn a{
-    text-decoration: none;
-    color: white;
-}
-.register-btn{
-    border-radius: 5px !important;
-}
-.nav-link{
+.nav-link {
     font-size: 20px !important;
     font-family: serif !important;
     transition: all.6s !important;
-    
 }
 .nav-link:hover {
-    color :#4890cc !important; 
+    color: #4890cc !important;
     text-decoration: none;
 }
-.conis-xp{
+.conis-xp {
     display: flex;
     justify-content: space-between !important;
     align-items: center;
 }
-.conis{
+.conis {
     margin-right: 175px;
 }
-.xp{
+.xp {
     margin-left: 175px;
 }
 .user-toggle {
@@ -78,15 +67,14 @@
     text-decoration: none;
     font-weight: 600;
 }
-@media screen and (min-width: 350px) {
-    .navbar-brand{
-        font-size: 25px ;
-        font-weight: bold;
-        margin-left: 25px !important;
-    }
-}
-
-.logoHeader{
+.logoHeader {
     width: 100%;
     margin-left: 32px;
+}
+@media screen and (min-width: 350px) {
+    .navbar-brand {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 25px !important;
+    }
 }
