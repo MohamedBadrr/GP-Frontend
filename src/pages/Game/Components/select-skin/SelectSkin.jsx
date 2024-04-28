@@ -36,6 +36,10 @@ export default function SelectSkin() {
             skins.data.map((item) => {
               return (
                 <div className='select-skin-card-shape'>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                   <div className='select-skin-imgbox'>
                     <img src={item.imageUrl} alt="" />
                   </div>
