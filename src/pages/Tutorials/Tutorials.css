@@ -2,8 +2,9 @@
 .tutorials {
     height: 105vh;
     background-image: url(../../assets/images/body_bg.png);
-    padding-top: 50px;
+    padding-top: 30px;
 }
+
 .title-tutorail {
     font-weight: bold;
     font-family: emoji;
@@ -12,6 +13,7 @@
     margin: 30px 0px 20px 0px;
     padding-top: 25px;
 }
+
 .tutorials-video2,
 .tutorials-video1 {
     width: 40%;
@@ -23,15 +25,18 @@
     position: relative;
     transition: 0.5s all !important;
 }
+
 .tutorials-videos {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+
 .tutorials-video1 {
     background-image: url(../../assets/images/game1.png);
     transition: 0.5s all !important;
 }
+
 .tutorials-vedio1-skin {
     width: 100%;
     height: 450px;
@@ -41,30 +46,37 @@
     transition: 0.5s all !important;
     display: none;
 }
+
 .tutorials-vedio1-skin button {
     transition: 0.9s all !important;
     margin: 200px auto;
     display: none;
 }
+
 .tutorials-video1:hover {
     transition: 0.5s all !important;
+
     .tutorials-vedio1-skin {
         display: block;
     }
+
     .tutorials-vedio1-skin button {
         display: block;
     }
 }
+
 .tutorials-vedio1-skin button a {
     text-decoration: none;
     color: white;
 }
+
 .tutorials-video2 {
     background-image: url(../../assets/images/game2.png);
     background-position: center center;
     background-size: 100% 100%;
     transition: 0.5s all !important;
 }
+
 .tutorials-vedio2-skin {
     width: 100%;
     height: 450px;
@@ -74,20 +86,25 @@
     transition: 0.5s all !important;
     display: none;
 }
+
 .tutorials-vedio2-skin button {
     transition: 0.9s all !important;
     margin: 200px auto;
     display: none;
 }
+
 .tutorials-video2:hover {
     transition: 0.5s all !important;
+
     .tutorials-vedio2-skin {
         display: block;
+    }
+
+    .tutorials-vedio2-skin button {
+        display: block;
+    }
 }
-.tutorials-vedio2-skin button {
-    display: block;
-}
-}
+
 .tutorials-vedio2-skin button a {
     text-decoration: none;
     color: white;
@@ -98,19 +115,22 @@
         padding: 30px 20px;
         height: fit-content;
     }
-.tutorials-video2,
-.tutorials-video1 {
-    width: 100% !important;
-    height: 450px;
-    margin: 20px;
-    margin-top: 40px;
-    display: block;
-}
-.tutorials-video1 {
-    margin-top: 20px;
-}
-.tutorials-videos {
-    width: 90% !important;
-    display: inline-block !important;
-}
+
+    .tutorials-video2,
+    .tutorials-video1 {
+        width: 100% !important;
+        height: 450px;
+        margin: 20px;
+        margin-top: 40px;
+        display: block;
+    }
+
+    .tutorials-video1 {
+        margin-top: 20px;
+    }
+
+    .tutorials-videos {
+        width: 90% !important;
+        display: inline-block !important;
+    }
 }
