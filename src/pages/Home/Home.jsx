@@ -44,7 +44,7 @@ export default function Home() {
         <GamesSection />
       </section>
 
-      <section id="ABOUT">
+      <section id="TOTURIALS">
         <Tutorials />
       </section>
     </>
