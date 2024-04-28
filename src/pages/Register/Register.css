@@ -1,6 +1,3 @@
-
-
-
 .Register{
     background-image:url(../../assets/images/bgRegister.jpg);
     background-position: center center;
@@ -11,67 +8,55 @@
     justify-content: center !important;
 }
 
-.edit{
+.Register-form-title{
     color: #4f8fe7 !important;
     font-weight: bold;
 }
 
-.Registerform form{
+.Register-form form{
     width: 60%;
     margin-left: 80px;
     margin-top: 60px;
     text-align: center;
 }
-    
 
-.Registerform  form h2{
+.Register-form  form h2{
     color: aliceblue;
     font-weight: bold;
     font-size: 35px;
 }
 
-.Registerform form p {
+.Register-form form p {
     color: aliceblue;
     font-weight: bold;
     font-size: 17px;
 
 }
-.Registerform .input-box{
+.Register-form .Register-form-input-box{
     margin: 20px 0;
 }
 
-.Registerform .remember{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: 15px;
-    color: aliceblue;
-}
-.remember label input{
-    /* margin-right: 4px; */
-}
-
-.Registerform .register-link{
+.Register-form .Register-form-link{
     font-size: 14.5px;
     text-align: center;
     margin-top: 20px;
     color: aliceblue;
 }
-.register-link p a {
+.Register-form-link p a {
     text-decoration: none;
     font-weight:bold;
 }
-.register-link p a:hover{
+.Register-form-link p a:hover{
     text-decoration: underline ;
 }
 
-.Registerform button{
+.Register-form button{
     width: 30%;
     font-weight: bold;
 }
 
 @media screen and (max-width:570px ) {
-    .imglogin img{
+    .Register-form-img img{
     display: none; 
     }
     .Register{
@@ -81,7 +66,7 @@
         height: 100vh;
         display: block;
     }
-    .Registerform form{
+    .Register-form form{
         width: 90%;
         margin: auto;
         margin-top: 150px;}
