@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link , useNavigate } from "react-router-dom";
 import Championship from "./Championship";
-import "./Round.css";
+import "./RPSGame.css";
 import axios from 'axios';
 import { getAuthUser } from "../../helper/Storage";
 
 
-const RPSGame = () => {
+const RPSGameChampions = () => {
   const auth = getAuthUser();
   const navigate = useNavigate();
   const [ champdata , setChampdata ] = useState({
@@ -48,4 +48,4 @@ const RPSGame = () => {
   );
 };
 
-export default RPSGame;
+export default RPSGameChampions;

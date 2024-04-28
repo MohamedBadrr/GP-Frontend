@@ -7,8 +7,8 @@ import Register from './pages/Register/Register';
 import User from './pages/User/User';
 import Game from './pages/Game/Components/game-round/Game';
 import SelectSkin from './pages/Game/Components/select-skin/SelectSkin';
+import RPSGameChampions from './pages/RPS-game/RPSGameChampions';
 import RPSGame from './pages/RPS-game/RPSGame';
-import Round from './pages/RPS-game/Round';
 import Mainmenu from './pages/MainMenu/Mainmenu';
 import BuySkin from './pages/Game/Components/buy-skin/BuySkin';
 import GameOver from './pages/GameOver/GameOver';
@@ -76,11 +76,11 @@ export const routes = createBrowserRouter([
         },
         {
             path: "/RPS-Game",
-            element: <RPSGame />,
+            element: <RPSGameChampions />,
         },
         {
             path : "/game-round/:id",
-            element : <Round />
+            element : <RPSGame />
         },
         {
             path : "/card",

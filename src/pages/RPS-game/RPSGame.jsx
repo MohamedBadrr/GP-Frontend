@@ -13,7 +13,7 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 
 
 
-const Round = () => {
+const RPSGame = () => {
   
     const [qTable, setQTable] = useState({});
     const webcamRef = useRef(null);
@@ -358,4 +358,4 @@ const Round = () => {
   )
 }
 
-export default Round;
+export default RPSGame;

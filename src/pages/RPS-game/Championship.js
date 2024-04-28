@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import zikoo from '../img/zikoo.jpg';
-import "./Round.css";
+import "./RPSGame.css";
 // import Button from 'react-bootstrap/Button';
 // import Card from 'react-bootstrap/Card';
 // import { getAuthUser } from "../helper/Storage";
