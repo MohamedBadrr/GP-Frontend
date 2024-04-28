@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect, useState, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import "../../css/style.css";
 import { CubeCamera, Environment, OrbitControls, Preload, PerspectiveCamera } from '@react-three/drei'
 import CanvasLoader from "./Loader"
 import * as handpose from "@tensorflow-models/handpose";
