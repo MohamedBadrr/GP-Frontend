@@ -1,5 +1,6 @@
 import React ,{ useState, useEffect, useRef } from 'react'
 import * as handpose from "@tensorflow-models/handpose";
+import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom"
 import rock from "../../assets/images/images_Ai/rock.png";

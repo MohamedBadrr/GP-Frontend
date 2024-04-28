@@ -35,7 +35,6 @@ import LoadingPage from '../../../LoadingPage/LoadingPage';
 
 
 
-
 export function CarShow(props){
   const navigate = useNavigate(); 
   const [score ,setScore] = useState(0)
@@ -279,8 +278,8 @@ function Game() {
   const [action , setAction ] = useState()
 
   const runHandpose = async () => {
-    const modelUrl = "../../../handpose/manifest.json"
-    const net = await handpose.load(modelUrl);
+    const modelUrl = "../../../../handpose/manifest.json"
+    const net = await handpose.load();
     console.log("Handpose model loaded.");
     setRound({ ...round , start:true })
     //  Loop and detect hands 
