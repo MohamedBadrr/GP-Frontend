@@ -1,3 +1,17 @@
-.special-color{
+.base-color{
     color: #517fbe;
+    font-weight: bold;
+}
+.default-button{
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to right, #0d1563, #4874b2, #6b7c93);
+    border-radius: 0px;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    transition: all .7s ease !important;
+    background-size: 200%;
+}
+.default-button:hover{
+    background-position: right;
 }

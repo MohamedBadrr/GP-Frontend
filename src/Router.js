@@ -13,7 +13,6 @@ import Mainmenu from './pages/MainMenu/Mainmenu';
 import BuySkin from './pages/Game/Components/buy-skin/BuySkin';
 import GameOver from './pages/GameOver/GameOver';
 import Winner from './pages/winner/Winner';
-import Card from './pages/Home/Card';
 import About from './pages/About/About';
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
@@ -81,10 +80,6 @@ export const routes = createBrowserRouter([
         {
             path : "/game-round/:id",
             element : <RPSGame />
-        },
-        {
-            path : "/card",
-            element : <Card />
         },
         {
             path : "/mainamenu",
