@@ -53,7 +53,10 @@ export function Rock(props) {
         } else {
             time.current += speed // 1.5 =>
             let newZ = position.z - (time.current)
-            if (newZ < 0 && newZ > -0.2 && position.x === props.planePosition.x && position.y === props.planePosition.y) { // if the plane take the coin
+            if (newZ < 0 
+                && newZ > -0.2 
+                && position.x === props.planePosition.x 
+                && position.y === props.planePosition.y) { // if the plane take the coin
                 resetPosition();
                 time.current = 0
                 props.setLives(props.lives - 1)

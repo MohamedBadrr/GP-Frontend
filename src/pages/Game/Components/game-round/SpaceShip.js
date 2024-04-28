@@ -33,52 +33,54 @@ export function SpaceShip(props) {
   useEffect(() => {
     if (props.action > 214 && props.action < 427 && props.planePosition.x === -2) {
       // position => right move => left
-      setPastPosition([0, 1]);
+          setPastPosition([0, 1]);
       props.setPlanePosition(new Vector3(0, 1, 0));
     } else if (props.action > 214 && props.action < 427 && props.planePosition.x === 2) {
       // position => left move => right
-      setPastPosition([1, 0]);
+          setPastPosition([1, 0]);
       props.setPlanePosition(new Vector3(0, 1, 0));
     } else if (props.action > 427 && (props.planePosition.x === 0 || props.planePosition.x === -2)) {
       // position => medel move => left
-      props.setPlanePosition(new Vector3(2, 1, 0));
+          props.setPlanePosition(new Vector3(2, 1, 0));
     } else if (props.action < 214 && (props.planePosition.x === 0 || props.planePosition.x === 2)) {
       // position => medel move => right
-      props.setPlanePosition(new Vector3(-2, 1, 0));
+          props.setPlanePosition(new Vector3(-2, 1, 0));
     }
   }, [props.action])
   useFrame((state, delta) => {
     if (props.planePosition.x === 2) {
       // left side
       gltf.scene.position.x += Speed;
-      if (gltf.scene.position.x > 2) {
-        gltf.scene.position.x = 2;
-        gltf.scene.rotation.z = 0.4;
-        gltf.scene.rotation.y = -0.1;
-      }
-    } else if (props.planePosition.x === 0 && pastPosition[0] === 1) {
+          if (gltf.scene.position.x > 2) {
+            gltf.scene.position.x = 2;
+            gltf.scene.rotation.z = 0.4;
+            gltf.scene.rotation.y = -0.1;
+          }
+    } else if (props.planePosition.x === 0 
+      && pastPosition[0] === 1) {
       gltf.scene.position.x -= Speed;
-      if (gltf.scene.position.x < 0) {
-        gltf.scene.position.x = 0;
-        resetPastPosition();
-        gltf.scene.rotation.z = 0;
-        gltf.scene.rotation.y = 0;
-      }
-    } else if (props.planePosition.x === 0 && pastPosition[1] === 1) {
+          if (gltf.scene.position.x < 0) {
+            gltf.scene.position.x = 0;
+            resetPastPosition();
+            gltf.scene.rotation.z = 0;
+            gltf.scene.rotation.y = 0;
+          }
+    } else if (props.planePosition.x === 0 
+      && pastPosition[1] === 1) {
       gltf.scene.position.x += Speed;
-      if (gltf.scene.position.x > 0) {
-        gltf.scene.position.x = 0;
-        resetPastPosition();
-        gltf.scene.rotation.z = 0;
-        gltf.scene.rotation.y = 0;
-      }
+          if (gltf.scene.position.x > 0) {
+            gltf.scene.position.x = 0;
+            resetPastPosition();
+            gltf.scene.rotation.z = 0;
+            gltf.scene.rotation.y = 0;
+          }
     } else if (props.planePosition.x === -2) {
       gltf.scene.position.x -= Speed;
-      if (gltf.scene.position.x < -2) {
-        gltf.scene.position.x = -2;
-        gltf.scene.rotation.z = -0.4;
-        gltf.scene.rotation.y = 0.1;
-      }
+          if (gltf.scene.position.x < -2) {
+            gltf.scene.position.x = -2;
+            gltf.scene.rotation.z = -0.4;
+            gltf.scene.rotation.y = 0.1;
+          }
     }
   })
   return <primitive object={gltf.scene} />

@@ -25,6 +25,7 @@ export function CarShow(props) {
   const [rockX, setRockX] = useState()
   const [coinX, setCoinX] = useState()
   const auth = getAuthUser();
+
   useEffect(() => {
     if (lives === 0) {
       navigate("/gameover");
@@ -56,7 +57,10 @@ export function CarShow(props) {
             token: auth.token,
           }
         }).then((resp) => {
-          props.setRound({ ...props.round, time: resp.data.time, RequireCoins: resp.data.requiredCoins, speed: resp.data.speed })
+          props.setRound({ ...props.round, 
+            time: resp.data.time, 
+            RequireCoins: resp.data.requiredCoins, 
+            speed: resp.data.speed })
         }).catch((errors) => {
           console.log(errors);
         });
@@ -69,7 +73,11 @@ export function CarShow(props) {
       }, 1000);
     }
   }, [props.round.time])
-  if (props.round.time === 0 && props.round.start && score >= props.round.RequireCoins) {
+  if (props.round.time === 0 
+    && props.round.start 
+    && score 
+    >= props.round.RequireCoins
+    ){
     updateCoinsAndXp(score, 20, true)
     updateAuthUser()
     navigate("/winner");
@@ -120,7 +128,11 @@ export function CarShow(props) {
         rotation={[Math.PI / 85, 9.4, 0]}>
         Time left : {props.round.time}
       </Text>
-      <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} enableZoom={false} enableRotate={false} />
+      <OrbitControls target={[0, 0.35, 0]} 
+      maxPolarAngle={1.45} 
+      enableZoom={false} 
+      enableRotate={false} 
+      />
       <PerspectiveCamera makeDefault fov={60} position={[0, 2, -4]} />
       <color args={[0, 0, 0]} attach="background" />
       <CubeCamera resolution={256} frames={Infinity}>
@@ -129,7 +141,14 @@ export function CarShow(props) {
             <>
               <Environment map={texture} />
               {
-                (props.skin.finish) && (<SpaceShip planePosition={props.planePosition} setPlanePosition={props.setPlanePosition} skin={props.skin.data} action={props.action} />)
+                (props.skin.finish) 
+                && (
+                <SpaceShip 
+                planePosition={props.planePosition} 
+                setPlanePosition={props.setPlanePosition} 
+                skin={props.skin.data} 
+                action={props.action} 
+                />)
               }
               <Ground />
             </>
@@ -138,8 +157,20 @@ export function CarShow(props) {
       </CubeCamera>
       {(props.round.start && !props.round.finish) &&
         <>
-          <Rock setRockX={setRockX} coinX={coinX} planePosition={props.planePosition} setLives={setLives} lives={lives} speed={props.round.speed} />
-          <Coins rockX={rockX} coinX={coinX} setCoinX={setCoinX} planePosition={props.planePosition} setScore={setScore} score={score} speed={props.round.speed} />
+          <Rock setRockX={setRockX}
+            coinX={coinX}
+            planePosition={props.planePosition} 
+            setLives={setLives} 
+            lives={lives} 
+            speed={props.round.speed} />
+          <Coins rockX={rockX} 
+          coinX={coinX} 
+          setCoinX={setCoinX} 
+          planePosition={props.planePosition} 
+          setScore={setScore} 
+          score={score} 
+          speed={props.round.speed} 
+          />
         </>
       }
       <spotLight
@@ -229,7 +260,7 @@ function Game() {
       webcamRef.current.video.height = 300;
       const hand = await net.estimateHands(video);
       if (hand.length > 0) {
-        setAction(hand[0].landmarks[8][0])
+          setAction(hand[0].landmarks[8][0])
       }
     }
   };
@@ -242,7 +273,14 @@ function Game() {
       <>
         <Canvas shadows>
           <Suspense fallback={<CanvasLoader />}>
-            <CarShow skin={skin} round={round} setAction={setAction} action={action} setRound={setRound} planePosition={planePosition} setPlanePosition={setPlanePosition} />
+            <CarShow 
+            skin={skin} 
+            round={round} 
+            setAction={setAction} 
+            action={action} 
+            setRound={setRound} 
+            planePosition={planePosition} 
+            setPlanePosition={setPlanePosition} />
             <Preload all />
           </Suspense>
         </Canvas>

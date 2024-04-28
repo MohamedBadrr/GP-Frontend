@@ -12,7 +12,9 @@ const Loader = () => {
           marginTop: 40,
           zIndex: 50
         }}
-      >{progress.toFixed(2)} |%</p>
+      >{progress.toFixed(2)} 
+      %
+      </p>
     </Html>
   )
 }
