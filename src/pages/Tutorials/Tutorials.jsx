@@ -1,12 +1,11 @@
 import React from 'react';
-import "./About.css"
+import "./Tutorials.css"
 import { Link } from 'react-router-dom';
 
 
-    const About = () => {
+    const Tutorials = () => {
     return (
         <>
-        
         <div className='about d-flex justify-content-around align-items-start'>
             <div className='container' >
                 <div className='row '>
@@ -31,4 +30,4 @@ import { Link } from 'react-router-dom';
     );
     }
 
-    export default About;
+    export default Tutorials;
