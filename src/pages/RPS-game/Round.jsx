@@ -4,9 +4,9 @@ import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { drawHand } from "../../utilities";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom"
-import rock from "../../images_Ai/rock.png";
-import paper from "../../images_Ai/paper.png";
-import scissor from "../../images_Ai/scissors.png";
+import rock from "../../assets/images/images_Ai/rock.png";
+import paper from "../../assets/images/images_Ai/paper.png";
+import scissor from "../../assets/images/images_Ai/scissors.png";
 import Championship from "./Championship";
 import RPSGame from './RPSGame';
 import axios from 'axios';
