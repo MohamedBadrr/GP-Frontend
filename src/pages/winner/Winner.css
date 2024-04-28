@@ -1,124 +1,121 @@
+/** @format */
 @font-face {
-    font-family: gameOverFont;
-    src: url(../../assets/fonts/Metricas-MVrOx.ttf);
-}
-@font-face {
-    font-family: playagain;
-    src: url(../../assets/fonts/Esportiva-8M0OM.ttf);
-    
+  font-family: gameOverFont;
+  src: url(../../assets/fonts/Metricas-MVrOx.ttf);
 }
 @font-face {
-    font-family: winner;
-    src: url(../../assets/fonts/winner2.otf);
-    
+  font-family: playagain;
+  src: url(../../assets/fonts/Esportiva-8M0OM.ttf);
 }
-.winner{
-    height: 100vh;
-    background-color: black;
+@font-face {
+  font-family: winner;
+  src: url(../../assets/fonts/winner2.otf);
 }
-.container-winner-game{
-    width: 950px;
-    height: 500px;
-    background-color: rgba(0, 0, 0, 1.5);
-    border-radius: 10px;
-    position: fixed; 
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    text-align: center;
+.winner {
+  height: 100vh;
+  background-color: black;
 }
-
-.winner-titles {margin-top: 35px;}
-.winner-titles h2{
-    /* color: #0dd3f0 !important; */
-    color: rgb(215, 185, 15) !important;
-    font-family: winner;
-    letter-spacing: 8.9px;
-    font-size: 80px;
-    font-weight: 400;
-    text-shadow: 2px 2px 1px rgb(207, 201, 201);
+.container-winner-game {
+  width: 950px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 1.5);
+  border-radius: 10px;
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+}
+.winner-titles {
+  margin-top: 35px;
+}
+.winner-titles h2 {
+  /* color: #0dd3f0 !important; */
+  color: rgb(215, 185, 15) !important;
+  font-family: winner;
+  letter-spacing: 8.9px;
+  font-size: 80px;
+  font-weight: 400;
+  text-shadow: 2px 2px 1px rgb(207, 201, 201);
 }
 .winner-titles i {
-    color: rgb(215, 185, 15) !important; 
-    /* font-family: gameOverFont; */
-    letter-spacing: 8.9px;
-    font-size: 45px;
+  color: rgb(215, 185, 15) !important;
+  letter-spacing: 8.9px;
+  font-size: 45px;
 }
 
-.winner-titles a{
-    text-decoration: none;
-    transition: .5s;
+.winner-titles a {
+  text-decoration: none;
+  transition: 0.5s;
 }
-.winner-titles h3{
-    color: #c947ab;
-    font-size: 40px;
-    letter-spacing: 1.9px;
-    font-family: playagain;
-    font-weight: bold;
-    transition: .5s;
-    text-shadow: 1px 1px 1px white;
+.winner-titles h3 {
+  color: #c947ab;
+  font-size: 40px;
+  letter-spacing: 1.9px;
+  font-family: playagain;
+  font-weight: bold;
+  transition: 0.5s;
+  text-shadow: 1px 1px 1px white;
 }
-.winner-titles h3:hover{
-    color: #7c0f63;
+.winner-titles h3:hover {
+  color: #7c0f63;
 }
-.youwinnerr{
-    color: rgb(215, 185, 15) !important; 
+.youwinnerr {
+  color: rgb(215, 185, 15) !important;
 }
 .winner-titles span {
-    color: rgb(215, 185, 15) !important; 
+  color: rgb(215, 185, 15) !important;
 }
 .container-winner-game img {
-    width: 30% !important;
-    /* border-radius: 50%; */
-    margin-bottom: 30px;
-    
-opacity: 1; /* Initially hidden */
-animation: fadeInRotate 1.2s ease-in-out forwards;
+  width: 30% !important;
+  margin-bottom: 30px;
+  opacity: 1;
+  animation: fadeInRotate 1.2s ease-in-out forwards;
 }
 
 @keyframes fadeInRotate {
-    0% {
-        opacity: 0;
-        transform: rotateY(360deg);
-      }
-      12.5% {
-        opacity: 0.125;
-        transform: rotateY(270deg);
-      }
-      25% {
-        opacity: 0.25;
-        transform: rotateY(180deg);
-      }
-      37.5% {
-        opacity: 0.375;
-        transform: rotateY(90deg);
-      }
-      50% {
-        opacity: 0.5;
-        transform: rotateY(0deg);
-      }
-      50% {
-        opacity: 0.5;
-        transform: rotateY(0deg);
-      }
-      62.5% {
-        opacity: 0.625;
-        transform: rotateY(-90deg);
-      }
-      75% {
-        opacity: 0.75;
-        transform: rotateY(-180deg);
-      }
-      87.5% {
-        opacity: 0.875;
-        transform: rotateY(-270deg);
-      }
-      100% {
-        opacity: 1;
-        transform: rotateY(-360deg); /* End with full rotation */
-      }
+  0% {
+    opacity: 0;
+    transform: rotateY(360deg);
+  }
+  12.5% {
+    opacity: 0.125;
+    transform: rotateY(270deg);
+  }
+  25% {
+    opacity: 0.25;
+    transform: rotateY(180deg);
+  }
+  37.5% {
+    opacity: 0.375;
+    transform: rotateY(90deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotateY(0deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: rotateY(0deg);
+  }
+  62.5% {
+    opacity: 0.625;
+    transform: rotateY(-90deg);
+  }
+  75% {
+    opacity: 0.75;
+    transform: rotateY(-180deg);
+  }
+  87.5% {
+    opacity: 0.875;
+    transform: rotateY(-270deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(-360deg);
+  }
 }
