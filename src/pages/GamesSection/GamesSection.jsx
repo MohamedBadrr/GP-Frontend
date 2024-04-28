@@ -69,7 +69,7 @@ const GamesSection = () => {
                                 <div class="item-owl-carsoual text-center">
                                     <h4 className="my-3">
                                         <span className="base-color">Rock </span>Paper{" "}
-                                        <span className="base-color">Siser</span> Game
+                                        <span className="base-color">Scissor</span> Game
                                     </h4>
                                     <img src={img2} alt="" className="img-carsoul" />
                                     <div className="game-skin-carsoul">
@@ -92,7 +92,7 @@ const GamesSection = () => {
                                 <div class="item-owl-carsoual text-center">
                                     <h4 className="my-3">
                                         <span className="base-color">Rock </span>Paper{" "}
-                                        <span className="base-color">Siser</span> Game
+                                        <span className="base-color">Scissor</span> Game
                                     </h4>
                                     <img src={img2} alt="" className="img-carsoul" />
                                     <div className="game-skin-carsoul">
