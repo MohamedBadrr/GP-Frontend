@@ -2,8 +2,11 @@
     font-family: playagain;
     src: url(../../assets/fonts/Esportiva-8M0OM.ttf);
 }
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+10+Charted&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@font-face{
+    font-family: glitch;
+    src: url(../../assets/fonts/Jersey10Charted-Regular.ttf);
+}
 
 @font-face {
     font-family: buttonmain;
@@ -11,12 +14,12 @@
 }
 
 
-.MainMenu{
+.main-menu{
     overflow-x: hidden;
     height: 100vh;
 }
 
-.video-background {
+.main-menu-video-background {
     position: fixed;
     top: 60px;
     left: 0;
@@ -26,21 +29,29 @@
     z-index: -9999;
 }
 
-.video-background video {
+.main-menu-video-background video {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
-.main {
+.main-menu-asturant {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    animation: slideRight 1s ease-in-out forwards, floatImage 4s ease-in-out infinite;
+    animation-delay: 0;
+}
+
+.main-menu-hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.main h1 {
-    font-family: "Jersey 10 Charted", sans-serif;
+.main-menu-hero h1 {
+    font-family: glitch;
     font-weight: 400;
     font-style: normal;
     color: #4675cc;
@@ -50,16 +61,9 @@
     text-transform: uppercase;
 }
 
-.asturant {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    animation: slideRight 1s ease-in-out forwards, floatImage 4s ease-in-out infinite;
-    animation-delay: 0;
-}
 
 
-.list-skin {
+.main-menu-buttons {
     position: relative;
     display: inline-block;
     text-transform: uppercase;
@@ -76,11 +80,11 @@
     margin-bottom: 10px;
 }
 
-.list-skin span {
+.main-menu-buttons span {
     text-align: center;
 }
 
-.list-skin:hover {
+.main-menu-buttons:hover {
     background-color: #5b8dea;
     color: #050801;
     box-shadow: 0 0 5px #03e9f4,
@@ -90,12 +94,12 @@
         /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005); */
 }
 
-.list-skin span {
+.main-menu-buttons span {
     position: absolute;
     display: block;
 }
 
-.list-skin span:nth-child(1){
+.main-menu-buttons span:nth-child(1){
     top: 0;
     left: 0;
     width: 100%;
@@ -114,7 +118,7 @@
     }
 }
 
-.list-skin span:nth-child(2){
+.main-menu-buttons span:nth-child(2){
     top: -100%;
     right: 0;
     width: 1px;
@@ -134,7 +138,7 @@
     }
 }
 
-.list-skin span:nth-child(3){
+.main-menu-buttons span:nth-child(3){
     bottom: 0;
     right: 0;
     width: 100%;
@@ -154,7 +158,7 @@
     }
 }
 
-.list-skin span:nth-child(4){
+.main-menu-buttons span:nth-child(4){
     bottom: -100%;
     left: 0;
     width: 1px;
@@ -173,43 +177,6 @@
         bottom: 100%;
     }
 }
-
-
-
-
-
-
-/* 
-.c-button {
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-    font-size: 18px;
-    font-family: playagain  serif;
-    background-image: linear-gradient(to right, #0d1563,#4874b2, #6b7c93) ; 
-    font-weight: bold;
-    transition: all 0.8s ease !important;
-    background-size: 200%;
-    margin: 15px;
-    width: 300px;
-    padding: 6px;
-    text-align: center;
-    text-transform: uppercase;
-    box-shadow: 0 0 5px rgba(196, 182, 182, 0.2); 
-    border: 3px #2ca5b1 solid;
-    padding: 10px 20px;
-    border-left-color: #33cfdf;
-    border-right-color: #33cfdf;
-    animation: slideLeft 1s ease forwards;
-    animation-delay: 0;
-}
-
-.c-button:hover {
-    background-image: linear-gradient(to right, #33cfdf,#004646, #35383b) ; 
-    background-position: right;
-    border:3px #20b1b1 solid;
-    border-left-color: #06e6ff;
-    border-right-color: #06e6ff;
-} */
 
     @keyframes slideRight {
         0% {

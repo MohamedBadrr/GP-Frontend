@@ -3,15 +3,15 @@
     src: url(../../../../assets/fonts/Esportiva-8M0OM.ttf);
 }
 
-.selectskins-container{
+.select-skin{
     background-image: url(../../../../assets/images/b1.jpg) ;
     background-position: center center ;
     background-size: 100% 100%;
     padding-top:80px ;
     min-height: 100vh;
-
 }
-.title-skins-locked{
+
+.select-skin-title{
     text-align: center;
     padding-top: 0px;
     font-family:playagain ;
@@ -22,7 +22,8 @@
     margin-top: 20px;
     color: #b1c5ef;
 }
-.cards-container{
+
+.select-skin-card{
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -30,34 +31,94 @@
     justify-content: space-around !important;
     margin-top: 50px !important;
 }
-.cardSkin{
-    width: 285px;
-    height: 350px;
-    background-color: transparent !important;
+.select-skin-card-shape{
+        background-color: rgba(0, 0, 0, 0.3);
+        background-position: center center;
+        background-size: 100% 100%;
+        width: 300px;
+        padding: 40px; 
+        border-radius: 10px;
+        position: relative;
+        transition: .3s;
+        overflow: hidden;
+        min-height: 440px;
+        box-shadow:  1px -2px 10px 8px rgb(89, 129, 186); 
+        transition: 1s all;
+        margin-bottom: 80px;
+        margin-left: 50px ;
+        margin-right: 50px;
+}
+
+.slect-skin-line{
+        margin-bottom: -25px;
+        margin-top: 36px;
+        margin-left: -40px !important;
+        width: 140%;
+        background-color: #3478d7;
+        height: 1px;
+}
+
+.select-skin-name{
+    font-size: 29px;
+    font-weight: 700;
     text-align: center;
-    border: 1px transparent(180, 179, 179) solid !important;
-    margin-left: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 5px white;
+    color: #8fb3e6;
+    font-family: playagain;
+    letter-spacing: 5px;
+    word-spacing: 2.2px;
+    margin-top: 50px;
+    font-style: italic;
+    text-transform: uppercase;
 }
 
-.cardSkin img{
+.select-skin-imgbox{
+    position: relative;
     width: 100%;
-    transition: 1.0s;
-}
-.cardSkin img:hover{
-    transform: rotate(360deg) scale(1.9);
-}
-.cardSkin h4{
- text-decoration: none;
- font-size: 40px !important;
- color: rgb(177, 197, 239);
-}
-.cardSkin a{
-    text-decoration: none;
+    height: 200px;
+    z-index: 2;
 }
 
-.play-now a {
+.select-skin-imgbox img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s; 
+    z-index: 999;
+    transform: scale(1.9);
+}
+
+.select-skin-imgbox:hover img{
+    transform: scale(1.9) rotate(360deg);
+}
+
+.select-skin-button {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px; 
+    transition: .3s all;
+}
+
+.select-skin-button-decoration{
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(to right, #0d1563,#4874b2, #6b7c93) ; 
+    border-radius: 0px;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    transition: all .7s ease !important;
+    background-size: 200%;
+}
+
+.select-skin-button-decoration:hover{
+    background-position: right;
+}
+
+
+.select-skin-button a{
+    text-transform: uppercase;
     color: white;
 }
 

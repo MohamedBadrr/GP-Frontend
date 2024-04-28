@@ -5,13 +5,13 @@ import { getAuthUser, updateAuthUser } from '../../../../helper/Storage';
 import axios from 'axios';
 
 const BuySkin = () => {
-    const navigate  = useNavigate();
+    const navigate = useNavigate();
     const [showBuyAlert, setShowBuyAlert] = useState({});
     const [showFailedBuyAlert, setshowFailedBuyAlert] = useState({});
     const auth = getAuthUser();
     const userCoins = auth.coins;
-    const [alertMsg,setAlertMsg]=useState("");
-    const [alertBuyMsg,setAlertBuyMsg]=useState("you don't have enough coins");
+    const [alertMsg, setAlertMsg] = useState("");
+    const [alertBuyMsg, setAlertBuyMsg] = useState("you don't have enough coins");
     const [Lockedskins, setLockedSkins] = useState({
         loading: false,
         data: [],
@@ -36,16 +36,16 @@ const BuySkin = () => {
     }, [])
 
     const handleLockClick = (itemId) => {
-        setShowBuyAlert({ ...showBuyAlert, [itemId]: true }); 
+        setShowBuyAlert({ ...showBuyAlert, [itemId]: true });
         setAlertMsg("Please Buy Skin.");
-        setTimeout(() => setShowBuyAlert({ ...showBuyAlert, [itemId]: false }), 2000); 
+        setTimeout(() => setShowBuyAlert({ ...showBuyAlert, [itemId]: false }), 2000);
     };
 
 
     const handleBuyClick = (itemId) => {
-        setshowFailedBuyAlert({ ...showFailedBuyAlert, [itemId]: true }); 
+        setshowFailedBuyAlert({ ...showFailedBuyAlert, [itemId]: true });
         setAlertBuyMsg("You Don't Have Enough Coins");
-        setTimeout(() => setshowFailedBuyAlert({ ...showFailedBuyAlert, [itemId]: false }), 2000); 
+        setTimeout(() => setshowFailedBuyAlert({ ...showFailedBuyAlert, [itemId]: false }), 2000);
     };
 
     const [oneSkin, setOneSkin] = useState({
@@ -72,37 +72,34 @@ const BuySkin = () => {
                         window.location.reload();
                     }).catch((err) => {
                         setAlertMsg(err.response.data.errors[0].msg);
-                        setOneSkin({ ...oneSkin, loading: false, errors: err.response.data.errors[0].msg});
+                        setOneSkin({ ...oneSkin, loading: false, errors: err.response.data.errors[0].msg });
                         handleBuyClick(id);
                     })
         }
     }
     return (
         <>
-            <section className="buyskins-container ">
-                <div className="">
-                    <h1 className="title-skins-locked">Locked Skins</h1>
-                    <div className=" container cards-container locked-skins-contanier">
-                        {Lockedskins.data.map((item) => (
-                            <div className="lockedskin" key={item.id}>
-                                {showBuyAlert[item.id] && ( // Check for alert based on item ID
-                                    <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
-                                )}
-                                {showFailedBuyAlert[item.id] && ( // Check for alert based on item ID
-                                    <div className="alert alert-danger p-1 mx-2 my-2">{alertBuyMsg}</div>
-                                )}
-                                {/* <Link to={`/game?id=${item.id}`}> */}
-                                <img alt="plane1" src={item.imageUrl} />
-                                <h4 className="locked-title">{item.name}</h4>
-                                <p className="locked-price">{item.price} <span className="text-white">Conis</span></p>
-                                <button className="d-button mb-3 mt-2 px-4 py-1 buy-now" onClick={(e) => { buySkin(item.id) }}>Buy Now</button>
-                                <i
-                                    className="fa-solid fa-lock lock-icon-skin"
-                                    onClick={() => handleLockClick(item.id)} 
-                                ></i>
-                            </div>
-                        ))}
-                    </div>
+            <section className="buy-skin">
+                <h1 className="buy-skin-title">Locked Skins</h1>
+                <div className=" container buy-skin-card">
+                    {Lockedskins.data.map((item) => (
+                        <div className="buy-skin-locked" key={item.id}>
+                            {showBuyAlert[item.id] && ( 
+                                <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
+                            )}
+                            {showFailedBuyAlert[item.id] && ( 
+                                <div className="alert alert-danger p-1 mx-2 my-2">{alertBuyMsg}</div>
+                            )}
+                            <img alt="plane1" src={item.imageUrl} />
+                            <h4 className="buy-skin-name">{item.name}</h4>
+                            <p className="buy-skin-price">{item.price} <span className="text-white">Conis</span></p>
+                            <button className="buy-skin-button mb-3 mt-2 px-4 py-1" onClick={(e) => { buySkin(item.id) }}>Buy Now</button>
+                            <i
+                                className="fa-solid fa-lock buy-skin-close"
+                                onClick={() => handleLockClick(item.id)}
+                            ></i>
+                        </div>
+                    ))}
                 </div>
             </section>
         </>

@@ -2,23 +2,25 @@
     font-family: gameOverFont;
     src: url(../../assets/fonts/Metricas-MVrOx.ttf);
 }
+
 @font-face {
     font-family: playagain;
     src: url(../../assets/fonts/Esportiva-8M0OM.ttf);
-    
+
 }
-.game-over{
+
+.game-over {
     height: 99.5vh;
     background-color: black;
     overflow: hidden !important;
-    
 }
-.container-game-over{
+
+.game-over-container {
     width: 950px;
     height: 450px;
     background-color: rgba(0, 0, 0, 1.5);
     border-radius: 10px;
-    position: fixed; 
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -28,9 +30,12 @@
     align-items: center;
     text-align: center;
 }
-.gameover-titles {margin-top: -50px;}
 
-.gameover-titles span{
+.game-over-titles {
+    margin-top: -50px;
+}
+
+.game-over-titles span {
     color: #0dd3f0 !important;
     font-family: gameOverFont;
     letter-spacing: 8.9px;
@@ -39,20 +44,12 @@
     text-shadow: 2px 2px 5px rgb(207, 201, 201);
 }
 
-.numbers{
-    color:white !important;
-    font-family: gameOverFont;
-    letter-spacing: 8.9px;
-    font-size: 75px !important;
-    font-weight: bold;
-    text-shadow: 2px 2px 20px #0dd3f0!important;
-}
-.gameover-titles a{
+.game-over-titles a {
     text-decoration: none;
     transition: .5s;
 }
 
-.gameover-titles h3{
+.game-over-titles h3 {
     color: #f45ad0;
     font-size: 40px;
     letter-spacing: 1.9px;
@@ -64,11 +61,31 @@
     animation-direction: alternate;
     transition: .5s;
 }
-.gameover-titles h3:hover{
+
+.game-over-titles h3:hover {
     color: #a61e86;
 }
+
+.game-over-numbers {
+    color: white !important;
+    font-family: gameOverFont;
+    letter-spacing: 8.9px;
+    font-size: 75px !important;
+    font-weight: bold;
+    text-shadow: 2px 2px 20px #0dd3f0 !important;
+}
+
+
 @keyframes playAgain {
-    0%{text-shadow: 0px 2px 1px  #d79cc8;}
-    50%{text-shadow: 0px 2px 5px #f69ee0;}
-    100%{text-shadow: 0px 2px 10px #cb9fc0;}
+    0% {
+        text-shadow: 0px 2px 1px #d79cc8;
+    }
+
+    50% {
+        text-shadow: 0px 2px 5px #f69ee0;
+    }
+
+    100% {
+        text-shadow: 0px 2px 10px #cb9fc0;
+    }
 }
