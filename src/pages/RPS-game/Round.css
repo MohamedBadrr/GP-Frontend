@@ -88,24 +88,8 @@ border-style: outset;
   margin-left: 60px;
   height: 450px;
 }
-.skins-container{
-  /* background-image: url(../../../../img/herobg.png) ; */
-  /* background: rgb(2,0,36); */
-  background: linear-gradient(90deg, #0b0f18 26%, rgb(11, 68, 94) 54%, #0b0f18 79%);
-  background-position: center center ;
-  background-size: 100% 100%;
-  padding-top:0px ;
-  height: fit-content;
-}
-.title-skins{
-  text-align: center;
-  padding-top: 20px;
-  color: #ffffff;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 60px;
-  font-weight: 500;
-  letter-spacing: .6rem;
-}
+
+
 .cards-container{
   
   display: flex;
@@ -116,105 +100,28 @@ border-style: outset;
   padding-right: 100px;
   margin-top: auto;
 }
-.cardSkin{
-  width: 285px;
-  height: 350px;
-  background-color: transparent !important;
-  text-align: center;
-  border: 1px transparent(180, 179, 179) solid !important;
-  margin-left: 30px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px white;
-}
-.cardSkin img{
-  width: 100%;
-  transition: 1.0s;
-}
-.cardSkin img:hover{
-  transform: rotate(360deg) scale(1.9);
-}
-.cardSkin h4{
-text-decoration: none;
-font-size: 40px !important;
-color: rgb(177, 197, 239);
-}
-.cardSkin a{
-  text-decoration: none;
-}
 
 
 
 
 
 
-.alert-buy{
-  z-index: 999;
-}
-
-.locked-price{
-  font-size: 25px;
-  color: #5783c0;
-}
-.play-now a {
-  color: white;
-}
-.main-title-skins{
-  color: #5783c0;
-}
-.locked-skins-contanier{
- padding-bottom: 50px;
- padding-top: 0px;
-}
 
 
 /* //////////////////////////////////////////////////////////// */
-html {
-    font-family: sans-serif;
-    box-sizing: border-box;
-  }
+
+
   
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
   
-  .text-center {
-    text-align: center;
-  }
   
-  .color-white {
-    color: #fff;
-  }
   
-  .box-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 35px 15px;
-    width: 100%;
-  }
   
-  @media screen and (min-width:1380px) {
-    .box-container {
-      flex-direction: row
-    }
-  }
   
-  .box-item {
-    position: relative;
-    -webkit-backface-visibility: hidden;
-    width: 300px;
-    margin-bottom: 35px;
-    max-width: 100%;
-  }
   
-  .flip-box {
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-  }
+
+  
+  
+
   
   .flip-box-front,
   .flip-box-back {
@@ -267,89 +174,16 @@ html {
     font-variant-caps: small-caps;
   }
   
-  .flip-box:hover .flip-box-back {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
   
-  .flip-box .inner {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    padding: 60px;
-    outline: 1px solid transparent;
-    -webkit-perspective: inherit;
-    perspective: inherit;
-    z-index: 2;
-    
-    transform: translateY(-50%) translateZ(60px) scale(.94);
-    -webkit-transform: translateY(-50%) translateZ(60px) scale(.94);
-    -ms-transform: translateY(-50%) translateZ(60px) scale(.94);
-    top: 50%;
-  }
   
-  .flip-box-header {
-    font-size: 34px;
-  }
+ 
   
-  .flip-box p {
-    font-size: 20px;
-    line-height: 1.5em;
-  }
   
-  .flip-box-img {
-    margin-top: 25px;
-  }
   
-  .flip-box-button {
-    background-color: transparent;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 25px;
-    padding: 15px 20px;
-    text-transform: uppercase;
-  }
 
 
-  html {
-    font-family: sans-serif;
-    box-sizing: border-box;
-  }
   
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
   
-  .text-center {
-    text-align: center;
-  }
-  
-  .color-white {
-    color: #fff;
-  }
-  
-  .box-container {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 35px 15px;
-    width: 100%;
-  }
-  
-  @media screen and (min-width:1380px) {
-    .box-container {
-      flex-direction: row
-    }
-  }
   
   .box-item {
     position: relative;
@@ -360,13 +194,7 @@ html {
     /* height: 200px !important; */
   }
   
-  .flip-box {
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-  }
+  
   
   .flip-box-front,
   .flip-box-back {
@@ -390,28 +218,9 @@ html {
     transform-style: preserve-3d;
   }
   
-  .flip-box:hover .flip-box-front {
-    -ms-transform: rotateY(-180deg);
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
   
-  .flip-box-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    
-    -ms-transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
+  
+ 
   
   .flip-box:hover .flip-box-back {
     -ms-transform: rotateY(0deg);
@@ -436,33 +245,10 @@ html {
     -webkit-transform: translateY(-50%) translateZ(60px) scale(.94);
     -ms-transform: translateY(-50%) translateZ(60px) scale(.94);
     top: 50%;
+    
   }
   
-  .flip-box-header {
-    font-size: 34px;
-  }
-  
-  .flip-box p {
-    font-size: 20px;
-    line-height: 1.5em;
-  }
-  
-  .flip-box-img {
-    margin-top: 25px;
-  }
-  
-  .flip-box-button {
-    background-color: transparent;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 25px;
-    padding: 15px 20px;
-    text-transform: uppercase;
-  }
+
 
   .lockChampion{
     z-index: 9999;

@@ -1,23 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-// import * as tf from "@tensorflow/tfjs";
-// import * as handpose from "@tensorflow-models/handpose";
-// import Webcam from "react-webcam";
-// import { drawHand } from "../../utilities";
-// import rock from "../../images_Ai/rock.png";
-// import paper from "../../images_Ai/paper.png";
-// import scissor from "../../images_Ai/scissors.png";
 import { Link , useNavigate } from "react-router-dom";
-// import zikoo from '../../img/zikoo.jpg';
-// import badr from '../../img/badr.jpg';
-// import zizo from '../../img/zizo.jpg';
-// import Round from "./Round";
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
 import Championship from "./Championship";
 import "./Round.css";
 import axios from 'axios';
 import { getAuthUser } from "../../helper/Storage";
-// import { StrictMode } from "react";
+
 
 const RPSGame = () => {
   const auth = getAuthUser();

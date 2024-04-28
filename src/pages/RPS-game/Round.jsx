@@ -1,14 +1,10 @@
 import React ,{ useState, useEffect, useRef } from 'react'
-import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-import { drawHand } from "../../utilities";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom"
 import rock from "../../assets/images/images_Ai/rock.png";
 import paper from "../../assets/images/images_Ai/paper.png";
 import scissor from "../../assets/images/images_Ai/scissors.png";
-import Championship from "./Championship";
-import RPSGame from './RPSGame';
 import axios from 'axios';
 import { getAuthUser, updateAuthUser } from '../../helper/Storage';
 import LoadingPage from '../LoadingPage/LoadingPage';
@@ -24,18 +20,15 @@ const Round = () => {
     const canvasRef = useRef(null);
     const [gesture, setGesture] = useState(null);
     const [computerChoice, setComputerChoice] = useState(null);
-    const [started, setStarted] = useState(false);
     const [winner, setWinner] = useState(null);
     const [handDetected, setHandDetected] = useState(false);
     const [playerPatterns, setPlayerPatterns] = useState([]);
     const [aiPatterns, setAiPatterns] = useState([]);
     const [round, setround] = useState(0);
     const [airound, setairound] = useState(0);
-    const [currentChampionship, setCurrentChampionship] = useState(null);
     const [gamesRemaining, setGamesRemaining] = useState();
     const [loadingPage, setLoading] = useState("");
     const navigate = useNavigate();
-    // const [queryParameters] = useSearchParams();
     const {id} = useParams();
     const auth = getAuthUser();
     
