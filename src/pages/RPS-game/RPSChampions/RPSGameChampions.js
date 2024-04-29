@@ -24,7 +24,6 @@ const RPSGameChampions = () => {
         }
       }).then((resp) =>{
         setChampdata({...champdata, data : resp.data , loading:false , err:""})
-  
       }).catch((errors)=>{
           console.log(errors);
           setChampdata({...champdata , loading:false , err:errors.response.data.errors[0].msg})
@@ -33,7 +32,7 @@ const RPSGameChampions = () => {
   }, [])
   return (
     <div className="all" >
-      <p className="platWithAi">play with AI !!!!!</p>
+      <h1 className="platWithAi">Play <span className="base-color mx-5">VS</span> AI</h1>
         <div className="cardsArea">
           
           {
