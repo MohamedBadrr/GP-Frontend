@@ -1,30 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import zikoo from '../img/zikoo.jpg';
-import "./RPSGame.css";
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-// import { getAuthUser } from "../helper/Storage";
-// import axios from 'axios';
-
-
-
+import "./Championship.css";
+import "../RPSGame.css";
 const Championship = (props) => {
   const navigate = useNavigate();
   // const auth = getAuthUser();
   const [showBuyAlert, setShowBuyAlert] = useState({});
-
-
   const handleLockClick = (itemId) => {
     setShowBuyAlert({ ...showBuyAlert, [itemId]: true }); // Set alert for specific item ID
     // Optionally, reset showBuyAlert after a brief delay
     setTimeout(() => setShowBuyAlert({ ...showBuyAlert, [itemId]: false }), 2000); // Adjust timeout as needed
 };
 
-
-
 return (
-<div class="box-container">
+
   <div class="box-item">
       <div class="flip-box">
         <div class="flip-box-front text-center" style={{ }}>
@@ -68,7 +57,7 @@ return (
    
 </div>
 </div>
-</div>
+
   )
 }
 

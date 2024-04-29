@@ -1,0 +1,33 @@
+.all{
+    background-image: url(../../../assets/images/Human\ aware\ AI\ hero.png);
+    
+    
+    height: 110vh;
+    
+    background-size: 100% 100%;
+    overflow-x: hidden;
+    
+    
+  }
+  
+  .platWithAi{
+    display: flex;
+    justify-content: center; /* Horizontally centers the content */
+    align-items: center; /* Vertically centers the content */
+    font-size: 500%; /* Adjust the font size as needed */
+    font-family:'glitch';
+    padding-top: 90px;
+    padding-bottom: auto;
+    color: white;
+  }
+  
+  .cardsArea{
+    
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: auto;
+  }

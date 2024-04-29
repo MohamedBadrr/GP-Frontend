@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link , useNavigate } from "react-router-dom";
-import Championship from "./Championship";
-import "./RPSGame.css";
+import Championship from "../component/Championship";
+import "./RPSGameChampions.css";
 import axios from 'axios';
-import { getAuthUser } from "../../helper/Storage";
+import { getAuthUser } from "../../../helper/Storage";
 
 
 const RPSGameChampions = () => {
@@ -33,8 +33,8 @@ const RPSGameChampions = () => {
   }, [])
   return (
     <div className="all" >
-      <p className="yourcoins1" style={{ color: "white" }}>play with AI !!!!!</p>
-        <div className="cards-container">
+      <p className="platWithAi">play with AI !!!!!</p>
+        <div className="cardsArea">
           
           {
             champdata.data.map((item)=>(<Championship id={item.id} userConis={auth.coins} name={item.name}  photo={item.image} cost={item.price} gameremaining={item.game_remaining}/>))

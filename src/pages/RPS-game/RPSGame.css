@@ -1,14 +1,5 @@
-.all{
-  background-image: url(./Human\ aware\ AI\ hero.png);
-  
-  
-  height: 110vh;
-  
-  background-size: 100% 100%;
-  
-}
 .playingarea{
-  background-image: url(./Human\ aware\ AI\ hero.png);
+  background-image: url(../../assets/images/Human\ aware\ AI\ hero.png);
 }
 .camera{
   position: absolute;
@@ -30,42 +21,22 @@ border-style: outset;
   position: absolute;
   
 }
-
-
-.yourcoins1{
-  display: flex;
-  justify-content: center; /* Horizontally centers the content */
-  align-items: center; /* Vertically centers the content */
-  font-size: 500%; /* Adjust the font size as needed */
-  font-family:'Jersey 10 Charted', 'sans-serif';
-  padding-top: 90px;
-  padding-bottom: auto;
-}
 .computer{
-  font-family:'Jersey 10 Charted', 'sans-serif';
+  font-family:'glitch';
   padding-right:200px;
 }
 .playername{
-  font-family:'Jersey 10 Charted', 'sans-serif';
+  font-family:'glitch';
 }
 .yourgesture{
-  font-family:'Jersey 10 Charted', 'sans-serif';
+  font-family:'glitch';
+  position: absolute;
+  margin: 0px -65px;
 }
 .winnertext{
-  font-family:'Jersey 10 Charted', 'sans-serif';
+  font-family:'glitch';
   padding: 1px 500px;
 }
-.yourcoins{
-    display: flex;
-  justify-content: center; /* Horizontally centers the content */
-  align-items: center; /* Vertically centers the content */
-  font-size: 2rem; /* Adjust the font size as needed */
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  padding-bottom: 5px;
-
-
-}
-
 .Loading-Page{
   height: 100vh;
   text-align: center;
@@ -87,169 +58,4 @@ border-style: outset;
 .computer-player{
   margin-left: 60px;
   height: 450px;
-}
-
-
-.cards-container{
-  
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap !important;
-  justify-content: center;
-  padding-left: 100px;
-  padding-right: 100px;
-  margin-top: auto;
-}
-
-
-
-
-
-
-
-
-/* //////////////////////////////////////////////////////////// */
-
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-
-  
-  .flip-box-front,
-  .flip-box-back {
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(101, 110, 194, 0.301);
-    border-radius: 8px;
-    min-height: 475px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  
-  .flip-box-front {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-variant-caps: small-caps;
-
-  }
-  
-  .flip-box:hover .flip-box-front {
-    -ms-transform: rotateY(-180deg);
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-
-  
-  .flip-box-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    -ms-transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-variant-caps: small-caps;
-  }
-  
-  
-  
- 
-  
-  
-  
-
-
-  
-  
-  
-  .box-item {
-    position: relative;
-    
-    width: 300px;
-    margin-bottom: 35px;
-    max-width: 100%;
-    /* height: 200px !important; */
-  }
-  
-  
-  
-  .flip-box-front,
-  .flip-box-back {
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    min-height: 375px;
-    -ms-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
-    -webkit-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
-    transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  
-  .flip-box-front {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  
-  
-  
- 
-  
-  .flip-box:hover .flip-box-back {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  
-  .flip-box .inner {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    padding: 60px;
-    outline: 1px solid transparent;
-    -webkit-perspective: inherit;
-    perspective: inherit;
-    z-index: 2;
-    
-    -ms-transform: translateY(-50%) translateZ(60px) scale(.94);
-    -webkit-transform: translateY(-50%) translateZ(60px) scale(.94);
-    transform: translateY(-50%) translateZ(60px) scale(.94);
-    top: 50%;
-    
-  }
-  
-
-
-  .lockChampion{
-    z-index: 9999;
-  }
-.all{
-  overflow-x: hidden;
 }

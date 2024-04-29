@@ -296,17 +296,8 @@ const RPSGame = () => {
           window.location.reload();
         }
       
-        // Reset patterns and gamesRemaining
-      };
-      // const startChampionship = () => {
         
-      //   if (user.data.coins >= champdata.data.price) {
-            
-      //       setGamesRemaining( gamesRemaining === champdata.data.game_remaining ); 
-      //   } else {
-      //       alert("Not enough coins to enter the championship.");
-      //   }
-    // };
+      };
     
   return (
   
@@ -323,7 +314,7 @@ const RPSGame = () => {
      </div>
      <div>
      <h1 className='playername'>{auth.name}</h1>
-        {gesture && (<h3 className='yourgesture'>Your gesture : <span className='text-info'>{gesture}</span></h3>)}
+        {gesture && (<h3 className='yourgesture'>Your gesture : <span >{gesture}</span></h3>)}
      </div>
      </div>
      
@@ -337,8 +328,6 @@ const RPSGame = () => {
         ref={canvasRef}
         className='canvas'
         
-          
-       
         />
         
         {gesture && handDetected && (
