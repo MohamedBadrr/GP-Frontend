@@ -11,16 +11,8 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   margin-left: 20px;
-  box-shadow: 1px -2px 10px 8px rgb(12, 84, 185);
+  box-shadow: 1px -2px 10px 8px rgb(46, 108, 195);
 }
-
-/* .flip-box-front:hover {
-  box-shadow:  1px -2px 10px 8px rgb(12, 84, 185);
-}
-
-.flip-box-back:hover {
-  box-shadow:  1px -2px 30px 8px rgb(12, 84, 185);
-} */
 
 .flip-box-front {
   -ms-transform: rotateY(0deg);
@@ -32,7 +24,9 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-variant-caps: small-caps;
 }
-
+.flip-box .inner-front{
+  transition: .5s all !important;
+}
 .flip-box:hover .flip-box-front {
   -ms-transform: rotateY(-180deg);
   -webkit-transform: rotateY(-180deg);
@@ -41,8 +35,11 @@
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
   margin-left: 20px;
+  .inner-front{
+    opacity: 0 ;
+  }
+  
 }
-
 .flip-box-back {
   position: absolute;
   top: 0;
@@ -54,10 +51,11 @@
   -webkit-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-variant-caps: small-caps;
+  /* margin-bottom: 30px; */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px !important;
 }
-
 .box-item {
   position: relative;
   width: 320px;
@@ -65,7 +63,6 @@
   max-width: 100%;
   flex-wrap: wrap !important;
 }
-
 .flip-box-front {
   -ms-transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
@@ -100,7 +97,6 @@
   transform: translateY(-50%) translateZ(60px) scale(.94);
   top: 50%;
 }
-
 .lockChampion {
   z-index: 9999;
 }
@@ -121,7 +117,11 @@
 
 .inner-front {
   margin-top: 10px;
-  color: #609bff;
+  color: #aec8f4;
+}
+.inner-front h1{
+  margin-bottom: 30px;
+  font-size: 40px !important;
 }
 
 .inner-open-back {
@@ -140,4 +140,16 @@
 .inner-back-close h3 {
   text-transform: uppercase;
   width: 200px;
+}
+
+.playNowRpsButton{
+  position: absolute;
+  letter-spacing: 3px !important;
+  padding: 5px 15px;
+  bottom: 0;
+  left: 30%;
+  font-family: math;
+}
+.alertRPS{
+  font-size: 20px !important;
 }

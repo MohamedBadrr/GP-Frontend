@@ -26,8 +26,9 @@ const Championship = (props) => {
             <span></span>
             <span></span> */}
           <div class="inner-front color-white">
-            <h1>{props.name}</h1>
-            <h3>Cost : {props.cost} coins</h3>
+            <h1>GOLD Championship</h1>
+            <h2>Cost : </h2>
+            <h3> {props.cost} coins</h3>
           </div>
         </div>
         {props.userConis < props.cost ? (
@@ -40,7 +41,7 @@ const Championship = (props) => {
               class="flip-box-back text-center"
               style={{ backgroundImage: `url(${imgCard})` }}>
               {showBuyAlert[props.id] && (
-                <div className="alert alert-danger p-1 mx-2 my-2">
+                <div className="alert alert-danger p-1 mx-2 my-2 alertRPS">
                   You Don't Have Enough Coins
                 </div>
               )}
@@ -71,8 +72,13 @@ const Championship = (props) => {
                 class="flip-box-back text-center"
                 style={{ backgroundImage: `url(${imgCard})` }}>
                 <div class="inner-open-back color-white">
-                  <h1 class="flip-box-header">{props.name}</h1>
-                  <h3 class="flip-box-header">{`Cost : ${props.cost} Coins`}</h3>
+                    <div class="inner-front color-white">
+                        <h1>GOLD Championship</h1>
+                        <h2>Cost : </h2>
+                        <h3> {props.cost} coins</h3>
+                        <button className="default-button playNowRpsButton">Play Now</button>
+                    </div>
+                    
                   {props.userConis < props.cost ? (
                     <i
                       className="fa-solid fa-lock lock-icon-skin lockChampion"
