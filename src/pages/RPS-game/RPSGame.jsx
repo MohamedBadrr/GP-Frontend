@@ -112,7 +112,7 @@ const RPSGame = () => {
         .put(
           "http://localhost:4000/game/update-coins",
           {
-            coins: win ? user.data.coins + coins * 2 : user.data.coins - coins,
+            coins: win ? user.data.coins + coins  : user.data.coins - coins,
             xp: user.data.xp + xp,
           },
           {
