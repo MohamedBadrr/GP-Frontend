@@ -21,7 +21,11 @@ const Championship = (props) => {
     <div class="box-item">
       <div class="flip-box">
         <div class="flip-box-front text-center" style={{ backgroundImage: `url(${imgCard})` }}>
-          <div class="inner color-white">
+          {/* <span></span>
+            <span></span>
+            <span></span>
+            <span></span> */}
+          <div class="inner-front color-white">
             <h1>{props.name}</h1>
             <h3>Cost : {props.cost} coins</h3>
           </div>
@@ -35,14 +39,14 @@ const Championship = (props) => {
             <div
               class="flip-box-back text-center"
               style={{ backgroundImage: `url(${imgCard})` }}>
-              {showBuyAlert[props.id] && ( 
+              {showBuyAlert[props.id] && (
                 <div className="alert alert-danger p-1 mx-2 my-2">
                   You Don't Have Enough Coins
                 </div>
               )}
-              <div class="inner-card color-white">
-                <h3 class="flip-box-header">{props.name}</h3>
-                <h3 class="flip-box-header">{`Cost : ${props.cost}`}</h3>
+              <div class="inner-back-close color-white">
+                <h1 class="flip-box-header">{props.name}</h1>
+                <h3 class="flip-box-header">{`Cost : ${props.cost} Coins`}</h3>
                 {props.userConis < props.cost ? (
                   <i
                     className="fa-solid fa-lock lock-icon-skin lockChampion"
@@ -55,39 +59,33 @@ const Championship = (props) => {
               </div>
             </div>
           </button>
-        ) 
-        
-        
-        :
-        
-        
-        
-        
-        (
-          <button
-            className="default-button mb-3 mt-2 px-4 py-1 ms-4"
-            onClick={(e) => {
-              navigate("/game-round/" + props.id);
-            }}>
-            <div
-              class="flip-box-back text-center"
-              style={{ backgroundImage: `url(${imgCard})` }}>
-              <div class="inner-card color-white">
-                <h3 class="flip-box-header">{props.name}</h3>
-                <h3 class="flip-box-header">{`Cost : ${props.cost}`}</h3>
-                {props.userConis < props.cost ? (
-                  <i
-                    className="fa-solid fa-lock lock-icon-skin lockChampion"
-                    onClick={() => {
-                      console.log("locked");
-                    }}></i>
-                ) : (
-                  <></>
-                )}
+        )
+          :
+          (
+            <button
+              className="default-button mb-3 mt-2 px-4 py-1 ms-4"
+              onClick={(e) => {
+                navigate("/game-round/" + props.id);
+              }}>
+              <div
+                class="flip-box-back text-center"
+                style={{ backgroundImage: `url(${imgCard})` }}>
+                <div class="inner-open-back color-white">
+                  <h1 class="flip-box-header">{props.name}</h1>
+                  <h3 class="flip-box-header">{`Cost : ${props.cost} Coins`}</h3>
+                  {props.userConis < props.cost ? (
+                    <i
+                      className="fa-solid fa-lock lock-icon-skin lockChampion"
+                      onClick={() => {
+                        console.log("locked");
+                      }}></i>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
-            </div>
-          </button>
-        )}
+            </button>
+          )}
       </div>
     </div>
   );

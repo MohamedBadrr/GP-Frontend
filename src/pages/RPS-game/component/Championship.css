@@ -1,103 +1,143 @@
-
 .flip-box-front,
-  .flip-box-back {
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(101, 110, 194, 0.301);
-    border-radius: 8px;
-    min-height: 450px;
-    -ms-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
-    -webkit-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
-    transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    margin-left: 20px;
-    /* box-shadow: 0px 2px 20px #2d60c1; */
-  }
-  .flip-box-front {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-variant-caps: small-caps;
-  }
-  .inner-card {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 170px;
-  }
-  .flip-box:hover .flip-box-front {
-    -ms-transform: rotateY(-180deg);
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    margin-left: 20px;
-  }
-  .flip-box-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    -ms-transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-variant-caps: small-caps;
-  }
-  .box-item {
-    position: relative;
-    width: 320px;
-    margin-bottom: 35px;
-    max-width: 100%;
-    flex-wrap: wrap !important;
-  }
-  
-  .flip-box-front {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    margin-left: 20px;
-  }
-  
-  .flip-box:hover .flip-box-back {
-    -ms-transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    margin-left: 20px;
-  }
-  
-  .flip-box .inner {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    padding: 60px;
-    outline: 1px solid transparent;
-    -webkit-perspective: inherit;
-    perspective: inherit;
-    z-index: 2;
-    -ms-transform: translateY(-50%) translateZ(60px) scale(.94);
-    -webkit-transform: translateY(-50%) translateZ(60px) scale(.94);
-    transform: translateY(-50%) translateZ(60px) scale(.94);
-    top: 50%;
-    
-  }
+.flip-box-back {
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(101, 110, 194, 0.301);
+  border-radius: 8px;
+  min-height: 450px;
+  -ms-transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
+  -webkit-transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
+  transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  margin-left: 20px;
+  box-shadow: 1px -2px 10px 8px rgb(12, 84, 185);
+}
 
-  .lockChampion{
-    z-index: 9999;
-  }
+/* .flip-box-front:hover {
+  box-shadow:  1px -2px 10px 8px rgb(12, 84, 185);
+}
+
+.flip-box-back:hover {
+  box-shadow:  1px -2px 30px 8px rgb(12, 84, 185);
+} */
+
+.flip-box-front {
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-variant-caps: small-caps;
+}
+
+.flip-box:hover .flip-box-front {
+  -ms-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  margin-left: 20px;
+}
+
+.flip-box-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-variant-caps: small-caps;
+}
+
+.box-item {
+  position: relative;
+  width: 320px;
+  margin-bottom: 35px;
+  max-width: 100%;
+  flex-wrap: wrap !important;
+}
+
+.flip-box-front {
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  margin-left: 20px;
+}
+
+.flip-box:hover .flip-box-back {
+  -ms-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  margin-left: 20px;
+}
+
+.flip-box .inner-front {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 60px;
+  outline: 1px solid transparent;
+  -webkit-perspective: inherit;
+  perspective: inherit;
+  z-index: 2;
+  -ms-transform: translateY(-50%) translateZ(60px) scale(.94);
+  -webkit-transform: translateY(-50%) translateZ(60px) scale(.94);
+  transform: translateY(-50%) translateZ(60px) scale(.94);
+  top: 50%;
+}
+
+.lockChampion {
+  z-index: 9999;
+}
+
+.inner-back-close {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 183px;
+}
+
+.inner-front h3 {
+  text-transform: uppercase;
+  width: 200px;
+  margin-left: -13px;
+}
+
+.inner-front {
+  margin-top: 10px;
+  color: #609bff;
+}
+
+.inner-open-back {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 183px;
+}
+
+.inner-open-back h3 {
+  text-transform: uppercase;
+  width: 200px;
+}
+
+.inner-back-close h3 {
+  text-transform: uppercase;
+  width: 200px;
+}
