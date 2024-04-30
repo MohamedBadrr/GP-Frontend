@@ -5,7 +5,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import soundFile from "../../assets/sounds/gameoversound.mp4"
 
 
-const GameOver = () => {
+const GameOver = (props) => {
   const [audio] = useState(new Audio(soundFile));
   useEffect(() => {
     const playAudio = () => {
@@ -31,7 +31,7 @@ const GameOver = () => {
       }
       else {
         clearInterval(timerId);
-        navigate("/selectskin");
+        navigate(`/${props.playagin}`);
       }
     }, 1000)
   }, [counter])
@@ -57,7 +57,7 @@ const GameOver = () => {
                 delaySpeed={150000}
               /></h2>
             </span>
-            <Link to={"/selectskin"}><h3>play again?</h3></Link>
+            <Link to={`/${props.playagin}`}><h3>play again?</h3></Link>
           </div>
         </div>
       </div>

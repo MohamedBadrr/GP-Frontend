@@ -6,7 +6,7 @@ import { Typewriter } from "react-simple-typewriter";
 import imgWinner from "../../assets/images/winner.png";
 import soundFile from "../../assets/sounds/win.mp4";
 
-const Winner = () => {
+const Winner = (props) => {
   const [audio] = useState(new Audio(soundFile));
   useEffect(() => {
     const playAudio = () => {
@@ -46,11 +46,11 @@ const Winner = () => {
               <i class="fa-solid fa-trophy mx-4"></i>
             </h2>
             <img src={imgWinner} alt="" />
-            <Link to={"/selectskin"}>
-              <h3>play again?</h3>
+            <Link to={`/${props.playagin}`}>
+              <h3>Play again?</h3>
             </Link>
-            <Link to={"/mainamenu"}>
-              <h3>back to main menu?</h3>
+            <Link to={`/${props.linkSecondChoice}`}>
+              <h3>{props.secondChoice}</h3>
             </Link>
           </div>
         </div>

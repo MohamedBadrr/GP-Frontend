@@ -86,11 +86,31 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/gameover",
-        element: <GameOver />,
+        element: <GameOver playagin="selectskin" />,
+      },
+      {
+        path: "/gameoverRPS",
+        element: <GameOver playagin="RPS-Game" />,
       },
       {
         path: "/winner",
-        element: <Winner />,
+        element: (
+          <Winner
+            playagin="selectskin"
+            linkSecondChoice="mainamenu"
+            secondChoice="Back To Main Menu?"
+          />
+        ),
+      },
+      {
+        path: "/winnerRPS",
+        element: (
+          <Winner
+            playagin="RPS-Game"
+            linkSecondChoice="home"
+            secondChoice="Back To Home?"
+          />
+        ),
       },
     ],
   },

@@ -134,7 +134,7 @@ const RPSGame = () => {
         });
     }
   };
-  
+
   const detect = async (net) => {
     if (
       typeof webcamRef.current !== "undefined" &&
@@ -297,19 +297,18 @@ const RPSGame = () => {
   const endChampionship = () => {
     if (round > airound) {
       setWinner("Player");
-      alert("player win");
       updateCoinsAndXp(champdata.data.price, 20, true);
-      navigate("/RPS-Game");
+      updateAuthUser();
+      navigate("/winnerRPS");
       window.location.reload();
     } else if (airound > round) {
       setWinner("Computer");
       updateCoinsAndXp(champdata.data.price, 10, false);
-      // navigate('/RPS-Game');
+      updateAuthUser();
+      navigate("/gameoverRPS");
       window.location.reload();
-      navigate("/gameover");
     } else {
-      alert("try agian");
-      navigate("/RPS-Game");
+      navigate("/gameoverRPS");
       window.location.reload();
     }
   };
