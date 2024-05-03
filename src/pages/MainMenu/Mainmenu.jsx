@@ -17,8 +17,8 @@ const Mainmenu = () => {
                     <img src={asturant} />
                 </div>
                 <div className="main-menu-hero col-md-6">
-                    <h1 className='mt-5'>the posibilities<br /> beyond your imagination</h1>
-                    <Link className='main-menu-buttons mt-5' to={"/selectskin"}>
+                    <h1>the posibilities<br /> beyond your imagination</h1>
+                    <Link className='main-menu-buttons ' to={"/selectskin"}>
                         <span></span>
                         <span></span>
                         <span></span>

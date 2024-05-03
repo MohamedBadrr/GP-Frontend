@@ -3,7 +3,7 @@
     src: url(../../assets/fonts/Esportiva-8M0OM.ttf);
 }
 
-@font-face{
+@font-face {
     font-family: glitch;
     src: url(../../assets/fonts/Jersey10Charted-Regular.ttf);
 }
@@ -14,7 +14,7 @@
 }
 
 
-.main-menu{
+.main-menu {
     overflow-x: hidden;
     height: 100vh;
 }
@@ -69,7 +69,7 @@
     text-transform: uppercase;
     letter-spacing: 4px;
     color: #5080da;
-    font-family: buttonmain ;
+    font-family: buttonmain;
     font-size: 1.2rem;
     font-weight: bold;
     transition: 0.5s;
@@ -88,10 +88,9 @@
     background-color: #5b8dea;
     color: #050801;
     box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4
-                0 0 200px #03e9f4;
-        /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005); */
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4 0 0 200px #03e9f4;
+    /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005); */
 }
 
 .main-menu-buttons span {
@@ -99,12 +98,12 @@
     display: block;
 }
 
-.main-menu-buttons span:nth-child(1){
+.main-menu-buttons span:nth-child(1) {
     top: 0;
     left: 0;
     width: 100%;
     height: 1px;
-    background:linear-gradient(90deg ,transparent ,#03e9f4);
+    background: linear-gradient(90deg, transparent, #03e9f4);
     animation: animate1 1s infinite;
 }
 
@@ -118,12 +117,12 @@
     }
 }
 
-.main-menu-buttons span:nth-child(2){
+.main-menu-buttons span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 1px;
     height: 100%;
-    background:linear-gradient(180deg ,transparent ,#03e9f4);
+    background: linear-gradient(180deg, transparent, #03e9f4);
     animation: animate2 1s infinite;
     animation-delay: 0.25s;
 }
@@ -138,12 +137,12 @@
     }
 }
 
-.main-menu-buttons span:nth-child(3){
+.main-menu-buttons span:nth-child(3) {
     bottom: 0;
     right: 0;
     width: 100%;
     height: 1px;
-    background:linear-gradient(270deg ,transparent ,#03e9f4);
+    background: linear-gradient(270deg, transparent, #03e9f4);
     animation: animate3 1s infinite;
     animation-delay: 0.5s;
 }
@@ -158,12 +157,12 @@
     }
 }
 
-.main-menu-buttons span:nth-child(4){
+.main-menu-buttons span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 1px;
     height: 100%;
-    background:linear-gradient(360deg ,transparent ,#03e9f4);
+    background: linear-gradient(360deg, transparent, #03e9f4);
     animation: animate4 1s infinite;
     animation-delay: 0.75s;
 }
@@ -178,18 +177,18 @@
     }
 }
 
-    @keyframes slideRight {
-        0% {
-            transform: translateX(-100px);
-            opacity: 0;
-        }
-    
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
     }
-    
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 @keyframes slideLeft {
     0% {
         transform: translateX(100px);
@@ -239,4 +238,82 @@
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+
+@media screen and (max-width: 600px) {
+    /* .main-menu {
+        background-image: url(../../assets/images/body_bg.png);
+        background-position: center center;
+        height: fit-content;
+        display: block !important;
+        margin-bottom: 50px;
+        padding-top: 20px;
+    } */
+
+    .main-menu{
+        /* height: fit-content; */
+        padding: 0;
+
+    }
+
+    .main-menu-video-background {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 90vh;
+        overflow: hidden ;
+        z-index: -9999;
+    }
+    
+    /* .main-menu-video-background video {
+        object-fit: cover;
+        width: 100%;
+        height: 80%;
+    } */
+
+    .main-menu-asturant {
+        display: none;
+    }
+
+    .main-menu-hero {
+        margin-top: 100px;
+    }
+
+    .main-menu-hero h1 {
+        font-size: 40px;
+        margin-top: 100px;
+    }
+
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 745px) {
+    .main-menu-asturant {
+        display: none;
+        height: fit-content;
+        
+    }
+
+    .main-menu-hero {
+        margin-top: 100px;
+        margin-left: 60px;
+    }
+
+    .main-menu-hero h1 {
+        font-size: 40px;
+        margin-top: 150px;
+    }
+
+    .main-menu-video-background {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden !;
+        z-index: -9999;
+    }
+    
 }
