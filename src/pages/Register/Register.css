@@ -67,8 +67,86 @@
         display: block;
     }
     .Register-form form{
-        width: 90%;
+        width: 100%;
         margin: auto;
-        margin-top: 150px;}
+        margin-top: 70px !important;
+    }
 }
 
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 300px) and (max-width: 575.98px) {
+
+    .Register-form-img img{
+        display: none; 
+        }
+
+    .all-the-form-register{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .Register {
+        padding-bottom: 90px;
+        height: fit-content;
+    }
+
+    .Register-form form{
+        width: 100%;
+        margin: auto;
+        margin-top: 70px !important;
+    }
+    
+
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .Register-form-img img{
+        display: none; 
+        }
+    .Register {
+        padding-bottom: 20px;
+        height: fit-content;
+    }
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .Register-form-img img{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .Register-form{
+        width: 50% !important;
+    }
+    .Register-form form {
+        width: 90%;
+        margin-left: 0px;
+        margin-top: 70px;
+    }
+    .Register-form-img {
+        margin-left: 50px;
+        margin-top: 130px !important;
+    }
+
+    .Register-form form{
+        padding-bottom: 40px;
+    }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .Register-form-img {
+        margin-top: 130px !important;
+    }
+    .Register-form form {
+        padding-bottom: 15px;
+    }
+}

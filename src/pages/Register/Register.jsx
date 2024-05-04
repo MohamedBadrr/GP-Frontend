@@ -44,11 +44,11 @@ const Register = () => {
     return (
         <div className='Register'>
             <div className="container">
-                <div className="row">
+                <div className="row all-the-form-register">
                     <div className="col-md-7 Register-form">
                         <Form onSubmit={RegisterFun}>
                             <h2 className="Register-form-title">The Future In Your Hands </h2>
-                            <p className="mb-4">Welcome. Please Fill all Fileds to Registeration</p>
+                            <p className="mb-4">Welcome. Please <span className="base-color">Fill all Fileds to Registeration</span> </p>
                             {register.err && (
                                 <div class="alert alert-danger text-center p-2" role="alert">{register.err}</div>
                             )}
