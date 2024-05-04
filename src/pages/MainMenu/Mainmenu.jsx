@@ -18,7 +18,7 @@ const Mainmenu = () => {
                 </div>
                 <div className="main-menu-hero col-md-6">
                     <h1>the posibilities<br /> beyond your imagination</h1>
-                    <Link className='main-menu-buttons ' to={"/selectskin"}>
+                    <Link className='mt-5 main-menu-buttons ' to={"/selectskin"}>
                         <span></span>
                         <span></span>
                         <span></span>

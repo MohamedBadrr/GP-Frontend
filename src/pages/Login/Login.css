@@ -13,15 +13,16 @@
 }
 
 .login-form form {
-    /* margin-top: 60px; */
     width: 60%;
-    margin-left: 100px;
+    margin-left: 0px;
     margin-top: 130px;
 }
 
 .login-form form h2 {
-    color: aliceblue;
     font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 20px !important;
 }
 
 .login-form form p {
@@ -61,10 +62,7 @@
     text-decoration: underline;
 }
 
-.login-title .edit {
-    color: #4f8fe7 !important;
-    font-weight: bold;
-}
+
 
 .login-form .login-register-link {
     font-size: 14.5px;
@@ -92,11 +90,17 @@
     font-weight: bold;
 }
 
-@media screen and (max-width:570px) {
+  /* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 300px) and (max-width: 575.98px) {
     .login-img img {
         display: none;
     }
-
+    .all-the-form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
     .login {
         background-image: url(../../assets/images/bg.png);
         background-position: center center;
@@ -114,4 +118,47 @@
         margin: auto;
         margin-top: 150px;
     }
+    .login-form form h2 {
+        margin-bottom: 40px !important;
+    }
 }
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .login-img img {
+        display: none;
+    }
+    .login-form form h2 {
+        margin-bottom: 40px !important;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .login-img{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-form{
+        width: 50% !important;
+    }
+    .login-form form {
+        width: 90%;
+        margin-left: 0px;
+        margin-top: 130px;
+    }
+    .login-img{
+        margin-left: 50px;
+    }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+@media (max-width: 391px){}

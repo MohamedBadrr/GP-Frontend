@@ -51,7 +51,7 @@ const Winner = (props) => {
             </Link>
             <Link to={`/${props.linkSecondChoice}`}>
               <h3>{props.secondChoice}</h3>
-            </Link>
+            </Link> 
           </div>
         </div>
       </div>

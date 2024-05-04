@@ -1,8 +1,11 @@
 /** @format */
 .tutorials {
-    height: 105vh;
+    height: 100vh;
     background-image: url(../../assets/images/body_bg.png);
-    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
 .title-tutorail {
@@ -110,12 +113,12 @@
     color: white;
 }
 
-@media screen and (max-width: 570px) {
+  /* Extra small devices (portrait phones, less than 576px) */
+  @media (min-width: 100px) and (max-width: 575.98px) {
     .tutorials {
         padding: 30px 20px;
         height: fit-content;
     }
-
     .tutorials-video2,
     .tutorials-video1 {
         width: 100% !important;
@@ -124,13 +127,69 @@
         margin-top: 40px;
         display: block;
     }
-
     .tutorials-video1 {
         margin-top: 20px;
     }
-
     .tutorials-videos {
         width: 90% !important;
         display: inline-block !important;
+    }
+    .tutorials-vedio2-skin {
+        display: block;
+    }
+    
+    .tutorials-vedio2-skin button {
+        display: block;
+    }
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .tutorials {
+        padding: 30px 20px;
+        height: fit-content;
+    }
+    .tutorials-video2,
+    .tutorials-video1 {
+        width: 100% !important;
+        height: 450px;
+        margin: 20px;
+        margin-top: 40px;
+        display: block;
+    }
+    .tutorials-video1 {
+        margin-top: 20px;
+    }
+    .tutorials-videos {
+        width: 90% !important;
+        display: inline-block !important;
+    }
+    .tutorials-vedio2-skin {
+        display: block;
+    }
+    
+    .tutorials-vedio2-skin button {
+        display: block;
+    }
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .tutorials-vedio2-skin {
+        display: block;
+    }
+    
+    .tutorials-vedio2-skin button {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .tutorials-vedio2-skin {
+        display: block;
+    }
+    
+    .tutorials-vedio2-skin button {
+        display: block;
     }
 }

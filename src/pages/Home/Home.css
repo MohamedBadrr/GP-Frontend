@@ -14,58 +14,138 @@
     justify-content: space-evenly !important;
     flex-wrap: wrap !important;
     padding-top: 120px;
+} 
+.all-sections-home{
+    width: 100%;
 }
 
 .home-text {
     margin-top: 100px !important;
 }
-
 .home-text h1 {
     font-family: serif;
     font-weight: bold;
+    width: 90%;
     font-size: 70px;
     background: linear-gradient(90deg, #00bfff, #4874b2);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
 .home-text p {
-    font-size: 17px;
+    font-size: 18px;
+    width: 70%;
+    margin-top: 15px;
 }
 
+.home-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .home-banner img {
     width: 100% !important;
 }
 
-@media screen and (max-width: 570px) {
+  /* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 100px) and (max-width: 575.98px) {
+    .offset-1 {
+        margin-left: -1% !important;
+    }
     .body-home {
         background-image: url(../../assets/images/body_bg.png);
         background-position: center center;
-        height: fit-content;
+        height:fit-content !important;
         display: block !important;
-        margin-bottom: 50px;
-        padding-top: 20px;
+        margin-bottom: 0px;
+        padding-top: 10px;
     }
-
     .home-text h1 {
-        font-size: 40px;
+        font-size: 50px;
         font-weight: bold;
-        margin-bottom: 40px;
-        margin-right: 30px !important;
+        margin-top: 0px;
+        padding-left: 15px ;
     }
-
     .home-text p {
-        font-size: 15px;
-        width: 80%;
+        padding-left: 20px ;
+        font-size: 20px;
+        width: 85%;
+        margin-top: 40px;
         margin-bottom: 50px;
     }
-
-    .home-banner img {
-        width: 100% !important;
-    }
-
     .watch-button {
         margin-bottom: 70px !important;
+        margin-left: 15px;
     }
 }
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .offset-1 {
+        margin-left: 0% !important;
+    }
+    .body-home {
+        background-image: url(../../assets/images/body_bg.png);
+        background-position: center center;
+        height:fit-content !important;
+        display: block !important;
+        margin-bottom: 0px;
+        padding-top: 10px;
+    }
+    .home-text h1 {
+        font-size: 50px;
+        font-weight: bold;
+        margin-top: 0px;
+        padding-left: 15px ;
+    }
+    .home-text p {
+        padding-left: 20px ;
+        font-size: 20px;
+        width: 85%;
+        margin-top: 40px;
+        margin-bottom: 50px;
+    }
+    .watch-button {
+        margin-bottom: 70px !important;
+        margin-left: 15px;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .offset-1 {
+        margin-left: 0% !important;
+    }
+    .home-text p {
+        padding-left: 20px;
+        font-size: 20px;
+        width: 90%;
+        margin-top: 40px;
+        margin-bottom: 50px;
+    }
+    .home-text h1 {
+        width: 100%;
+        font-size: 50px;
+        margin-left: 20px;
+    }
+    .watch-button {
+        margin-bottom: 70px !important;
+        margin-left: 15px;
+    }
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .body-home {
+        background-image: url(../../assets/images/body_bg.png);
+        background-position: center center;
+        height:fit-content !important;
+        padding-bottom: 20px;
+    }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+@media (max-width: 391px){}

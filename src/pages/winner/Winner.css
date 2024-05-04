@@ -14,6 +14,7 @@
 .winner {
   height: 100vh;
   background-color: black;
+  overflow: hidden;
 }
 .container-winner-game {
   width: 950px;
@@ -58,7 +59,7 @@
   font-weight: bold;
   transition: 0.5s;
   text-shadow: 1px 1px 1px white;
-}
+} 
 .winner-titles h3:hover {
   color: #7c0f63;
 }
@@ -116,3 +117,44 @@
     transform: rotateY(-360deg);
   }
 }
+
+
+
+  /* Extra small devices (portrait phones, less than 576px) */
+  @media (min-width: 100px) and (max-width: 575.98px) {
+    .winner-titles{
+      width: 40%;
+    }
+    .winner-titles h2{
+      font-size: 65px;
+    }
+    .winner-titles i{
+      display: none;
+    }
+    .container-winner-game img {
+      width: 70% !important;
+      margin-bottom: 30px;
+      opacity: 1;
+      animation: fadeInRotate 1.2s ease-in-out forwards;
+  }
+  }
+  
+  /* // Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) { 
+    .winner-titles{
+      width: 40%;
+    }
+    .winner-titles h2{
+      font-size: 65px;
+    }
+    .winner-titles i{
+      display: none;
+    }
+    .container-winner-game img {
+      width: 70% !important;
+      margin-bottom: 30px;
+      opacity: 1;
+      animation: fadeInRotate 1.2s ease-in-out forwards;
+  }
+}
+

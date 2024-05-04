@@ -88,3 +88,17 @@
         text-shadow: 0px 2px 10px #cb9fc0;
     }
 }
+  /* Extra small devices (portrait phones, less than 576px) */
+  @media (min-width: 300px) and (max-width: 575.98px) {
+    .game-over-titles span {
+        font-size: 35px;
+    }
+    .game-over-numbers {
+        font-size: 55px !important;
+    }
+    .game-over-titles h3 {
+        font-size: 20px;
+    }
+}
+
+

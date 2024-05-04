@@ -40,11 +40,11 @@ const Login = () => {
     return (
         <div className='login'>
             <div className="container">
-                <div className="row">
+                <div className="row all-the-form">
                     <div className="col-md-6 login-form">
                         <Form onSubmit={LoginFun}>
-                            <h2 className="mb-3 edit login-title">The Future In Your Hands </h2>
-                            <p className="mb-3">Welcome Back. Please Login To Your Account</p>
+                            <h2 className="mb-3 base-color login-title">The Future In Your Hands </h2>
+                            <p className="mb-3">Welcome Back. Please <span className="base-color">Login To Your Account</span> </p>
                             {login.errors && (
                                 <div class="alert alert-danger text-center p-2" role="alert">{login.errors}</div>
                             )}

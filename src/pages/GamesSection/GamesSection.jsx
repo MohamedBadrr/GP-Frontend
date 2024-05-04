@@ -35,12 +35,10 @@ const GamesSection = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 offset-1 carsoul-games-text">
-                            <h1>
+                            <h1 className="lets-play">
                                 <span className="base-color">L</span>et
                                 <span className="base-color">'s</span>
-                            </h1>
-                            <h1>
-                                <span className="base-color">P</span>la
+                                <span className="base-color"> P</span>la
                                 <span className="base-color">y </span>
                                 <span className="base-color">N</span>o
                                 <span className="base-color">w</span>

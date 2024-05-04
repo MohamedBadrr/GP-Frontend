@@ -15,7 +15,7 @@
 
 
 .main-menu {
-    overflow-x: hidden;
+    overflow: hidden;
     height: 100vh;
 }
 
@@ -36,14 +36,16 @@
 }
 
 .main-menu-asturant {
+    margin-top: 90px !important;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     animation: slideRight 1s ease-in-out forwards, floatImage 4s ease-in-out infinite;
     animation-delay: 0;
 }
 
 .main-menu-hero {
+    margin-top: 80px !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,79 +243,138 @@
 }
 
 
-@media screen and (max-width: 600px) {
-    /* .main-menu {
-        background-image: url(../../assets/images/body_bg.png);
-        background-position: center center;
-        height: fit-content;
-        display: block !important;
-        margin-bottom: 50px;
-        padding-top: 20px;
-    } */
 
-    .main-menu{
-        /* height: fit-content; */
-        padding: 0;
-
+  /* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 300px) and (max-width: 575.98px) {
+    .main-menu {
+    background-image: url(../../assets/images/mainmenuBG2.jpeg);
+    background-position: center center;
+    background-size: 110% 95%;
+    overflow: hidden;
+    height: 100vh;
+    width: 101%;
     }
-
+    .main-menu-hero h1 {
+        color: #78a2ef;
+    }
+    .main-menu-buttons{
+        color: #78a2ef; 
+        margin: 15px 0px;
+    }
     .main-menu-video-background {
         position: fixed;
-        top: 60px;
+        top: 50px;
         left: 0;
         width: 100%;
-        height: 90vh;
         overflow: hidden ;
         z-index: -9999;
     }
-    
-    /* .main-menu-video-background video {
-        object-fit: cover;
-        width: 100%;
-        height: 80%;
-    } */
-
     .main-menu-asturant {
         display: none;
     }
-
     .main-menu-hero {
-        margin-top: 100px;
+        padding-top: 30px;
     }
-
     .main-menu-hero h1 {
         font-size: 40px;
-        margin-top: 100px;
+        margin-top: 0px;
     }
-
+    .main-menu {
+        background-color: rgb(209, 198, 198) !important;
+    }
+    .main-menu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .main-menu-asturant {
+        margin-top: 10px;
+    }
+    
+    .main-menu-hero {
+        margin-top: 10px;
+    }
+    
 }
 
-
-@media screen and (min-width: 600px) and (max-width: 745px) {
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .main-menu {
+        background-image: url(../../assets/images/mainmenuBG2.jpeg);
+        background-position: center center;
+        background-size: 110% 95%;
+        overflow: hidden;
+        height: 100vh;
+        width: 101%;
+        }
+        .main-menu-hero h1 {
+            color: #78a2ef;
+        }
+        .main-menu-buttons{
+            color: #78a2ef; 
+            margin: 15px 0px;
+        }
     .main-menu-asturant {
         display: none;
         height: fit-content;
-        
     }
-
     .main-menu-hero {
-        margin-top: 100px;
+        margin-top: 0px;
         margin-left: 60px;
     }
-
     .main-menu-hero h1 {
         font-size: 40px;
         margin-top: 150px;
     }
-
     .main-menu-video-background {
         position: fixed;
-        top: 60px;
+        top: 40px;
         left: 0;
         width: 100%;
         height: 100vh;
         overflow: hidden !;
         z-index: -9999;
     }
+    .main-menu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .main-menu-asturant {
+        margin-top: 10px;
+    }
+    
+    .main-menu-hero {
+        margin-top: 10px;
+    }
     
 }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .main-menu-video-background {
+        position: fixed;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden !;
+        z-index: -9999;
+    }
+    .main-menu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .main-menu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+

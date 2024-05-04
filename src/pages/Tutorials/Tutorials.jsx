@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Tutorials = () => {
     return (
         <>
-            <div className="tutorials d-flex justify-content-around align-items-start">
+            <div className="tutorials d-flex justify-content-around align-items-center">
                 <div className="container">
                     <div className="row ">
                         <h1 className="mt-4 text-center title-tutorail">

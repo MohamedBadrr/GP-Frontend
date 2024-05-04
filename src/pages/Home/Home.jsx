@@ -9,19 +9,19 @@ import Tutorials from "../Tutorials/Tutorials";
 export default function Home() {
   return (
     <>
+      <section className="all-sections-home">
       <section id="HOME-SECTION">
         <div className="body-home">
           <div className="home-section">
             <div className="container-fluid">
               <div className=" row ">
-                <div className="col-md-4 offset-1 home-text">
+                <div className="col-md-5 offset-1 home-text">
                   <h1>
-                    Best Games Of <br /> The Latest
+                    Best Games Of The Latest
                   </h1>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing <br />
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua. Quis ipsum
+                    Lorem ipsum dolor sit amet, consectetur adipiscing 
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore.
                   </p>
                   <button className="default-button px-5 py-2 mt-3 watch-button">
                     <a
@@ -42,10 +42,11 @@ export default function Home() {
 
       <section id="GAMES">
         <GamesSection />
-      </section>
+      </section> 
 
       <section id="TOTURIALS">
         <Tutorials />
+      </section>
       </section>
     </>
   );
