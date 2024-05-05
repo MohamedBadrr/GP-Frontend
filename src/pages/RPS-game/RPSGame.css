@@ -58,3 +58,27 @@ border-style: outset;
   margin-left: 60px;
   height: 450px;
 }
+.ailoading{
+  margin-left: 150px;
+  margin-top: 100px;
+}
+.score-window{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 50px 680px;
+  font-family:'glitch';
+ 
+  
+}
+.score{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  position: absolute;
+  font-size: 50px;
+  
+}

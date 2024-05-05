@@ -11,7 +11,7 @@ import scissor from "../../assets/images/images_Ai/scissors.png";
 import axios from "axios";
 import { getAuthUser, updateAuthUser } from "../../helper/Storage";
 import LoadingPage from "../LoadingPage/LoadingPage";
-
+import RingLoader from "react-spinners/ClipLoader";
 const RPSGame = () => {
   const [qTable, setQTable] = useState({});
   const webcamRef = useRef(null);
@@ -29,6 +29,9 @@ const RPSGame = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const auth = getAuthUser();
+  const [ailoading, setAiLoading] = useState(false);
+  const [playerScore, setPlayerScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
 
   const [user, setUser] = useState({
     loading: false,
@@ -163,23 +166,28 @@ const RPSGame = () => {
           thumbTip[1] < ringTip[1] &&
           thumbTip[1] < pinkyTip[1]
         ) {
-          setGesture("rock");
+          setGesture("rock ✊" );
+          setAiLoading(false);
         } else if (
           thumbTip[1] > indexTip[1] &&
           thumbTip[1] > middleTip[1] &&
           thumbTip[1] > ringTip[1] &&
           thumbTip[1] > pinkyTip[1]
         ) {
-          setGesture("paper");
+          setGesture("paper ✋ ");
+          setAiLoading(false);
         } else {
-          setGesture("scissors");
+          setGesture("scissors ✌️");
+          setAiLoading(false);
         }
         // Update player's pattern
         setPlayerPatterns((prevPatterns) => [...prevPatterns, gesture]);
         // Update AI's pattern and make a choice
         updateAIAndMakeChoice();
       } else {
-        setHandDetected(false);
+        setAiLoading(true);
+        setComputerChoice(false);
+        setWinner(false);
       }
     }
   };
@@ -223,22 +231,24 @@ const RPSGame = () => {
     if (gesture) {
       const computerChoice = generateComputerChoice();
       if (
-        (gesture === "rock" && computerChoice === scissor) ||
-        (gesture === "paper" && computerChoice === rock) ||
-        (gesture === "scissors" && computerChoice === paper)
+        (gesture === "rock ✊" && computerChoice === scissor) ||
+        (gesture === "paper ✋ " && computerChoice === rock) ||
+        (gesture === "scissors ✌️" && computerChoice === paper)
       ) {
         setWinner("Player");
+        setPlayerScore((prevScore) => prevScore + 1);
         setGamesRemaining(gamesRemaining - 1);
         setComputerChoice(computerChoice);
         updateQTable("loss");
         setround(round + 1);
       } else if (
-        (gesture === "paper" && computerChoice === scissor) ||
-        (gesture === "rock" && computerChoice === paper) ||
-        (gesture === "scissors" && computerChoice === rock)
+        (gesture === "paper ✋ " && computerChoice === scissor) ||
+        (gesture === "rock ✊" && computerChoice === paper) ||
+        (gesture === "scissors ✌️" && computerChoice === rock)
       ) {
         setWinner("Computer");
         setGamesRemaining(gamesRemaining - 1);
+        setComputerScore((prevScore) => prevScore + 1);
         setComputerChoice(computerChoice);
         setairound(airound + 1);
         updateQTable("win");
@@ -251,9 +261,11 @@ const RPSGame = () => {
       // console.log(gamesRemaining);
       console.log(champdata.data.game_remaining);
 
-      if (gamesRemaining === 0) {
-        endChampionship();
-      }
+      if (gamesRemaining === 1) {
+        setTimeout(function() {
+            endChampionship();
+        }, 3000); 
+    }
     }
   }, [gesture, handDetected, champdata]);
 
@@ -314,7 +326,15 @@ const RPSGame = () => {
   };
 
   return loadingPage ? (
+    
     <div className="all">
+        <div className="score-window">
+        <h2>Score</h2>
+        <div className="score">
+          <p> {computerScore}</p>
+          <p> {playerScore}</p>
+        </div>
+      </div>
       <div className="playing container">
         <div className="players">
           <div>
@@ -327,9 +347,14 @@ const RPSGame = () => {
                 Your gesture : <span>{gesture}</span>
               </h3>
             )}
+            
           </div>
         </div>
-
+        <RingLoader className="ailoading"
+        color="#ffffff"
+          size={300}
+          loading = {ailoading}
+          />
         <Webcam ref={webcamRef} mirrored={true} className="camera" />
         <canvas ref={canvasRef} className="canvas" />
 
@@ -362,6 +387,7 @@ const RPSGame = () => {
         )}
       </div>
     </div>
+    
   ) : (
     <LoadingPage />
   );
