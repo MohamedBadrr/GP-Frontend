@@ -1,5 +1,6 @@
 /** @format */
 
+import './game-round.css';
 import React, { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
