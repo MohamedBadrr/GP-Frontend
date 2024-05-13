@@ -25,12 +25,11 @@ const Login = () => {
             password: login.password,
         }).then((resp) => {
             setAuthUser(resp.data);
-            // const auth = getAuthUser();
             setLogin({ ...login, loading: false, err: "" });
             navigate("/home");
+            window.location.reload();
         }).catch((errors) => {
             console.log(errors);
-            // setLogin({...login , loading:false , err:"Email or Password is not correct ..!"})
             setLogin({
                 ...login, loading: false,
                 errors: errors.response.data.errors[0].msg
