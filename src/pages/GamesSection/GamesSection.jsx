@@ -1,5 +1,5 @@
 /** @format */
-import React from "react";
+import React, { useEffect } from "react";
 import "./GamesSection.css";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -9,6 +9,40 @@ import img2 from "../../assets/images/game2.png";
 import { Link } from "react-router-dom";
 
 const GamesSection = () => {
+    
+    useEffect(() => {
+
+        const elements = document.querySelectorAll(".carsoul-games-h1");
+        const element2 = document.querySelectorAll(".carsoul-games-button");
+        const element3 = document.querySelectorAll(".owl-theme-animation");
+
+        const optians = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.4,
+        };
+        const callbacks = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animation-effect");
+                }
+            });
+        };
+        let observer = new IntersectionObserver(callbacks, optians);
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+        let observer2 = new IntersectionObserver(callbacks, optians);
+        element2.forEach((element) => {
+            observer2.observe(element);
+        });
+        let observer3 = new IntersectionObserver(callbacks, optians);
+        element3.forEach((element) => {
+            observer3.observe(element);
+        });
+        
+    }, []);
+
     const options = {
         items: 1,
         loop: true,
@@ -35,7 +69,7 @@ const GamesSection = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 offset-1 carsoul-games-text">
-                            <h1 className="lets-play">
+                            <h1 className="lets-play carsoul-games-h1">
                                 <span className="base-color">L</span>et
                                 <span className="base-color">'s</span>
                                 <span className="base-color"> P</span>la
@@ -43,7 +77,7 @@ const GamesSection = () => {
                                 <span className="base-color">N</span>o
                                 <span className="base-color">w</span>
                             </h1>
-                            <button className="default-button">
+                            <button className="default-button carsoul-games-button">
                                 <Link
                                     className="text-decoration-none text-white"
                                     to={"/mainamenu"}>
@@ -51,7 +85,7 @@ const GamesSection = () => {
                                 </Link>
                             </button>
                         </div>
-                        <div className="col-md-7">
+                        <div className="col-md-7 owl-theme-animation">
                             <OwlCarousel className="owl-theme" {...options}>
                                 <div class="item-owl-carsoual text-center">
                                     <h4 className="my-3">

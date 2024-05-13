@@ -14,14 +14,16 @@
     justify-content: space-evenly !important;
     flex-wrap: wrap !important;
     padding-top: 120px;
-} 
-.all-sections-home{
+}
+
+.all-sections-home {
     width: 100%;
 }
 
 .home-text {
     margin-top: 100px !important;
 }
+
 .home-text h1 {
     font-family: serif;
     font-weight: bold;
@@ -31,48 +33,107 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: slideRight 1.2s ease-in-out forwards;
+    animation-delay: 0;
 }
+
+
+
 .home-text p {
     font-size: 18px;
     width: 70%;
     margin-top: 15px;
+    animation: slideRighthome 1.6s ease-in-out forwards;
+    animation-delay: 0;
 }
 
-.home-banner{
+.home-banner {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.home-banner img {
-    width: 100% !important;
+
 }
 
-  /* Extra small devices (portrait phones, less than 576px) */
+.watch-button{
+    animation: slideTophome 2s ease-in-out forwards;
+    animation-delay: 0;
+}
+
+.home-banner img {
+    width: 100% !important;
+    animation: slideLefthome 2s ease-in-out forwards;
+    animation-delay: 0;
+    overflow: hidden !important;
+}
+
+@keyframes slideTophome {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLefthome {
+    0% {
+        transform: translateX(10px);
+        opacity: 0;
+        overflow: hidden !important;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        overflow: hidden !important;
+    }
+}
+
+@keyframes slideRighthome {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 100px) and (max-width: 575.98px) {
     .offset-1 {
         margin-left: -1% !important;
     }
+
     .body-home {
         background-image: url(../../assets/images/body_bg.png);
         background-position: center center;
-        height:fit-content !important;
+        height: fit-content !important;
         display: block !important;
         margin-bottom: 0px;
         padding-top: 10px;
     }
+
     .home-text h1 {
         font-size: 50px;
         font-weight: bold;
         margin-top: 0px;
-        padding-left: 15px ;
+        padding-left: 15px;
     }
+
     .home-text p {
-        padding-left: 20px ;
+        padding-left: 20px;
         font-size: 20px;
         width: 85%;
         margin-top: 40px;
         margin-bottom: 50px;
     }
+
     .watch-button {
         margin-bottom: 70px !important;
         margin-left: 15px;
@@ -80,31 +141,35 @@
 }
 
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) { 
+@media (min-width: 576px) and (max-width: 767.98px) {
     .offset-1 {
         margin-left: 0% !important;
     }
+
     .body-home {
         background-image: url(../../assets/images/body_bg.png);
         background-position: center center;
-        height:fit-content !important;
+        height: fit-content !important;
         display: block !important;
         margin-bottom: 0px;
         padding-top: 10px;
     }
+
     .home-text h1 {
         font-size: 50px;
         font-weight: bold;
         margin-top: 0px;
-        padding-left: 15px ;
+        padding-left: 15px;
     }
+
     .home-text p {
-        padding-left: 20px ;
+        padding-left: 20px;
         font-size: 20px;
         width: 85%;
         margin-top: 40px;
         margin-bottom: 50px;
     }
+
     .watch-button {
         margin-bottom: 70px !important;
         margin-left: 15px;
@@ -116,6 +181,7 @@
     .offset-1 {
         margin-left: 0% !important;
     }
+
     .home-text p {
         padding-left: 20px;
         font-size: 20px;
@@ -123,11 +189,13 @@
         margin-top: 40px;
         margin-bottom: 50px;
     }
+
     .home-text h1 {
         width: 100%;
         font-size: 50px;
         margin-left: 20px;
     }
+
     .watch-button {
         margin-bottom: 70px !important;
         margin-left: 15px;
@@ -140,12 +208,12 @@
     .body-home {
         background-image: url(../../assets/images/body_bg.png);
         background-position: center center;
-        height:fit-content !important;
+        height: fit-content !important;
         padding-bottom: 20px;
     }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-}
-@media (max-width: 391px){}
+@media (min-width: 1200px) {}
+
+@media (max-width: 391px) {}
