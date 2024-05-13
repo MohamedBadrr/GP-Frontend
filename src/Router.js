@@ -15,6 +15,7 @@ import BuySkin from "./pages/Game/Components/buy-skin/BuySkin";
 import GameOver from "./pages/GameOver/GameOver";
 import Winner from "./pages/winner/Winner";
 import Tutorials from "./pages/Tutorials/Tutorials";
+import Guset, { GuestWithoutLogin } from "./middleware/Gust";
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
@@ -30,92 +31,93 @@ export const routes = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+
+      // Gust Login middleware
       {
-        path: "/user",
-        element: <User />,
+          element: <Guset />,
+          children: [
+              {
+                  path: "/Login",
+                  element: <Login />,
+              },
+              {
+                  path: "/Register",
+                  element: <Register />,
+              },
+          ]
       },
+
+      // Gust Without Login 
       {
-        path: "/Login",
-        element: <Login />,
-      },
-      {
-        path: "/Register",
-        element: <Register />,
-      },
-      // Gust middleware
-      // {
-      //     element: <Guset />,
-      //     children: [
-      //         {
-      //             path: "/Login",
-      //             element: <Login />,
-      //         },
-      //         {
-      //             path: "/Register",
-      //             element: <Register />,
-      //         },
-      //     ]
-      // },
-      {
-        path: "/game",
-        element: <Game />,
-      },
-      {
-        path: "/selectskin",
-        element: <SelectSkin />,
-      },
-      {
-        path: "/tutorial",
-        element: <Tutorials />,
-      },
-      {
-        path: "/buyskin",
-        element: <BuySkin />,
-      },
-      {
-        path: "/RPS-Game",
-        element: <RPSGameChampions />,
-      },
-      {
-        path: "/game-round/:id",
-        element: <RPSGame />,
-      },
-      {
-        path: "/mainamenu",
-        element: <Mainmenu />,
-      },
-      {
-        path: "/gameover",
-        element: <GameOver playagin="selectskin" />,
-      },
-      {
-        path: "/gameoverRPS",
-        element: <GameOver playagin="RPS-Game" />,
-      },
-      {
-        path: "/winner",
-        element: (
-          <Winner
-            playagin="selectskin"
-            linkSecondChoice="mainamenu"
-            secondChoice="Back To Main Menu?"
-          />
-        ),
-      },
-      {
-        path: "/winnerRPS",
-        element: (
-          <Winner
-            playagin="RPS-Game"
-            linkSecondChoice="home"
-            secondChoice="Back To Home?"
-          />
-        ),
+          element : <GuestWithoutLogin />,
+          children :[
+            {
+              path: "/user",
+              element: <User />,
+            },
+            {
+              path: "/game",
+              element: <Game />,
+            },
+            {
+              path: "/selectskin",
+              element: <SelectSkin />,
+            },
+            {
+              path: "/tutorial",
+              element: <Tutorials />,
+            },
+            {
+              path: "/buyskin",
+              element: <BuySkin />,
+            },
+            {
+              path: "/RPS-Game",
+              element: <RPSGameChampions />,
+            },
+            {
+              path: "/game-round/:id",
+              element: <RPSGame />,
+            },
+            {
+              path: "/mainamenu",
+              element: <Mainmenu />,
+            },
+            {
+              path: "/gameover",
+              element: <GameOver playagin="selectskin" />,
+            },
+            {
+              path: "/gameoverRPS",
+              element: <GameOver playagin="RPS-Game" />,
+            },
+            {
+              path: "/winner",
+              element: (
+                <Winner
+                  playagin="selectskin"
+                  linkSecondChoice="mainamenu"
+                  secondChoice="Back To Main Menu?"
+                />
+              ),
+            },
+            {
+              path: "/winnerRPS",
+              element: (
+                <Winner
+                  playagin="RPS-Game"
+                  linkSecondChoice="home"
+                  secondChoice="Back To Home?"
+                />
+              ),
+            },
+
+          ]
       },
     ],
   },
   {
     path: "*",
-    element: <Navigate to={"/"} />,
+    element: <Navigate to={"/home"} />,
   },
 ]);
