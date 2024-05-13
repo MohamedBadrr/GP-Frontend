@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import loginphoto from '../../assets/images/pngwing.png'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import { setAuthUser } from "../../helper/Storage";
+import { getAuthUser, setAuthUser } from "../../helper/Storage";
 const Register = () => {
 
     const navigate = useNavigate();
@@ -28,14 +28,14 @@ const Register = () => {
             password: register.password,
         }).then((resp) => {
             setAuthUser(resp.data);
-            // const auth = getAuthUser();
             setRegister({ ...register, loading: false, err: "" });
-            // navigate("/login");
             navigate("/home");
+            window.location.reload();
         }).catch((errors) => {
-            console.log(errors);
-            // setRegister({...register , loading:false , err:"there were an error "})
-            setRegister({ ...register, loading: false, err: errors.response.data.errors[0].msg })
+            if(errors.response.data.errors){
+                setRegister({ ...register, loading: false, err: errors.response.data.errors[0].msg })
+            }
+            
         });
         if (register.password !== register.confirmPassword) {
             setRegister({ ...register, err: "Passwords Don't Match , Try again" })

@@ -1,5 +1,4 @@
 /** @format */
-
 .navbar {
     position: fixed !important;
     width: 100%;
@@ -41,10 +40,16 @@
 .user-toggle {
     background-color: transparent;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .user-name {
     margin-left: 10px;
     text-transform: capitalize;
+    font-size: 22px;
+    color: #449de1;
 }
 .user-img {
     width: 50px;
@@ -57,7 +62,7 @@
     background-color: #0b0f18;
     padding: 10px;
     border-radius: 12px;
-    height: 100px;
+    height: fit-content;
 }
 .user-list li {
     margin-bottom: 10px;
@@ -65,16 +70,101 @@
 }
 .user-list a {
     text-decoration: none;
-    font-weight: 600;
 }
 .logoHeader {
     width: 100%;
     margin-left: 32px;
 }
-@media screen and (min-width: 350px) {
-    .navbar-brand {
-    font-size: 25px;
+.small-link{
+    color: white;
     font-weight: bold;
-    margin-left: 25px !important;
+    font-size: 16px;
+    transition: .5s all;
+}
+.small-link:hover{
+    color: #449de1;
+    font-weight: bold;
+    font-size: 16px;
+}
+/* container-user-toggle */
+ /* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 100px) and (max-width: 575.98px) {
+    .navbar-brand {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 25px !important;
+        }
+        .container-user-toggle{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .user-list {
+            position: absolute;
+            width: 120px;
+            background-color: #0b0f18;
+            padding: 10px;
+            border-radius: 12px;
+            height: fit-content;
+            top: 60px;
+        }
+}
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .navbar-brand {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 25px !important;
+        }
+    .container-user-toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
     }
+    .user-list {
+        position: absolute;
+        width: 120px;
+        background-color: #0b0f18;
+        padding: 10px;
+        border-radius: 12px;
+        height: fit-content;
+        top: 60px;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar-brand {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 25px !important;
+        }
+    .container-user-toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-user-toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .user-list {
+        position: absolute;
+        width: 120px;
+        background-color: #0b0f18;
+        padding: 10px;
+        border-radius: 12px;
+        height: fit-content;
+        top: 60px;
+    }
+}
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }

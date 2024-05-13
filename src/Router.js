@@ -16,6 +16,7 @@ import GameOver from "./pages/GameOver/GameOver";
 import Winner from "./pages/winner/Winner";
 import Tutorials from "./pages/Tutorials/Tutorials";
 import Guset, { GuestWithoutLogin } from "./middleware/Gust";
+import GamesSection from "./pages/GamesSection/GamesSection";
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
@@ -31,7 +32,6 @@ export const routes = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
-
       // Gust Login middleware
       {
           element: <Guset />,
@@ -46,7 +46,6 @@ export const routes = createBrowserRouter([
               },
           ]
       },
-
       // Gust Without Login 
       {
           element : <GuestWithoutLogin />,
@@ -70,6 +69,10 @@ export const routes = createBrowserRouter([
             {
               path: "/buyskin",
               element: <BuySkin />,
+            },
+            {
+              path: "/gamessection",
+              element: <GamesSection />,
             },
             {
               path: "/RPS-Game",
@@ -111,7 +114,6 @@ export const routes = createBrowserRouter([
                 />
               ),
             },
-
           ]
       },
     ],
