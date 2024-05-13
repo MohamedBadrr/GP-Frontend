@@ -11,7 +11,7 @@ import scissor from "../../assets/images/images_Ai/scissors.png";
 import axios from "axios";
 import { getAuthUser, updateAuthUser } from "../../helper/Storage";
 import LoadingPage from "../LoadingPage/LoadingPage";
-
+import RingLoader from "react-spinners/ClipLoader";
 const RPSGame = () => {
   const [qTable, setQTable] = useState({});
   const webcamRef = useRef(null);
@@ -29,7 +29,10 @@ const RPSGame = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const auth = getAuthUser();
-
+  const [ailoading, setAiLoading] = useState(false);
+  const [playerScore, setPlayerScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
+  let detectionNumber = 0
   const [user, setUser] = useState({
     loading: false,
     data: [],
@@ -42,13 +45,13 @@ const RPSGame = () => {
   });
   useEffect(() => {
     const runHandpose = async () => {
-      const net = await handpose.load();
-
+      const net = await handpose.load().catch((errors)=>{
+        console.log(errors);
+      });
       setLoading("Handpose model loaded.");
       const intervalId = setInterval(() => {
         detect(net);
       }, 5000);
-
       return () => clearInterval(intervalId);
     };
 
@@ -65,11 +68,9 @@ const RPSGame = () => {
           },
         })
         .then((resp) => {
-          console.log(resp.data);
           setUser({ ...user, data: resp.data, loading: false, err: "" });
         })
         .catch((errors) => {
-          console.log(errors);
           setUser({
             ...user,
             loading: false,
@@ -94,7 +95,8 @@ const RPSGame = () => {
             loading: false,
             err: "",
           });
-          setGamesRemaining(resp.data.game_remaining);
+          // setGamesRemaining(resp.data.game_remaining);
+          setGamesRemaining(10);
         })
         .catch((errors) => {
           console.log(errors);
@@ -122,7 +124,7 @@ const RPSGame = () => {
           }
         )
         .then((resp) => {
-          console.log(resp.data);
+          // console.log(resp.data);
         })
         .catch((errors) => {
           console.log(errors);
@@ -163,96 +165,136 @@ const RPSGame = () => {
           thumbTip[1] < ringTip[1] &&
           thumbTip[1] < pinkyTip[1]
         ) {
-          setGesture("rock");
+          setGesture("rock ✊" );
+          detectionNumber++
+          // Update player's pattern
+          setPlayerPatterns((prevPatterns) => [...prevPatterns, "rock ✊"]);
+          setAiLoading(false);
         } else if (
           thumbTip[1] > indexTip[1] &&
           thumbTip[1] > middleTip[1] &&
           thumbTip[1] > ringTip[1] &&
           thumbTip[1] > pinkyTip[1]
         ) {
-          setGesture("paper");
+          setGesture("paper ✋");
+          detectionNumber++
+          // Update player's pattern
+          setPlayerPatterns((prevPatterns) => [...prevPatterns, "paper ✋"]);
+          setAiLoading(false);
         } else {
-          setGesture("scissors");
+          setGesture("scissors ✌️");
+          detectionNumber++
+          // Update player's pattern
+          setPlayerPatterns((prevPatterns) => [...prevPatterns, "scissors ✌️"]);
+          setAiLoading(false);
         }
-        // Update player's pattern
-        setPlayerPatterns((prevPatterns) => [...prevPatterns, gesture]);
-        // Update AI's pattern and make a choice
-        updateAIAndMakeChoice();
       } else {
-        setHandDetected(false);
+        setAiLoading(true);
+        setWinner(false);
+        setComputerChoice(false);
       }
     }
   };
 
-  const generateComputerChoice = () => {
-    const choices = [rock, paper, scissor];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+  const transformComputerchoiceToString = (choice) => {
+    let transformedChoice;
+    if (choice === rock) {
+      transformedChoice = 'rock ✊'
+      return transformedChoice ;
+    }else if (choice === scissor){
+      transformedChoice = 'scissors ✌️'
+      return transformedChoice ;
+    }else if (choice === paper){
+      transformedChoice = 'paper ✋'
+      return transformedChoice ;
+    }
   };
 
   const updateAIAndMakeChoice = () => {
-    if (playerPatterns.length >= 2) {
+    if (playerPatterns.length >= 2 && aiPatterns.length >= 2) {
       const lastTwoPlayerPatterns = playerPatterns.slice(-2).join("");
       const lastTwoAiPatterns = aiPatterns.slice(-2).join("");
       const currentState = lastTwoPlayerPatterns + lastTwoAiPatterns;
-
-      if (!qTable[currentState]) {
-        qTable[currentState] = {};
-        qTable[currentState]["rock"] = Math.random();
-        qTable[currentState]["paper"] = Math.random();
-        qTable[currentState]["scissors"] = Math.random();
-      }
-
       let bestChoice = null;
       let bestChoiceValue = -Infinity;
-      for (const choice in qTable[currentState]) {
-        if (qTable[currentState][choice] > bestChoiceValue) {
-          bestChoice = choice;
-          bestChoiceValue = qTable[currentState][choice];
-        }
+      let choiceImage
+      if (!qTable[currentState]) {
+        qTable[currentState] = {};
+        qTable[currentState]["rock ✊"] = Math.random();
+        qTable[currentState]["paper ✋"] = Math.random();
+        qTable[currentState]["scissors ✌️"] = Math.random();
       }
-
-      setComputerChoice(bestChoice);
-      setAiPatterns((prevPatterns) => [...prevPatterns, bestChoice]);
-    } else {
-      setAiPatterns((prevPatterns) => [...prevPatterns]);
+      // check if the choise returned successfully
+      if (qTable) {
+        for (const choice in qTable[currentState]) {
+          if (qTable[currentState][choice] > bestChoiceValue) {
+            bestChoice = choice ;
+            bestChoiceValue = qTable[currentState][choice] ;
+          }
+        }
+        if (bestChoice === 'rock ✊') {
+          choiceImage = rock;
+        }else if (bestChoice === 'paper ✋'){
+          choiceImage = paper;
+        }else if (bestChoice === 'scissors ✌️'){
+          choiceImage = scissor;
+        }
+        setComputerChoice(choiceImage);
+        setAiPatterns((prevPatterns) => [...prevPatterns, bestChoice]);
+        return choiceImage
+    };
+  } else {
+      const choices = [rock, paper, scissor];
+      const randomIndex = Math.floor(Math.random() * choices.length);
+      let choice = choices[randomIndex]
+      setComputerChoice(choice) 
+      // console.log(choice);
+      // transform choise (image url) to string like 'rock' etc
+      let computerChoiseString = transformComputerchoiceToString(choice)
+      // asign ai pattern
+      setAiPatterns((prevPatterns) => [...prevPatterns, computerChoiseString]);
+      return choice
     }
   };
 
   useEffect(() => {
     if (gesture) {
-      const computerChoice = generateComputerChoice();
+      // check if the round ended
+        if (gamesRemaining === 1) {
+          setTimeout(function() {
+              endChampionship();
+          }, 3000); 
+      }
+      // Update AI's pattern and make a choice
+      const choise = updateAIAndMakeChoice();
+      let newChoice = transformComputerchoiceToString(choise);
       if (
-        (gesture === "rock" && computerChoice === scissor) ||
-        (gesture === "paper" && computerChoice === rock) ||
-        (gesture === "scissors" && computerChoice === paper)
+        (gesture === "rock ✊" && newChoice === 'scissors ✌️') ||
+        (gesture === "paper ✋" && newChoice === 'rock ✊') ||
+        (gesture === "scissors ✌️" && newChoice === 'paper ✋')
       ) {
         setWinner("Player");
+        setPlayerScore((prevScore) => prevScore + 1);
         setGamesRemaining(gamesRemaining - 1);
-        setComputerChoice(computerChoice);
+        // setComputerChoice(computerChoice);
         updateQTable("loss");
         setround(round + 1);
       } else if (
-        (gesture === "paper" && computerChoice === scissor) ||
-        (gesture === "rock" && computerChoice === paper) ||
-        (gesture === "scissors" && computerChoice === rock)
+        (gesture === "paper ✋" && newChoice === 'scissors ✌️') ||
+        (gesture === "rock ✊" && newChoice === 'paper ✋') ||
+        (gesture === "scissors ✌️" && newChoice === 'rock ✊')
       ) {
         setWinner("Computer");
         setGamesRemaining(gamesRemaining - 1);
-        setComputerChoice(computerChoice);
+        setComputerScore((prevScore) => prevScore + 1);
+        // setComputerChoice(computerChoice);
         setairound(airound + 1);
         updateQTable("win");
       } else {
         setWinner("no one");
         setGamesRemaining(gamesRemaining - 1);
-        setComputerChoice(computerChoice);
+        // setComputerChoice(computerChoice);
         updateQTable("draw");
-      }
-      // console.log(gamesRemaining);
-      console.log(champdata.data.game_remaining);
-
-      if (gamesRemaining === 0) {
-        endChampionship();
       }
     }
   }, [gesture, handDetected, champdata]);
@@ -266,9 +308,9 @@ const RPSGame = () => {
       // Check if currentState exists in the qTable, if not, initialize it
       if (!qTable[currentState]) {
         qTable[currentState] = {};
-        qTable[currentState]["rock"] = Math.random();
-        qTable[currentState]["paper"] = Math.random();
-        qTable[currentState]["scissors"] = Math.random();
+        qTable[currentState]["rock ✊"] = Math.random();
+        qTable[currentState]["paper ✋"] = Math.random();
+        qTable[currentState]["scissors ✌️"] = Math.random();
       }
 
       let reward = 0;
@@ -282,14 +324,12 @@ const RPSGame = () => {
       const maxNextStateQValue = Math.max(
         ...Object.values(qTable[currentState])
       );
+      // console.log(maxNextStateQValue+' maxNextStateQValue');
+      let computerChoiseString = transformComputerchoiceToString(computerChoice)
       const updatedQValue =
-        qTable[currentState][computerChoice] +
-        alpha *
-          (reward +
-            gamma * maxNextStateQValue -
-            qTable[currentState][computerChoice]);
-      qTable[currentState][computerChoice] = updatedQValue;
-
+      qTable[currentState][computerChoiseString] + alpha * (reward + gamma * maxNextStateQValue - qTable[currentState][computerChoiseString]);
+      qTable[currentState][computerChoiseString] = updatedQValue ; 
+      // console.log(qTable[currentState]);
       setQTable({ ...qTable }); // Update the state of the Q-table
     }
   };
@@ -297,24 +337,45 @@ const RPSGame = () => {
   const endChampionship = () => {
     if (round > airound) {
       setWinner("Player");
-      updateCoinsAndXp(champdata.data.price, 20, true);
-      updateAuthUser();
-      navigate("/winnerRPS");
-      window.location.reload();
+      // updateCoinsAndXp(champdata.data.price, 20, true);
+      // updateAuthUser();
+      // navigate("/winnerRPS");
+      // window.location.reload();
+      // console.log(playerPatterns);
+      // console.log(aiPatterns);
+      // console.log(qTable);
+
     } else if (airound > round) {
       setWinner("Computer");
-      updateCoinsAndXp(champdata.data.price, 10, false);
-      updateAuthUser();
-      navigate("/gameoverRPS");
-      window.location.reload();
+      // updateCoinsAndXp(champdata.data.price, 10, false);
+      // updateAuthUser();
+      // navigate("/gameoverRPS");
+      // window.location.reload();
+      // console.log(playerPatterns);
+      // console.log(aiPatterns);
+      // console.log(qTable);
+
     } else {
-      navigate("/gameoverRPS");
-      window.location.reload();
+      // navigate("/gameoverRPS");
+      // window.location.reload();
+      // console.log(playerPatterns);
+      // console.log(aiPatterns);
+      // console.log(qTable);
+
     }
   };
 
   return loadingPage ? (
+    
     <div className="all">
+        <div className="score-window">
+        <h2>Score</h2>
+        <div className="score">
+          <p> {computerScore}</p>
+          <p>&nbsp;Vs&nbsp; </p>
+          <p> {playerScore}</p>
+        </div>
+      </div>
       <div className="playing container">
         <div className="players">
           <div>
@@ -327,12 +388,16 @@ const RPSGame = () => {
                 Your gesture : <span>{gesture}</span>
               </h3>
             )}
+            
           </div>
         </div>
-
-        <Webcam ref={webcamRef} mirrored={true} className="camera" />
-        <canvas ref={canvasRef} className="canvas" />
-
+        <RingLoader className="ailoading"
+        color="#ffffff"
+          size={300}
+          loading = {ailoading}
+          />
+        <Webcam ref={webcamRef} mirrored={true} className="camera"/>
+        <canvas ref={canvasRef} className="canvas"/>
         {gesture && handDetected && (
           <div>
             {computerChoice && (
@@ -362,6 +427,7 @@ const RPSGame = () => {
         )}
       </div>
     </div>
+    
   ) : (
     <LoadingPage />
   );

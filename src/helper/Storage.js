@@ -24,7 +24,7 @@ export const updateAuthUser = (token) =>{
       }).catch((errors)=>{
           console.log(errors);
       });
-      
+          
 }
 export const removeAuthUser = () =>{
     if(localStorage.getItem("user")) localStorage.removeItem("user");

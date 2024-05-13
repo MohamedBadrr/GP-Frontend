@@ -78,6 +78,7 @@ export default function User() {
           success: resp.data.msg,
           reload: updatedUser.reload + 1,
         });
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
