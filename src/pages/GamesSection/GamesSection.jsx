@@ -9,38 +9,36 @@ import img2 from "../../assets/images/game2.png";
 import { Link } from "react-router-dom";
 
 const GamesSection = () => {
-    
+
     useEffect(() => {
+        const elements = document.querySelectorAll(".carsoul-games-h1, .carsoul-games-button, .owl-theme-animation");
 
-        const elements = document.querySelectorAll(".carsoul-games-h1");
-        const element2 = document.querySelectorAll(".carsoul-games-button");
-        const element3 = document.querySelectorAll(".owl-theme-animation");
+        if (elements.length > 0) {
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.4,
+            };
 
-        const optians = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.4,
-        };
-        const callbacks = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("animation-effect");
+            const callbacks = (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animation-effect");
+                    } else {
+                        entry.target.classList.remove("animation-effect"); // Remove class on scroll out
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(callbacks, options);
+            elements.forEach((element) => observer.observe(element));
+
+            return () => {
+                if (elements && observer) {
+                    elements.forEach((element) => observer.unobserve(element));
                 }
-            });
-        };
-        let observer = new IntersectionObserver(callbacks, optians);
-        elements.forEach((element) => {
-            observer.observe(element);
-        });
-        let observer2 = new IntersectionObserver(callbacks, optians);
-        element2.forEach((element) => {
-            observer2.observe(element);
-        });
-        let observer3 = new IntersectionObserver(callbacks, optians);
-        element3.forEach((element) => {
-            observer3.observe(element);
-        });
-        
+            };
+        }
     }, []);
 
     const options = {
