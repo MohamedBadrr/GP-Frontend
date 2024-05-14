@@ -1,5 +1,3 @@
-/** @format */
-
 .game-section-games {
     background-image: url(../../assets/images/body_bg.png);
     height: 100vh;
@@ -36,18 +34,15 @@
 
 .owl-theme-animation {
     opacity: 0;
-    transform: translateX(20%);
+    transform: translateX(12%);
     transition: all 1.5s ease-in;
     overflow-x: hidden !important;
 }
-
-
 
 .animation-effect {
     opacity: 4;
     transform: translateX(0);
 }
-
 
 @keyframes slideRight {
     0% {
@@ -65,21 +60,6 @@
     margin-top: 30px;
     padding: 12px 30px;
     font-weight: bold;
-    /* animation: slideTop 1.3s ease-in-out forwards;
-    animation-delay: 0; */
-}
-
-
-@keyframes slideTop {
-    0% {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .item-owl-carsoual {
@@ -128,8 +108,6 @@
 .img-carsoul {
     height: 370px;
 }
-
-
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 300px) and (max-width: 575.98px) {
@@ -191,6 +169,16 @@
     }
 }
 
+
+@media (min-width: 300px) and (max-width: 645.98px) {
+    .owl-theme-animation {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 1.5s ease-in;
+        overflow-x: hidden !important;
+    }
+}
+
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .item-owl-carsoual .game-skin-carsoul {
@@ -200,6 +188,13 @@
         position: absolute;
         top: 0px;
         display: block;
+    }
+
+    .owl-theme-animation {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 1.5s ease-in;
+        overflow-x: hidden !important;
     }
 
     .carsoul-games-h1 {
@@ -218,7 +213,6 @@
         top: 42px;
     }
 }
-
 
 @media (min-width: 770px) and (max-width: 840px) {
     .carsoul-games-h1 {
@@ -265,5 +259,3 @@
         top: 42px;
     }
 }
-
-/* // Extra large devices (large desktops, 1200px and up) */
