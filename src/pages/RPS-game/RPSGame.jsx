@@ -57,7 +57,23 @@ const RPSGame = () => {
 
     runHandpose();
   }, []);
-
+  useEffect(() => {
+    if (auth) {
+      axios
+        .get("http://localhost:4000/ai/Qtable", {
+          headers: {
+            token: auth.token,
+          },
+        })
+        .then((resp) => {
+          setQTable({...resp.data})
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+    }
+  }, [1])
+  
   useEffect(() => {
     if (auth) {
       setUser({ ...user, loading: true, err: [] });
@@ -96,7 +112,7 @@ const RPSGame = () => {
             err: "",
           });
           // setGamesRemaining(resp.data.game_remaining);
-          setGamesRemaining(10);
+          setGamesRemaining(4);
         })
         .catch((errors) => {
           console.log(errors);
@@ -133,6 +149,27 @@ const RPSGame = () => {
             loading: false,
             err: errors.response.data.errors[0].msg,
           });
+        });
+    }
+  };
+  const updateQtableInDb  = (qTable) => {
+    if (auth) {
+      axios
+        .put(
+          "http://localhost:4000/ai/update-Qtable",
+          {
+            qtable : qTable
+          },{
+            headers: {
+              token: auth.token,
+            },
+          },
+        )
+        .then((resp) => {
+          console.log(resp.data);
+        })
+        .catch((errors) => {
+          console.log(errors);
         });
     }
   };
@@ -304,7 +341,6 @@ const RPSGame = () => {
       const lastTwoPlayerPatterns = playerPatterns.slice(-2).join("");
       const lastTwoAiPatterns = aiPatterns.slice(-2).join("");
       const currentState = lastTwoPlayerPatterns + lastTwoAiPatterns;
-
       // Check if currentState exists in the qTable, if not, initialize it
       if (!qTable[currentState]) {
         qTable[currentState] = {};
@@ -339,28 +375,25 @@ const RPSGame = () => {
       setWinner("Player");
       // updateCoinsAndXp(champdata.data.price, 20, true);
       // updateAuthUser();
+      updateQtableInDb(qTable)
       // navigate("/winnerRPS");
       // window.location.reload();
-      // console.log(playerPatterns);
-      // console.log(aiPatterns);
-      // console.log(qTable);
+      console.log(qTable);
 
     } else if (airound > round) {
       setWinner("Computer");
       // updateCoinsAndXp(champdata.data.price, 10, false);
       // updateAuthUser();
+      updateQtableInDb(qTable)
       // navigate("/gameoverRPS");
       // window.location.reload();
-      // console.log(playerPatterns);
-      // console.log(aiPatterns);
-      // console.log(qTable);
+      console.log(qTable);
 
     } else {
       // navigate("/gameoverRPS");
       // window.location.reload();
-      // console.log(playerPatterns);
-      // console.log(aiPatterns);
-      // console.log(qTable);
+      updateQtableInDb(qTable)
+      console.log(qTable);
 
     }
   };
