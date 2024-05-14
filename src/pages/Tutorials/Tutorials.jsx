@@ -1,10 +1,29 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import "./Tutorials.css";
 import { Link } from "react-router-dom";
 
 const Tutorials = () => {
+    useEffect(() => {
+        const elements = document.querySelectorAll(".tutorials-videos");
+        const optians = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.4,
+        };
+        const callbacks = (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("ashraf");
+            }
+          });
+        };
+        let observer = new IntersectionObserver(callbacks, optians);
+        elements.forEach((element) => {
+          observer.observe(element);
+        });
+      }, []);
     return (
         <>
             <div className="tutorials d-flex justify-content-around align-items-center">

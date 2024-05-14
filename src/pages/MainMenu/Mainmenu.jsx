@@ -18,21 +18,21 @@ const Mainmenu = () => {
                 </div>
                 <div className="main-menu-hero col-md-6">
                     <h1>the posibilities<br /> beyond your imagination</h1>
-                    <Link className='mt-5 main-menu-buttons ' to={"/selectskin"}>
+                    <Link className='mt-5 main-menu-buttons first-button' to={"/selectskin"}>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         Select Plane
                     </Link>
-                    <Link className='main-menu-buttons' to={"/buyskin"}>
+                    <Link className='main-menu-buttons second-button' to={"/buyskin"}>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         Buy New Planes
                     </Link>
-                    <Link className='main-menu-buttons' to={"/home"}>
+                    <Link className='main-menu-buttons third-button' to={"/home"}>
                         <span></span>
                         <span></span>
                         <span></span>
