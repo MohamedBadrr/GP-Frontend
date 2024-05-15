@@ -321,11 +321,11 @@ function Game() {
           position: "absolute",
           marginLeft: "auto",
           visibility: "hidden",
-          top: 0,
+          top: 10,
           left: 0,
-          right: 0,
+          right: 2,
           textAlign: "center",
-          zindex: 9,
+          zindex: 999,
         }}
       />
     </>

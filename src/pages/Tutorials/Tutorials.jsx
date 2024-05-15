@@ -49,7 +49,7 @@ const Tutorials = () => {
             <div className="tutorials d-flex justify-content-around align-items-center">
                 <div className="container">
                     <div className="row ">
-                        <h1 className="mt-4 text-center title-tutorail tutorial-animation-appear">
+                        <h1 className="mt-5 text-center title-tutorail tutorial-animation-appear">
                             Some Tutorials About our Games
                         </h1>
                     </div>
