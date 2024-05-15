@@ -53,7 +53,7 @@ return (
   pathname === "/game" ? (
     ""
   ) : (
-    <nav class="navbar navbar-expand-lg text-white text-center base-navBar">
+    <nav class="navbar navbar-expand-lg navbar-dark text-white text-center base-navBar ">
       <div class="container">
         <Link class="navbar-brand text-white " to="/home">
           {" "}
@@ -95,7 +95,7 @@ return (
                 </li>
                 <li class="nav-item">
                   <a class="nav-link  my-1 mx-2 text-white " href="#ABOUT">
-                    Contact
+                    Contact us
                   </a>
                 </li>
               </>
@@ -143,7 +143,7 @@ return (
           )}
           {auth && (
             <>
-              <div>
+              <div className="container-user-toggle">
                 <button
                   className="user-toggle"
                   onClick={() => setUserToggle(!userToggle)}>
@@ -152,12 +152,30 @@ return (
                     src={user.data.photo}
                     className="user-img"
                   />
-                  <span className="user-name">{user.data.name}</span>
+                  <span className="user-name fw-bold">{user.data.name}</span>
                 </button>
                 {userToggle && (
                   <ul className="user-list">
                     <li>
-                      <Link
+                      <Link className="small-link"
+                        to={"/home"}
+                        onClick={() => {
+                          setUserToggle(!userToggle);
+                        }}>
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="small-link"
+                        to={"/gamessection"}
+                        onClick={() => {
+                          setUserToggle(!userToggle);
+                        }}>
+                        Games
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="small-link"
                         to={"/user"}
                         onClick={() => {
                           setUserToggle(!userToggle);

@@ -40,7 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: slideRight 1s ease-in-out forwards, floatImage 4s ease-in-out infinite;
+    animation: slideRightmain 1s ease-in-out forwards, floatImage 4s ease-in-out infinite;
     animation-delay: 0;
 }
 
@@ -52,13 +52,18 @@
     align-items: center;
 }
 
+/* .main-menu-buttons:nth-child(1){
+    animation: slideLeft 1s ease-in-out forwards;
+    animation-delay: 0;
+} */
+
 .main-menu-hero h1 {
     font-family: glitch;
     font-weight: 400;
     font-style: normal;
     color: #4675cc;
     text-align: center;
-    animation: slideBottom 1s ease forwards;
+    animation: slideBottommain 2s ease forwards;
     animation-delay: 0;
     text-transform: uppercase;
 }
@@ -80,6 +85,19 @@
     text-decoration: none;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.main-menu-buttons.first-button{
+    animation: slideLeftmain 1.5s ease-in-out forwards;
+    animation-delay: 0.5;
+}
+.main-menu-buttons.second-button{
+    animation: slideLeftmain 2s ease-in-out forwards;
+    animation-delay: 1;
+}
+.main-menu-buttons.third-button{
+    animation: slideLeftmain 2.5s ease-in-out forwards;
+    animation-delay: 1.5;
 }
 
 .main-menu-buttons span {
@@ -179,7 +197,7 @@
     }
 }
 
-@keyframes slideRight {
+@keyframes slideRightmain {
     0% {
         transform: translateX(-100px);
         opacity: 0;
@@ -191,7 +209,7 @@
     }
 }
 
-@keyframes slideLeft {
+@keyframes slideLeftmain {
     0% {
         transform: translateX(100px);
         opacity: 0;
@@ -218,7 +236,7 @@
 }
 
 
-@keyframes slideBottom {
+@keyframes slideBottommain {
     0% {
         transform: translateY(-100px);
         opacity: 0;
