@@ -5,6 +5,18 @@
     z-index: 99999;
     border-bottom: 1px solid #4874b2;
 }
+
+.animation-nav {
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: all 1.5s ease-in-out;
+}
+
+.nav-animation {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .base-navBar {
     background-color: #0b0f18 !important ;
     color: white !important;

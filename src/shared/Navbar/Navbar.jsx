@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Header() {
+
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
@@ -18,6 +19,37 @@ export default function Header() {
     data: [],
     err: [],
   });
+
+  useEffect(() => {
+    const elementsLeftnav = document.querySelectorAll(".animation-nav");
+
+    if (elementsLeftnav.length > 0) {
+      const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.4,
+      };
+
+      const callbacks = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("nav-animation");
+          } else {
+            entry.target.classList.remove("nav-animation");
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(callbacks, options);
+
+      elementsLeftnav.forEach((element) => observer.observe(element));
+      return () => {
+        if (elementsLeftnav && observer) {
+          elementsLeftnav.forEach((element) => observer.unobserve(element));
+        }
+      };
+    }
+  }, []);
 
   useEffect(() => {
     if (auth) {
@@ -70,8 +102,8 @@ return (
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon text-white "></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav m-auto mb-2 mb-lg-0 ">
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav m-auto mb-2 mb-lg-0 animation-nav">
             {auth && (pathname === "/" || pathname === "/home") && (
               <>
                 <li class="nav-item">
