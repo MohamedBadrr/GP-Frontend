@@ -12,10 +12,17 @@
     transition: all 1.5s ease-in-out;
 }
 
+.animation-bottom-footer{
+    opacity: 0;
+    transition: all 1.5s ease-in-out;
+    transform: translateY(100%);
+}
+
 .footer-animation {
     opacity: 1;
     transform: translateX(0);
 }
+
 
 .footer .footer-row {
     width: 100%;
