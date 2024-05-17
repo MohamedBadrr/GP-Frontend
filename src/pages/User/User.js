@@ -22,6 +22,7 @@ export default function User() {
         })
         .then((resp) => {
           setUser({ ...user, data: resp.data, loading: false, err: "" });
+          
         })
         .catch((errors) => {
           setUser({
@@ -33,8 +34,8 @@ export default function User() {
     }
   }, []);
   const [updatedUser, setUpdatedUser] = useState({
-    name: "",
-    email: "",
+    name: auth.name,
+    email: auth.email,
     password: "",
     photo: "",
     loading: false,
@@ -42,6 +43,7 @@ export default function User() {
     reload: false,
     success: null,
   });
+  
   const image = useRef(null);
   const userUpdate = (event) => {
     event.preventDefault();
@@ -49,7 +51,7 @@ export default function User() {
     const formData = new FormData();
     if (updatedUser.name !== "") {
       formData.append("name", updatedUser.name);
-    } else {
+    } else { 
       formData.append("name", user.data.name);
     }
     if (updatedUser.email !== "") {
@@ -77,6 +79,7 @@ export default function User() {
           err: null,
           success: resp.data.msg,
           reload: updatedUser.reload + 1,
+          name:resp.data.name
         });
         window.location.reload();
       })
@@ -94,12 +97,13 @@ export default function User() {
     <>
       <div className="user-section">
         <div class="container-xl px-4 mt-10 ">
+        <h1 className="text-center mb-5 title-user">Welcome To Your Profile</h1>
           <div class="row">
-            <div class="col-xl-4">
+            <div class="col-xl-4 animation-image-user ">
               {/* <!-- Profile picture card--> */}
-              <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
+              <div class="card card-style mb-4 mb-xl-0 card-imge-user">
+                <div class="card-header ">Profile Picture</div>
+                <div class="card-body section-image-user text-center">
                   {/* <!-- Profile picture image--> */}
                   <img
                     class="img-account-profile rounded-circle mb-2"
@@ -113,15 +117,15 @@ export default function User() {
                   {/* <!-- Profile picture upload button--> */}
                   <input
                     type="file"
-                    className="btn btn-primary imageimageInput"
+                    className="btn default-button imageimageInput text-white"
                     ref={image}></input>
                 </div>
               </div>
             </div>
             <div class="col-xl-8">
               {/* <!-- Account details card--> */}
-              <div class="card mb-4">
-                <div class="card-header">Account Details</div>
+              <div class="card card-style mb-4 card-user-animation">
+                <div class="card-header text-center">Account Details</div>
                 {updatedUser.err && (
                   <div class="alert alert-danger text-center p-2" role="alert">
                     {updatedUser.err}
@@ -132,11 +136,11 @@ export default function User() {
                     {updatedUser.success}
                   </div>
                 )}
-                <div class="card-body">
+                <div class="card-body  section-data-user ">
                   <form onSubmit={userUpdate}>
                     {/* <!-- Form Group (username)--> */}
                     <div class="mb-3">
-                      <label class="small mb-1">Name</label>
+                      <label class="label-edit ms-2 mb-1">Name</label>
                       <input
                         class="form-control"
                         id="inputUsername"
@@ -153,12 +157,12 @@ export default function User() {
                     </div>
                     {/* <!-- Form Group (email address)--> */}
                     <div class="mb-3">
-                      <label class="small mb-1">Email address</label>
+                      <label class="label-edit ms-2 mb-1">Email address</label>
                       <input
                         class="form-control"
                         id="inputEmailAddress"
                         type="email"
-                        placeholder={`${user.data.email}`}
+                        // placeholder={}
                         value={updatedUser.email}
                         onChange={(e) =>
                           setUpdatedUser({
@@ -168,13 +172,11 @@ export default function User() {
                         }
                       />
                     </div>
-                    {/* <!-- Form Row--> */}
-                    <div class="row gx-3 mb-3">
-                      {/* <!-- Form Group (password)--> */}
-                      <div class="col-md-6">
-                        <label class="small mb-1">Password</label>
-                        <input
-                          class="form-control"
+
+                    <div class="mb-3">
+                      <label class="label-edit ms-2 mb-1">Password</label>
+                      <input
+                          className="form-control edit-password"
                           id="inputPhone"
                           type="password"
                           placeholder="Enter your Password"
@@ -187,10 +189,9 @@ export default function User() {
                             })
                           }
                         />
-                      </div>
                     </div>
                     {/* <!-- Save changes button--> */}
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn default-button text-white fw-bold mt-2 mb-3" type="submit">
                       Save changes
                     </button>
                   </form>

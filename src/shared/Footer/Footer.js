@@ -12,7 +12,7 @@ export default function Footer() {
       const options = {
         root: null,
         rootMargin: "0px",
-        threshold: 0.4,
+        threshold: 0.4, 
       };
       const callbacks = (entries) => {
         entries.forEach((entry) => {
@@ -54,7 +54,7 @@ export default function Footer() {
                     <li ><Link className='footercolor' to="/home">Home</Link></li>
                     <li ><Link className='footercolor' to="/gamessection">Games</Link></li>
                     <li ><Link className='footercolor' to="/tutorial">Tutorials</Link></li>
-                    <li ><Link className='footercolor' to="user">Profile</Link></li>
+                    <li ><Link className='footercolor me-3' to="/user">Profile</Link></li>
                   </ul>
                 </div>
                 <div class="  text-center statement-footer animation-bottom-footer">
@@ -78,10 +78,3 @@ export default function Footer() {
 
 
 
-
-{/* <div
-className="text-center p-3 ps-5 fw-bold"
-style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}
->
-© 2023 Copyright : <span className='special-color'>TeamGamed</span>
-</div> */}
