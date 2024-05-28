@@ -4,8 +4,8 @@ import "./GamesSection.css";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import img1 from "../../assets/images/game1.png";
-import img2 from "../../assets/images/game2.png";
+import img1 from "../../assets/images/Space Battle.gif";
+import img2 from "../../assets/images/Rock Paper Scissors.gif";
 import { Link } from "react-router-dom";
 
 const GamesSection = () => {
@@ -45,7 +45,7 @@ const GamesSection = () => {
         items: 1,
         loop: true,
         autoplay: true,
-        autoplayTimeout: 4000,
+        autoplayTimeout: 6000,
         nav: true,
         dots: true,
         margin: 15,

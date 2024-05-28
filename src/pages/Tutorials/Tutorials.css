@@ -62,8 +62,10 @@
 }
 
 .tutorials-video1 {
-    background-image: url(../../assets/images/game1.png);
+    background-image: url(../../assets/images/Space\ Battle.gif);
     transition: 0.5s all !important;
+    background-position: center center;
+
 }
 
 .tutorials-vedio1-skin {
@@ -100,7 +102,7 @@
 }
 
 .tutorials-video2 {
-    background-image: url(../../assets/images/game2.png);
+    background-image: url(../../assets/images/Rock\ Paper\ Scissors.gif);
     background-position: center center;
     background-size: 100% 100%;
     transition: 0.5s all !important;
