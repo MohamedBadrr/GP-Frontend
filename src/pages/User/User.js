@@ -9,7 +9,6 @@ export default function User() {
     loading: false,
     data: [],
     err: [],
-    reload : 0,
   });
 
   useEffect(() => {
@@ -144,7 +143,7 @@ export default function User() {
                     <div class="mb-3">
                       <label class="label-edit ms-2 mb-1">Name</label>
                       <input
-                        class="form-control"
+                        class="form-control user-field"
                         id="inputUsername"
                         type="text"
                         placeholder={`${user.data.name}`}
@@ -161,7 +160,7 @@ export default function User() {
                     <div class="mb-3">
                       <label class="label-edit ms-2 mb-1">Email address</label>
                       <input
-                        class="form-control"
+                        class="form-control user-field"
                         id="inputEmailAddress"
                         type="email"
                         // placeholder={}
@@ -178,7 +177,7 @@ export default function User() {
                     <div class="mb-3">
                       <label class="label-edit ms-2 mb-1">Password</label>
                       <input
-                          className="form-control edit-password"
+                          className="form-control edit-password user-field"
                           id="inputPhone"
                           type="password"
                           placeholder="Enter your Password"
