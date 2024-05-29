@@ -94,15 +94,16 @@
 }
 .conis-xp {
     display: flex;
-    justify-content: space-between !important;
+    justify-content: center !important;
     align-items: center;
 }
 .conis {
     margin-right: 175px;
 }
-.xp {
-    margin-left: 175px;
-}
+
+/* .xp {
+    margin-left: 170px;
+} */
 .user-toggle {
     background-color: transparent;
     border: none;
@@ -227,6 +228,16 @@
         border-radius: 12px;
         height: fit-content;
         top: 60px;
+    }
+    .conis {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* margin-right: 200px; */
+    }
+    
+    .xp {
+        margin-right: 10px;
     }
 }
 /* // Large devices (desktops, 992px and up) */

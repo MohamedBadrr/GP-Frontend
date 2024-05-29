@@ -227,6 +227,10 @@
     .select-skin-card-shape {
         margin-bottom: 0px;
     }
+
+    .select-skin-title{
+        margin-top: 10px   ;
+    }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
