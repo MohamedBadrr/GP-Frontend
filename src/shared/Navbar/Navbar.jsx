@@ -23,33 +23,33 @@ export default function Header() {
     err: [],
   });
 
-  useEffect(() => {
-    const elementsLeftnav = document.querySelectorAll(".animation-nav");
+  // useEffect(() => {
+  //   const elementsLeftnav = document.querySelectorAll(".animation-nav");
 
-    if (elementsLeftnav.length > 0) {
-      const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.4,
-      };
-      const callbacks = (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("nav-animation");
-          } else {
-            entry.target.classList.remove("nav-animation");
-          }
-        });
-      };
-      const observer = new IntersectionObserver(callbacks, options);
-      elementsLeftnav.forEach((element) => observer.observe(element));
-      return () => {
-        if (elementsLeftnav && observer) {
-          elementsLeftnav.forEach((element) => observer.unobserve(element));
-        }
-      };
-    }
-  }, []);
+  //   if (elementsLeftnav.length > 0) {
+  //     const options = {
+  //       root: null,
+  //       rootMargin: "0px",
+  //       threshold: 0.4,
+  //     };
+  //     const callbacks = (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("nav-animation");
+  //         } else {
+  //           entry.target.classList.remove("nav-animation");
+  //         }
+  //       });
+  //     };
+  //     const observer = new IntersectionObserver(callbacks, options);
+  //     elementsLeftnav.forEach((element) => observer.observe(element));
+  //     return () => {
+  //       if (elementsLeftnav && observer) {
+  //         elementsLeftnav.forEach((element) => observer.unobserve(element));
+  //       }
+  //     };
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (auth) {
