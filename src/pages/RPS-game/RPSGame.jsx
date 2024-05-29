@@ -111,8 +111,7 @@ const RPSGame = () => {
             loading: false,
             err: "",
           });
-          // setGamesRemaining(resp.data.game_remaining);
-          setGamesRemaining(4);
+          setGamesRemaining(resp.data.game_remaining);
         })
         .catch((errors) => {
           console.log(errors);
@@ -373,25 +372,24 @@ const RPSGame = () => {
   const endChampionship = () => {
     if (round > airound) {
       setWinner("Player");
-      // updateCoinsAndXp(champdata.data.price, 20, true);
-      // updateAuthUser();
+      updateCoinsAndXp(champdata.data.price, 20, true);
+      updateAuthUser();
       updateQtableInDb(qTable)
-      // navigate("/winnerRPS");
-      // window.location.reload();
-      console.log(qTable);
+      navigate("/winnerRPS");
+      window.location.reload();
 
     } else if (airound > round) {
       setWinner("Computer");
-      // updateCoinsAndXp(champdata.data.price, 10, false);
-      // updateAuthUser();
+      updateCoinsAndXp(champdata.data.price, 10, false);
+      updateAuthUser();
       updateQtableInDb(qTable)
-      // navigate("/gameoverRPS");
-      // window.location.reload();
+      navigate("/gameoverRPS");
+      window.location.reload();
       console.log(qTable);
 
     } else {
-      // navigate("/gameoverRPS");
-      // window.location.reload();
+      navigate("/gameoverRPS");
+      window.location.reload();
       updateQtableInDb(qTable)
       console.log(qTable);
 

@@ -9,6 +9,7 @@ export default function User() {
     loading: false,
     data: [],
     err: [],
+    reload : 0,
   });
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function User() {
           });
         });
     }
-  }, []);
+  }, [user.reload]);
   const [updatedUser, setUpdatedUser] = useState({
     name: auth.name,
     email: auth.email,
@@ -81,6 +82,7 @@ export default function User() {
           reload: updatedUser.reload + 1,
           name:resp.data.name
         });
+        setUser({...user,reload1: user.reload +1})
         window.location.reload();
       })
       .catch((err) => {
