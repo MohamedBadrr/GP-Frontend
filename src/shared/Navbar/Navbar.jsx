@@ -9,6 +9,9 @@ import axios from "axios";
 
 export default function Header() {
 
+
+  
+
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
@@ -29,7 +32,6 @@ export default function Header() {
         rootMargin: "0px",
         threshold: 0.4,
       };
-
       const callbacks = (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -39,9 +41,7 @@ export default function Header() {
           }
         });
       };
-
       const observer = new IntersectionObserver(callbacks, options);
-
       elementsLeftnav.forEach((element) => observer.observe(element));
       return () => {
         if (elementsLeftnav && observer) {
@@ -77,6 +77,8 @@ export default function Header() {
     removeAuthUser();
     navigate("/login");
   };
+//150
+console.log((180-(180%100))/100); 
 
 return (
 <>
@@ -142,17 +144,15 @@ return (
                         {" "}
                         Coins :{" "}
                         <span className="base-color">
-                          {user.data.coins}
+                          {user.data.coins} <i class="fa-solid fa-coins text-warning ms-2"></i>
                         </span>
                       </h4>
                     </li>
                     <li class="xp">
-                      <h4 class=" mt-2 mx-2 text-white">
-                        {" "}
-                        XP :{" "}
-                        <span className="base-color">{user.data.xp}</span>
-                      </h4>
                     </li>
+                    <div class="range" style={{"--p":user.data.xp%100}}>
+                          <div class="range__label progress">Level : {(user.data.xp-(user.data.xp%100))/100}</div>
+                      </div>
                   </div>
                 </>
               )

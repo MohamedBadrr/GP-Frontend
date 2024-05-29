@@ -1,4 +1,58 @@
 /** @format */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+.progress{
+ margin-left: -100px;
+ margin-top: -1px;
+ font-weight: bold !important;
+ letter-spacing: 2.5px;
+  color:white;
+  font-size: 15px !important;
+  background-color: black !important;
+}
+
+.range {
+  background-color: #a3a1a1;
+  width: 200px;
+  height: 18px;
+  transform: skew(30deg);
+  font-family: 'Orbitron', monospace;
+  border: 2px white solid;
+  &:before {
+    --width: calc(var(--p) * 1%);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #449de1;
+    z-index: 0;
+    animation: load .5s forwards linear, glitch 2s infinite linear;
+  }
+  
+  &:after {
+    counter-reset: progress var(--p);
+    content: counter(progress) '%';
+    color: #000;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%) skewX(-30deg);
+    z-index: 1;
+  }
+  
+  &__label {
+    transform: skew(-30deg) translateY(-100%);
+    line-height: 1.5;
+  }
+}
+
+@keyframes load {
+  to {
+    width: var(--width);
+  }
+}
 .navbar {
     position: fixed !important;
     width: 100%;
