@@ -22,7 +22,7 @@ export default function User() {
         })
         .then((resp) => {
           setUser({ ...user, data: resp.data, loading: false, err: "" });
-          
+          setUpdatedUser({...updatedUser , name : resp.data.name , email : resp.data.email })
         })
         .catch((errors) => {
           setUser({
@@ -34,8 +34,8 @@ export default function User() {
     }
   }, [user.reload]);
   const [updatedUser, setUpdatedUser] = useState({
-    name: auth.name,
-    email: auth.email,
+    name: user.data.name,
+    email: user.data.email,
     password: "",
     photo: "",
     loading: false,
