@@ -177,6 +177,24 @@
             height: fit-content;
             top: 60px;
         }
+
+        .conis-xp {
+            display: flex;
+            justify-content: center !important;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .conis {
+            font-size: 10px;
+            margin-right: 10px;
+        }
+        
+        .range {
+            width: 50%;
+            margin-left: 100px;
+            font-size: 10px;
+        }
 }
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) { 

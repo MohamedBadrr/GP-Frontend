@@ -148,8 +148,6 @@ return (
                         </span>
                       </h4>
                     </li>
-                    <li class="xp">
-                    </li>
                     <div class="range" style={{"--p":user.data.xp%100}}>
                           <div class="range__label progress">Level : {(user.data.xp-(user.data.xp%100))/100}</div>
                       </div>
