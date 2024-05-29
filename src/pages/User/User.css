@@ -41,7 +41,7 @@
   font-weight: bold;
   font-style: italic;
 }
-.form-control,
+.user-field,
 .dataTable-input {
   display: block;
   width: 100%;
@@ -57,7 +57,7 @@
   appearance: none;
   border-radius: 0.35rem;
   padding-left: 20px !important;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
 }
 .user-section {
   padding-bottom: 100px;
