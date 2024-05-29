@@ -3,7 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Mesh, Vector3 } from "three";
 import { useEffect, useRef, useState } from "react";
 
-export function Coins(props) {
+export function Extratime(props) {
     const speed = props.speed
     const time = useRef(0)
     const getInitialPosition = () => {
@@ -33,15 +33,16 @@ export function Coins(props) {
     }
     const glb = useLoader(
         GLTFLoader,
-        process.env.PUBLIC_URL + "models/coins/coin.glb"
+        process.env.PUBLIC_URL + "models/extratime/extratime_pickup_coin.glb"
     );
     useEffect(() => {
-        glb.scene.scale.set(0.03, 0.03, 0.03);
+        glb.scene.scale.set(0.25, 0.25, 0.25);
         glb.scene.traverse((object) => {
             if (object instanceof Mesh) {
                 object.castShadow = true;
                 object.receiveShadow = true;
                 object.material.envMapIntensity = 20;
+                object.material.color.setRGB(0,1,0);
             }
         })
     }, [glb])
@@ -51,12 +52,13 @@ export function Coins(props) {
         if (newZ < 0 && newZ > -0.8 && position.x === props.planePosition.x) { // if the plane take the coin
             resetPosition();
             time.current = 0;
-            props.setScore(props.score +1 );
+            props.setTime(props.time +10 );
             props.setCount(props.count +1 );
+
         }
         if (newZ < -5) {
             resetPosition();
-            time.current = 0
+            time.current = 0;
         }
         glb.scene.position.set(position.x, position.y, newZ)
         props.setCoinX(position.x)
