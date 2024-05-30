@@ -14,7 +14,7 @@ export default function SelectSkin() {
     data: [],
     errors: null,
   });
-
+ 
   const options = {
     items: 1,
     loop: true,

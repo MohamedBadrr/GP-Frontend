@@ -60,7 +60,7 @@
     border-bottom: 1px solid #4874b2;
 }
 
-.animation-nav {
+/* .animation-nav {
     opacity: 0;
     transform: translateY(-50%);
     transition: all 1.5s ease-in-out;
@@ -69,7 +69,7 @@
 .nav-animation {
     opacity: 1;
     transform: translateY(0);
-}
+} */
 
 .base-navBar {
     background-color: #0b0f18 !important ;
@@ -176,6 +176,24 @@
             border-radius: 12px;
             height: fit-content;
             top: 60px;
+        }
+
+        .conis-xp {
+            display: flex;
+            justify-content: center !important;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .conis {
+            font-size: 10px;
+            margin-right: 10px;
+        }
+        
+        .range {
+            width: 50%;
+            margin-left: 100px;
+            font-size: 10px;
         }
 }
 /* // Small devices (landscape phones, 576px and up) */
