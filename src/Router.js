@@ -18,6 +18,7 @@ import Tutorials from "./pages/Tutorials/Tutorials";
 import Guset, { GuestWithoutLogin } from "./middleware/Gust";
 import GamesSection from "./pages/GamesSection/GamesSection";
 import AboutUs from "./pages/aboutUs/AboutUs";
+import ContactUs from "./pages/contactus/ContactUs";
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const routes = createBrowserRouter([
             {
               path: "/aboutus",
               element: <AboutUs />,
+            },
+            {
+              path: "/contactus",
+              element: <ContactUs />,
             },
             {
               path: "/gamessection",

@@ -1,0 +1,84 @@
+.contact-us{
+    background-image: url(../../assets/images/bg.png);
+    background-position: center center;
+    background-size: 100% 100%;
+    padding-top: 80px;
+    min-height: 100vh;
+    width: 100%;
+    height: 700px;
+}
+
+.contact-us-form{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: aliceblue;
+
+}
+
+.contact-us-form form {
+    width: 70%;
+    margin-left: 0px;
+    margin-top: 130px;
+}
+
+.contact-us-form .contact-us-box {
+    margin-top: 10px;
+}
+
+.img-and-contact{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.contact-us-box{
+    text-align: center;
+    margin: auto;
+}
+.contact-input{
+  margin: auto;
+  display: block;
+  width: 80%;
+  padding: 8px 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-clip: padding-box;
+  border: 1px solid #c5ccd6;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.35rem;
+  padding-left: 20px !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
+  margin: 20px auto ;
+}
+
+.form-contact{
+    padding-top: 70px;
+}
+.title-contact{
+    font-size: 70px;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(15, 132, 205);
+}
+.paragraph-text{
+    width: 90%;
+    margin: auto;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.img-contact img{
+    width: 90%;
+    padding-top: 20px;
+}
+
+
+
+
+
+

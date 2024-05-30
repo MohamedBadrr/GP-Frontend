@@ -128,9 +128,9 @@ return (
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link  my-1 mx-2 text-white " href="#ABOUT">
+                  <Link class="nav-link  my-1 mx-2 text-white " to="/ContactUs">
                     Contact us
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item">
                   <Link
