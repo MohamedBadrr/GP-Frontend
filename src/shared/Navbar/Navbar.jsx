@@ -132,6 +132,13 @@ return (
                     Contact us
                   </a>
                 </li>
+                <li class="nav-item">
+                  <Link
+                    class="nav-link active my-1 mx-2 text-white"
+                    to="/AboutUs">
+                    About us
+                  </Link>
+                </li>
               </>
             )}
             {
