@@ -88,13 +88,11 @@ export function CarShow(props) {
         });
     }
   }, [1]);
-  useEffect(() => {
-    if (props.round.start && time >= 0 ) {
-      setTimeout(() => {
-        setTime(time-1)
-      }, 1000);
-    }
-  }, [time]);
+  if (props.round.start && time >= 0 && count % 5 !== 0) {
+    setTimeout(() => {
+      setTime(time-1)
+    }, 1000);
+  }
   if (
     time === 0 &&
     props.round.start &&

@@ -59,6 +59,7 @@ export function Extratime(props) {
         if (newZ < -5) {
             resetPosition();
             time.current = 0;
+            // props.setCount(props.count +1 );
         }
         glb.scene.position.set(position.x, position.y, newZ)
         props.setCoinX(position.x)
