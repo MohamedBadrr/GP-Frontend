@@ -77,6 +77,8 @@ export default function Header() {
     removeAuthUser();
     navigate("/login");
   };
+//150
+console.log((180-(180%100))/100); 
 
 return (
 <>
