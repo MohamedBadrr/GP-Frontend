@@ -20,6 +20,7 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
+
 }
 
 .title-team h1 {
@@ -46,6 +47,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 50px;
+
 }
 
 .card-team{
