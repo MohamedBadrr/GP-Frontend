@@ -24,7 +24,7 @@ const RPSGame = () => {
   const [aiPatterns, setAiPatterns] = useState([]);
   const [round, setround] = useState(0);
   const [airound, setairound] = useState(0);
-  const [gamesRemaining, setGamesRemaining] = useState();
+  const [gamesRemaining, setGamesRemaining] = useState(100);
   const [loadingPage, setLoading] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
@@ -111,7 +111,8 @@ const RPSGame = () => {
             loading: false,
             err: "",
           });
-          setGamesRemaining(resp.data.game_remaining);
+          // setGamesRemaining(resp.data.game_remaining);
+          setGamesRemaining(100);
         })
         .catch((errors) => {
           console.log(errors);
@@ -399,7 +400,7 @@ const RPSGame = () => {
   return loadingPage ? (
     
     <div className="all">
-        <div className="score-window">
+        {/* <div className="score-window">
         <h2>Score</h2>
         <div className="score">
           <p> {computerScore}</p>
@@ -421,13 +422,42 @@ const RPSGame = () => {
             )}
             
           </div>
-        </div>
+        </div> */}
+        <div className="players">
+          <div className="player">
+          <h2>AI</h2>
+          </div>
+          <div className="score-sys">
+            <h1>Score</h1>
+            <h2> {computerScore}<span className="mx-4">VS</span> {playerScore}</h2>
+          </div>
+          <div className="player">
+          <h2>{auth.name} </h2>
+          <h3>{gesture && ( <span>{gesture}</span>
+            )}</h3>
+          </div>
+        </div>
+
+          {true && (
+          <>
+            {winner && 
+            (
+            <h1 className="whowins">
+                {" "}
+                <span className="">{winner}</span> wins ...!
+              </h1>
+            )}
+          </>
+        )}
+
         <RingLoader className="ailoading"
         color="#ffffff"
           size={300}
           loading = {ailoading}
           />
+
         <Webcam ref={webcamRef} mirrored={true} className="camera"/>
+        
         <canvas ref={canvasRef} className="canvas"/>
         {gesture && handDetected && (
           <div>
@@ -441,23 +471,14 @@ const RPSGame = () => {
                 <img
                   src={computerChoice}
                   alt="Computer choice"
-                  className="computer-player"></img>
+                  className="computer-player"/>
               </p>
             )}
           </div>
         )}
-        {gesture && (
-          <>
-            {winner && (
-              <h1 className="winnertext" style={{ color: "white" }}>
-                {" "}
-                <span className="text-info">{winner}</span> wins ...!
-              </h1>
-            )}
-          </>
-        )}
+
       </div>
-    </div>
+   
     
   ) : (
     <LoadingPage />

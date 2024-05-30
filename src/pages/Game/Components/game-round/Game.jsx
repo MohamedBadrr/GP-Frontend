@@ -305,8 +305,8 @@ function Game() {
       webcamRef.current.video.readyState === 4
     ) {
       const video = webcamRef.current.video;
-      webcamRef.current.video.width = 300;
-      webcamRef.current.video.height = 300;
+      webcamRef.current.video.width = 250;
+      webcamRef.current.video.height = 250;
       const hand = await net.estimateHands(video);
       if (hand.length > 0) {
         setAction(hand[0].landmarks[8][0]);
@@ -340,9 +340,9 @@ function Game() {
           position: "absolute",
           marginLeft: "auto",
           // visibility: "hidden",
-          top: 10,
+          top: -40,
           left: 0,
-          right: 2,
+          right: 0,
           textAlign: "center",
           zindex: 999,
         }}
