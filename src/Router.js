@@ -17,13 +17,12 @@ import Winner from "./pages/winner/Winner";
 import Tutorials from "./pages/Tutorials/Tutorials";
 import Guset, { GuestWithoutLogin } from "./middleware/Gust";
 import GamesSection from "./pages/GamesSection/GamesSection";
-// import Guset from './middleware/Gust';
+  // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
     path: "",
     element: <App />,
     children: [
-      //دا مثال ابقو اسمحوه و كملو بقي الروتس بتاعتكو و عيشوا
       {
         path: "/",
         element: <Home />,
