@@ -26,6 +26,7 @@ import { Rock } from "./Rock";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
+import { Extratime } from './Extratime';
 
 export function CarShow(props) {
   const navigate = useNavigate();
@@ -34,7 +35,8 @@ export function CarShow(props) {
   const [rockX, setRockX] = useState();
   const [coinX, setCoinX] = useState();
   const auth = getAuthUser();
-
+  const [time ,setTime] = useState()
+  const [ count , setCount ] = useState(0) 
   useEffect(() => {
     if (lives === 0) {
       navigate("/gameover");
@@ -79,21 +81,20 @@ export function CarShow(props) {
             RequireCoins: resp.data.requiredCoins,
             speed: resp.data.speed,
           });
+          setTime(resp.data.time)
         })
         .catch((errors) => {
           console.log(errors);
         });
     }
   }, [1]);
-  useEffect(() => {
-    if (props.round.start) {
-      setTimeout(() => {
-        props.setRound({ ...props.round, time: props.round.time - 1 });
-      }, 1000);
-    }
-  }, [props.round.time]);
+  if (props.round.start && time >= 0 && count % 5 !== 0) {
+    setTimeout(() => {
+      setTime(time-1)
+    }, 1000);
+  }
   if (
-    props.round.time === 0 &&
+    time === 0 &&
     props.round.start &&
     score >= props.round.RequireCoins
   ) {
@@ -101,12 +102,13 @@ export function CarShow(props) {
     updateAuthUser();
     navigate("/winner");
     window.location.reload();
-  } else if (props.round.time === 0 && props.round.start) {
+  } else if (time === 0 && props.round.start) {
     updateCoinsAndXp(score, 10, false);
     updateAuthUser();
     navigate("/gameover");
     window.location.reload();
   }
+
   return (
     <>
       <Text
@@ -143,7 +145,7 @@ export function CarShow(props) {
         anchorX="center"
         anchorY="middle"
         rotation={[Math.PI / 85, 9.4, 0]}>
-        Time left : {props.round.time}
+        Time left : {time}
       </Text>
       <OrbitControls
         target={[0, 0.35, 0]}
@@ -179,6 +181,20 @@ export function CarShow(props) {
             lives={lives}
             speed={props.round.speed}
           />
+          {
+            ( score !== 0 && count % 5 === 0) ? 
+            <Extratime
+            rockX={rockX}
+            coinX={coinX}
+            setCoinX={setCoinX}
+            planePosition={props.planePosition}
+            speed={props.round.speed}
+            setTime={setTime}
+            time={time}
+            setCount={setCount}
+            count={count}
+          />
+          :
           <Coins
             rockX={rockX}
             coinX={coinX}
@@ -187,7 +203,10 @@ export function CarShow(props) {
             setScore={setScore}
             score={score}
             speed={props.round.speed}
-          />
+            setCount={setCount}
+            count={count}
+          /> 
+          }
         </>
       )}
       <spotLight
@@ -320,7 +339,7 @@ function Game() {
         style={{
           position: "absolute",
           marginLeft: "auto",
-          visibility: "hidden",
+          // visibility: "hidden",
           top: 10,
           left: 0,
           right: 2,
