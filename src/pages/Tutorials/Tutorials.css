@@ -148,13 +148,8 @@
         height: fit-content;
     }
 
-    .tutorials-video2,
-    .tutorials-video1 {
-        width: 100% !important;
-        height: 450px;
-        margin: 20px;
-        margin-top: 40px;
-        display: block;
+    .tutorials {
+        height: fit-content;
     }
 
     .tutorial-animation-left {
@@ -241,6 +236,11 @@
 
     .tutorials-vedio2-skin button {
         display: block;
+    }
+
+    .tutorials-video2,
+    .tutorials-video1 {
+        height: fit-content;
     }
 }
 

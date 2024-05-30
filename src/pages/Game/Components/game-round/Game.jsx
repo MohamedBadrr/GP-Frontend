@@ -320,7 +320,7 @@ function Game() {
         style={{
           position: "absolute",
           marginLeft: "auto",
-          visibility: "hidden",
+          // visibility: "hidden",
           top: 10,
           left: 0,
           right: 2,
