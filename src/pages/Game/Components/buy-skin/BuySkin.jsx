@@ -92,7 +92,7 @@ const BuySkin = () => {
                             )}
                             <img alt="plane1" src={item.imageUrl} />
                             <h4 className="buy-skin-name">{item.name}</h4>
-                            <p className="buy-skin-price">{item.price} <span className="text-white">Conis</span></p>
+                            <p className="buy-skin-price fw-bold">{item.price} <span className="text-warning"></span>  <i class="fa-solid fa-coins text-warning"></i></p>
                             <button className="buy-skin-button mb-3 mt-2 px-4 py-1" onClick={(e) => { buySkin(item.id) }}>Buy Now</button>
                             <i
                                 className="fa-solid fa-lock buy-skin-close"
