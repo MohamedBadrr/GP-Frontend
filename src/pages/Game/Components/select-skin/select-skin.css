@@ -28,27 +28,28 @@
 }
 
 .select-skin-card {
-    margin-top: 50px;
     display: flex;
     align-items: center;
     flex-wrap: wrap !important;
     justify-content: space-around !important;
-    margin-top: 50px !important;
+    margin-top: 10px !important;
 }
 
 .select-skin-card-shape {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     background-position: center center;
     background-size: 100% 100%;
-    width: 300px;
-    /* padding: 40px; */
+    width: 270px;
     border-radius: 5px;
     position: relative;
     transition: .3s;
     overflow: hidden;
-    min-height: 440px;
+    height: 400px;
     transition: 1s all;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    border: 1px solid rgb(53, 53, 53);
+    box-shadow:0px 2px 8px #3478d7;
 }
 
 
@@ -62,7 +63,7 @@
 }
 
 .select-skin-name {
-    font-size: 29px;
+    font-size: 25px;
     font-weight: 700;
     text-align: center;
     color: #8fb3e6;
@@ -83,16 +84,16 @@
 
 .select-skin-imgbox img {
     position: absolute;
-    width: 100%;
+    width: 100% !important;
     height: 100%;
     object-fit: cover;
     transition: transform .7s;
     z-index: 999;
-    transform: scale(1.9);
+    /* padding-right: 50px !important; */
 }
 
 .select-skin-imgbox:hover img {
-    transform: scale(1.9) rotate(360deg);
+    transform:  rotate(360deg);
 }
 
 .select-skin-button {
@@ -140,6 +141,23 @@
     height: 2.5px;
     background: linear-gradient(90deg, transparent, #273f86);
     animation: animate1 2s infinite;
+}
+.noskins{
+    font-size: 45px;
+    display: block;
+    color: #6d9ee2;
+    font-weight: bold;
+    display: block !important;
+    text-align: center;
+
+}
+.noskins-button{
+    display: block !important;
+    width: 20%;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    margin-top: 50px;
 }
 
 @keyframes animate1 {
@@ -231,10 +249,29 @@
     .select-skin-title{
         margin-top: 10px   ;
     }
+    .noskins{
+        font-size: 25px;
+        display: block;
+        color: #6d9ee2;
+        font-weight: bold;
+        display: block !important;
+        text-align: center;
+    
+    }
+    .noskins-button{
+        display: block !important;
+        width: 50%;
+        text-align: center;
+        text-decoration: none;
+        margin: auto;
+        margin-top: 50px;
+    }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {}
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {}

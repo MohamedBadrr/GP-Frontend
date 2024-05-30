@@ -1,5 +1,5 @@
 /** @format */
-
+ import "./RPSGame.css";
 import React, { useState, useEffect, useRef } from "react";
 import * as handpose from "@tensorflow-models/handpose";
 import * as tf from "@tensorflow/tfjs";

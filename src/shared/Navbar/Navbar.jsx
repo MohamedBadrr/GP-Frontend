@@ -143,7 +143,7 @@ return (
             )}
             {
               // (auth && (pathname !=="/" || pathname !=="/home")) && (
-              auth && pathname !== "/home" && (
+                (pathname !=="/" && auth && pathname !== "/home") && (
                 <>
                   <div className="conis-xp">
                     <li class="conis">

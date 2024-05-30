@@ -82,7 +82,8 @@ const BuySkin = () => {
             <section className="buy-skin">
                 <h1 className="buy-skin-title">Locked Skins</h1>
                 <div className=" container buy-skin-card">
-                    {Lockedskins.data.map((item) => (
+                    {Lockedskins.data.length?<>
+                    Lockedskins.data{Lockedskins.data.map((item) => (
                         <div className="buy-skin-locked" key={item.id}>
                             {showBuyAlert[item.id] && ( 
                                 <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>
@@ -92,14 +93,21 @@ const BuySkin = () => {
                             )}
                             <img alt="plane1" src={item.imageUrl} />
                             <h4 className="buy-skin-name">{item.name}</h4>
-                            <p className="buy-skin-price">{item.price} <span className="text-white">Conis</span></p>
+                            <p className="buy-skin-price fw-bold">{item.price} <span className="text-warning"></span>  <i class="fa-solid fa-coins text-warning"></i></p>
                             <button className="buy-skin-button mb-3 mt-2 px-4 py-1" onClick={(e) => { buySkin(item.id) }}>Buy Now</button>
                             <i
                                 className="fa-solid fa-lock buy-skin-close"
                                 onClick={() => handleLockClick(item.id)}
                             ></i>
                         </div>
-                    ))}
+                    ))}</>
+                    :
+                    <>
+                    <div className="all-skins-buied">
+                        <h2 className="buyallskins">You buy All skins, Please Buy skins</h2>
+                        <Link to={"/selectskin"} className="default-button p-2 buyallskins-button">Lets Play</Link>
+                    </div>
+                    </>}
                 </div>
             </section>
         </>

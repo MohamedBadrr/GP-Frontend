@@ -14,21 +14,21 @@ export default function SelectSkin() {
     data: [],
     errors: null,
   });
-
+ 
   const options = {
     items: 1,
-    loop: true,
-    autoplay: true,
+    loop: skins.data.length > 3, // Loop only if more than 3 items
+    autoplay: skins.data.length > 3, // Autoplay only if more than 3 items
     autoplayTimeout: 4000,
     nav: true,
     dots: true,
     margin: 15,
     responsive: {
       1100: {
-        items: 3,
+        items: Math.min(3, skins.data.length), // Adjust items to the number of skins
       },
       724: {
-        items: 2,
+        items: 1,
       },
       500: {
         items: 1,
@@ -57,10 +57,13 @@ export default function SelectSkin() {
     <section className="select-skin">
       <h1 className="select-skin-title">YOUR Planes</h1>
       <div className="container select-skin-card pb-4 mb-4">
+
         {skins.loading ? (
           <div>Loading...</div>
         ) : (
-          <OwlCarousel className='owl-theme' {...options}>
+           <>{skins.data.length?
+           <>
+            <OwlCarousel className='owl-theme' {...options}>
             {skins.data.map((item) => (
               <div key={item.id} className="item-owl-carsoual text-center active-owl-skin">
                 <div className='select-skin-card-shape'>
@@ -84,6 +87,14 @@ export default function SelectSkin() {
               </div>
             ))}
           </OwlCarousel>
+           </>
+           :<>
+           <div>
+           <h2 className="noskins">You Don't have Skins , Please Buy skins </h2>
+          <Link to={"/buyskin"} className="default-button p-2 noskins-button">Buy New Skins</Link>
+           </div>
+           </>}</>
+          
         )}
       </div>
     </section>
