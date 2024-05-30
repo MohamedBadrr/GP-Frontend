@@ -83,7 +83,7 @@ const BuySkin = () => {
                 <h1 className="buy-skin-title">Locked Skins</h1>
                 <div className=" container buy-skin-card">
                     {Lockedskins.data.length?<>
-                    Lockedskins.data{Lockedskins.data.map((item) => (
+                    {Lockedskins.data.map((item) => (
                         <div className="buy-skin-locked" key={item.id}>
                             {showBuyAlert[item.id] && ( 
                                 <div className="alert alert-danger p-1 mx-2 my-2">Please Buy The Skin</div>

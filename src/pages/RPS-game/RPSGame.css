@@ -1,3 +1,6 @@
+.all{
+  padding-top: 80px;
+}
 .playingarea{
   background-image: url(../../assets/images/Human\ aware\ AI\ hero.png);
 }
@@ -11,18 +14,23 @@
   width: 400PX;
   height: 400PX;
   border-Radius:50px;
-  margin-Top:60px;
-  margin-Right:60px;
+  margin-Top:90px;
+  margin-Right:120px;
  
 border-style: outset;
 }
 .canvas{
   position: absolute;
-  
+  width: 50%;
 }
 .computer{
   font-family:'glitch';
-  padding-right:200px;
+
+}
+.computer-player{
+  margin-left: 200px !important; 
+  width: 300px;
+  height: 400px !important;
 }
 .playername{
   font-family:'glitch';
@@ -59,7 +67,7 @@ border-style: outset;
   height: 450px;
 }
 .ailoading{
-  margin-left: 150px;
+  margin-left: 190px;
   margin-top: 100px;
 }
 .score-window{
@@ -81,4 +89,56 @@ border-style: outset;
   position: absolute;
   font-size: 50px;
   
+}
+
+
+
+
+.players{
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family:playagian ;
+  text-align: center;
+  margin: 0 auto;
+  margin-left: 220px;
+}
+.player{
+  text-align: center;
+}
+.score-sys h2{
+  font-size: 40px;
+  font-weight: bold !important;
+  font-family:playagian ;
+  text-align: center;
+  border: 2px solid rgb(11, 84, 133);
+  padding: 5px 80px;
+  padding-top: 10px;
+  box-shadow: 0px 3px 14px rgb(29, 115, 172);
+  
+}
+.score-sys h1{
+  font-size: 40px;
+  font-weight: bold !important;
+  font-family:playagian ;
+  text-align: center;
+  color: rgb(36, 122, 179);
+  text-shadow: 0px 3px 14px rgb(29, 115, 172);
+}
+.player h2 {
+  font-size: 40px;
+  font-weight: bold !important;
+  font-family:playagian ;
+  color: rgb(36, 122, 179);;
+}
+
+.whowins{
+  font-size: 35px;
+  font-weight: bold;
+  color: rgb(36, 122, 179);
+  text-align: center;
+  margin-top: 5px !important;
+  margin-left:-100px !important;
+  margin: auto;
 }
