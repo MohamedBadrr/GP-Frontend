@@ -4,6 +4,7 @@ import "./Home.css";
 import homeBanner from "../../assets/images/banner_img.png";
 import GamesSection from "../GamesSection/GamesSection";
 import Tutorials from "../Tutorials/Tutorials";
+import ContactUs from "../contactus/ContactUs";
 
 
 export default function Home() {
@@ -84,6 +85,9 @@ export default function Home() {
 
         <section id="TOTURIALS">
           <Tutorials />
+        </section>
+        <section >
+          <ContactUs />
         </section>
       </section>
     </>

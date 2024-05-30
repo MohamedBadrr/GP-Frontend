@@ -106,7 +106,7 @@ return (
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav m-auto mb-2 mb-lg-0 animation-nav">
-            {auth && (pathname === "/" || pathname === "/home") && (
+            {auth && (pathname === "/" || pathname === "/home" || pathname === "/AboutUs" || pathname === "/ContactUs" ||  pathname === "/tutorial" ) && (
               <>
                 <li class="nav-item">
                   <Link
@@ -121,11 +121,11 @@ return (
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a
+                  <Link
                     class="nav-link  my-1 mx-2 text-white "
-                    href="#TOTURIALS">
+                    to={'/tutorial'}>
                     Tutorials
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item">
                   <Link class="nav-link  my-1 mx-2 text-white " to="/ContactUs">
@@ -143,7 +143,7 @@ return (
             )}
             {
               // (auth && (pathname !=="/" || pathname !=="/home")) && (
-                (pathname !=="/" && auth && pathname !== "/home") && (
+                (pathname !=="/" && auth && pathname !== "/home" && pathname !== "/AboutUs" && pathname !== "/ContactUs" && pathname !== "/tutorial") && (
                 <>
                   <div className="conis-xp">
                     <li class="conis">
