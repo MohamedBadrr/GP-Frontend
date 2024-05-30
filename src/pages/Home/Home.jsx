@@ -58,8 +58,8 @@ export default function Home() {
                       Best Games Of The Latest
                     </h1>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                        Open Your Webcam and Enjoy With A New Experience in Controlling Games<br/>
+                            "the posibilities beyond your imagination"
                     </p>
                     <button className="default-button px-5 py-2 mt-3 watch-button button-animation">
                       <a
