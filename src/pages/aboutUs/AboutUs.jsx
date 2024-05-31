@@ -17,7 +17,7 @@ const AboutUs = () => {
                     <p>
                         Students at Computer Science and Artificial Intelligence Helwan University.
                         Experienced with all stages of the development cycle for dynamic web projects.
-                        Good in HTML5, CSS, JavaScript, and understanding of React fundamentals and
+                        Good in HTML5, CSS, JavaScript, and understanding of React fundamentals and
                         node.js.
                     </p>
                 </div>

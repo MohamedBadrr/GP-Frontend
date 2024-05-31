@@ -77,8 +77,104 @@
     width: 90%;
     padding-top: 20px;
 }
-/* fadfgsd
-\mojdasdjk;ljml */
+
+
+
+
+
+
+@media (min-width: 100px) and (max-width: 576px) {
+    .contact-us{
+        background-image: url(../../assets/images/bg.png);
+        background-position: center center;
+        background-size: 100% 100%;
+        padding-top: 40px;
+        height: fit-content;
+        width: 100%;
+        
+    }
+    .img-and-contact{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-direction: column !important;
+        height: fit-content;
+        padding-bottom:30px;
+    }
+
+    .img-contact img{
+        width: 90%;
+        padding-top: 20px;
+    }
+    .img-contact {
+    margin: auto !important;
+    margin-left: 45px !important;
+    margin-bottom: -50px !important;
+}
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .contact-us{
+        background-image: url(../../assets/images/bg.png);
+        background-position: center center;
+        background-size: 100% 100%;
+        padding-top: 40px;
+        height: fit-content;
+        width: 100%;
+        
+    }
+    .img-and-contact{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-direction: column !important;
+        height: fit-content;
+        padding-bottom:30px;
+    }
+
+    .img-contact img{
+        width: 90%;
+        padding-top: 20px;
+    }
+    .img-contact {
+    margin: auto !important;
+    margin-left: 45px !important;
+    margin-bottom: -50px !important;
+}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .contact-us{
+        background-image: url(../../assets/images/bg.png);
+        background-position: center center;
+        background-size: 100% 100%;
+        padding-top: 40px;
+        height: fit-content;
+        width: 100%;
+        
+    }
+    .img-and-contact{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-direction: column !important;
+        height: fit-content;
+        padding-bottom:30px;
+    }
+
+    .img-contact img{
+        width: 90%;
+        padding-top: 20px;
+    }
+    .img-contact {
+    margin: auto !important;
+    margin-left: 45px !important;
+    margin-bottom: -50px !important;
+}
+}
+
 
 
 
