@@ -55,7 +55,7 @@ const Login = () => {
                             </Form.Group>
                             <div className="login-remember">
                                 <label className="text-white"><input type="checkbox" /> Remember Me</label>
-                                <a href="/">Forgot Password ?</a>
+                                <Link to={'/forgetPassword'}>Forgot Password ?</Link>
                             </div>
                             <Button className="default-button border border-0" variant="primary" type="submit" disabled={login.email === "" || login.password === ""}>
                                 Login

@@ -19,6 +19,8 @@ import Guset, { GuestWithoutLogin } from "./middleware/Gust";
 import GamesSection from "./pages/GamesSection/GamesSection";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import ContactUs from "./pages/contactus/ContactUs";
+import ForgetPassword from "./pages/forgetPassword/ForgetPassword";
+import ResetPassword from "./pages/forgetPassword/ResetPassword";
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
@@ -44,6 +46,14 @@ export const routes = createBrowserRouter([
               {
                   path: "/Register",
                   element: <Register />,
+              },
+              {
+                  path: "/ForgetPassword",
+                  element: <ForgetPassword />,
+              },
+              {
+                  path: "/ResetPassword",
+                  element: <ResetPassword />,
               },
           ]
       },

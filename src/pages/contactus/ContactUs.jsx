@@ -28,7 +28,7 @@ const ContactUs = () => {
             to_email : 'ebraheemzezo011@gmail.com',
             message : form.message,
         },
-        'H3lQE42wt0B20Hibj'
+        'st06NduHZrq5VwrNL'
         ).then(()=>{
             setLoading(false)
             alert("Thank you. I will get back to you as soon as possible.")
@@ -64,7 +64,7 @@ const ContactUs = () => {
                         <input className='contact-input' required type="email" placeholder="Email" name='email' value={form.email}  onChange={handleChange} />
                     </div>
                     <div className="contact-us-box" >
-                        <textarea className=' contact-input contact-input-msg' rows={10} required type="text" placeholder="Message" name='message' value={form.message}  onChange={handleChange} />
+                        <textarea className=' contact-input contact-input-msg' rows={5} required type="text" placeholder="Message" name='message' value={form.message}  onChange={handleChange} />
                     </div>
                     <button className="default-button border px-5 py-2 border-0" variant="primary" type="submit">
                         {loading ? 'Sending...' : 'Send'}
