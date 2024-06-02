@@ -87,7 +87,7 @@ const GamesSection = () => {
                             <OwlCarousel className="owl-theme" {...options}>
                                 <div class="item-owl-carsoual text-center">
                                     <h4 className="my-3">
-                                        <span className="base-color">Plane</span> Game
+                                        <span className="base-color">Space</span> Adventure
                                     </h4>
                                     <img src={img1} alt="" className="img-carsoul" />
                                     <div className="game-skin-carsoul">
@@ -110,7 +110,7 @@ const GamesSection = () => {
                                 </div>
                                 <div class="item-owl-carsoual text-center">
                                     <h4 className="my-3">
-                                        <span className="base-color">Plane</span> Game
+                                        <span className="base-color">Space</span> Adventure
                                     </h4>
                                     <img src={img1} alt="" className="img-carsoul" />
                                     <div className="game-skin-carsoul">

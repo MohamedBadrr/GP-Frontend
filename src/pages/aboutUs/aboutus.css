@@ -1,10 +1,4 @@
-/* @font-face {
-    font-family: playagain;
-    src: url(../../../../assets/fonts/Esportiva-8M0OM.ttf);
-} */ 
-
 .our-team {
-    /* background-image: url(../../assets/images/b1.jpg); */
     background-color: #0b0f18;
     background-position: center center;
     background-size: 100% 100%;
@@ -30,7 +24,6 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 10px;
-    /* margin-top: 20px; */
     color: #b1c5ef;
 }
 
@@ -68,7 +61,6 @@
 
 @media (min-width: 100px) and (max-width: 576px) {
     .our-team {
-        /* background-image: url(../../assets/images/b1.jpg); */
         background-color: #0b0f18;
         background-position: center center;
         background-size: 100% 100%;
@@ -88,7 +80,6 @@
 
 }
 
-/* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
     .title-team p {
         text-transform: uppercase;
@@ -99,7 +90,6 @@
         color: #b1c5ef;
     }
     .our-team {
-        /* background-image: url(../../assets/images/b1.jpg); */
         background-color: #0b0f18;
         background-position: center center;
         background-size: 100% 100%;
