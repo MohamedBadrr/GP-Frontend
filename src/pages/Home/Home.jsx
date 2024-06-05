@@ -5,6 +5,7 @@ import homeBanner from "../../assets/images/banner_img.png";
 import GamesSection from "../GamesSection/GamesSection";
 import Tutorials from "../Tutorials/Tutorials";
 import ContactUs from "../contactus/ContactUs";
+import { TableOfUsers } from "../TableOfUsers/TableOfUsers";
 
 
 export default function Home() {
@@ -86,9 +87,15 @@ export default function Home() {
         <section id="TOTURIALS">
           <Tutorials />
         </section>
+
+        <section className="tableofUsers">
+          <TableOfUsers />
+        </section>
+        
         <section >
           <ContactUs />
         </section>
+
       </section>
     </>
   );

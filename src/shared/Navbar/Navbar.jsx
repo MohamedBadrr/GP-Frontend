@@ -1,6 +1,6 @@
 /** @format */
 import React, { useEffect, useState } from "react";
-import logo from "../../assets/images/LOGOO.png";
+import logo from "../../assets/images/LOGOGP.png";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { getAuthUser, removeAuthUser } from "../../helper/Storage";
@@ -22,34 +22,6 @@ export default function Header() {
     data: [],
     err: [],
   });
-
-  // useEffect(() => {
-  //   const elementsLeftnav = document.querySelectorAll(".animation-nav");
-
-  //   if (elementsLeftnav.length > 0) {
-  //     const options = {
-  //       root: null,
-  //       rootMargin: "0px",
-  //       threshold: 0.4,
-  //     };
-  //     const callbacks = (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("nav-animation");
-  //         } else {
-  //           entry.target.classList.remove("nav-animation");
-  //         }
-  //       });
-  //     };
-  //     const observer = new IntersectionObserver(callbacks, options);
-  //     elementsLeftnav.forEach((element) => observer.observe(element));
-  //     return () => {
-  //       if (elementsLeftnav && observer) {
-  //         elementsLeftnav.forEach((element) => observer.unobserve(element));
-  //       }
-  //     };
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (auth) {

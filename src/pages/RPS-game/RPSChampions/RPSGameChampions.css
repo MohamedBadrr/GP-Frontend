@@ -4,7 +4,7 @@
 }
 .all{
     background-image: url(../../../assets/images/Human\ aware\ AI\ hero.png);
-    height: 110vh;
+    min-height: 110vh;
     background-size: 100% 100%;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -15,7 +15,8 @@
     align-items: center;
     font-size: 60px; 
     font-family:'Courier New', Courier, monospace;
-    padding-top: 60px;
+    padding-top: -10px;
+    padding-bottom: 10px;
     margin: 45px 0px;
     padding-bottom: auto;
     color: #ffffff;

@@ -21,6 +21,7 @@ import AboutUs from "./pages/aboutUs/AboutUs";
 import ContactUs from "./pages/contactus/ContactUs";
 import ForgetPassword from "./pages/forgetPassword/ForgetPassword";
 import ResetPassword from "./pages/forgetPassword/ResetPassword";
+import { TableOfUsers } from "./pages/TableOfUsers/TableOfUsers";
 // import Guset from './middleware/Gust';
 export const routes = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const routes = createBrowserRouter([
             {
               path: "/gamessection",
               element: <GamesSection />,
+            },
+            {
+              path: "/table",
+              element: <TableOfUsers />,
             },
             {
               path: "/RPS-Game",
