@@ -339,7 +339,6 @@ function Game() {
         style={{
           position: "absolute",
           marginLeft: "auto",
-          // visibility: "hidden",
           top: -40,
           left: 0,
           right: 0,
