@@ -59,7 +59,6 @@ export function CarShow(props) {
           }
         )
         .then((resp) => {
-          console.log(resp.data);
         })
         .catch((errors) => {
           console.log(errors);

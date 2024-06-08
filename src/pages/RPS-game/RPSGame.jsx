@@ -111,8 +111,7 @@ const RPSGame = () => {
             loading: false,
             err: "",
           });
-          // setGamesRemaining(resp.data.game_remaining);
-          setGamesRemaining(100);
+          setGamesRemaining(resp.data.game_remaining);
         })
         .catch((errors) => {
           console.log(errors);
