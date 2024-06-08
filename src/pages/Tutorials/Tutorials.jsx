@@ -57,7 +57,7 @@ const Tutorials = () => {
                         <div className="tutorials-video1 tutorial-animation-left">
                             <div className="tutorials-vedio1-skin">
                                 <button className="default-button p-3">
-                                    <Link to={"https://www.youtube.com/watch?v=75KSKu9ShV0"}>
+                                    <Link target="_blank" to={"https://youtu.be/WBnquotYQcc"}>
                                         Watch Tutorial
                                     </Link>
                                 </button>
@@ -66,7 +66,7 @@ const Tutorials = () => {
                         <div className="tutorials-video2 tutorial-animation-right">
                             <div className="tutorials-vedio2-skin">
                                 <button className="default-button p-3">
-                                    <Link to={"https://www.youtube.com/watch?v=75KSKu9ShV0"}>
+                                    <Link target="_blank" to={"https://youtu.be/vDRLz-PdX2c"}>
                                         Watch Tutorial
                                     </Link>
                                 </button>

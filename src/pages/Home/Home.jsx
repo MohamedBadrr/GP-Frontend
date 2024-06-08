@@ -61,7 +61,7 @@ export default function Home() {
                     </h1>
                     <p>
                         Open Your Webcam and Enjoy With A New Experience in Controlling Games<br/>
-                            "the posibilities beyond your imagination"
+                            "the possibilities beyond your imagination"
                     </p>
                     <button className="default-button px-5 py-2 mt-3 watch-button button-animation">
                       <a
