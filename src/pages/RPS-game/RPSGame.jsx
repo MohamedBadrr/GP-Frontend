@@ -284,8 +284,6 @@ const RPSGame = () => {
       const randomIndex = Math.floor(Math.random() * choices.length);
       let choice = choices[randomIndex]
       setComputerChoice(choice) 
-      // console.log(choice);
-      // transform choise (image url) to string like 'rock' etc
       let computerChoiseString = transformComputerchoiceToString(choice)
       // asign ai pattern
       setAiPatterns((prevPatterns) => [...prevPatterns, computerChoiseString]);
@@ -364,7 +362,6 @@ const RPSGame = () => {
       const updatedQValue =
       qTable[currentState][computerChoiseString] + alpha * (reward + gamma * maxNextStateQValue - qTable[currentState][computerChoiseString]);
       qTable[currentState][computerChoiseString] = updatedQValue ; 
-      // console.log(qTable[currentState]);
       setQTable({ ...qTable }); // Update the state of the Q-table
     }
   };
@@ -399,29 +396,6 @@ const RPSGame = () => {
   return loadingPage ? (
     
     <div className="all">
-        {/* <div className="score-window">
-        <h2>Score</h2>
-        <div className="score">
-          <p> {computerScore}</p>
-          <p>&nbsp;Vs&nbsp; </p>
-          <p> {playerScore}</p>
-        </div>
-      </div>
-      <div className="playing container">
-        <div className="players">
-          <div>
-            <h1 className="computer">Computer</h1>
-          </div>
-          <div>
-            <h1 className="playername">{auth.name}</h1>
-            {gesture && (
-              <h3 className="yourgesture">
-                Your gesture : <span>{gesture}</span>
-              </h3>
-            )}
-            
-          </div>
-        </div> */}
         <div className="players">
           <div className="player">
           <h2>AI</h2>
@@ -435,7 +409,7 @@ const RPSGame = () => {
           <h3>{gesture && ( <span>{gesture}</span>
             )}</h3>
           </div>
-        </div>
+       </div>
 
           {true && (
           <>
