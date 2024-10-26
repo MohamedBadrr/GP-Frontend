@@ -1,23 +1,28 @@
-# Team-Gamed Tasks
-## الي يخلص حاجه يعمل عليها ✅
-## هنشتغل على فولدرين واحد فرونت و التاني باك 
-### Front Pages
-- Login // عبدو
-- Register // عبدو
-- Home // عادل 
-- User info // عادل
+# End Game, a Gestured Controlled Games Website.
+ ## ✍ Project Overview:
 
-### Gameplay space invading ( هتكمل على اللعبه الي عملناها
-- select chip skin and buy skin  // بدر ✅ الصراحة زيزو هو اللي عمل دي
-- player name  // بدر✅
-- live score  // بدر✅
-- high score  // بدر✅
-- box for camera and ML // اعمل مكانها بس  //  بدر  
- ]
+ The end game has two main games working and fully controlled with hand gestures. That means the user only plays each game by hand and doesn’t need controllers, a keyboard, or a mouse to play these games. 
 
-• Back end // زيزو و زيكو
-- User info [username,  password, high score ,email , token ] ✅
-- Skins [ URL , name , price , status ( locked or not )] ✅
-- games if they are more games 
+## 🎨 Key Features:
+- Two main games ( Space Adventure ) and ( Rock-Paper-Scissors ) 
+- Space Adventure is a quality 3D Game, the user uses his hand to move from one road to another to catch the coins and avoid the rocks.
+- Rock-Paper-Scissors is a compact game, The user Challenges the AI model on three levels of hardness easy, medium, and hard used by the Q-learning model. 
+- The coin system which users can spend to get planes and enroll in a championship
+- The honorary list of all users and their ranks sorted by those experience in games
+- User profile settings page 
 
-• ML algorithm for detect on point of your finger and know where it is on the screen // زيزو و زيكو 
+ ## 🎯 Technologies Used:
+Handpose Detection Model: to get user gestures.
+Q-learning Model: Built to help the AI in the Rock-Paper-Scissors game.
+* Node.js: Provides the backend server for handling requests and managing data.
+* React.js: Creates the interactive and dynamic user interface for real-time insights.
+* Three Js: To build the Space Adventure game Environments and elements.
+* 💥 Heartfelt thanks to my project supervisor Prof./Dr. Marwa Abdelfattah, for her invaluable guidance and support. 🤩
+* 💪 A special thanks to the greatest team for their hard work and dedication. ⚡
+
+### Ibrahim Abdelaziz
+### Mohamed Badr 
+### abdo hashim 
+### Mohamed Zaki 
+### Mohamed Adel 
+### taha saeed 
